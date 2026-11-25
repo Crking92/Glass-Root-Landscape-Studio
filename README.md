@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.9.8
+# Glass Root Landscape Studio v0.9.8.1
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation or paid assets are required. The core 2D editor and legacy Canvas view run locally; GIS services and the new Three.js engine have optional online dependencies.
 
@@ -21,6 +21,12 @@ Read [AGENTS.md](AGENTS.md) before any development work. It defines cross-chat o
 - Set snapping to off, 6 inches, 1 foot, or 5 feet. Use Select / move to drag, edit, duplicate, or delete objects.
 - Choose mulch, gravel, concrete, decomposed granite, grass, or bare soil for new surfaces or edit the material of a selected surface. Surface quantities are summed individually; overlaps are not deducted. Mulch volume = area (sq ft) × depth (in) / 324, before waste allowance.
 - Space + drag or middle mouse pans; wheel zooms. Use 3D Studio for the new mesh preview, or switch to 3D classic as a fallback.
+
+## Plant selection and movement correction (v0.9.8.1)
+- User reported plant placement and inspector edits working, but selecting and moving existing plants failing. The previous exact world-space bounding-box/terrain rejection method was replaced with a padded screen-space silhouette test plus ray scoring. This is a candidate correction, not a confirmed diagnosis of the user's browser.
+- Select / drag plant is the default 3D mode. Click foliage or base to select; click and drag a plant, then release to move by ground-plane displacement. Drag empty space to orbit. Move plant mode selects a plant on click and moves the selected plant when clicking empty ground. A placed-plant dropdown lists species and coordinates as a reliable alternative to viewport picking. Selection and move mode persist as appropriate.
+- Movement commits on release (no continuous drag preview yet), respects existing snapping/bounds, and uses one undoable project action. Only plants are directly editable in Three.js. Nonplant objects still use 2D. No species model or saved-project schema changes.
+- Syntax and seven simulated pointer interaction checks passed (select, drag, click move, auto-select in Move, placement, cancel without movement, empty-space orbit). Actual Three.js screen-space selection and live browser behavior remain unverified; user retest required before proceeding to imagery.
 
 ## Integrated 3D designer (v0.9.8)
 - 3D Studio now opens inside the main design viewport, retaining the plant palette, property controls, quantities, project actions and selected-object inspector. Fullscreen remains available for presentation. Switch to 2D Designer or the Compatibility fallback without changing the saved project. The Three.js camera is retained when switching back and reopening; Reset camera fits the property.
