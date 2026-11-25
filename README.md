@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.8
+# Glass Root Landscape Studio v0.9
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation, external libraries, network API requests, accounts, or paid assets are required. All plant symbols are original procedural drawings. The 3D concept view is an orthographic projection, not a photorealistic mesh renderer.
 
@@ -10,6 +10,13 @@ Free, independent, stylized landscape concept editor. [Open the web app](https:/
 - Set snapping to off, 6 inches, 1 foot, or 5 feet. Use Select / move to drag, edit, duplicate, or delete objects.
 - Choose mulch, gravel, concrete, decomposed granite, grass, or bare soil for new surfaces or edit the material of a selected surface. Surface quantities are summed individually; overlaps are not deducted. Mulch volume = area (sq ft) × depth (in) / 324, before waste allowance.
 - Space + drag or middle mouse pans; wheel zooms. Switch to 3D concept and rotate the view.
+
+## Ecological analysis
+- Click Ecology to see live design summaries: plant quantity, distinct taxa and families, dominant taxon share, growth forms, source water categories, monthly flowering and nectar-listed taxon coverage, larval-host and bird-use flags, and specialist bee genus associations. The optional ecological proposal summary uses the same calculations.
+- Target Zone Plant List snapshot: `40c60770f070511d61b15fc7ba03977acdb2104d`. All 315 records have parsable bloom months; 112 are nectar-flagged, 97 have a larval host entry, and 29 have a bird-use entry. These are source-field presence flags, not independently verified interactions.
+- Bee summary: per-genus distinct bee counts from unqualified genus-level, Texas-listed pollen-host records in Central-Texas-Bee-Relationships snapshot `31512a931a1555a0c12fc9d8ee8a0c666111cde9` (Fowler 2020, https://jarrodfowler.com/bees_pollen.html). 90 plant taxa share 54 matched genera. No copied source prose, full bee relationship dataset, or photographs. Counts are non-additive; genus matches are not species-level host evidence. Texas listing is not county occurrence. The existing Texas Lepidoptera Dashboard remains linked, not fully integrated.
+- Export ecology CSV for plant-level evidence fields. Missing evidence is not evidence of absence. Bloom counts are distinct taxa, not bloom abundance or nectar volume. Source water categories are not irrigation estimates. No new BONAP verification, county occurrence intersection, predicted insect richness or ecological score.
+- Simulated tests cover empty design, duplicate plant counts, genus deduplication, bloom counts, report option and backward compatibility. Actual browser visual and print testing remain pending.
 
 ## Professional deliverables
 - Click Print / proposal in the header to open the report editor. Enter project title, optional client and site, prepared-by name (defaults to Glass Root Garden), and installation/scope notes. The plan is generated north-up independently of camera position.
@@ -89,4 +96,4 @@ Save project JSON for durable backups; Open JSON restores it. The file includes 
 Conceptual terrain, rectangular buildings and paths, rounded polygon surfaces, approximate 3D drawing order. Plant sizes use the regional source snapshot or flagged concept placeholders; not independently verified county nativity or planting specifications. No GIS services, automatic parcel import, ecological analysis, or construction documentation yet. Not a CAD/survey tool. The MIT license covers the original program; imported images remain subject to their own rights.
 
 ## Next phase
-Test drawing and aerial calibration in the live browser. Next develop ecological analysis; retain the existing regional plant library as the foundation and verify outstanding dimensions and county-level nativity separately. Verify regional native species using BONAP and botanical references in the dedicated plant library phase. Keep dependencies free and assets original or license-compatible.
+Test drawing and aerial calibration in the live browser. Next perform release QA and targeted integration of unresolved ecological datasets; retain the existing regional plant library as the foundation and verify outstanding dimensions and county-level nativity separately. Verify regional native species using BONAP and botanical references in the dedicated plant library phase. Keep dependencies free and assets original or license-compatible.
