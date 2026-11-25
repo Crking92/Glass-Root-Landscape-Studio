@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.9.5
+# Glass Root Landscape Studio v0.9.6
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation, external libraries, network API requests, accounts, or paid assets are required. All plant symbols are original procedural drawings. The 3D concept view is an orthographic projection, not a photorealistic mesh renderer.
 
@@ -15,6 +15,14 @@ Free, independent, stylized landscape concept editor. [Open the web app](https:/
 - Set snapping to off, 6 inches, 1 foot, or 5 feet. Use Select / move to drag, edit, duplicate, or delete objects.
 - Choose mulch, gravel, concrete, decomposed granite, grass, or bare soil for new surfaces or edit the material of a selected surface. Surface quantities are summed individually; overlaps are not deducted. Mulch volume = area (sq ft) × depth (in) / 324, before waste allowance.
 - Space + drag or middle mouse pans; wheel zooms. Switch to 3D concept and rotate the view.
+
+## Three.js migration preview (v0.9.6)
+- Open **3D Studio** in the main editor. Existing 2D and 3D classic views remain intact; the new viewer receives a copy of the design and cannot modify saved project data. Back to designer or Escape returns to editing. Orbit, pan, zoom, reset camera and PNG export are provided. Set season and plant detail before opening the viewer.
+- The module loads pinned MIT-licensed Three.js r180 from jsDelivr on demand; the first load needs internet and a WebGL 2-capable browser. A failed load leaves the classic editor available. No API key or commercial graphics assets are required. See https://threejs.org/ and https://github.com/mrdoob/three.js/blob/r180/LICENSE.
+- True mesh geometry, shared instanced plant assets, GPU depth testing, matte materials, directional and hemisphere lighting, and small-scene shadow maps. Rendering is interaction-driven; resources are disposed on close. Detailed scenes use high detail up to 24 plants, medium up to 110, low above that, and mass proxy above 1,800; simple/standard cap detail. This is a scene-wide budget, not distance-based LOD.
+- Lindheimer's muhly adapts the species mesh lab generator (source blob b9b30f922e765851b0fd58c316d74064a3040ba3), with 1,050 blades at high detail and 440 at medium. The independent lab may evolve separately; no lab file was edited in this migration. Other taxa use 19 provisional growth-form templates, not individually verified models. Wildflower Center remains the primary botanical reference. Existing data and 315 plant IDs are unchanged.
+- Terrain, beds, paths, water footprints, lot boundaries and object dimensions are represented in 3D. Buildings and hardscape use simplified placeholders; surfaces over relief are approximate, aerial imagery is not displayed in this preview. Classic renderer and existing proposals retain previous features. Full insect database integration remains deferred.
+- Tested syntax, finite matching mesh buffers for 315 taxa in low and mass modes, all 19 generic templates at medium, and muhly low/medium/high. Live WebGL and CDN testing was not possible in the development environment. Browser loading, appearance, PNG output, camera interaction and performance need user testing before retiring the classic renderer.
 
 ## Naturalistic plant graphics (v0.9.5.1)
 - Replaces glossy round tree/shrub clusters with overlapping irregular matte foliage masses, restrained directional shading and fine leaf-shaped texture. Woody branches taper and fork; trunk segments bend, with small root flares and bark shading. Broad canopy, airy, upright and conifer forms retain different proportions.
