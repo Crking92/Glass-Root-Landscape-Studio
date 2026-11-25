@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.9.2
+# Glass Root Landscape Studio v0.9.4
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation, external libraries, network API requests, accounts, or paid assets are required. All plant symbols are original procedural drawings. The 3D concept view is an orthographic projection, not a photorealistic mesh renderer.
 
@@ -10,6 +10,12 @@ Free, independent, stylized landscape concept editor. [Open the web app](https:/
 - Set snapping to off, 6 inches, 1 foot, or 5 feet. Use Select / move to drag, edit, duplicate, or delete objects.
 - Choose mulch, gravel, concrete, decomposed granite, grass, or bare soil for new surfaces or edit the material of a selected surface. Surface quantities are summed individually; overlaps are not deducted. Mulch volume = area (sq ft) × depth (in) / 324, before waste allowance.
 - Space + drag or middle mouse pans; wheel zooms. Switch to 3D concept and rotate the view.
+
+## Drawing and group editing (v0.9.4)
+- Draw curved path: choose material, width (0.5–100 ft), and optional centerline smoothing; click 2–100 centerline points in 2D, then Finish shape or Enter. A translucent width preview follows the draft. The resulting polygon has mitered offset edges and flat ends; tight turns, crossed outlines, and paths outside the canvas are rejected. It is stored as an editable surface outline, not a parametric path; changing the width later requires redrawing or editing the outline. Areas flow into material totals and proposals. Curved paths are not mass-planting targets and act as obstacles when avoidance is enabled.
+- Edit shape corners: choose a bed, curved path, water feature or property boundary from the shape selector, or select a bed and click Edit corners. Drag handles; Add corner inserts near an edge; Remove corner removes the selected handle. At least three vertices must remain. Self-crossing and out-of-canvas drag positions are rejected. For smoothed beds, handles are on the underlying polygon. The edits do not move plants that were previously installed.
+- Select plant group: drag a rectangle around plant centers. Drag inside the resulting selection box to move all selected plants together (centers remain within the design canvas). Shift-drag starts a new selection. Duplicate offsets selected plants by 3 ft in both axes; Delete requires confirmation. Each mutation is one undo operation. Groups are temporary selections, not permanent project layers, and do not include hardscape or beds. Editing is in 2D.
+- Simulated tests cover 80 sq ft straight path geometry, rounded paths, invalid reversal, report area, bed and boundary corner dragging, insert/delete, two-plant box selection, movement, duplication, deletion and undo, and project compatibility. Live browser interaction and visual testing are still needed.
 
 ## Seasonal graphics and advanced plant filters (v0.9.1–0.9.2)
 - The Lady Bird Johnson Wildflower Center is the primary botanical reference for plant information and future botanical verification. Preserve the existing 315-record Target Zone Plant List and its profile URLs; this release does not independently reverify all source traits against the Center. Keep county nativity verification separate.
@@ -104,4 +110,4 @@ Save project JSON for durable backups; Open JSON restores it. The file includes 
 Conceptual terrain, rectangular buildings and paths, rounded polygon surfaces, approximate 3D drawing order. Plant sizes use the regional source snapshot or flagged concept placeholders; not independently verified county nativity or planting specifications. No GIS services, automatic parcel import, ecological analysis, or construction documentation yet. Not a CAD/survey tool. The MIT license covers the original program; imported images remain subject to their own rights.
 
 ## Next phase
-Test drawing and aerial calibration in the live browser. Next improve drawing and editing tools (v0.9.4); v0.9.3 insect dataset integration is on hold. Continue proposal/presentation polish and final release QA; retain the existing regional plant library as the foundation and verify outstanding dimensions and county-level nativity separately. Verify regional native species using BONAP and botanical references in the dedicated plant library phase. Keep dependencies free and assets original or license-compatible.
+Test drawing and aerial calibration in the live browser. Next improve proposal and 3D presentation (v0.9.5), then performance and release QA. v0.9.3 insect dataset integration remains on hold; retain the existing regional plant library as the foundation and verify outstanding dimensions and county-level nativity separately. Verify regional native species using BONAP and botanical references in the dedicated plant library phase. Keep dependencies free and assets original or license-compatible.
