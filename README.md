@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.10.2
+# Glass Root Landscape Studio v0.10.3
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation or paid assets are required. The core 2D editor and legacy Canvas view run locally; GIS services and the new Three.js engine have optional online dependencies.
 
@@ -21,6 +21,13 @@ Read [AGENTS.md](AGENTS.md) before any development work. It defines cross-chat o
 - Set snapping to off, 6 inches, 1 foot, or 5 feet. Use Select / move to drag, edit, duplicate, or delete objects.
 - Choose mulch, gravel, concrete, decomposed granite, grass, or bare soil for new surfaces or edit the material of a selected surface. Surface quantities are summed individually; overlaps are not deducted. Mulch volume = area (sq ft) × depth (in) / 324, before waste allowance.
 - Space + drag or middle mouse pans; wheel zooms. Use 3D Studio for the new mesh preview, or switch to 3D classic as a fallback.
+
+## Terrain and water rendering (v0.10.3)
+- Three.js terrain uses a shared sampled grid (20–140 segments per axis), finer around small landforms subject to the global cap. Object elevations use the same piecewise-planar height field as the rendered terrain. Beds, paths, dry creeks and rain gardens are clipped to terrain triangles so they follow conceptual relief, with a 180,000-triangle drape budget; out-of-bounds or budget-exceeding surfaces use the prior coarse method and are counted in the Studio status.
+- Pond outlines now render a horizontal concept water surface near the lowest sampled boundary elevation, with original procedural ripple normals and subdued specular lighting. Ground can occlude water on slopes; use a manually placed depression to show a basin. No excavation, water volume, true reflections, flow simulation or hydraulic analysis. Rain gardens still need a manually placed depression to show a bowl.
+- Dry creeks have deterministic, varied limestone-colored stones inside their polygon, rendered in a single instanced mesh (up to 180 per creek / 900 per scene). Existing gravel material remains underneath. No extra objects or material quantities are added.
+- No saved-project schema or editing workflow changes, no new external assets or dependency changes. 2D and classic remain unchanged. Rigid buildings and hardscape still use center elevation; long fences do not conform to slopes. Surface overlap order and blend transitions remain future work.
+- 708 pure geometry assertions passed, covering sampled grid vertices, polygon area, planar interpolation, budget fallback, flat pond level, and finite creek stones. Actual Three.js browser rendering, performance, water appearance and interaction have not been tested. Hardscape Pages run #75 succeeded; user visual review still pending.
 
 ## Detailed hardscape (v0.10.2)
 - All ten existing hardscape types now use original procedural Three.js models: irregular limestone boulders and stepping stones, slatted bench and picnic table, raised wood planter with soil, pedestal birdbath with bowl and water, garden shed, open timber pergola, board-and-post fence, and stacked limestone wall.
