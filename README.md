@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.5
+# Glass Root Landscape Studio v0.5.1
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation, external libraries, network API requests, accounts, or paid assets are required. All plant symbols are original procedural drawings. The 3D concept view is an orthographic projection, not a photorealistic mesh renderer.
 
@@ -10,6 +10,11 @@ Free, independent, stylized landscape concept editor. [Open the web app](https:/
 - Set snapping to off, 6 inches, 1 foot, or 5 feet. Use Select / move to drag, edit, duplicate, or delete objects.
 - Choose mulch, gravel, concrete, decomposed granite, grass, or bare soil for new surfaces or edit the material of a selected surface. Surface quantities are summed individually; overlaps are not deducted. Mulch volume = area (sq ft) × depth (in) / 324, before waste allowance.
 - Space + drag or middle mouse pans; wheel zooms. Switch to 3D concept and rotate the view.
+
+## Plant palette organization
+- All 315 existing records are grouped into eight collapsible growth-form categories by default; categories and plants within each category are alphabetical. Switch between common and scientific name sorting, or disable grouping for a single A–Z list.
+- Search and growth-form filtering automatically expand matching groups; Expand all and Collapse all provide manual control. The mass planting species selectors use the same categories and selected sort order. Plant quantities and CSV export are alphabetical by common name.
+- Existing classifications, plant IDs, and project data are unchanged; the categories are the current library's design growth forms, not a new botanical audit.
 
 ## Regional plant library
 - The 315 records are a local snapshot of the existing [Target Zone Plant List](https://crking92.github.io/Target-Zone-Plant-List/), sourced from [plants_public_v3.js](https://github.com/Crking92/Target-Zone-Plant-List/blob/main/data/processed/plants_public_v3.js), source blob SHA `40c60770f070511d61b15fc7ba03977acdb2104d`. The upstream repository is unchanged.
