@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.6
+# Glass Root Landscape Studio v0.7
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation, external libraries, network API requests, accounts, or paid assets are required. All plant symbols are original procedural drawings. The 3D concept view is an orthographic projection, not a photorealistic mesh renderer.
 
@@ -10,6 +10,17 @@ Free, independent, stylized landscape concept editor. [Open the web app](https:/
 - Set snapping to off, 6 inches, 1 foot, or 5 feet. Use Select / move to drag, edit, duplicate, or delete objects.
 - Choose mulch, gravel, concrete, decomposed granite, grass, or bare soil for new surfaces or edit the material of a selected surface. Surface quantities are summed individually; overlaps are not deducted. Mulch volume = area (sq ft) × depth (in) / 324, before waste allowance.
 - Space + drag or middle mouse pans; wheel zooms. Switch to 3D concept and rotate the view.
+
+## Real-world property import (optional online tools)
+- Open Find / import property. Enter a complete US street address or latitude and longitude, then choose a site width and depth (10–2,000 ft). Census address matches may be interpolated; verify location visually.
+- Load aerial preview requests public USGS NAIP imagery in Web Mercator, with local latitude scale correction. Clicking the preview recenters the request; reload to see the new area. Import as new site embeds the image locally with approximate ground scale, rather than requiring manual calibration. It replaces the current project only after confirmation when a design exists; Undo restores it.
+- Find Texas parcel at center queries the statewide TxGIO layer. If one simple parcel is found, the site is resized around it with a 10-ft buffer. Reload imagery, inspect the yellow outline, and import if appropriate. Multiple, multipart, oversized or unavailable parcels require manual tracing. Boundaries are appraisal GIS data, not surveys.
+- Create scaled site without image is a fallback if imagery is unavailable. The raw aerial link and existing manual image importer provide another fallback. Manual calibration, replacement imagery and canvas resizing clear the geographic reference to prevent inconsistent coordinates.
+- Estimate USGS slope samples four edge midpoint elevations using EPQS; review the calculated east/south percent slopes before applying a planar grade. This is not a full DEM, surveyed elevation model or hydrology simulation.
+- Address lookup uses Census's documented JSONP mechanism in a sandboxed iframe. Aerial, parcel and elevation requests require internet and provider availability; no API key or paid subscription is required by these selected public endpoints. External services may be temporarily unavailable or reject browser requests. The local editor remains usable independently.
+- Addresses are submitted to Census; coordinates to USGS and Texas GIS as requested. Geographic center, imagery and boundary can be stored in local autosave and project JSON; do not publish client project files. Imagery attribution is displayed in the design view.
+- Sources: [Census Geocoder](https://geocoding.geo.census.gov/geocoder/Geocoding_Services_API.html), [USGS NAIP](https://imagery.nationalmap.gov/arcgis/rest/services/USGSNAIPImagery/ImageServer), [Texas parcel service](https://feature.geographic.texas.gov/arcgis/rest/services/Parcels/stratmap_land_parcels_48_most_recent/MapServer), [USGS EPQS](https://epqs.nationalmap.gov/v1/docs).
+- Coordinate transformations, mock import, boundary conversion, grade calculations and undo/redo were tested locally in a simulated interface. Live service responses/browser compatibility have not yet been verified.
 
 ## Terrain and water features
 - In the left Terrain & water panel, set east and south site slopes independently (−20% to +20%). Positive values rise in the indicated direction. Elevations are relative to the flat property's center datum, not surveyed elevations.
@@ -65,4 +76,4 @@ Save project JSON for durable backups; Open JSON restores it. The file includes 
 Conceptual terrain, rectangular buildings and paths, rounded polygon surfaces, approximate 3D drawing order. Plant sizes use the regional source snapshot or flagged concept placeholders; not independently verified county nativity or planting specifications. No GIS services, automatic parcel import, ecological analysis, or construction documentation yet. Not a CAD/survey tool. The MIT license covers the original program; imported images remain subject to their own rights.
 
 ## Next phase
-Test drawing and aerial calibration in the live browser. Next develop GIS/property import; retain the existing regional plant library as the foundation and verify outstanding dimensions and county-level nativity separately. Verify regional native species using BONAP and botanical references in the dedicated plant library phase. Keep dependencies free and assets original or license-compatible.
+Test drawing and aerial calibration in the live browser. Next develop professional deliverables; retain the existing regional plant library as the foundation and verify outstanding dimensions and county-level nativity separately. Verify regional native species using BONAP and botanical references in the dedicated plant library phase. Keep dependencies free and assets original or license-compatible.
