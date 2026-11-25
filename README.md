@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.5.1
+# Glass Root Landscape Studio v0.6
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation, external libraries, network API requests, accounts, or paid assets are required. All plant symbols are original procedural drawings. The 3D concept view is an orthographic projection, not a photorealistic mesh renderer.
 
@@ -10,6 +10,14 @@ Free, independent, stylized landscape concept editor. [Open the web app](https:/
 - Set snapping to off, 6 inches, 1 foot, or 5 feet. Use Select / move to drag, edit, duplicate, or delete objects.
 - Choose mulch, gravel, concrete, decomposed granite, grass, or bare soil for new surfaces or edit the material of a selected surface. Surface quantities are summed individually; overlaps are not deducted. Mulch volume = area (sq ft) × depth (in) / 324, before waste allowance.
 - Space + drag or middle mouse pans; wheel zooms. Switch to 3D concept and rotate the view.
+
+## Terrain and water features
+- In the left Terrain & water panel, set east and south site slopes independently (−20% to +20%). Positive values rise in the indicated direction. Elevations are relative to the flat property's center datum, not surveyed elevations.
+- Choose a berm or depression, set width, length and height/depth, and click its center in 2D. Landforms use smooth elliptical profiles; overlapping effects add together. Up to 40 landforms per project. Select them through the terrain list or on the plan, then edit dimensions or delete/duplicate.
+- Draw pond, rain garden or dry creek outlines using the polygon tool. Rain gardens can be mass planted; ponds and dry creeks are excluded from target beds and avoided when obstacle avoidance is enabled. Water-feature outlines are separate from ordinary material quantities and do not automatically excavate terrain, hold level water or calculate runoff.
+- The 2D plan displays schematic landform rings and relative cursor elevations. 3D uses a shaded conceptual terrain mesh; plants follow the local grade and rigid structures sit at their center elevation. For relief projects, canvas editing is in 2D only; 3D is for camera inspection. Imported aerial images are hidden in 3D relief view.
+- Load terrain example demonstrates the new tools. Reset slopes & landforms leaves other design objects and water outlines intact. Terrain fields save in the existing project JSON, with older flat projects remaining compatible.
+- These are visual concept tools, not survey, engineering, drainage, cut/fill or construction calculations. Surface areas remain horizontal plan areas; no volume, slope stability or water storage estimates are implied.
 
 ## Plant palette organization
 - All 315 existing records are grouped into eight collapsible growth-form categories by default; categories and plants within each category are alphabetical. Switch between common and scientific name sorting, or disable grouping for a single A–Z list.
@@ -54,7 +62,7 @@ Free, independent, stylized landscape concept editor. [Open the web app](https:/
 Save project JSON for durable backups; Open JSON restores it. The file includes the imported reference image and the lot outline. Version 1 projects remain readable; new optional fields are added to the existing schema. Browser local storage is best-effort and may be cleared or reach quota. Export PNG of the active view and CSV of plant quantities. Keep customer images, addresses and projects local; never commit them to the public source repository.
 
 ## Scope and limits
-Flat terrain, rectangular buildings and paths, rounded polygon surfaces, approximate 3D drawing order. Plant sizes use the regional source snapshot or flagged concept placeholders; not independently verified county nativity or planting specifications. No GIS services, automatic parcel import, ecological analysis, or construction documentation yet. Not a CAD/survey tool. The MIT license covers the original program; imported images remain subject to their own rights.
+Conceptual terrain, rectangular buildings and paths, rounded polygon surfaces, approximate 3D drawing order. Plant sizes use the regional source snapshot or flagged concept placeholders; not independently verified county nativity or planting specifications. No GIS services, automatic parcel import, ecological analysis, or construction documentation yet. Not a CAD/survey tool. The MIT license covers the original program; imported images remain subject to their own rights.
 
 ## Next phase
-Test drawing and aerial calibration in the live browser. Next develop terrain and water features; retain the existing regional plant library as the foundation and verify outstanding dimensions and county-level nativity separately. Verify regional native species using BONAP and botanical references in the dedicated plant library phase. Keep dependencies free and assets original or license-compatible.
+Test drawing and aerial calibration in the live browser. Next develop GIS/property import; retain the existing regional plant library as the foundation and verify outstanding dimensions and county-level nativity separately. Verify regional native species using BONAP and botanical references in the dedicated plant library phase. Keep dependencies free and assets original or license-compatible.
