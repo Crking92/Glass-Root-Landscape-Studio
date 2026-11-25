@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.10.0
+# Glass Root Landscape Studio v0.10.1
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation or paid assets are required. The core 2D editor and legacy Canvas view run locally; GIS services and the new Three.js engine have optional online dependencies.
 
@@ -22,8 +22,13 @@ Read [AGENTS.md](AGENTS.md) before any development work. It defines cross-chat o
 - Choose mulch, gravel, concrete, decomposed granite, grass, or bare soil for new surfaces or edit the material of a selected surface. Surface quantities are summed individually; overlaps are not deducted. Mulch volume = area (sq ft) × depth (in) / 324, before waste allowance.
 - Space + drag or middle mouse pans; wheel zooms. Use 3D Studio for the new mesh preview, or switch to 3D classic as a fallback.
 
+## Realistic ground materials (v0.10.1)
+- New original procedural, seamless 512px color tiles for shredded hardwood mulch, limestone-like gravel, decomposed granite, concrete, grass and bare soil. Each texture repeats every 3–8 feet according to material; polygon UVs derive from world coordinates. Turf is a generic short-grass visualization, not a species or cultivar recommendation.
+- Default terrain uses the grass tile; beds and paths follow existing material assignments, rain gardens use grass and dry creeks gravel. Pond remains a flat water color pending dedicated water work. Aerial imagery retains its previous composite and opacity behavior; hiding/removing it restores textured terrain. Textures are shared and disposed with the scene; no external image assets or schema changes.
+- Existing 2D plan colors, quantities, saved data and classic compatibility are unchanged. Textures are color-only, not displaced geometry; terrain-conforming bed triangulation and advanced shading remain future work. Browser appearance and performance need visual testing.
+
 ## Customizable buildings (v0.10.0)
-- Deployment note (2026-11-25): the original Pages build succeeded but publication returned HTTP 500. A fresh Pages build is being triggered by this documentation-only commit; application files are unchanged. Check the Actions run and live version before browser testing.
+- Deployment note (2026-11-25): the original Pages build succeeded but publication returned HTTP 500. A documentation-only commit triggered fresh Pages run #73, which succeeded. Building appearance still needs detailed visual testing.
 - Original Three.js architecture in `studio-buildings.js`: gable, hip, shed and flat roof styles; automatic or explicit east–west/north–south ridge direction; requested pitch 0–12 rise per 12; limestone, brick, siding or stucco walls; charcoal or brown shingles and standing-seam metal roofing; front direction, windows, optional garage door and covered porch. Original procedural textures are reused per finish, with no purchased assets or new network dependencies.
 - Select a building in 2D or choose Building in the 3D Object dropdown, then use Selected object to edit its appearance and existing dimensions. Plant click/drag behavior remains intact; direct building dragging still uses 2D. Nonplant changes rebuild the 3D scene with the camera retained. Old saved buildings use appearance defaults without migrating their footprint or total height. New optional architecture properties are validated and use the existing undo/save flow.
 - Height means total roof height; roof rise is capped at 48% of height to leave a usable wall envelope. These are visual concepts, not construction specifications. Window/door placement is procedural, not individually editable. Garage requires sufficient facade width; porch is a visual extension outside the footprint and is not included in quantity calculations. The legacy 3D renderer remains a basic fallback.
