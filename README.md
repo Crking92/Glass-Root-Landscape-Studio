@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.7
+# Glass Root Landscape Studio v0.7.1
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation, external libraries, network API requests, accounts, or paid assets are required. All plant symbols are original procedural drawings. The 3D concept view is an orthographic projection, not a photorealistic mesh renderer.
 
@@ -10,6 +10,11 @@ Free, independent, stylized landscape concept editor. [Open the web app](https:/
 - Set snapping to off, 6 inches, 1 foot, or 5 feet. Use Select / move to drag, edit, duplicate, or delete objects.
 - Choose mulch, gravel, concrete, decomposed granite, grass, or bare soil for new surfaces or edit the material of a selected surface. Surface quantities are summed individually; overlaps are not deducted. Mulch volume = area (sq ft) × depth (in) / 324, before waste allowance.
 - Space + drag or middle mouse pans; wheel zooms. Switch to 3D concept and rotate the view.
+
+## GIS imagery improvements
+- New sites start at a 600-ft overview; existing geographic sites retain their exact extent. Use 600-ft overview, 250-ft lot, or zoom-in/out buttons, then load preview. Source selection includes public Central Texas 2020 regional orthoimagery, USGS NAIP Plus, Texas NAIP 2022 and original USGS NAIP.
+- Fast preview requests 600 pixels on the longest side; detailed requests 1,200. Native ground resolution still limits sharpness. Identical requests are cached for the current session; imagery requests time out after 15 seconds. Select a different source if coverage or latency is poor.
+- Update current site imagery replaces the background only when geographic center and dimensions match, retaining objects and boundary. Attribution is preserved by source. Source services have not been live tested in-browser.
 
 ## Real-world property import (optional online tools)
 - Open Find / import property. Enter a complete US street address or latitude and longitude, then choose a site width and depth (10–2,000 ft). Census address matches may be interpolated; verify location visually.
