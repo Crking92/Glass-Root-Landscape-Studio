@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.3.1
+# Glass Root Landscape Studio v0.4
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation, external libraries, network API requests, accounts, or paid assets are required. All plant symbols are original procedural drawings. The 3D concept view is an orthographic projection, not a photorealistic mesh renderer.
 
@@ -11,6 +11,14 @@ Free, independent, stylized landscape concept editor. [Open the web app](https:/
 - Choose mulch, gravel, concrete, decomposed granite, grass, or bare soil for new surfaces or edit the material of a selected surface. Surface quantities are summed individually; overlaps are not deducted. Mulch volume = area (sq ft) × depth (in) / 324, before waste allowance.
 - Space + drag or middle mouse pans; wheel zooms. Switch to 3D concept and rotate the view.
 
+## Mass planting
+- Draw a bed, then select it and click Mass plant this bed, or select a target from the Mass planting panel. The bed selector works even when plants cover the surface.
+- Set center-to-center spacing (0.5–100 ft), optional edge buffer, and square, staggered/triangular, or naturalized (jittered staggered) pattern.
+- Add distinct species and assign percentages totaling 100. Actual integer quantities use largest-remainder allocation. Shuffle changes the deterministic randomized assignment and naturalized positions; the preview reports actual counts.
+- Optionally avoid existing plant centers and house/path/hardscape footprints, and vary plant dimensions by ±15%. Edge buffers constrain plant centers rather than canopy edges. Jittered spacing is approximate, and no ecological compatibility or mature canopy collision calculation is implied.
+- Preview does not change the project. Place plants commits the entire batch as a single undo operation, with each plant remaining separately editable and counted in CSV exports. Later edits to the bed do not automatically move or regenerate plants.
+- Up to 2,000 plants per batch and fewer than 20,000 objects per project; large candidate grids are rejected. Increase spacing or split large areas. Performance depends on device and project size. Keep JSON backups.
+ 
 ## 3D camera controls
 - Enter 3D concept to enable camera orbit mode automatically. Left-drag horizontally to rotate a full 360 degrees and vertically to tilt from 15 to 85 degrees above ground.
 - Click Edit objects to leave orbit mode, or select a drawing tool. Right-drag orbits in either mode. Space + drag or middle mouse pans; wheel zooms.
@@ -37,4 +45,4 @@ Save project JSON for durable backups; Open JSON restores it. The file includes 
 Flat terrain, rectangular buildings and paths, rounded polygon surfaces, approximate 3D drawing order. Starter plant sizes are editable concept assumptions, not verified county nativity or planting specifications. No GIS services, automatic parcel import, ecological analysis, or construction documentation yet. Not a CAD/survey tool. The MIT license covers the original program; imported images remain subject to their own rights.
 
 ## Next phase
-Test drawing and aerial calibration in the live browser. Next build mass planting and spacing tools, then improve shape editing, curved paths and dimensions. Verify regional native species using BONAP and botanical references in the dedicated plant library phase. Keep dependencies free and assets original or license-compatible.
+Test drawing and aerial calibration in the live browser. Next expand the regional native plant library with source-verified species, dimensions and nativity, then improve shape editing, curved paths and dimensions. Verify regional native species using BONAP and botanical references in the dedicated plant library phase. Keep dependencies free and assets original or license-compatible.
