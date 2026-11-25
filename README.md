@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.7.1
+# Glass Root Landscape Studio v0.8
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation, external libraries, network API requests, accounts, or paid assets are required. All plant symbols are original procedural drawings. The 3D concept view is an orthographic projection, not a photorealistic mesh renderer.
 
@@ -10,6 +10,14 @@ Free, independent, stylized landscape concept editor. [Open the web app](https:/
 - Set snapping to off, 6 inches, 1 foot, or 5 feet. Use Select / move to drag, edit, duplicate, or delete objects.
 - Choose mulch, gravel, concrete, decomposed granite, grass, or bare soil for new surfaces or edit the material of a selected surface. Surface quantities are summed individually; overlaps are not deducted. Mulch volume = area (sq ft) × depth (in) / 324, before waste allowance.
 - Space + drag or middle mouse pans; wheel zooms. Switch to 3D concept and rotate the view.
+
+## Professional deliverables
+- Click Print / proposal in the header to open the report editor. Enter project title, optional client and site, prepared-by name (defaults to Glass Root Garden), and installation/scope notes. The plan is generated north-up independently of camera position.
+- The print plan includes a scale bar, boundary, surfaces, hardscape footprints and plant circles. Optional species numbers match an alphabetical planting schedule; optional aerial background includes provider attribution. Dense planting symbols may overlap and out-of-canvas objects are clipped on the plan (but counted in the schedules).
+- Materials, hardscape, water-feature footprints and plants are summarized from current geometry. Mulch uses cubic yards at editable depth; other surfaces use horizontal square footage; linear fences/walls use feet. Overlaps are counted separately.
+- Enter your own unit prices and optional additional labor/other amount. Blank prices remain unpriced, and partial estimates are clearly labeled. No tax, waste, delivery, supplier quotes or automatic labor assumptions. Quantities and prices are not construction specifications.
+- Print / Save PDF opens the browser's print dialog with a light, letter-sized report; choose Save as PDF if desired. Export estimate CSV for spreadsheet work. Save report details commits the report fields and prices to the current project (undoable); Save project JSON backs up these fields. No client information is sent to a server.
+- The report calculation, species numbering, HTML escaping, project preservation, report persistence and undo/redo were tested in a simulated interface. Actual browser print pagination and PDF appearance still need visual verification.
 
 ## GIS imagery improvements
 - New sites start at a 600-ft overview; existing geographic sites retain their exact extent. Use 600-ft overview, 250-ft lot, or zoom-in/out buttons, then load preview. Source selection includes public Central Texas 2020 regional orthoimagery, USGS NAIP Plus, Texas NAIP 2022 and original USGS NAIP.
@@ -81,4 +89,4 @@ Save project JSON for durable backups; Open JSON restores it. The file includes 
 Conceptual terrain, rectangular buildings and paths, rounded polygon surfaces, approximate 3D drawing order. Plant sizes use the regional source snapshot or flagged concept placeholders; not independently verified county nativity or planting specifications. No GIS services, automatic parcel import, ecological analysis, or construction documentation yet. Not a CAD/survey tool. The MIT license covers the original program; imported images remain subject to their own rights.
 
 ## Next phase
-Test drawing and aerial calibration in the live browser. Next develop professional deliverables; retain the existing regional plant library as the foundation and verify outstanding dimensions and county-level nativity separately. Verify regional native species using BONAP and botanical references in the dedicated plant library phase. Keep dependencies free and assets original or license-compatible.
+Test drawing and aerial calibration in the live browser. Next develop ecological analysis; retain the existing regional plant library as the foundation and verify outstanding dimensions and county-level nativity separately. Verify regional native species using BONAP and botanical references in the dedicated plant library phase. Keep dependencies free and assets original or license-compatible.
