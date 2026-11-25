@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.2
+# Glass Root Landscape Studio v0.3
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation, external libraries, network API requests, accounts, or paid assets are required. All plant symbols are original procedural drawings. The 3D concept view is an orthographic projection, not a photorealistic mesh renderer.
 
@@ -10,6 +10,13 @@ Free, independent, stylized landscape concept editor. [Open the web app](https:/
 - Set snapping to off, 6 inches, 1 foot, or 5 feet. Use Select / move to drag, edit, duplicate, or delete objects.
 - Choose mulch, gravel, concrete, decomposed granite, grass, or bare soil for new surfaces or edit the material of a selected surface. Surface quantities are summed individually; overlaps are not deducted. Mulch volume = area (sq ft) × depth (in) / 324, before waste allowance.
 - Space + drag or middle mouse pans; wheel zooms. Switch to 3D concept and rotate the view.
+
+## Hardscape library
+- Select a limestone boulder, bench, picnic table, raised planter, birdbath, stepping stone, garden shed or pergola from the right-hand palette and click the property to place it.
+- Select Wood fence or Limestone wall, then click two endpoints to draw a straight segment at any angle. Repeat for additional segments. Select / move allows editing length (width), thickness (depth), height, center coordinates and rotation.
+- All hardscape objects have original stylized 2D and orthographic 3D graphics and editable concept dimensions. Duplicate and delete work like other objects.
+- Surface quantities includes hardscape counts and linear footage. Export hardscape CSV exports counts and lengths, not material takeoffs or construction specifications.
+- Use Draw path / patio or Draw bed / surface with the desired material for patios and driveways. Continuous curved paths and connected fence joins are not yet implemented.
 
 ## Aerial reference
 1. Set approximate drawing canvas dimensions, then Import property image (PNG, JPEG or WebP; maximum source file size 30 MB).
@@ -24,4 +31,4 @@ Save project JSON for durable backups; Open JSON restores it. The file includes 
 Flat terrain, rectangular buildings and paths, rounded polygon surfaces, approximate 3D drawing order. Starter plant sizes are editable concept assumptions, not verified county nativity or planting specifications. No GIS services, automatic parcel import, ecological analysis, or construction documentation yet. Not a CAD/survey tool. The MIT license covers the original program; imported images remain subject to their own rights.
 
 ## Next phase
-Test drawing and aerial calibration in the live browser. Then improve shape editing, curved paths, dimensions, and introduce material/object libraries and mass planting tools. Verify regional native species using BONAP and botanical references in the dedicated plant library phase. Keep dependencies free and assets original or license-compatible.
+Test drawing and aerial calibration in the live browser. Next build mass planting and spacing tools, then improve shape editing, curved paths and dimensions. Verify regional native species using BONAP and botanical references in the dedicated plant library phase. Keep dependencies free and assets original or license-compatible.
