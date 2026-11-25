@@ -92,9 +92,9 @@ if(o.id===selected){ctx.beginPath();ctx.ellipse(x,y,r+4,r*k+4,0,0,Math.PI*2);ctx
 const plantGold=Math.PI*(3-Math.sqrt(5));
 function plantHash(s){let n=2166136261;for(const c of String(s))n=Math.imul(n^c.charCodeAt(0),16777619);return n>>>0;}
 const tintMemo=new Map();
-function plantTint(c,t){const key=c+':'+t;if(tintMemo.has(key))return tintMemo.get(key);const n=parseInt(c.slice(1),16),a=[n>>16&255,n>>8&255,n&255],v=a.map(x=>Math.round(t>=0?x+(255-x)*t:x*(1+t)));const out='rgb('+v.join(',')+')';tintMemo.set(key,out);return out;}
+function plantTint(c,t){t=Math.round(t*20)/20;const key=c+':'+t;if(tintMemo.has(key))return tintMemo.get(key);const n=parseInt(c.slice(1),16),a=[n>>16&255,n>>8&255,n&255],v=a.map(x=>Math.round(t>=0?x+(255-x)*t:x*(1+t)));const out='rgb('+v.join(',')+')';tintMemo.set(key,out);return out;}
 let scenePlantCount=0;
-function plantVisualLevel(mode,pixels,count){if(mode==='simple'||pixels<5)return 0;if(mode==='standard')return pixels<12?1:2;return pixels<12?1:pixels<30?2:count>1200?2:3;}
+function plantVisualLevel(mode,pixels,count){if(mode==='simple'||pixels<5)return 0;if(count>2500)return pixels<16?0:1;if(count>800)return pixels<12?1:2;if(mode==='standard')return pixels<12?1:2;return pixels<12?1:pixels<30?2:3;}
 function plantStyle(s){const g=s.latin.split(' ')[0];if(s.kind==='tree')return ['Juniperus','Pinus','Taxodium'].includes(g)?'conifer':['Celtis','Prosopis','Neltuma','Vachellia','Acacia','Parkinsonia'].includes(g)?'airy':['Populus','Salix'].includes(g)?'upright-tree':'canopy';
 if(s.kind==='grass')return g==='Muhlenbergia'?'muhly':['Tripsacum','Chasmanthium'].includes(g)?'strap-grass':['Bouteloua','Aristida','Schizachyrium','Andropogon','Sorghastrum'].includes(g)?'upright-grass':'arching-grass';
 if(s.kind==='forb')return ['Salvia','Liatris','Penstemon','Lobelia','Stachys','Verbena'].includes(g)?'spike':['Asclepias','Eupatorium','Conoclinium','Ageratina','Achillea','Allium'].includes(g)?'cluster':s.family==='Asteraceae'?'daisy':'forb';
