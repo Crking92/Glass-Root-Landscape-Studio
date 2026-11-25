@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.9.9
+# Glass Root Landscape Studio v0.10.0
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation or paid assets are required. The core 2D editor and legacy Canvas view run locally; GIS services and the new Three.js engine have optional online dependencies.
 
@@ -22,10 +22,16 @@ Read [AGENTS.md](AGENTS.md) before any development work. It defines cross-chat o
 - Choose mulch, gravel, concrete, decomposed granite, grass, or bare soil for new surfaces or edit the material of a selected surface. Surface quantities are summed individually; overlaps are not deducted. Mulch volume = area (sq ft) × depth (in) / 324, before waste allowance.
 - Space + drag or middle mouse pans; wheel zooms. Use 3D Studio for the new mesh preview, or switch to 3D classic as a fallback.
 
+## Customizable buildings (v0.10.0)
+- Original Three.js architecture in `studio-buildings.js`: gable, hip, shed and flat roof styles; automatic or explicit east–west/north–south ridge direction; requested pitch 0–12 rise per 12; limestone, brick, siding or stucco walls; charcoal or brown shingles and standing-seam metal roofing; front direction, windows, optional garage door and covered porch. Original procedural textures are reused per finish, with no purchased assets or new network dependencies.
+- Select a building in 2D or choose Building in the 3D Object dropdown, then use Selected object to edit its appearance and existing dimensions. Plant click/drag behavior remains intact; direct building dragging still uses 2D. Nonplant changes rebuild the 3D scene with the camera retained. Old saved buildings use appearance defaults without migrating their footprint or total height. New optional architecture properties are validated and use the existing undo/save flow.
+- Height means total roof height; roof rise is capped at 48% of height to leave a usable wall envelope. These are visual concepts, not construction specifications. Window/door placement is procedural, not individually editable. Garage requires sufficient facade width; porch is a visual extension outside the footprint and is not included in quantity calculations. The legacy 3D renderer remains a basic fallback.
+- Tests: 108 roof combinations for finite geometry, roof height and eave limit; simulated mesh/UV generation for all four roof styles with facade details; five architecture validation checks and script syntax. Real browser appearance, editing, persistence and performance need user testing. Ground materials and hardscape upgrades remain next.
+
 ## Three.js aerial imagery (v0.9.9)
 - The existing imported/calibrated aerial data is composited into a terrain texture using the exact 2D footprint and north-up orientation, including partially off-canvas images. The texture follows conceptual terrain relief; the image is not a survey or a true orthorectified 3D surface. Resolution is capped at 2048 pixels on the longer side (or hardware limit) for performance.
 - Studio Aerial and Opacity controls share the same saved project fields and undo history as the 2D controls. Toggle imagery off for clean concept rendering. Imagery source is shown in the UI and embedded in aerial-backed PNG exports. Existing GIS providers, import/calibration workflow, plant editing, and project schema are unchanged.
-- Tested syntax, full and partial footprints, negative-offset clipping coordinates, texture resolution cap, simulated opacity/hide/remove and stale asynchronous load handling. Real browser texture orientation, relief, appearance and PNG export need user verification. Buildings and hardscape remain placeholders; aerial photography can show existing structures and vegetation underneath proposed design elements.
+- Tested syntax, full and partial footprints, negative-offset clipping coordinates, texture resolution cap, simulated opacity/hide/remove and stale asynchronous load handling. User confirmed aerial imagery works in the browser; detailed relief, orientation and PNG export edge cases remain subject to future QA. Buildings and hardscape remain placeholders; aerial photography can show existing structures and vegetation underneath proposed design elements.
 
 ## Plant selection and movement correction (v0.9.8.1)
 - User reported plant placement and inspector edits working, but selecting and moving existing plants failing. The previous exact world-space bounding-box/terrain rejection method was replaced with a padded screen-space silhouette test plus ray scoring. This is a candidate correction, not a confirmed diagnosis of the user's browser.
