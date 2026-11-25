@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.9
+# Glass Root Landscape Studio v0.9.2
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation, external libraries, network API requests, accounts, or paid assets are required. All plant symbols are original procedural drawings. The 3D concept view is an orthographic projection, not a photorealistic mesh renderer.
 
@@ -10,6 +10,14 @@ Free, independent, stylized landscape concept editor. [Open the web app](https:/
 - Set snapping to off, 6 inches, 1 foot, or 5 feet. Use Select / move to drag, edit, duplicate, or delete objects.
 - Choose mulch, gravel, concrete, decomposed granite, grass, or bare soil for new surfaces or edit the material of a selected surface. Surface quantities are summed individually; overlaps are not deducted. Mulch volume = area (sq ft) × depth (in) / 324, before waste allowance.
 - Space + drag or middle mouse pans; wheel zooms. Switch to 3D concept and rotate the view.
+
+## Seasonal graphics and advanced plant filters (v0.9.1–0.9.2)
+- The Lady Bird Johnson Wildflower Center is the primary botanical reference for plant information and future botanical verification. Preserve the existing 315-record Target Zone Plant List and its profile URLs; this release does not independently reverify all source traits against the Center. Keep county nativity verification separate.
+- Original procedural illustrations now use eleven visual templates across the existing eight growth-form categories, including conical and spreading tree concepts, upright and arching grasses, cactus pads, rosettes, ferns and flowering herbs. Template assignments and winter colors are graphic conventions rather than verified species-specific morphology.
+- The Season selector offers an all-season view and twelve months. In 3D, visible blooms use the source calendar and palette where supported by the template; documented deciduous trees and shrubs are rendered leafless in winter as a conceptual convention. Winter grass color is illustrative. Five records have no foliage field and no deciduous status is inferred for them. Small symbols use simplified rendering. Camera and geometry remain unchanged; print plans retain the standard 2D representation.
+- Advanced palette filters include light, source water/moisture terms, month, bloom color, foliage, maximum default concept height and evidence flags. Filters combine with name search and growth form. The height filter uses library default dimensions, including flagged placeholders. Ecology nectar-gap buttons reset palette filters and select nectar-listed taxa for the relevant month; these are candidates, not planting prescriptions.
+- The Ecology panel provides prominent links to the Wildflower Center, Target Zone Plant List, Texas Lepidoptera Dashboard, host-plant research and specialist bee research. Full insect dataset integration (v0.9.3) is explicitly deferred; existing genus-level bee summaries and evidence flags remain unchanged.
+- Simulated tests cover all 315 records, all eleven templates, twelve monthly views plus all-season, leafless/evergreen conventions, exact shade filtering, nectar-gap navigation, reset, proposal compatibility and unchanged project geometry. Live visual testing is pending.
 
 ## Ecological analysis
 - Click Ecology to see live design summaries: plant quantity, distinct taxa and families, dominant taxon share, growth forms, source water categories, monthly flowering and nectar-listed taxon coverage, larval-host and bird-use flags, and specialist bee genus associations. The optional ecological proposal summary uses the same calculations.
@@ -96,4 +104,4 @@ Save project JSON for durable backups; Open JSON restores it. The file includes 
 Conceptual terrain, rectangular buildings and paths, rounded polygon surfaces, approximate 3D drawing order. Plant sizes use the regional source snapshot or flagged concept placeholders; not independently verified county nativity or planting specifications. No GIS services, automatic parcel import, ecological analysis, or construction documentation yet. Not a CAD/survey tool. The MIT license covers the original program; imported images remain subject to their own rights.
 
 ## Next phase
-Test drawing and aerial calibration in the live browser. Next perform release QA and targeted integration of unresolved ecological datasets; retain the existing regional plant library as the foundation and verify outstanding dimensions and county-level nativity separately. Verify regional native species using BONAP and botanical references in the dedicated plant library phase. Keep dependencies free and assets original or license-compatible.
+Test drawing and aerial calibration in the live browser. Next improve drawing and editing tools (v0.9.4); v0.9.3 insect dataset integration is on hold. Continue proposal/presentation polish and final release QA; retain the existing regional plant library as the foundation and verify outstanding dimensions and county-level nativity separately. Verify regional native species using BONAP and botanical references in the dedicated plant library phase. Keep dependencies free and assets original or license-compatible.
