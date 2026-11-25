@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.4
+# Glass Root Landscape Studio v0.5
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation, external libraries, network API requests, accounts, or paid assets are required. All plant symbols are original procedural drawings. The 3D concept view is an orthographic projection, not a photorealistic mesh renderer.
 
@@ -10,6 +10,13 @@ Free, independent, stylized landscape concept editor. [Open the web app](https:/
 - Set snapping to off, 6 inches, 1 foot, or 5 feet. Use Select / move to drag, edit, duplicate, or delete objects.
 - Choose mulch, gravel, concrete, decomposed granite, grass, or bare soil for new surfaces or edit the material of a selected surface. Surface quantities are summed individually; overlaps are not deducted. Mulch volume = area (sq ft) × depth (in) / 324, before waste allowance.
 - Space + drag or middle mouse pans; wheel zooms. Switch to 3D concept and rotate the view.
+
+## Regional plant library
+- The 315 records are a local snapshot of the existing [Target Zone Plant List](https://crking92.github.io/Target-Zone-Plant-List/), sourced from [plants_public_v3.js](https://github.com/Crking92/Target-Zone-Plant-List/blob/main/data/processed/plants_public_v3.js), source blob SHA `40c60770f070511d61b15fc7ba03977acdb2104d`. The upstream repository is unchanged.
+- Search common names (including aliases), scientific names or family; filter by growth form. All 315 are available for individual and mass placement. Existing ten species retain their original IDs, and saved project dimensions are unchanged.
+- Default dimensions use midpoints of numeric ranges in the source. Twenty-two records have at least one missing or non-numeric dimension; those use editable, explicitly marked growth-form placeholders for that dimension. Vine length is not interpreted as vertical height. Source values remain visible when a plant is selected.
+- The library carries source habit, light, water, bloom months and bloom colors, with source profile links where available. Rendering uses generic procedural forms and a simplified color palette, not species-accurate illustrations.
+- This is the user's existing regional list, not a fresh BONAP county audit or verification of current nursery stock. No non-list taxa or cultivars have been added. Later reconciliation should retain exact taxon and source provenance, and distinguish regional listing from actual stock.
 
 ## Mass planting
 - Draw a bed, then select it and click Mass plant this bed, or select a target from the Mass planting panel. The bed selector works even when plants cover the surface.
@@ -42,7 +49,7 @@ Free, independent, stylized landscape concept editor. [Open the web app](https:/
 Save project JSON for durable backups; Open JSON restores it. The file includes the imported reference image and the lot outline. Version 1 projects remain readable; new optional fields are added to the existing schema. Browser local storage is best-effort and may be cleared or reach quota. Export PNG of the active view and CSV of plant quantities. Keep customer images, addresses and projects local; never commit them to the public source repository.
 
 ## Scope and limits
-Flat terrain, rectangular buildings and paths, rounded polygon surfaces, approximate 3D drawing order. Starter plant sizes are editable concept assumptions, not verified county nativity or planting specifications. No GIS services, automatic parcel import, ecological analysis, or construction documentation yet. Not a CAD/survey tool. The MIT license covers the original program; imported images remain subject to their own rights.
+Flat terrain, rectangular buildings and paths, rounded polygon surfaces, approximate 3D drawing order. Plant sizes use the regional source snapshot or flagged concept placeholders; not independently verified county nativity or planting specifications. No GIS services, automatic parcel import, ecological analysis, or construction documentation yet. Not a CAD/survey tool. The MIT license covers the original program; imported images remain subject to their own rights.
 
 ## Next phase
-Test drawing and aerial calibration in the live browser. Next expand the regional native plant library with source-verified species, dimensions and nativity, then improve shape editing, curved paths and dimensions. Verify regional native species using BONAP and botanical references in the dedicated plant library phase. Keep dependencies free and assets original or license-compatible.
+Test drawing and aerial calibration in the live browser. Next develop terrain and water features; retain the existing regional plant library as the foundation and verify outstanding dimensions and county-level nativity separately. Verify regional native species using BONAP and botanical references in the dedicated plant library phase. Keep dependencies free and assets original or license-compatible.
