@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.10.4
+# Glass Root Landscape Studio v0.10.5
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation or paid assets are required. The core 2D editor and legacy Canvas view run locally; GIS services and the new Three.js engine have optional online dependencies.
 
@@ -21,6 +21,12 @@ Read [AGENTS.md](AGENTS.md) before any development work. It defines cross-chat o
 - Set snapping to off, 6 inches, 1 foot, or 5 feet. Use Select / move to drag, edit, duplicate, or delete objects.
 - Choose mulch, gravel, concrete, decomposed granite, grass, or bare soil for new surfaces or edit the material of a selected surface. Surface quantities are summed individually; overlaps are not deducted. Mulch volume = area (sq ft) × depth (in) / 324, before waste allowance.
 - Space + drag or middle mouse pans; wheel zooms. Use 3D Studio for the new mesh preview, or switch to 3D classic as a fallback.
+
+## Mass planting preview and water polish (v0.10.5)
+- The mass planting panel now reports a live percentage total, warns about invalid/duplicate species or totals other than 100%, and offers an explicit equal split. Rain gardens are named correctly in the target list. Existing allocation, placement, and undo rules remain unchanged.
+- Three.js displays uncommitted planting positions as colored ground rings (one instanced mesh, up to 2,000). Preview is not a full plant model, does not enter the project or quantities, clears on parameter/project changes, persists across view switches, and is hidden for exported Three.js PNGs.
+- Rain gardens display a distinct bare-soil material in Three.js. Pond material uses softer, lower-amplitude procedural ripple normals at a larger world scale with reduced specular intensity. These are aesthetic choices, not installation recommendations. No material edge blending or true water reflections yet.
+- 13 assertions passed for totals, duplicate species, invalid values, equal allocation and JavaScript parsing. Live WebGL preview, export, appearance and interaction remain to be tested. No shared plant assets or project schema changes.
 
 ## Automatic concept basins (v0.10.4)
 - New pond and rain garden polygons receive optional basinDepth in feet (1 and 0.5 respectively). Select the outline in 2D or the Terrain & water list and change depth from 0–10 ft; zero disables excavation. Existing saved features without this field retain their original shape. Undo, delete, duplicate and saved JSON use the existing project object workflow; no migration required.
