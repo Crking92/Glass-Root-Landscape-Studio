@@ -1,11 +1,16 @@
 # Glass Root Landscape Studio v0.9.6
 
-Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation, external libraries, network API requests, accounts, or paid assets are required. All plant symbols are original procedural drawings. The 3D concept view is an orthographic projection, not a photorealistic mesh renderer.
+Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation or paid assets are required. The core 2D editor and legacy Canvas view run locally; GIS services and the new Three.js engine have optional online dependencies.
+
+## Official graphics direction
+**Three.js is the authoritative engine for future 3D development.** Use **3D Studio** for the new visual direction and retain 3D classic only as a compatibility fallback. The 2D editor and existing saved-project model remain authoritative for editing and quantities. Target a highly realistic stylized cartoon aesthetic, with dense natural foliage and original assets. The Wildflower Center is the primary botanical reference; BONAP/NAPA remains the county nativity reference.
+
+Read [AGENTS.md](AGENTS.md) before any development work. It defines cross-chat ownership, shared species mesh integration, botanical evidence and performance requirements. The [species mesh lab](https://crking92.github.io/Glass-Root-Landscape-Studio/species-mesh-lab/) is the model development and review workspace; `studio-three.js` is the production scene integration target. The lab currently has two prototypes, but Studio still uses an older dedicated muhly generator and generic templates for other species. The next engineering step is a common mesh generator/registry so reviewed species can be reused in both views without duplicate implementations. This is a planned refactor, not yet completed.
 
 ## Experimental 3D Plant Library (mesh lab 0.2)
 - [Open the independent WebGL plant library](https://crking92.github.io/Glass-Root-Landscape-Studio/species-mesh-lab/). Two original species-specific prototypes: Lindheimer's muhly and little bluestem, five seeded individuals, five illustrative appearances, three detail levels, orbit and zoom. No external dependencies or copied photos.
 - Wildflower Center primary profiles and read-only Hays Botany Poaceae Grass ID Lab records inform visible morphology; species-level artistic geometry is not an identification key. Source links are shown for each species. No variety, cultivar or county-level nativity claim added.
-- Mesh generator checks: 150 species × stage × detail × individual combinations (2 × 5 × 3 × 5), finite matching position/normal/color arrays and deterministic seed variation. Mature individual 01 plant triangles: muhly 119,800 / 37,140 / 9,000; little bluestem 123,828 / 36,184 / 9,052 (high/medium/low). Ground shading is illustrative; no real cast shadows. Browser visual/performance testing and main editor integration remain pending. Main editor and saved projects unchanged.
+- Mesh generator checks: 150 species × stage × detail × individual combinations (2 × 5 × 3 × 5), finite matching position/normal/color arrays and deterministic seed variation. Mature individual 01 plant triangles: muhly 119,800 / 37,140 / 9,000; little bluestem 123,828 / 36,184 / 9,052 (high/medium/low). Ground shading is illustrative; no real cast shadows. Browser visual/performance testing and integration of the latest lab models remain pending. The main editor now has an independent Three.js preview; saved project schema remains unchanged.
 
 ## Getting started
 - Click Example to explore a sample design, or New to start blank.
@@ -14,7 +19,7 @@ Free, independent, stylized landscape concept editor. [Open the web app](https:/
 - Draw lot boundary creates a custom visual lot outline and reports its area. Reset lot boundary removes it. The width/depth fields control the rectangular drawing canvas. The boundary does not clip or prohibit object placement.
 - Set snapping to off, 6 inches, 1 foot, or 5 feet. Use Select / move to drag, edit, duplicate, or delete objects.
 - Choose mulch, gravel, concrete, decomposed granite, grass, or bare soil for new surfaces or edit the material of a selected surface. Surface quantities are summed individually; overlaps are not deducted. Mulch volume = area (sq ft) × depth (in) / 324, before waste allowance.
-- Space + drag or middle mouse pans; wheel zooms. Switch to 3D concept and rotate the view.
+- Space + drag or middle mouse pans; wheel zooms. Use 3D Studio for the new mesh preview, or switch to 3D classic as a fallback.
 
 ## Three.js migration preview (v0.9.6)
 - Open **3D Studio** in the main editor. Existing 2D and 3D classic views remain intact; the new viewer receives a copy of the design and cannot modify saved project data. Back to designer or Escape returns to editing. Orbit, pan, zoom, reset camera and PNG export are provided. Set season and plant detail before opening the viewer.
