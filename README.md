@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.10.3
+# Glass Root Landscape Studio v0.10.4
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation or paid assets are required. The core 2D editor and legacy Canvas view run locally; GIS services and the new Three.js engine have optional online dependencies.
 
@@ -21,6 +21,12 @@ Read [AGENTS.md](AGENTS.md) before any development work. It defines cross-chat o
 - Set snapping to off, 6 inches, 1 foot, or 5 feet. Use Select / move to drag, edit, duplicate, or delete objects.
 - Choose mulch, gravel, concrete, decomposed granite, grass, or bare soil for new surfaces or edit the material of a selected surface. Surface quantities are summed individually; overlaps are not deducted. Mulch volume = area (sq ft) × depth (in) / 324, before waste allowance.
 - Space + drag or middle mouse pans; wheel zooms. Use 3D Studio for the new mesh preview, or switch to 3D classic as a fallback.
+
+## Automatic concept basins (v0.10.4)
+- New pond and rain garden polygons receive optional basinDepth in feet (1 and 0.5 respectively). Select the outline in 2D or the Terrain & water list and change depth from 0–10 ft; zero disables excavation. Existing saved features without this field retain their original shape. Undo, delete, duplicate and saved JSON use the existing project object workflow; no migration required.
+- Three.js derives smooth polygon-shaped cuts using the existing grade and landforms as the base. Overlapping automatic basins use the deepest local cut rather than additive excavation. Pond water is horizontal, slightly below the lowest sampled rim, and clipped to the excavated terrain triangles for a visible bank. Rain gardens stay dry. Plants and other objects use the same rendered elevation. Original 2D and classic terrain elevation calculations are unchanged; automatic excavation is a Three.js concept only.
+- Automatic cut processing is bounded at 40 basins and 512 smoothed outline vertices per basin; skipped basins are reported. A coarse grid or a very narrow/out-of-bounds feature can yield no visible pond, reported in Studio status. A terrain reset clears only the manual grade and landforms; set depth to zero or delete the water feature to remove its automatic cut. Existing area and quantity calculations remain horizontal footprints, not cut/fill, water storage, drainage or construction specifications.
+- 25 automated assertions passed (flat/sloping/irregular base, rim continuity, water clipping, concave outlines, overlap, legacy zero depth, processing caps, and JS parsing). Browser appearance, undo/save interactions and actual performance still require review. No plant asset changes or new dependencies.
 
 ## Terrain and water rendering (v0.10.3)
 - Three.js terrain uses a shared sampled grid (20–140 segments per axis), finer around small landforms subject to the global cap. Object elevations use the same piecewise-planar height field as the rendered terrain. Beds, paths, dry creeks and rain gardens are clipped to terrain triangles so they follow conceptual relief, with a 180,000-triangle drape budget; out-of-bounds or budget-exceeding surfaces use the prior coarse method and are counted in the Studio status.

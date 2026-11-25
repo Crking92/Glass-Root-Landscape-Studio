@@ -33,4 +33,32 @@ function creekStones(points,random,limit=180){
  out.push({x,y,w,d,h:w*(.22+.2*random()),angle:random()*Math.PI*2,tone:random()});}
  return out;
 }
-export {terrainGrid,drapeTriangles,pondLevel,creekStones};
+function basinModel(features,base){
+ const basins=[],skipped=[];
+ for(const f of features){
+  if(!['pond','rain'].includes(f.feature)||!(f.basinDepth>0))continue;
+  const points=f.points;
+  if(basins.length>=40||points.length>512||points.length<3){skipped.push(f.id);continue;}
+  const minX=Math.min(...points.map(p=>p[0])),maxX=Math.max(...points.map(p=>p[0])),minY=Math.min(...points.map(p=>p[1])),maxY=Math.max(...points.map(p=>p[1]));
+  const w=maxX-minX,h=maxY-minY;if(Math.min(w,h)<.05){skipped.push(f.id);continue;}
+  let rim=Infinity;
+  for(let i=0;i<points.length;i++){const a=points[i],b=points[(i+1)%points.length],n=Math.min(2048,Math.max(1,Math.ceil(Math.hypot(b[0]-a[0],b[1]-a[1])/.5)));for(let k=0;k<=n;k++){const t=k/n;rim=Math.min(rim,base(a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t));}}
+  const depth=f.basinDepth,bank=Math.min(4,Math.max(.25,Math.min(w,h)*.24)),level=rim-Math.min(.15,depth*.15),bottom=rim-depth;
+  basins.push({id:f.id,points,minX,maxX,minY,maxY,w:bank*2,h:bank*2,bank,level,bottom});
+ }
+ function at(x,y){const original=base(x,y);let result=original;
+  for(const b of basins){if(x<=b.minX||x>=b.maxX||y<=b.minY||y>=b.maxY)continue;
+   let inside=false,edge=Infinity;const p=b.points;
+   for(let i=0,j=p.length-1;i<p.length;j=i++){const a=p[j],c=p[i],dx=c[0]-a[0],dy=c[1]-a[1],t=Math.max(0,Math.min(1,((x-a[0])*dx+(y-a[1])*dy)/(dx*dx+dy*dy||1)));edge=Math.min(edge,Math.hypot(x-a[0]-t*dx,y-a[1]-t*dy));if((a[1]>y)!==(c[1]>y)&&x<(c[0]-a[0])*(y-a[1])/(c[1]-a[1])+a[0])inside=!inside;}
+   if(!inside)continue;const t=Math.min(1,edge/b.bank),s=t*t*(3-2*t);result=Math.min(result,original+(Math.min(original,b.bottom)-original)*s);
+  }return result;
+ }
+ return {basins,skipped,at};
+}
+
+function wetFaces(faces,grid,level){
+ const out=[];
+ for(const face of faces){const p=clipHalf(face,q=>level-.012-grid.at(...q));for(let i=1;i+1<p.length;i++){const a=p[0],b=p[i],c=p[i+1];if(Math.abs((b[0]-a[0])*(c[1]-a[1])-(b[1]-a[1])*(c[0]-a[0]))>1e-10)out.push([a,b,c]);}}
+ return out;
+}
+export {terrainGrid,drapeTriangles,pondLevel,creekStones,basinModel,wetFaces};
