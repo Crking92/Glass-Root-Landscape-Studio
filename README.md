@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.9.4
+# Glass Root Landscape Studio v0.9.5
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation, external libraries, network API requests, accounts, or paid assets are required. All plant symbols are original procedural drawings. The 3D concept view is an orthographic projection, not a photorealistic mesh renderer.
 
@@ -10,6 +10,13 @@ Free, independent, stylized landscape concept editor. [Open the web app](https:/
 - Set snapping to off, 6 inches, 1 foot, or 5 feet. Use Select / move to drag, edit, duplicate, or delete objects.
 - Choose mulch, gravel, concrete, decomposed granite, grass, or bare soil for new surfaces or edit the material of a selected surface. Surface quantities are summed individually; overlaps are not deducted. Mulch volume = area (sq ft) × depth (in) / 324, before waste allowance.
 - Space + drag or middle mouse pans; wheel zooms. Switch to 3D concept and rotate the view.
+
+## Detailed plant graphics (v0.9.5)
+- Plant detail above the canvas offers Simple (previous renderer), Standard and Detailed (default). The detailed 3D renderer constructs original procedural plant geometry from normalized three-dimensional branch, leaf, blade and flower positions, projects it through the existing camera, and sorts parts by approximate depth. Foliage clusters use layered shading, with gradients at the highest detail level. Soft contact shadows are illustrative, not calculated sunlight.
+- Nineteen visual styles cover the 315 existing taxa: spreading, airy, upright and conifer-like trees; shrubs; upright, arching, strap-leaf and muhly-like grasses; daisy, spike, cluster and other flowering herbs; pads, rosettes and spiky rosettes; ferns, vines and groundcovers. Genus-based style choices and procedural forms are artistic approximations, not verified botanical morphology. Existing source data, IDs, dimensions, palette, ecology, Wildflower Center references and seasonal controls remain unchanged.
+- Each object has a deterministic visual seed, so repeated renders retain its form. Plant detail automatically reduces for small on-screen plants and large projects; zooming in increases available detail. The 2D plan and report symbols remain unchanged. The renderer is still a stylized orthographic Canvas scene, not a mesh-based photorealistic engine, and object occlusion is approximate.
+- Simulated rendering checks cover all 315 taxa in three seasonal states (945 plant renders), all 19 styles, deterministic repeated rendering, orbit-dependent projection, simple/standard/detailed paths, large-scene level selection and unchanged saved geometry. Visual quality and frame rate in an actual browser are not yet verified.
+- Next: improve building models, hardscape, material textures and presentation; insect dataset integration (v0.9.3) remains on hold. Keep all graphics original and avoid paid dependencies.
 
 ## Drawing and group editing (v0.9.4)
 - Draw curved path: choose material, width (0.5–100 ft), and optional centerline smoothing; click 2–100 centerline points in 2D, then Finish shape or Enter. A translucent width preview follows the draft. The resulting polygon has mitered offset edges and flat ends; tight turns, crossed outlines, and paths outside the canvas are rejected. It is stored as an editable surface outline, not a parametric path; changing the width later requires redrawing or editing the outline. Areas flow into material totals and proposals. Curved paths are not mass-planting targets and act as obstacles when avoidance is enabled.
