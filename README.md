@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.9.7
+# Glass Root Landscape Studio v0.9.8
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation or paid assets are required. The core 2D editor and legacy Canvas view run locally; GIS services and the new Three.js engine have optional online dependencies.
 
@@ -21,6 +21,13 @@ Read [AGENTS.md](AGENTS.md) before any development work. It defines cross-chat o
 - Set snapping to off, 6 inches, 1 foot, or 5 feet. Use Select / move to drag, edit, duplicate, or delete objects.
 - Choose mulch, gravel, concrete, decomposed granite, grass, or bare soil for new surfaces or edit the material of a selected surface. Surface quantities are summed individually; overlaps are not deducted. Mulch volume = area (sq ft) × depth (in) / 324, before waste allowance.
 - Space + drag or middle mouse pans; wheel zooms. Use 3D Studio for the new mesh preview, or switch to 3D classic as a fallback.
+
+## Integrated 3D designer (v0.9.8)
+- 3D Studio now opens inside the main design viewport, retaining the plant palette, property controls, quantities, project actions and selected-object inspector. Fullscreen remains available for presentation. Switch to 2D Designer or the Compatibility fallback without changing the saved project. The Three.js camera is retained when switching back and reopening; Reset camera fits the property.
+- Four explicit 3D tools: Orbit, Select plant (click a plant's approximate bounding box), Place plant (choose a palette species and click terrain), and Move selected plant (select first, then click the destination). Right-drag or Shift-drag pans; wheel zooms. Click actions occur only on a non-drag release. Selection shows a yellow ground ring; PNG export excludes the ring. Overlapping vegetation may require changing camera angle. Picking uses plant bounds, not individual leaves, and is not occlusion-exact against buildings.
+- Existing selected-object controls edit plant coordinates, spread, height, rotation, duplicate and delete. Placement and movement use the existing snapping and canvas bounds. All mutations use the same project action/undo history, autosave and counts as 2D. Plant-only edits update the current scene; nonplant geometry changes rebuild the scene while preserving camera. Other drawing modes switch back to 2D. This is initial plant editing, not full 3D building/surface editing.
+- Shared prototype comparison, screen-size LOD, live month/detail, original source metadata, 315 plant records and project schema remain unchanged. No lab/shared asset edits. The current Three.js dependency is still CDN-hosted. Aerial display, detailed buildings, textures and other hardscape editing are outstanding.
+- Tested: syntax and element references, simulated editor selection, snapped move, undo/redo, placement, bounds rejection, deletion/undo, live season/detail sync, fullscreen, unsupported tool fallback, model validity. Real browser ray picking, ground clicks, viewport resize, rendering and performance require user testing.
 
 ## Primary Three.js viewer and adaptive detail (v0.9.7)
 - The main toolbar now prioritizes **2D Designer** and **3D Studio**. Classic Canvas 3D remains in Compatibility as a fallback. The existing 2D model and all 315 IDs remain unchanged.
