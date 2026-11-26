@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.12.2
+# Glass Root Landscape Studio v0.12.3
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation or paid assets are required. The core 2D editor and legacy Canvas view run locally; GIS services and the new Three.js engine have optional online dependencies.
 
@@ -21,6 +21,25 @@ Read [AGENTS.md](AGENTS.md) before any development work. It defines cross-chat o
 - Set snapping to off, 6 inches, 1 foot, or 5 feet. Use Select / move to drag, edit, duplicate, or delete objects.
 - Choose mulch, gravel, concrete, decomposed granite, grass, or bare soil for new surfaces or edit the material of a selected surface. Surface quantities are summed individually; overlaps are not deducted. Mulch volume = area (sq ft) × depth (in) / 324, before waste allowance.
 - Space + drag or middle mouse pans; wheel zooms. Use 3D Studio for the new mesh preview, or switch to 3D classic as a fallback.
+
+## Large landscape foreground detail (v0.12.3)
+- Removes blanket 1,800-plant mass-only cutoff. Allocator reserves actual generated mass geometry costs, prioritizes nearer plants in larger scenes and apparent screen size in smaller scenes, then upgrades within the 1.8M plant-triangle budget. If mass baseline exceeds 80% of budget in large scenes, farthest plants use a new lightweight proxy (up to 30 triangles) to reserve foreground detail. All valid project instances retain a representation; actual costs rather than estimates determine final acceptance. Existing navigation settling and hysteresis remain. Proxy is illustrative silhouette, not a species-specific model; no geometry stored in project files or botanical asset changes.
+- 998 checks including all 315 species across three seasonal proxy configurations, exact geometry allocation at 100/500/1000/1801/5000/10000 and 19999 plants (all oak at maximum), orbit/walk and JavaScript syntax. Shared prototype mode not included in computational stress tests; allocator uses actual generated geometry for prototypes too. Tests are CPU-side source execution, not browser/GPU performance measurements. Pages #121 succeeded.
+- Stress-test results (mixed nine-species planting, except 19999 all oak):
+  - 100 orbit: 616094 triangles; 12 high, 70 medium, 18 low, 0 mass, 0 proxy.
+  - 100 walk: 1799808 triangles; 63 high, 3 medium, 6 low, 28 mass, 0 proxy.
+  - 500 orbit: 1370740 triangles; 66 high, 14 medium, 420 low, 0 mass, 0 proxy.
+  - 500 walk: 1799930 triangles; 88 high, 1 medium, 4 low, 407 mass, 0 proxy.
+  - 1000 orbit: 1799800 triangles; 132 high, 0 medium, 58 low, 810 mass, 0 proxy.
+  - 1000 walk: 1799900 triangles; 113 high, 2 medium, 4 low, 881 mass, 0 proxy.
+  - 1801 orbit: 1799954 triangles; 113 high, 0 medium, 545 low, 1143 mass, 0 proxy.
+  - 1801 walk: 1799932 triangles; 69 high, 12 medium, 7 low, 1713 mass, 0 proxy.
+  - 5000 orbit: 1799552 triangles; 27 high, 217 medium, 548 low, 4208 mass, 0 proxy.
+  - 5000 walk: 1799854 triangles; 67 high, 12 medium, 5 low, 4916 mass, 0 proxy.
+  - 10000 orbit: 1799812 triangles; 0 high, 252 medium, 211 low, 9537 mass, 0 proxy.
+  - 10000 walk: 1799820 triangles; 50 high, 5 medium, 5 low, 9940 mass, 0 proxy.
+  - 19999 orbit: 1799886 triangles; 0 high, 114 medium, 0 low, 8887 mass, 10998 proxy.
+  - 19999 walk: 1799898 triangles; 28 high, 3 medium, 0 low, 8969 mass, 10999 proxy.
 
 ## Adaptive navigation and cached plant detail (v0.12.2)
 - Performance → Adaptive (default), Fast navigation, Full quality. Adaptive uses scene size and a smoothed CPU draw-duration heuristic; Fast always reduces resolution during navigation; Full retains normal quality. Temporarily caps pixel ratio at 0.85/0.70 respectively, skips expensive AO and planar reflection passes, retains existing plant meshes during fast movement, restores normal rendering and recomputes detail after ~190 ms of camera inactivity. PNG export forces full selected quality. Existing camera transition and large-scene budgets still apply.
