@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.10.9
+# Glass Root Landscape Studio v0.11.0
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation or paid assets are required. The core 2D editor and legacy Canvas view run locally; GIS services and the new Three.js engine have optional online dependencies.
 
@@ -21,6 +21,11 @@ Read [AGENTS.md](AGENTS.md) before any development work. It defines cross-chat o
 - Set snapping to off, 6 inches, 1 foot, or 5 feet. Use Select / move to drag, edit, duplicate, or delete objects.
 - Choose mulch, gravel, concrete, decomposed granite, grass, or bare soil for new surfaces or edit the material of a selected surface. Surface quantities are summed individually; overlaps are not deducted. Mulch volume = area (sq ft) × depth (in) / 324, before waste allowance.
 - Space + drag or middle mouse pans; wheel zooms. Use 3D Studio for the new mesh preview, or switch to 3D classic as a fallback.
+
+## Saved viewpoints and client presentation (v0.11.0)
+- Three.js toolbar has a compact Viewpoints menu. Name and save up to 24 views, recall them, update the selected view with the current camera/settings, rename or delete. Each stores orbit or walkthrough camera (including eye height and step), lighting preset, sun bearing/elevation, exposure/shadows, season, detail and prototype switch. Aerial settings and project geometry remain shared across viewpoints. Save/update/rename/delete use normal undo and autosave. Optional validated views array is included in project JSON; older projects remain supported.
+- Present saved views enters fullscreen with editing controls and selection/preview overlays hidden. Previous/Next cycle through the saved list (Page Up/Down shortcuts); export the current frame as a named PNG; Escape or Exit returns to the studio. Camera navigation remains available and does not edit objects; recalling a viewpoint restores its stored settings. No automatic slideshow, animation, standalone client webpage or high-resolution export yet. Saved cameras may shift relative to changed geometry and are clamped to current site dimensions.
+- 21 validation, roundtrip, navigation and syntax/ID checks passed. Actual browser capture/recall, project reload, presentation and PNG tests pending. No plant asset changes. Pages run #82 succeeded and walkthrough received positive user feedback.
 
 ## Eye-level walkthrough (v0.10.9)
 - In Three.js choose Tool → Walkthrough / eye level. Starts near the south side facing north, at 5.5 ft above the rendered terrain. Drag to look; click visible ground to jump; wheel or WASD move, arrow up/down move and left/right turn. Focus the canvas for keyboard movement. Compact on-screen movement buttons work without a keyboard; expandable eye height (2–12 ft) and step length (0.5–4 ft) controls are shown only while walking.
