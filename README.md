@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.11.7
+# Glass Root Landscape Studio v0.11.8
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation or paid assets are required. The core 2D editor and legacy Canvas view run locally; GIS services and the new Three.js engine have optional online dependencies.
 
@@ -21,6 +21,11 @@ Read [AGENTS.md](AGENTS.md) before any development work. It defines cross-chat o
 - Set snapping to off, 6 inches, 1 foot, or 5 feet. Use Select / move to drag, edit, duplicate, or delete objects.
 - Choose mulch, gravel, concrete, decomposed granite, grass, or bare soil for new surfaces or edit the material of a selected surface. Surface quantities are summed individually; overlaps are not deducted. Mulch volume = area (sq ft) × depth (in) / 324, before waste allowance.
 - Space + drag or middle mouse pans; wheel zooms. Use 3D Studio for the new mesh preview, or switch to 3D classic as a fallback.
+
+## Screen-space ambient shading (v0.11.8)
+- Optional Ambient occlusion checkbox in Lighting, default on. Detailed mode uses a depth-texture color pass and twelve bounded view-space neighborhood samples to darken nearby occluding geometry. Depth-derived normals and finite world radius reduce broad halos. Existing procedural contact shadows remain.
+- Conservative eligibility: no ponds (transparent water depth mismatch), aerial imagery, visible selection/mass preview, camera transitions, >350 plants, >1.8M plant triangles, >12k hardscape parts, or buffers above 2048 px long edge / 3.15 MP. Direct rendering fallback preserves existing graphics and high-resolution PNG exports. No change to project geometry or plant data; optional lighting flag travels with newly saved views. Older client renderer stays pinned.
+- 20 eligibility, dimensions and JavaScript syntax checks passed. Actual shader compilation, tone mapping, appearance, depth sampling and GPU performance need browser validation. This is approximate screen-space AO, not ray-traced global illumination. Previous material upgrade received positive user feedback.
 
 ## Limestone and wood material realism (v0.11.7)
 - Shared original procedural color and bump textures for limestone masonry, natural stone and wood. Limestone buildings have irregular staggered courses, cream/tan variation, recessed mortar and subtle pitting/layering. Other building finishes gain modest luminance bump. Hardscape retains existing palette, now tinted by shared stone/wood textures; wood grain UV follows longest part axis on boards, rails and posts. Boulder geometry has modestly increased faceting and less uniform shape while preserving normalized bounds.
