@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.12.1
+# Glass Root Landscape Studio v0.12.2
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation or paid assets are required. The core 2D editor and legacy Canvas view run locally; GIS services and the new Three.js engine have optional online dependencies.
 
@@ -21,6 +21,11 @@ Read [AGENTS.md](AGENTS.md) before any development work. It defines cross-chat o
 - Set snapping to off, 6 inches, 1 foot, or 5 feet. Use Select / move to drag, edit, duplicate, or delete objects.
 - Choose mulch, gravel, concrete, decomposed granite, grass, or bare soil for new surfaces or edit the material of a selected surface. Surface quantities are summed individually; overlaps are not deducted. Mulch volume = area (sq ft) × depth (in) / 324, before waste allowance.
 - Space + drag or middle mouse pans; wheel zooms. Use 3D Studio for the new mesh preview, or switch to 3D classic as a fallback.
+
+## Adaptive navigation and cached plant detail (v0.12.2)
+- Performance → Adaptive (default), Fast navigation, Full quality. Adaptive uses scene size and a smoothed CPU draw-duration heuristic; Fast always reduces resolution during navigation; Full retains normal quality. Temporarily caps pixel ratio at 0.85/0.70 respectively, skips expensive AO and planar reflection passes, retains existing plant meshes during fast movement, restores normal rendering and recomputes detail after ~190 ms of camera inactivity. PNG export forces full selected quality. Existing camera transition and large-scene budgets still apply.
+- Plant style, seasonal appearance, prototype lookup and world-space centers are cached per revision/species or instance, rather than rebuilt on every camera render. LOD allocation skips unchanged position/FOV/viewport height/revision; lighting, selection and performance-only changes don't invalidate plant geometry. Existing mesh cache limits remain. Status adds CPU draw milliseconds and cumulative LOD pass count (not GPU timing or FPS).
+- 88 policy, cache invalidation, numeric and syntax/ID checks passed. Real GPU performance, visual settling, large scenes and PNG output need testing. Pages #119 succeeded. No geometry, botanical asset, client renderer or project format changes.
 
 ## Refined rendering and color looks (v0.12.1)
 - Lighting → Color look: Natural (default for new sessions; PBR Neutral mapping and gentler light/exposure), Cinematic (AgX with highlight roll-off and stronger key-to-fill ratio), Classic (previous ACES curve and lighting intensities). Saved views store optional look; legacy views recall Classic. Sky now uses same tone mapping as scene materials. Works through direct rendering, water and image exports; not a custom LUT or physical calibration.
