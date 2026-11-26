@@ -1,13 +1,31 @@
 export function groundTone(x,y){return .91+.045*Math.sin(x*.13+y*.071)+.028*Math.cos(y*.29-x*.11)+.017*Math.sin(x*.71+y*.43);}
 function cellRandom(x,y,s=0){let n=Math.imul(x|0,374761393)^Math.imul(y|0,668265263)^Math.imul(s+1,1442695041);n=Math.imul(n^(n>>>13),1274126177);return ((n^(n>>>16))>>>0)/4294967296;}
 function pointInDetail(x,y,p){let inside=false;for(let i=0,j=p.length-1;i<p.length;j=i++){const a=p[i],b=p[j];if((a[1]>y)!==(b[1]>y)&&x<(b[0]-a[0])*(y-a[1])/(b[1]-a[1])+a[0])inside=!inside;}return inside;}
-export function groundExclusions(objects,bedPoints){return objects.flatMap(o=>{let p;if(o.type==='bed')p=bedPoints(o);else if(o.type==='house'||o.type==='path')p=[[o.x,o.y],[o.x+o.w,o.y],[o.x+o.w,o.y+o.h],[o.x,o.y+o.h]];else if(o.type==='hard'){const a=(o.angle||0)*Math.PI/180,c=Math.cos(a),s=Math.sin(a);p=[[-1,-1],[1,-1],[1,1],[-1,1]].map(([x,y])=>[o.x+c*x*o.w/2-s*y*o.h/2,o.y+s*x*o.w/2+c*y*o.h/2]);}else return [];if(!p.length)return [];let loX=Infinity,hiX=-Infinity,loY=Infinity,hiY=-Infinity;for(const [x,y] of p){loX=Math.min(loX,x);hiX=Math.max(hiX,x);loY=Math.min(loY,y);hiY=Math.max(hiY,y);}return [{p,loX,hiX,loY,hiY,pond:o.feature==='pond'}];});}
+export function groundExclusions(objects,bedPoints){return objects.flatMap(o=>{let p;if(o.type==='bed')p=bedPoints(o);else if(o.type==='house'||o.type==='path')p=[[o.x,o.y],[o.x+o.w,o.y],[o.x+o.w,o.y+o.h],[o.x,o.y+o.h]];else if(o.type==='hard'){const a=(o.angle||0)*Math.PI/180,c=Math.cos(a),s=Math.sin(a);p=[[-1,-1],[1,-1],[1,1],[-1,1]].map(([x,y])=>[o.x+c*x*o.w/2-s*y*o.h/2,o.y+s*x*o.w/2+c*y*o.h/2]);}else return [];if(!p.length)return [];let loX=Infinity,hiX=-Infinity,loY=Infinity,hiY=-Infinity;for(const [x,y] of p){loX=Math.min(loX,x);hiX=Math.max(hiX,x);loY=Math.min(loY,y);hiY=Math.max(hiY,y);}return [{p,loX,hiX,loY,hiY,pond:o.feature==='pond',block:o.type==='house'||o.type==='hard'||o.feature==='pond'||o.feature==='creek',surface:o.feature==='rain'?'soil':o.material|| (o.type==='path'?'concrete':'mulch')}];});}
 export function detailCells(cx,cy,width,depth,exclusions,radius=16){
  const local=exclusions.filter(b=>b.loX<=cx+radius&&b.hiX>=cx-radius&&b.loY<=cy+radius&&b.hiY>=cy-radius);if(local.length>160||local.reduce((n,b)=>n+b.p.length,0)>16000)return [];
  const cells=[];for(let i=Math.max(0,Math.floor(cx-radius));i<Math.min(width,Math.ceil(cx+radius));i++)for(let j=Math.max(0,Math.floor(cy-radius));j<Math.min(depth,Math.ceil(cy+radius));j++){
  const x=i+.15+cellRandom(i,j,0)*.7,y=j+.15+cellRandom(i,j,1)*.7;if(x>=width||y>=depth||Math.hypot(x-cx,y-cy)>radius||cellRandom(i,j,2)<.24||local.some(b=>x>=b.loX-.12&&x<=b.hiX+.12&&y>=b.loY-.12&&y<=b.hiY+.12&&[[-.12,0],[.12,0],[0,-.12],[0,.12],[0,0]].some(([dx,dy])=>pointInDetail(x+dx,y+dy,b.p))))continue;
  cells.push({x,y,height:.08+cellRandom(i,j,3)*.14,angle:cellRandom(i,j,4)*Math.PI*2,tone:cellRandom(i,j,5)});
  }return cells.slice(0,1100);
+}
+export function scatterCells(cx,cy,width,depth,exclusions,radius=16){
+ const local=exclusions.filter(b=>b.loX<=cx+radius&&b.hiX>=cx-radius&&b.loY<=cy+radius&&b.hiY>=cy-radius);
+ if(local.length>160||local.reduce((n,b)=>n+b.p.length,0)>16000)return [];
+ const cells=[],step=.5;
+ const at=(x,y)=>{let surface='lawn';for(const b of local){if(x<b.loX||x>b.hiX||y<b.loY||y>b.hiY||!pointInDetail(x,y,b.p))continue;if(b.block)return 'blocked';surface=b.surface;}return surface;};
+ for(let i=Math.max(0,Math.floor((cx-radius)/step));i<Math.min(Math.ceil(width/step),Math.ceil((cx+radius)/step));i++)for(let j=Math.max(0,Math.floor((cy-radius)/step));j<Math.min(Math.ceil(depth/step),Math.ceil((cy+radius)/step));j++){
+ const x=(i+.14+.72*cellRandom(i,j,10))*step,y=(j+.14+.72*cellRandom(i,j,11))*step;if(x<.16||y<.16||x>width-.16||y>depth-.16||Math.hypot(x-cx,y-cy)>radius)continue;
+ const surface=at(x,y),chance=cellRandom(i,j,12),choice=cellRandom(i,j,13);let kind,size;
+ if(surface==='mulch'&&chance<.68){kind=choice<.91?'chip':'leaf';size=.09+.16*cellRandom(i,j,14);}
+ else if(surface==='gravel'&&chance<.75){kind='stone';size=.055+.105*cellRandom(i,j,14);}
+ else if(surface==='dg'&&chance<.21){kind='stone';size=.035+.045*cellRandom(i,j,14);}
+ else if((surface==='soil'||surface==='lawn'||surface==='grass')&&chance<(surface==='soil'?.14:.045)){kind=choice<.7?'leaf':'stone';size=.065+.095*cellRandom(i,j,14);}
+ else continue;
+ const edge=size*.6+.025;if([[-edge,0],[edge,0],[0,-edge],[0,edge]].some(([dx,dy])=>at(x+dx,y+dy)!==surface))continue;
+ cells.push({x,y,kind,size,surface,angle:cellRandom(i,j,15)*Math.PI*2,tone:cellRandom(i,j,16),priority:cellRandom(i,j,17)});
+ }
+ return cells.sort((a,b)=>a.priority-b.priority).slice(0,1400);
 }
 export function groundingItems(objects){const list=objects.filter(o=>o.type==='plant'||o.type==='hard'&&!['woodfence','wall','pergola','shed'].includes(o.kind));const step=Math.max(1,Math.ceil(list.length/1800));return list.filter((_,i)=>i%step===0).map(o=>({x:o.x,y:o.y,rx:Math.max(.17,Math.min(6,o.w*(o.type==='plant'?.46:.63))),ry:Math.max(.17,Math.min(6,(o.type==='plant'?o.w:o.h)*(o.type==='plant'?.46:.63))),angle:(o.angle||0)*Math.PI/180}));}
 export function makeGroundDetail(T,{geo,releaseGeometry,mat,materials,textures,scene,world,model,helpers}){
@@ -17,6 +35,14 @@ export function makeGroundDetail(T,{geo,releaseGeometry,mat,materials,textures,s
  const g=geo(new T.BufferGeometry());g.setAttribute('position',new T.Float32BufferAttribute(v,3));g.setAttribute('color',new T.Float32BufferAttribute(c,3));g.computeVertexNormals();
  const grassMat=mat('#ffffff',{vertexColors:true,side:T.DoubleSide,roughness:1}),tufts=new T.InstancedMesh(g,grassMat,1100),d=new T.Object3D(),a=new T.Color('#647846'),b=new T.Color('#9aab68');
  tufts.count=0;tufts.frustumCulled=false;tufts.castShadow=false;tufts.receiveShadow=true;scene.add(tufts);
+ // Small original meshes: faceted chips, rounded limestone chips and folded leaf litter.
+ const chipGeo=geo(new T.BoxGeometry(1,.15,.32));const chipPos=chipGeo.attributes.position;for(let i=0;i<chipPos.count;i++){const x=chipPos.getX(i),z=chipPos.getZ(i);chipPos.setX(i,x+(z>0?.07:-.04));chipPos.setY(i,chipPos.getY(i)+(x>0?.04:0));}chipGeo.computeVertexNormals();
+ const stoneGeo=geo(new T.IcosahedronGeometry(.5,0));const leafGeo=geo(new T.BufferGeometry());leafGeo.setAttribute('position',new T.Float32BufferAttribute([-.5,0,0,0,.055,-.23,0,.11,0, -.5,0,0,0,.11,0,0,.025,.22, .5,.035,0,0,.11,0,0,.055,-.23, .5,.035,0,0,.025,.22,0,.11,0],3));leafGeo.computeVertexNormals();
+ const scatterMat=mat('#ffffff',{roughness:.98,side:T.DoubleSide}),scatter={};
+ for(const [key,geometry,palette] of [['chip',chipGeo,['#62452f','#b58d62']],['stone',stoneGeo,['#a79e8b','#e2d7bd']],['leaf',leafGeo,['#705037','#b9a06a']]]){const mesh=new T.InstancedMesh(geometry,scatterMat,1400);mesh.count=0;mesh.frustumCulled=false;mesh.castShadow=false;mesh.receiveShadow=true;scene.add(mesh);scatter[key]={mesh,a:new T.Color(palette[0]),b:new T.Color(palette[1])};}
+ function fillScatter(cells){const counts={chip:0,stone:0,leaf:0};for(const p of cells){const k=scatter[p.kind],i=counts[p.kind]++,base=p.surface==='lawn'?.008:.063;
+ d.position.copy(world(p.x,p.y,base+(p.kind==='stone'?p.size*.23:p.kind==='chip'?p.size*.09:0)));d.rotation.set(0,p.angle,0);d.scale.set(p.size,p.kind==='stone'?p.size*.6:p.size,p.size);d.updateMatrix();k.mesh.setMatrixAt(i,d.matrix);k.mesh.setColorAt(i,k.a.clone().lerp(k.b,p.tone));}
+ for(const [key,k] of Object.entries(scatter)){k.mesh.count=counts[key];k.mesh.instanceMatrix.needsUpdate=true;if(k.mesh.instanceColor)k.mesh.instanceColor.needsUpdate=true;}}
  const n=64,rgba=new Uint8Array(n*n*4);for(let j=0;j<n;j++)for(let i=0;i<n;i++){const dist=Math.hypot((i+.5)/n*2-1,(j+.5)/n*2-1),value=Math.round(255*Math.max(0,1-dist*dist)**2),k=(j*n+i)*4;rgba[k]=rgba[k+1]=rgba[k+2]=value;rgba[k+3]=255;}const alpha=new T.DataTexture(rgba,n,n);alpha.magFilter=T.LinearFilter;alpha.minFilter=T.LinearFilter;alpha.needsUpdate=true;textures.add(alpha);
  const shadowMat=new T.MeshBasicMaterial({color:'#29281b',transparent:true,opacity:.28,alphaMap:alpha,depthWrite:false,side:T.DoubleSide});materials.add(shadowMat);
  let contacts=null,contactCount=0,lastCell='';
@@ -26,6 +52,6 @@ export function makeGroundDetail(T,{geo,releaseGeometry,mat,materials,textures,s
  const push=q=>{pos.push(...q.slice(0,3));uv.push(...q.slice(3));};for(let j=0;j<12;j++){const a=j*Math.PI/6,b=(j+1)*Math.PI/6,inner=p(.5,a),innerNext=p(.5,b),outer=p(1,a),outerNext=p(1,b);for(const q of [p(0,0),inner,innerNext,inner,outer,outerNext,inner,outerNext,innerNext])push(q);}contactCount++;
  }const gg=geo(new T.BufferGeometry());gg.setAttribute('position',new T.Float32BufferAttribute(pos,3));gg.setAttribute('uv',new T.Float32BufferAttribute(uv,2));contacts=new T.Mesh(gg,shadowMat);contacts.renderOrder=110;contacts.frustumCulled=false;scene.add(contacts);}
  function update(camera,enabled,aerial){const x=camera.position.x+model.width/2,y=camera.position.z+model.depth/2,groundY=world(Math.max(0,Math.min(model.width,x)),Math.max(0,Math.min(model.depth,y))).y,visible=enabled&&!aerial&&camera.position.y-groundY<26&&x>=-16&&x<=model.width+16&&y>=-16&&y<=model.depth+16;
- tufts.visible=visible;if(contacts)contacts.visible=!aerial;if(!visible)return;const cx=Math.floor(x/4)*4+2,cy=Math.floor(y/4)*4+2,key=cx+','+cy;if(key===lastCell)return;lastCell=key;const cells=detailCells(cx,cy,model.width,model.depth,exclusions);for(let i=0;i<cells.length;i++){const p=cells[i];d.position.copy(world(p.x,p.y,.018));d.rotation.set(0,p.angle,0);d.scale.set(p.height,p.height,p.height);d.updateMatrix();tufts.setMatrixAt(i,d.matrix);tufts.setColorAt(i,a.clone().lerp(b,p.tone));}tufts.count=cells.length;tufts.instanceMatrix.needsUpdate=true;if(tufts.instanceColor)tufts.instanceColor.needsUpdate=true;}
- refreshContacts(model.objects);return {update,refreshContacts,get count(){return tufts.visible?tufts.count:0;},get contactCount(){return contacts?.visible?contactCount:0;}};
+ tufts.visible=visible;for(const k of Object.values(scatter))k.mesh.visible=visible;if(contacts)contacts.visible=!aerial;if(!visible)return;const cx=Math.floor(x/4)*4+2,cy=Math.floor(y/4)*4+2,key=cx+','+cy;if(key===lastCell)return;lastCell=key;const cells=detailCells(cx,cy,model.width,model.depth,exclusions);fillScatter(scatterCells(cx,cy,model.width,model.depth,exclusions));for(let i=0;i<cells.length;i++){const p=cells[i];d.position.copy(world(p.x,p.y,.018));d.rotation.set(0,p.angle,0);d.scale.set(p.height,p.height,p.height);d.updateMatrix();tufts.setMatrixAt(i,d.matrix);tufts.setColorAt(i,a.clone().lerp(b,p.tone));}tufts.count=cells.length;tufts.instanceMatrix.needsUpdate=true;if(tufts.instanceColor)tufts.instanceColor.needsUpdate=true;}
+ refreshContacts(model.objects);return {update,refreshContacts,get count(){return tufts.visible?tufts.count:0;},get scatterCount(){return Object.values(scatter).reduce((n,k)=>n+(k.mesh.visible?k.mesh.count:0),0);},get contactCount(){return contacts?.visible?contactCount:0;}};
 }

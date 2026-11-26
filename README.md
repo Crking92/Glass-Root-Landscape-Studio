@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.11.3
+# Glass Root Landscape Studio v0.11.4
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation or paid assets are required. The core 2D editor and legacy Canvas view run locally; GIS services and the new Three.js engine have optional online dependencies.
 
@@ -21,6 +21,11 @@ Read [AGENTS.md](AGENTS.md) before any development work. It defines cross-chat o
 - Set snapping to off, 6 inches, 1 foot, or 5 feet. Use Select / move to drag, edit, duplicate, or delete objects.
 - Choose mulch, gravel, concrete, decomposed granite, grass, or bare soil for new surfaces or edit the material of a selected surface. Surface quantities are summed individually; overlaps are not deducted. Mulch volume = area (sq ft) × depth (in) / 324, before waste allowance.
 - Space + drag or middle mouse pans; wheel zooms. Use 3D Studio for the new mesh preview, or switch to 3D classic as a fallback.
+
+## Near-camera natural surface detail (v0.11.4)
+- Original instanced meshes add scattered angular mulch chips, small faceted limestone-colored gravel and folded leaf litter to ground-level views. Deterministic half-foot sampling, material-specific dimensions/density/color, nearest visible surface classification by draw order, conservative exclusion of buildings, hardscape, pond, dry creek and concrete. Leaf litter is sparse on lawn/soil; it is not a species model. Gravel and decomposed granite remain visibly distinct in scale.
+- A maximum of 1,400 scatter instances across three shared meshes, in the same 16-ft local patch as existing grass tufts. Uses terrain-sampled elevation and the existing surface offset; may be imperfect at steep or coarse-draped boundaries. Automatically hidden in Simple detail, higher camera positions and aerial mode. No quantities, project schema, 2D or shared plant asset changes. Client renderer pin unchanged pending independent client HTML testing.
+- 32 deterministic layout, material exclusion, bounds/budget and syntax checks passed. Actual browser visuals and performance still require review. Pages run #86 succeeded; user reported the prior ground upgrade looked good.
 
 ## Ground realism and grounding shadows (v0.11.3)
 - Natural lawn uses subtle deterministic world-scale vertex tonal variation. Ground and surface textures now also supply small grayscale/luminance bump relief with material-dependent strength (not true displacement). Aerial mode restores unmodified aerial color and disables lawn bump.
