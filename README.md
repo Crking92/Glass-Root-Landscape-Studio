@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.11.0
+# Glass Root Landscape Studio v0.11.1
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation or paid assets are required. The core 2D editor and legacy Canvas view run locally; GIS services and the new Three.js engine have optional online dependencies.
 
@@ -21,6 +21,12 @@ Read [AGENTS.md](AGENTS.md) before any development work. It defines cross-chat o
 - Set snapping to off, 6 inches, 1 foot, or 5 feet. Use Select / move to drag, edit, duplicate, or delete objects.
 - Choose mulch, gravel, concrete, decomposed granite, grass, or bare soil for new surfaces or edit the material of a selected surface. Surface quantities are summed individually; overlaps are not deducted. Mulch volume = area (sq ft) × depth (in) / 324, before waste allowance.
 - Space + drag or middle mouse pans; wheel zooms. Use 3D Studio for the new mesh preview, or switch to 3D classic as a fallback.
+
+## Cinematic presentation and high-resolution PNG (v0.11.1)
+- Compact Export image menu and presentation resolution selector support current viewport or 1920/2560/3840 px long edge, preserving viewport aspect. Actual dimensions are capped by WebGL viewport/renderbuffer and ~8.4 MP limits; size is appended to larger image filenames and reported after download is requested. Export renders at the requested size with adjusted plant LOD, hides overlays, retains aerial credit, then restores the interactive resolution. This is an image export, not a new offline renderer; textures and shadow resolution remain unchanged.
+- Saved-view recalls and presentation navigation support instant, smooth 1.4-second or slow 2.5-second transitions using eased camera position, quaternion and FOV interpolation. Reduced-motion preference forces instant changes. Manual input is paused during transitions, lighting and season change at recall, and export snaps to the final destination. No obstacle avoidance, terrain following during flights or video recording; LOD updates at the end of motion to limit work.
+- Optional Play tour advances through saved views in order, pauses at each (3/5/8/12 seconds plus transition allowance), stops at the last view; Pause, manual previous/next, export and exit cancel the timer. Presentation displays aerial credit. Controls remain in the existing compact menus. No schema changes.
+- 135 automated dimension, cap, easing and syntax/ID checks passed. Live browser/GPU exports, animated motion and tour timing still require testing. Pages run #83 succeeded.
 
 ## Saved viewpoints and client presentation (v0.11.0)
 - Three.js toolbar has a compact Viewpoints menu. Name and save up to 24 views, recall them, update the selected view with the current camera/settings, rename or delete. Each stores orbit or walkthrough camera (including eye height and step), lighting preset, sun bearing/elevation, exposure/shadows, season, detail and prototype switch. Aerial settings and project geometry remain shared across viewpoints. Save/update/rename/delete use normal undo and autosave. Optional validated views array is included in project JSON; older projects remain supported.
