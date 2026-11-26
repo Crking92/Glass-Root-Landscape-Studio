@@ -2,6 +2,12 @@
 
 Owners: botanical-model chat owns this directory and species-mesh-lab/. Studio chat owns studio-three.js and main editor. Coordinate before replacing the working Studio muhly generator.
 
+## Realism review 03 — little bluestem (lab 0.5.2)
+
+- Owner gave positive visual feedback on dense muhly flowerheads in lab 0.5.1; preserve as the current visual benchmark, not production approval. All 75 muhly seed/stage/detail combinations are bit-identical to prior geometry.
+- Little bluestem p0: fuller basal foliage (520 high-detail ribbons), alternating culm leaves with simplified sheath segments, more natural spread and stem angles, nonflowering leafy shoots, separate terminal 2.5–5 cm racemes, paired spikelets, and more visible silvery cilia approximated with crossed tapered ribbons. Blue-green to copper, bronze and straw color variation; no specific cultivar or variety claim. Fine structures are selectively exaggerated for readability. Existing Wildflower Center and Grass ID Lab citations retained; source record checked for separate racemes, blade widths, paired spikelets and silvery hairs (Gould 1975 pp.608–609).
+- Mature seed 42 triangles: 139,104 / 41,052 / 10,136 (high/medium/low), previously 150,912 / 41,936 / 9,912. All 150 grass configurations passed finite matching buffer checks; high detail triangle count fell despite fuller foliage. Sage unchanged. Browser appearance and performance still need review. No production promotion, no changes to main editor, scene engine or palette.
+
 ## Realism review 02 — dense Lindheimer muhly flowerheads (lab 0.5.1)
 
 - User-provided visual reference (Robert Perry credit visible) shows densely flowered cream-colored panicles. Used as a visual reference only; no image copied into repository. Existing Wildflower Center and Grass ID Lab citations retained. The contracted to somewhat opening panicle remains consistent with the documented regional-flora morphology.
