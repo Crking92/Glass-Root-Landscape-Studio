@@ -2,6 +2,12 @@
 
 Owners: botanical-model chat owns this directory and species-mesh-lab/. Studio chat owns studio-three.js and main editor. Coordinate before replacing the working Studio muhly generator.
 
+## Realism review 01 — grasses and lab switching (lab 0.5)
+
+- User screenshot showed autumn sage selected while the previous little bluestem title and geometry remained visible. The exact browser cause was not reproduced; stale cached registry or unhandled rebuild failure were plausible. Lab now requests versioned shared modules, uses exact stable palette IDs as selector values, uploads typed arrays directly, and clears the old mesh with an explicit diagnostic if a switch fails. Removed the distracting dark ground disk, improved neutral backdrop, close-up framing and preview shading. The lab still uses its existing raw WebGL preview, with Three.js-compatible shared assets; main scene lighting untouched.
+- Revised unapproved grass prototypes using existing botanical research: denser leaf ribbons, varied brighter natural colors, wider basal silhouettes; little bluestem now has attached alternating lower culm leaves, more open individual stem arrangement and visible silky raceme hairs. Muhly retains its basal fountain and narrow-to-loosening elongated panicles; mature heads open somewhat further. Fine structures enlarged selectively for legibility; not an exact measured specimen. Prior geometry preserved in Git history (grass blob `2d64f1ce35d1e3f76ac691e394759572a59efe35`). Sage geometry unchanged.
+- Mature seed 42 revised triangle counts: muhly 125,248 / 36,780 / 9,200; little bluestem 150,912 / 41,936 / 9,912; sage 181,662 / 59,766 / 13,568 (high/medium/low). All 225 normalized configurations passed finite buffer, matching attribute and bounds checks. Simulated DOM/GPU switching p0→p6→p1→p6→p0 and invalid-ID clearing/recovery passed, including expected triangle counts. Browser/cache/GPU behavior and visual quality still need live review; no promotion to production approved. No main editor files modified.
+
 ## Advanced botanical realism batch 01 — Autumn sage (lab 0.4)
 
 - Added original `autumn-sage.js`, existing palette ID `p6` / Salvia greggii, status **prototype**, not production approved. Existing grass geometry remains unchanged. Studio's opt-in registry consumer exists; actual appearance in Studio and lab is pending browser review.
