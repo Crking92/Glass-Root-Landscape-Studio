@@ -21,15 +21,15 @@ export function buildMistflower(seed=42,stage="mature",detail="high"){
  function head(p,phi,id,bud){
   reset(id,241);const d=unit(rad(phi,r(.03,.36),1)),[u,w]=frame(d),size=r(.85,1.15),base=add(p,mul(d,.0018)),rim=add(p,mul(d,.0045*size));tube(p,base,.0011,.0027*size,twig,5);tube(base,rim,.0027*size,.0034*size,tone(twig,.89),5);
   if(bud){tube(rim,add(rim,mul(d,.002)),.0033*size,.0018*size,tone(mix(pink,twig,.35),r(.9,1.1)),5);return}
-  const count=hi?15:md?9:5;
+  const count=hi?12:md?9:5;
   for(let j=0;j<count;j++){
    const a=j*2.399,radial=Math.sqrt((j+.25)/count)*.0031*size,dir=add(mul(u,Math.cos(a)),mul(w,Math.sin(a))),root=add(rim,mul(dir,radial*.70)),end=add(root,add(mul(d,r(.0032,.0050)*size),mul(dir,.0017*size))),col=tone(mix(cream,pink,r(0,.24)),r(.93,1.05));
-   tube(root,end,.00042*size,.00072*size,col,3);
+   const crossWidth=.00070*size;for(const x of [u,w])quad(add(root,mul(x,.00038*size)),add(root,mul(x,-.00038*size)),add(end,mul(x,-crossWidth)),add(end,mul(x,crossWidth)),col);
    if(hi){for(let k=0;k<5;k++){const a=k*TAU/5,petal=add(mul(u,Math.cos(a)),mul(w,Math.sin(a))),side=add(mul(u,-Math.sin(a)),mul(w,Math.cos(a)));tri(add(end,mul(side,.00035)),add(end,mul(side,-.00035)),add(end,add(mul(petal,.0011),mul(d,.0007))),col)}}
    for(const k of [-1,1]){const tip=add(end,add(mul(d,r(.0028,.0052)*size),mul(dir,k*.0018*size)));needle(end,tip,(hi?.00018:md?.00028:.00044)*size,tone(cream,r(.95,1.04)))}
   }
  }
- function cluster(p,phi,id){reset(id,173);const radius=r(.034,.069),h=r(.024,.065),count=hi?15:md?10:6,openChance=early?.32:.90;const hub=add(p,rad(phi,.008,.023));tube(p,hub,.0012,.00065,twig,4);
+ function cluster(p,phi,id){reset(id,173);const radius=r(.034,.069),h=r(.024,.065),count=hi?11:md?10:6,openChance=early?.32:.90;const hub=add(p,rad(phi,.008,.023));tube(p,hub,.0012,.00065,twig,4);
   for(let j=0;j<count;j++){const a=j*2.399+phi+r(-.2,.2),rr=radius*Math.sqrt((j+.35)/count)*r(.75,1.12),y=h*(1-.55*rr/radius)+r(-.009,.009),q=add(hub,rad(a,rr*.43,y*.36)),end=add(hub,rad(a,rr,y));tube(hub,q,.00065,.00045,twig,3);tube(q,end,.00045,.00025,twig,3);
    const bud=rand()>openChance;
    if(dry){tube(end,add(end,[0,.005,0]),.0019,.0011,[.51,.40,.27],4);for(let k=0;k<(hi?5:3);k++)needle(add(end,[0,.005,0]),add(end,rad(a+k*2.399,.0035,.010)),.00025,[.76,.68,.53])}
@@ -48,7 +48,7 @@ export function buildMistflower(seed=42,stage="mature",detail="high"){
    for(let k=0;k<shoots;k++){
     reset(i*100+j*10+k,57);const t=.24+k*.71/(shoots-1),p0=on(t),pa=phi+(k%2?1:-1)*r(.35,1.2),len=r(.09,.19),end=add(p0,rad(pa,len*.60,len*.78)),m=add(p0,mul(sub(end,p0),.46));tube(p0,m,.0018,.0011,twig,4);tube(m,end,.0011,.00065,twig,4);
     const nodes=hi?4:md?4:3;for(let z=0;z<nodes;z++){const id=i*10000+j*1000+k*100+z;reset(id,71);if(!dry||rand()>.32)pair(add(p0,mul(sub(end,p0),(z+.38)/nodes)),pa+z*Math.PI/2,id)}
-    const id=i*100+j*10+k;reset(id,93);if(!leafy&&rand()<(dry?.40:early?.50:stage==="fall"?.88:.73))cluster(end,pa,id);
+    const id=i*100+j*10+k;reset(id,93);if(!leafy&&rand()<(dry?.40:early?.50:stage==="fall"?.78:.64))cluster(end,pa,id);
    }
   }
  }
