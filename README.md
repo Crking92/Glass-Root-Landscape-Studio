@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.11.1
+# Glass Root Landscape Studio v0.11.2
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation or paid assets are required. The core 2D editor and legacy Canvas view run locally; GIS services and the new Three.js engine have optional online dependencies.
 
@@ -21,6 +21,11 @@ Read [AGENTS.md](AGENTS.md) before any development work. It defines cross-chat o
 - Set snapping to off, 6 inches, 1 foot, or 5 feet. Use Select / move to drag, edit, duplicate, or delete objects.
 - Choose mulch, gravel, concrete, decomposed granite, grass, or bare soil for new surfaces or edit the material of a selected surface. Surface quantities are summed individually; overlaps are not deducted. Mulch volume = area (sq ft) × depth (in) / 324, before waste allowance.
 - Space + drag or middle mouse pans; wheel zooms. Use 3D Studio for the new mesh preview, or switch to 3D classic as a fallback.
+
+## Downloadable interactive client HTML (v0.11.2)
+- In Three.js → Viewpoints → Download client presentation, choose a title, optionally include the aerial image (off by default), and download a single HTML file. Saved viewpoints and used plant appearance data are embedded; if none are saved, capture the current view. Client can explore orbit/walkthrough, recall views, play/pause tours, reset and export PNGs without editing UI, accounts, or local autosave.
+- Uses a pinned public renderer module at the v0.11.1 commit via jsDelivr GitHub CDN; Three.js and related modules load on demand over the internet, including when opening a local HTML file. Not an offline bundle or access-control/encryption mechanism; embedded geometry and view data are readable by recipients. Future graphics releases should update CLIENT_RENDERER_URL after renderer compatibility checks. Previously exported files keep the pinned renderer. No client project upload or address lookup. Whitelist geometry fields and architectural settings, omit report/client/GIS metadata, and opt in to embedded aerial pixels plus credit. Review designs for sensitive content before sharing.
+- 15 automated payload privacy, escaped JSON, roundtrip, syntax and ID checks passed. Browser file:// module loading, CDN CORS, actual graphics, exports and client controls still require live verification; no claim of offline functionality. Pages run #84 succeeded. Next priority returns to graphics realism and botanical asset coordination rather than new presentation features.
 
 ## Cinematic presentation and high-resolution PNG (v0.11.1)
 - Compact Export image menu and presentation resolution selector support current viewport or 1920/2560/3840 px long edge, preserving viewport aspect. Actual dimensions are capped by WebGL viewport/renderbuffer and ~8.4 MP limits; size is appended to larger image filenames and reported after download is requested. Export renders at the requested size with adjusted plant LOD, hides overlays, retains aerial credit, then restores the interactive resolution. This is an image export, not a new offline renderer; textures and shadow resolution remain unchanged.
