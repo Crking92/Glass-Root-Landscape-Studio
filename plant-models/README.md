@@ -2,6 +2,12 @@
 
 Owners: botanical-model chat owns this directory and species-mesh-lab/. Studio chat owns studio-three.js and main editor. Coordinate before replacing the working Studio muhly generator.
 
+## Realism review 02 — dense Lindheimer muhly flowerheads (lab 0.5.1)
+
+- User-provided visual reference (Robert Perry credit visible) shows densely flowered cream-colored panicles. Used as a visual reference only; no image copied into repository. Existing Wildflower Center and Grass ID Lab citations retained. The contracted to somewhat opening panicle remains consistent with the documented regional-flora morphology.
+- Mature maximum branch spread parameter reduced from 37 mm to 18 mm (not a measured botanical dimension); paired staggered short ascending branches with spikelets extending nearly to the branch base. High detail uses 24 branch levels × 2 branches × 4 spikelet shapes per head, versus 17 × 1 × 5 previously. Cream/silver palette, slightly enlarged fine geometry for landscape readability, young heads remain more contracted, dry heads remain pale straw. Culm and leaf geometry unchanged.
+- Mature seed 42: 155,040 / 45,120 / 10,760 triangles (high/medium/low). 150 grass configurations passed finite matching buffer checks; all little bluestem and leafy muhly configurations matched previous position/normal/color buffers exactly. Sage generator and main editor untouched. Browser/deployment/visual review pending; no production approval.
+
 ## Realism review 01 — grasses and lab switching (lab 0.5)
 
 - User screenshot showed autumn sage selected while the previous little bluestem title and geometry remained visible. The exact browser cause was not reproduced; stale cached registry or unhandled rebuild failure were plausible. Lab now requests versioned shared modules, uses exact stable palette IDs as selector values, uploads typed arrays directly, and clears the old mesh with an explicit diagnostic if a switch fails. Removed the distracting dark ground disk, improved neutral backdrop, close-up framing and preview shading. The lab still uses its existing raw WebGL preview, with Three.js-compatible shared assets; main scene lighting untouched.
