@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.11.6
+# Glass Root Landscape Studio v0.11.7
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation or paid assets are required. The core 2D editor and legacy Canvas view run locally; GIS services and the new Three.js engine have optional online dependencies.
 
@@ -21,6 +21,11 @@ Read [AGENTS.md](AGENTS.md) before any development work. It defines cross-chat o
 - Set snapping to off, 6 inches, 1 foot, or 5 feet. Use Select / move to drag, edit, duplicate, or delete objects.
 - Choose mulch, gravel, concrete, decomposed granite, grass, or bare soil for new surfaces or edit the material of a selected surface. Surface quantities are summed individually; overlaps are not deducted. Mulch volume = area (sq ft) × depth (in) / 324, before waste allowance.
 - Space + drag or middle mouse pans; wheel zooms. Use 3D Studio for the new mesh preview, or switch to 3D classic as a fallback.
+
+## Limestone and wood material realism (v0.11.7)
+- Shared original procedural color and bump textures for limestone masonry, natural stone and wood. Limestone buildings have irregular staggered courses, cream/tan variation, recessed mortar and subtle pitting/layering. Other building finishes gain modest luminance bump. Hardscape retains existing palette, now tinted by shared stone/wood textures; wood grain UV follows longest part axis on boards, rails and posts. Boulder geometry has modestly increased faceting and less uniform shape while preserving normalized bounds.
+- Texture cache uses three reusable color/bump pairs (512 px masonry, 256 px stone and wood), no paid or external art assets; hardscape instancing retained. No saved geometry, quantities, controls, botanical assets or client renderer pin changes. Grain on end faces is approximate; relief is bump shading, not physical masonry depth, and actual dimensions are not changed.
+- 416 deterministic periodic material sample, bounds, layout, finish classification and syntax checks passed. Actual WebGL texture appearance, lighting and performance need testing. Pages #102 succeeded; prior water rendering received positive user feedback.
 
 ## Natural water and planar reflection (v0.11.6)
 - Pond shader uses terrain-derived depth for excavated ponds, shallow olive/teal to deeper green-blue color, varying opacity, world-space ripple normals, Fresnel sky reflection and sunlight glint. Legacy flat ponds use an illustrative depth of 0.65 ft for rendering only. Existing basin geometry and water elevations unchanged; not physical water chemistry or hydraulic modeling.

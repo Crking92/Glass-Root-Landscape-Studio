@@ -72,9 +72,10 @@ function exportDimensions(w,h,longEdge,maxW,maxH,maxPixels=8388608){
 function easeView(t){t=Math.max(0,Math.min(1,t));return t*t*(3-2*t);}
 export async function openStudio({host,status,model,plants,settings,helpers,editing={},cameraState=null}){
 const T=await import('https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js');
-let buildingModule=null;try{buildingModule=await import('./studio-buildings.js?v=1');}catch(e){console.warn('Building module unavailable; using basic building models.',e);}
+let buildingModule=null;try{buildingModule=await import('./studio-buildings.js?v=2');}catch(e){console.warn('Building module unavailable; using basic building models.',e);}
 let groundModule=null;try{groundModule=await import('./studio-materials.js?v=3');}catch(e){console.warn('Ground texture module unavailable; using flat materials.',e);}
-let hardscapeModule=null;try{hardscapeModule=await import('./studio-hardscape.js?v=2');}catch(e){console.warn('Hardscape module unavailable; using basic objects.',e);}
+let hardscapeModule=null;try{hardscapeModule=await import('./studio-hardscape.js?v=3');}catch(e){console.warn('Hardscape module unavailable; using basic objects.',e);}
+let structureModule=null;try{structureModule=await import('./studio-structure-materials.js?v=1');}catch(e){console.warn('Structure texture module unavailable',e);}
 const terrainModule=await import('./studio-terrain.js?v=2');
 let waterModule=null;try{waterModule=await import('./studio-water.js?v=1');}catch(e){console.warn('Advanced water unavailable',e);}
 let sceneryModule=null;try{sceneryModule=await import('./studio-background.js?v=1');}catch(e){console.warn('Background unavailable',e);}
@@ -123,8 +124,9 @@ waterKit?.lighting(lightState);
 if(model.boundary){const g=geo(new T.BufferGeometry().setFromPoints([...model.boundary,model.boundary[0]].map(p=>world(...p,.14))));const m=new T.LineBasicMaterial({color:'#e9db9d'});materials.add(m);scene.add(new T.Line(g,m));}
 const box=geo(new T.BoxGeometry(1,1,1)),sphere=geo(new T.IcosahedronGeometry(.5,1)),cylinder=geo(new T.CylinderGeometry(.5,.5,1,12)),wallMat=mat('#d8cfb6'),roofMat=mat('#68776e'),woodMat=mat('#9b7950'),stoneMat=mat('#b8ae97'),waterMat=mat('#9eb7b1');
 if(creekParts.length){const g=geo(new T.IcosahedronGeometry(.5,1)),m=mat('#ffffff'),mesh=new T.InstancedMesh(g,m,creekParts.length),d=new T.Object3D();for(let i=0;i<creekParts.length;i++){const p=creekParts[i];d.position.copy(world(p.x,p.y,.055+p.h*.29));d.scale.set(p.w,p.h,p.d);d.rotation.set(0,p.angle,0);d.updateMatrix();mesh.setMatrixAt(i,d.matrix);mesh.setColorAt(i,new T.Color('#b5aa93').lerp(new T.Color('#e0d7c3'),p.tone));}mesh.instanceMatrix.needsUpdate=true;mesh.instanceColor.needsUpdate=true;mesh.castShadow=true;mesh.receiveShadow=true;scene.add(mesh);}
-const drawBuilding=buildingModule?.makeBuildingRenderer(T,{mat,geo,addMesh,world,box,textures,renderer});
-const hardKit=hardscapeModule?.makeHardscapeRenderer(T,{mat,geo,world,box,cylinder,scene,shadowOn:true}),hardCount=model.objects.filter(o=>o.type==='hard').length;
+const structureTexture=structureModule?.makeStructureTextures(T,{textures,renderer});
+const drawBuilding=buildingModule?.makeBuildingRenderer(T,{mat,geo,addMesh,world,box,textures,renderer,structureTexture});
+const hardKit=hardscapeModule?.makeHardscapeRenderer(T,{mat,geo,world,box,cylinder,scene,shadowOn:true,structureTexture,structureModule}),hardCount=model.objects.filter(o=>o.type==='hard').length;
 for(const o of model.objects){if(o.type==='house'){if(drawBuilding){drawBuilding(o);continue;}const x=o.x+o.w/2,y=o.y+o.h/2;addMesh(box,wallMat,world(x,y,o.height*.43),[o.w,o.height*.86,o.h]);addMesh(box,roofMat,world(x,y,o.height*.93),[o.w*1.04,o.height*.14,o.h*1.04]);}else if(o.type==='hard'){if(hardKit){hardKit.add(o,hardCount<=1500);continue;}const angle=-(o.angle||0)*Math.PI/180,at=h=>world(o.x,o.y,h),kind=o.kind;if(kind==='boulder')addMesh(sphere,stoneMat,at(o.height*.43),[o.w,o.height,o.h],angle);else if(kind==='birdbath'){addMesh(cylinder,stoneMat,at(o.height*.4),[o.w*.23,o.height*.8,o.h*.23]);addMesh(cylinder,waterMat,at(o.height*.85),[o.w,o.height*.16,o.h]);}else addMesh(box,['wall','stepping'].includes(kind)?stoneMat:woodMat,at(o.height/2),[o.w,o.height,o.h],angle);}}
 const hardPartCount=hardKit?.finish()||hardCount;
 let groundDetails=null;try{groundDetails=detailModule?.makeGroundDetail(T,{geo,releaseGeometry:g=>{geometries.delete(g);g.dispose();},mat,materials,textures,scene,world,model,helpers});}catch(e){console.warn('Ground detail setup unavailable',e);}
