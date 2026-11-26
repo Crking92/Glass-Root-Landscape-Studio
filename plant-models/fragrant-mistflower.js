@@ -1,4 +1,4 @@
-// Original Ageratina havanensis prototype. Meters, Y-up, display RGB. See registry and README for sources.
+// Ageratina havanensis realism review 01: compact terminal bouquets. Prior mesh blob 59211b1ee52048cc8ef25705c25c783e0f67b925. Meters, Y-up, display RGB. See registry and README for sources.
 export function buildMistflower(seed=42,stage="mature",detail="high"){
  const hi=detail==="high",md=detail==="medium",v=[],n=[],c=[],TAU=2*Math.PI;
  let state=seed>>>0;const rand=()=>((state=(Math.imul(state,1664525)+1013904223)>>>0)/4294967296),r=(a,b)=>a+(b-a)*rand(),reset=(i,s)=>{state=(Math.imul(seed+s,2654435761)^Math.imul(i+1,1597334677))>>>0;rand()};
@@ -29,13 +29,31 @@ export function buildMistflower(seed=42,stage="mature",detail="high"){
    for(const k of [-1,1]){const tip=add(end,add(mul(d,r(.0028,.0052)*size),mul(dir,k*.0018*size)));needle(end,tip,(hi?.00018:md?.00028:.00044)*size,tone(cream,r(.95,1.04)))}
   }
  }
- function cluster(p,phi,id){reset(id,173);const radius=r(.034,.069),h=r(.024,.065),count=hi?11:md?10:6,openChance=early?.32:.90;const hub=add(p,rad(phi,.008,.023));tube(p,hub,.0012,.00065,twig,4);
-  for(let j=0;j<count;j++){const a=j*2.399+phi+r(-.2,.2),rr=radius*Math.sqrt((j+.35)/count)*r(.75,1.12),y=h*(1-.55*rr/radius)+r(-.009,.009),q=add(hub,rad(a,rr*.43,y*.36)),end=add(hub,rad(a,rr,y));tube(hub,q,.00065,.00045,twig,3);tube(q,end,.00045,.00025,twig,3);
-   const bud=rand()>openChance;
-   if(dry){tube(end,add(end,[0,.005,0]),.0019,.0011,[.51,.40,.27],4);for(let k=0;k<(hi?5:3);k++)needle(add(end,[0,.005,0]),add(end,rad(a+k*2.399,.0035,.010)),.00025,[.76,.68,.53])}
-   else head(end,a,id*40+j,bud);
-   reset(id*40+j,197);
+ // Compact terminal corymb-like bouquet: a common peduncle, several short
+ // secondary sprays, and closely spaced individual discoid heads.
+ function cluster(p,phi,id){
+  reset(id,173);
+  const axis=unit(rad(phi,r(.22,.48),1)),[u,w]=frame(axis),size=r(.85,1.16),groups=hi?4:3,heads=hi?4:md?4:3,openChance=early?.34:.94;
+  const hub=add(p,mul(axis,r(.027,.044))),apex=add(hub,mul(axis,.022*size));
+  tube(p,hub,.00135,.00085,twig,4);tube(hub,apex,.00085,.00045,twig,4);
+  const radial=a=>add(mul(u,Math.cos(a)),mul(w,Math.sin(a)));
+  for(let j=0;j<groups;j++){
+   reset(id*10+j,181);
+   const ang=phi+j*TAU/groups+r(-.23,.23),dir=radial(ang),rr=r(.013,.022)*size,hh=r(.018,.026)*size;
+   const fork=add(hub,add(mul(dir,rr*.57),mul(axis,hh*.48))),center=add(hub,add(mul(dir,rr),mul(axis,hh)));
+   tube(hub,fork,.00070,.00043,twig,3);
+   for(let k=0;k<heads;k++){
+    reset(id*100+j*10+k,197);
+    const beta=ang+k*2.399,spread=(k===0?.0025:r(.0055,.0105))*size,side=radial(beta),end=add(center,add(mul(side,spread),mul(axis,r(-.003,.005)*size))),bud=rand()>openChance;
+    tube(fork,end,.00043,.00023,twig,3);
+    if(dry){tube(end,add(end,mul(axis,.005)),.0019,.0011,[.51,.40,.27],4);for(let z=0;z<(hi?5:3);z++)needle(add(end,mul(axis,.005)),add(end,add(mul(radial(beta+z*2.399),.0035),mul(axis,.010))),.00025,[.76,.68,.53]);}
+    else head(end,beta,id*100+j*10+k,bud);
+   }
   }
+  // A central head joins the sprays into one coherent, gently domed cap.
+  const terminal=add(apex,mul(axis,.006*size));tube(apex,terminal,.00045,.00024,twig,3);
+  if(dry){tube(terminal,add(terminal,mul(axis,.006)),.0019,.0011,[.51,.40,.27],4);}
+  else head(terminal,phi,id*100+99,early);
  }
  reset(0,17);const scale=r(.90,1.14),height=r(.88,1.14),main=hi?12:md?9:6,branches=hi?5:md?4:3,shoots=hi?3:md?2:2;
  for(let i=0;i<main;i++){
@@ -48,7 +66,12 @@ export function buildMistflower(seed=42,stage="mature",detail="high"){
    for(let k=0;k<shoots;k++){
     reset(i*100+j*10+k,57);const t=.24+k*.71/(shoots-1),p0=on(t),pa=phi+(k%2?1:-1)*r(.35,1.2),len=r(.09,.19),end=add(p0,rad(pa,len*.60,len*.78)),m=add(p0,mul(sub(end,p0),.46));tube(p0,m,.0018,.0011,twig,4);tube(m,end,.0011,.00065,twig,4);
     const nodes=hi?4:md?4:3;for(let z=0;z<nodes;z++){const id=i*10000+j*1000+k*100+z;reset(id,71);if(!dry||rand()>.32)pair(add(p0,mul(sub(end,p0),(z+.38)/nodes)),pa+z*Math.PI/2,id)}
-    const id=i*100+j*10+k;reset(id,93);if(!leafy&&rand()<(dry?.40:early?.50:stage==="fall"?.78:.64))cluster(end,pa,id);
+    const id=i*100+j*10+k;reset(id,93);
+    // Prioritize the outward/distal shoots, with a few upper secondary sprays.
+    // Leave interior shoots vegetative so the canopy reads green between bouquets.
+    const distal=k===shoots-1,upperSecondary=j>=branches-2&&k===shoots-2;
+    const chance=distal?(dry?.50:early?.58:stage==="fall"?.94:.86):upperSecondary?(dry?.12:early?.16:stage==="fall"?.45:.30):0;
+    if(!leafy&&rand()<chance)cluster(end,pa,id);
    }
   }
  }
