@@ -1,4 +1,4 @@
-// Realism review 01: revised from preserved grass prototype (Git blob 2d64f1ce35d1e3f76ac691e394759572a59efe35).
+// Realism review 02: dense Lindheimer muhly panicles; previous version blob f79d686f7b208ab3eaab5a19c4b70bcb21f7b49f.
 // Raw coordinates: meters, Y up. Raw vertex colors: display RGB (sRGB-like).
 export function buildGrass(species="muhly",seed=42,stage="mature",detail="high"){
  const blue=species==="bluestem",high=detail==="high",mid=detail==="medium",v=[],n=[],c=[];
@@ -25,9 +25,27 @@ export function buildGrass(species="muhly",seed=42,stage="mature",detail="high")
  for(let j=0;j<branches;j++){reseed(i*10+j,101);const f=.46+j*.47/(branches-1),p=point(top*f),phi=a+j*2.4+r(-.3,.3),dir=[Math.cos(phi),0,Math.sin(phi)],length=r(.045,.125),q=add(p,add(mul(dir,length*.47),[0,length,0]));tube(p,q,.0011,.00065,stemcol,4);ribbon(p,phi,r(.06,.15),r(.07,.17),.045,.0020,r(-.5,.5),stemcol,seg,.12);const raceme=r(.025,.050),axis=unit(add(mul(dir,.28),[0,1,0])),units=high?7:mid?5:4;
  for(let k=0;k<units;k++){const t=(k+.5)/units,center=add(q,mul(axis,raceme*t)),side=[Math.cos(phi+k*2.4),0,Math.sin(phi+k*2.4)],pair=add(center,mul(side,.003)),sc=young?[.52,.49,.31]:[.80,.79,.69];tube(center,pair,.00045,.0003,stemcol,3);spindle(center,axis,.0065,.0014,sc);spindle(pair,axis,.004,.00095,tint(sc,.83));if(!young){const hairs=high?5:mid?3:2;for(let l=0;l<hairs;l++){const ang=phi+l*2.4+k,tip=add(pair,[Math.cos(ang)*.006,.004+r(0,.006),Math.sin(ang)*.006]),haircol=tint([.92,.89,.79],r(.85,1.1));tube(pair,tip,high?.00032:.00055,.00010,haircol,3)}const tip=add(center,add(mul(side,.004),[0,r(.004,.013),0]));tube(center,tip,.00030,.00010,[.62,.51,.33],3)}}tube(q,add(q,mul(axis,raceme)),.00075,.00035,stemcol,3)}
  }else{
- const h=r(.23,.43),start=top-h,rings=high?17:mid?11:7;
- for(let j=0;j<rings;j++){reseed(i*20+j,109);const t=(j+.35)/rings,p=point(start+h*t),phi=j*2.399+i,open=young?.008:dry?.035:.037,span=open*Math.sin(Math.PI*(.12+.80*t))*r(.7,1.35),dir=[Math.cos(phi),0,Math.sin(phi)],q=add(p,add(mul(dir,span),[0,h*.20*(1-t)+.008,0]));tube(p,q,.00055,.00028,[.49,.47,.38],3);
- const units=high?5:mid?4:3;for(let k=0;k<units;k++){const f=(k+1)/units,center=add(p,mul(sub(q,p),f)),off=[Math.cos(phi+k*2)*.0035,r(.004,.010),Math.sin(phi+k*2)*.0035],tip=add(center,off),sc=tint(young?[.57,.59,.45]:dry?[.78,.69,.50]:[.84,.85,.76],r(.83,1.14));tube(center,tip,.00037,.00016,sc,3);spindle(tip,unit(add(mul(dir,.25),[0,1,0])),r(.003,.0045),high?.00075:.00125,sc)}}}
+ // Dense contracted panicle: short ascending, flowered branches in staggered pairs.
+ // Scale fine spikelet geometry for landscape readability, not a measured specimen.
+ const h=r(.23,.43),start=top-h,rings=high?24:mid?16:10;
+ const open=young?.0075:dry?.020:.018;
+ for(let j=0;j<rings;j++){
+  reseed(i*32+j,109);
+  const t=(j+.30)/rings,p=point(start+h*t),envelope=Math.pow(Math.sin(Math.PI*(.12+.88*t)),.66);
+  const branches=2,units=high?4:mid?3:2;
+  for(let m=0;m<branches;m++){
+   const phi=j*2.399+i+m*Math.PI+r(-.24,.24),dir=[Math.cos(phi),0,Math.sin(phi)],span=open*envelope*r(.82,1.18),rise=h*(young?.072:.11)*(1-.45*t)*r(.83,1.14);
+   const q=add(p,add(mul(dir,span),[0,rise,0]));tube(p,q,.00048,.00019,young?[.49,.51,.36]:[.72,.66,.50],3);
+   // Spikelets extend nearly to the branch base, overlap vertically and fill the interior.
+   for(let k=0;k<units;k++){
+    const f=(k+.38)/units,center=add(p,mul(sub(q,p),f)),side=phi+(k%2?1:-1)*1.15;
+    const off=(young?.0015:.0032)*r(.7,1.25),tip=add(center,[Math.cos(side)*off,r(.001,.004),Math.sin(side)*off]);
+    const col=tint(young?[.69,.68,.49]:dry?[.84,.76,.59]:[.92,.89,.77],r(.88,1.10));
+    const axis=unit(add(mul(dir,young?.18:.36),[0,1,0]));
+    spindle(tip,axis,r(.0045,.0075)*(high?1:mid?1.17:1.45),(young?.0009:.00135)*(high?1:mid?1.35:1.75),col);
+   }
+  }
+ }}
  }
  return {positions:new Float32Array(v),normals:new Float32Array(n),colors:new Float32Array(c)};
 }
