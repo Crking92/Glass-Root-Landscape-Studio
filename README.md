@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.12.0
+# Glass Root Landscape Studio v0.12.1
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation or paid assets are required. The core 2D editor and legacy Canvas view run locally; GIS services and the new Three.js engine have optional online dependencies.
 
@@ -21,6 +21,11 @@ Read [AGENTS.md](AGENTS.md) before any development work. It defines cross-chat o
 - Set snapping to off, 6 inches, 1 foot, or 5 feet. Use Select / move to drag, edit, duplicate, or delete objects.
 - Choose mulch, gravel, concrete, decomposed granite, grass, or bare soil for new surfaces or edit the material of a selected surface. Surface quantities are summed individually; overlaps are not deducted. Mulch volume = area (sq ft) × depth (in) / 324, before waste allowance.
 - Space + drag or middle mouse pans; wheel zooms. Use 3D Studio for the new mesh preview, or switch to 3D classic as a fallback.
+
+## Refined rendering and color looks (v0.12.1)
+- Lighting → Color look: Natural (default for new sessions; PBR Neutral mapping and gentler light/exposure), Cinematic (AgX with highlight roll-off and stronger key-to-fill ratio), Classic (previous ACES curve and lighting intensities). Saved views store optional look; legacy views recall Classic. Sky now uses same tone mapping as scene materials. Works through direct rendering, water and image exports; not a custom LUT or physical calibration.
+- AO and pond reflection buffers use half-float linear color when EXT_color_buffer_float is supported. AO otherwise falls back to direct rendering, water to byte targets. Existing eligibility budgets preserved. Fixes quaternion aliasing in saved-view interpolation. No geometry, shared botanical assets or client renderer pin changes.
+- 238 automated lighting, exposure, legacy saved-view and syntax checks passed. Browser appearance, shader and device performance still require testing. Pages #114 succeeded.
 
 ## Optional living landscapes (v0.12.0)
 - Background → Animate environment (off by default) and Breeze strength control subtle time-dependent cloud drift, pond ripple phases and height-weighted plant vertex bending. Instanced plant roots stay fixed; grasses bend more than shrubs/trees/succulents. Shared botanical mesh files and saved dimensions unchanged. Shadow depth material uses the same vertex deformation; normal deformation is approximate, distant background trees and hardscape remain stationary.

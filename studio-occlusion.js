@@ -44,11 +44,11 @@ export function makeOcclusion(T,{renderer,scene,cleanup}){
  }`});
  const quad=new T.Mesh(new T.PlaneGeometry(2,2),shader);quad.frustumCulled=false;postScene.add(quad);
  let target=null,failed=false,active=false,sceneCalls=0;
- function render(camera,enabled,overlays=[]){active=false;sceneCalls=0;if(failed||!enabled){renderer.render(scene,camera);sceneCalls=renderer.info.render.calls;return;}
+ function render(camera,enabled,overlays=[]){active=false;sceneCalls=0;if(failed||!enabled||!renderer.extensions.has('EXT_color_buffer_float')){renderer.render(scene,camera);sceneCalls=renderer.info.render.calls;return;}
  const oldTarget=renderer.getRenderTarget(),oldTone=renderer.toneMapping,oldAuto=renderer.autoClear,vis=overlays.map(o=>o.visible);
  try{
  renderer.getDrawingBufferSize(size);const limit=Math.min(2048,renderer.capabilities.maxTextureSize);if(Math.max(size.x,size.y)>limit||size.x*size.y>3145728){renderer.render(scene,camera);sceneCalls=renderer.info.render.calls;return;}const [w,h]=aoSize(size.x,size.y,limit);
- if(!target){target=new T.WebGLRenderTarget(w,h,{minFilter:T.LinearFilter,magFilter:T.LinearFilter,depthBuffer:true});target.texture.colorSpace=T.LinearSRGBColorSpace;target.depthTexture=new T.DepthTexture(w,h,T.UnsignedIntType);target.depthTexture.minFilter=target.depthTexture.magFilter=T.NearestFilter;}else if(target.width!==w||target.height!==h)target.setSize(w,h);
+ if(!target){target=new T.WebGLRenderTarget(w,h,{type:T.HalfFloatType,minFilter:T.LinearFilter,magFilter:T.LinearFilter,depthBuffer:true});target.texture.colorSpace=T.LinearSRGBColorSpace;target.depthTexture=new T.DepthTexture(w,h,T.UnsignedIntType);target.depthTexture.minFilter=target.depthTexture.magFilter=T.NearestFilter;}else if(target.width!==w||target.height!==h)target.setSize(w,h);
  for(const o of overlays)o.visible=false;
  renderer.setRenderTarget(target);renderer.autoClear=true;renderer.render(scene,camera);sceneCalls=renderer.info.render.calls;
  uniforms.colorMap.value=target.texture;uniforms.depthMap.value=target.depthTexture;uniforms.invProjection.value.copy(camera.projectionMatrixInverse);uniforms.projection.value.copy(camera.projectionMatrix);uniforms.pixel.value.set(1/w,1/h);

@@ -14,7 +14,7 @@ export function makeScenery(T,{scene,geo,materials,textures,model,elevation,nx,n
  const group=new T.Group();scene.add(group);const w=model.width,d=model.depth,rad=Math.max(w,d,10),layout=ringLayout(w,d,nx,ny),{edge,rings}=layout;
  const cloudSize=256,cloudPixels=new Uint8Array(cloudSize*cloudSize*4);for(let j=0;j<cloudSize;j++)for(let i=0;i<cloudSize;i++){const v=Math.round(255*cloudField(i/cloudSize,j/cloudSize)),k=(j*cloudSize+i)*4;cloudPixels[k]=cloudPixels[k+1]=cloudPixels[k+2]=v;cloudPixels[k+3]=255;}
  const cloudTex=new T.DataTexture(cloudPixels,cloudSize,cloudSize);cloudTex.wrapS=cloudTex.wrapT=T.RepeatWrapping;cloudTex.magFilter=T.LinearFilter;cloudTex.minFilter=T.LinearMipmapLinearFilter;cloudTex.generateMipmaps=true;cloudTex.colorSpace=T.NoColorSpace;cloudTex.needsUpdate=true;textures.add(cloudTex);
- const skyMat=new T.ShaderMaterial({side:T.BackSide,depthWrite:false,depthTest:false,toneMapped:false,uniforms:{horizon:{value:new T.Color('#d6dfd5')},zenith:{value:new T.Color('#93b6cf')},sunColor:{value:new T.Color('#fff0d7')},sunDir:{value:new T.Vector3(0,1,0)},glow:{value:.14},cloudMap:{value:cloudTex},cloudCover:{value:.45},cloudLight:{value:new T.Color('#f1eee4')},cloudShade:{value:new T.Color('#a7b6bd')},sunDisc:{value:1},cloudDrift:{value:new T.Vector2()}},vertexShader:'varying vec3 vDir; void main(){vDir=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}',fragmentShader:`
+ const skyMat=new T.ShaderMaterial({side:T.BackSide,depthWrite:false,depthTest:false,toneMapped:true,uniforms:{horizon:{value:new T.Color('#d6dfd5')},zenith:{value:new T.Color('#93b6cf')},sunColor:{value:new T.Color('#fff0d7')},sunDir:{value:new T.Vector3(0,1,0)},glow:{value:.14},cloudMap:{value:cloudTex},cloudCover:{value:.45},cloudLight:{value:new T.Color('#f1eee4')},cloudShade:{value:new T.Color('#a7b6bd')},sunDisc:{value:1},cloudDrift:{value:new T.Vector2()}},vertexShader:'varying vec3 vDir; void main(){vDir=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}',fragmentShader:`
  varying vec3 vDir;
  uniform vec3 horizon,zenith,sunColor,sunDir,cloudLight,cloudShade;
  uniform float glow,cloudCover,sunDisc;uniform sampler2D cloudMap;uniform vec2 cloudDrift;
@@ -41,6 +41,7 @@ export function makeScenery(T,{scene,geo,materials,textures,model,elevation,nx,n
  c=mix(c,cloud,coverage*.94);
  }
  gl_FragColor=vec4(c,1.);
+ #include <tonemapping_fragment>
  #include <colorspace_fragment>
  }`});
  materials.add(skyMat);const sky=new T.Mesh(geo(new T.SphereGeometry(camera.far*.72,32,16)),skyMat);sky.frustumCulled=false;sky.renderOrder=-1000;group.add(sky);
