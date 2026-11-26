@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.11.2
+# Glass Root Landscape Studio v0.11.3
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation or paid assets are required. The core 2D editor and legacy Canvas view run locally; GIS services and the new Three.js engine have optional online dependencies.
 
@@ -21,6 +21,12 @@ Read [AGENTS.md](AGENTS.md) before any development work. It defines cross-chat o
 - Set snapping to off, 6 inches, 1 foot, or 5 feet. Use Select / move to drag, edit, duplicate, or delete objects.
 - Choose mulch, gravel, concrete, decomposed granite, grass, or bare soil for new surfaces or edit the material of a selected surface. Surface quantities are summed individually; overlaps are not deducted. Mulch volume = area (sq ft) × depth (in) / 324, before waste allowance.
 - Space + drag or middle mouse pans; wheel zooms. Use 3D Studio for the new mesh preview, or switch to 3D classic as a fallback.
+
+## Ground realism and grounding shadows (v0.11.3)
+- Natural lawn uses subtle deterministic world-scale vertex tonal variation. Ground and surface textures now also supply small grayscale/luminance bump relief with material-dependent strength (not true displacement). Aerial mode restores unmodified aerial color and disables lawn bump.
+- Near-ground cameras display up to 1,100 original procedural low grass tufts, drawn in one instanced mesh using deterministic one-foot cells and a local 16-ft patch. Excludes existing beds, paths, water features, buildings and hardscape footprints; hides above 26 ft, in Simple detail or when aerial is visible. Decorative texture only, not an identified species, planting recommendation, plant inventory or ecological benefit.
+- Approximate grounding shadows under plants and small hardscape use a radial opacity texture and terrain-sampled triangles. Up to 1,800 sampled objects; no directional cast-shadow dependency, no added project objects, and hidden with aerial imagery. Not screen-space ambient occlusion; overlapping shadow patches and steep terrain may need tuning. No change to 2D or project JSON. Client downloads remain pinned to the previous reviewed-compatible renderer until the new graphics are tested.
+- 111 automated deterministic placement, bounds, exclusion, budget, tonal and syntax checks passed. Browser visual quality, export, performance and aerial toggling still require testing. Pages run #85 succeeded. Shared plant asset files untouched.
 
 ## Downloadable interactive client HTML (v0.11.2)
 - In Three.js → Viewpoints → Download client presentation, choose a title, optionally include the aerial image (off by default), and download a single HTML file. Saved viewpoints and used plant appearance data are embedded; if none are saved, capture the current view. Client can explore orbit/walkthrough, recall views, play/pause tours, reset and export PNGs without editing UI, accounts, or local autosave.
