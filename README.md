@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.11.9
+# Glass Root Landscape Studio v0.12.0
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation or paid assets are required. The core 2D editor and legacy Canvas view run locally; GIS services and the new Three.js engine have optional online dependencies.
 
@@ -21,6 +21,11 @@ Read [AGENTS.md](AGENTS.md) before any development work. It defines cross-chat o
 - Set snapping to off, 6 inches, 1 foot, or 5 feet. Use Select / move to drag, edit, duplicate, or delete objects.
 - Choose mulch, gravel, concrete, decomposed granite, grass, or bare soil for new surfaces or edit the material of a selected surface. Surface quantities are summed individually; overlaps are not deducted. Mulch volume = area (sq ft) × depth (in) / 324, before waste allowance.
 - Space + drag or middle mouse pans; wheel zooms. Use 3D Studio for the new mesh preview, or switch to 3D classic as a fallback.
+
+## Optional living landscapes (v0.12.0)
+- Background → Animate environment (off by default) and Breeze strength control subtle time-dependent cloud drift, pond ripple phases and height-weighted plant vertex bending. Instanced plant roots stay fixed; grasses bend more than shrubs/trees/succulents. Shared botanical mesh files and saved dimensions unchanged. Shadow depth material uses the same vertex deformation; normal deformation is approximate, distant background trees and hardscape remain stationary.
+- Animation frames target ~20 fps; skip LOD rebuilds on motion-only frames, refresh planar reflections and shadow maps about four times/sec, disable expensive screen-space AO while animating. Full interaction renders remain on demand. Pause automatically for Simple detail, >300 plants, >1.2M plant triangles, >8k hardscape parts, hidden tab or reduced-motion preference. Off restores static wind and wave phases. Session settings, not saved project geometry or downloadable client renderer. PNG captures current moment.
+- 119 motion eligibility, relative strength, bounded bend and syntax checks passed. Actual browser shader compilation, plant sway, animation pacing and device performance need testing. Motion is illustrative, not a wind simulation or video export.
 
 ## Procedural clouds and natural skies (v0.11.9)
 - Existing Background menu gains a Cloud cover slider (0–100%, default 45%). A single original seamless 256 px deterministic cloud-noise texture, sampled twice in the sky shader, creates soft irregular cloud shapes on an apparent elevated plane, fading near the horizon. Lighting presets tint cloud highlights/shadows, horizon and sky dome; Overcast increases coverage and hides the solar disc. A small stylized sun and aureole align with existing compass/elevation lighting controls. Background None restores the original flat background.

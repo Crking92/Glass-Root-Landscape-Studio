@@ -13,11 +13,11 @@ export function makeWaterKit(T,{renderer,scene,materials,cleanup}){
  const fragment=`
  varying vec3 vWorld;varying float vDepth;
  uniform vec3 sky;uniform vec3 horizon;uniform vec3 sunColor;uniform vec3 sunDirection;
- uniform sampler2D reflectionMap;uniform mat4 reflectionMatrix;uniform float hasReflection;
+ uniform sampler2D reflectionMap;uniform mat4 reflectionMatrix;uniform float hasReflection;uniform float rippleTime;uniform float rippleStrength;
  void main(){
   vec3 viewDir=normalize(cameraPosition-vWorld);
   vec2 q=vWorld.xz;
-  float u=dot(q,vec2(.81,.39)),v=dot(q,vec2(-.44,1.12));
+  float u=dot(q,vec2(.81,.39))+rippleTime*.55*rippleStrength,v=dot(q,vec2(-.44,1.12))-rippleTime*.32*rippleStrength;
   float wave=sin(u*2.1+.55*sin(v*.9))*.50+sin(v*3.3+.65*cos(u*.6))*.27+sin((u+v)*5.4)*.12;
   vec2 ripple=vec2(cos(u*2.1+.55*sin(v*.9))*.055+sin((u+v)*5.4)*.021,cos(v*3.3+.65*cos(u*.6))*.043+cos((u-v)*4.2)*.018);
   vec3 n=normalize(vec3(ripple.x,1.,ripple.y));
@@ -39,7 +39,7 @@ export function makeWaterKit(T,{renderer,scene,materials,cleanup}){
   #include <tonemapping_fragment>
   #include <colorspace_fragment>
  }`;
- function material(){const m=new T.ShaderMaterial({uniforms:{sky:{value:new T.Color('#a9c9d7')},horizon:{value:new T.Color('#d3dbca')},sunColor:{value:new T.Color('#fff0d7')},sunDirection:{value:new T.Vector3(0,1,0)},reflectionMap:{value:null},reflectionMatrix:{value:new T.Matrix4()},hasReflection:{value:0}},vertexShader:vertex,fragmentShader:fragment,transparent:true,depthWrite:false,side:T.DoubleSide});materials.add(m);return m;}
+ function material(){const m=new T.ShaderMaterial({uniforms:{sky:{value:new T.Color('#a9c9d7')},horizon:{value:new T.Color('#d3dbca')},sunColor:{value:new T.Color('#fff0d7')},sunDirection:{value:new T.Vector3(0,1,0)},reflectionMap:{value:null},reflectionMatrix:{value:new T.Matrix4()},hasReflection:{value:0},rippleTime:{value:0},rippleStrength:{value:0}},vertexShader:vertex,fragmentShader:fragment,transparent:true,depthWrite:false,side:T.DoubleSide});materials.add(m);return m;}
  function add(mesh,level,x,z){mesh.renderOrder=125;mesh.castShadow=false;mesh.receiveShadow=false;ponds.push({mesh,level,x,z});}
  function lighting(light){for(const p of ponds){const u=p.mesh.material.uniforms;u.sky.value.set(light.sky).lerp(new T.Color(light.style==='evening'?'#8297b5':'#77a5cc'),.4);u.horizon.value.set(light.sky).lerp(new T.Color('#e2e5cf'),.5);u.sunColor.value.set(light.sun).multiplyScalar(light.style==='cloud'?.12:1);u.sunDirection.value.set(...light.direction);}}
  function reflect(camera,enabled,scenery){active=null;for(const p of ponds)p.mesh.material.uniforms.hasReflection.value=0;if(failed||!enabled||!ponds.length)return;
@@ -54,5 +54,5 @@ export function makeWaterKit(T,{renderer,scene,materials,cleanup}){
  }catch(e){failed=true;console.warn('Pond reflection unavailable; using sky reflection',e);}finally{renderer.setRenderTarget(oldTarget);renderer.clippingPlanes=oldClip;renderer.shadowMap.autoUpdate=oldAuto;renderer.shadowMap.needsUpdate=oldShadow;for(let i=0;i<ponds.length;i++)ponds[i].mesh.visible=vis[i];scenery?.follow(camera);}
  }
  cleanup.add(()=>target?.dispose());
- return {material,add,lighting,reflect,get count(){return ponds.length;},get reflected(){return !!active;}};
+ return {material,add,lighting,reflect,setMotion(t,s){for(const p of ponds){p.mesh.material.uniforms.rippleTime.value=t;p.mesh.material.uniforms.rippleStrength.value=s;}},get count(){return ponds.length;},get reflected(){return !!active;}};
 }

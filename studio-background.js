@@ -14,10 +14,10 @@ export function makeScenery(T,{scene,geo,materials,textures,model,elevation,nx,n
  const group=new T.Group();scene.add(group);const w=model.width,d=model.depth,rad=Math.max(w,d,10),layout=ringLayout(w,d,nx,ny),{edge,rings}=layout;
  const cloudSize=256,cloudPixels=new Uint8Array(cloudSize*cloudSize*4);for(let j=0;j<cloudSize;j++)for(let i=0;i<cloudSize;i++){const v=Math.round(255*cloudField(i/cloudSize,j/cloudSize)),k=(j*cloudSize+i)*4;cloudPixels[k]=cloudPixels[k+1]=cloudPixels[k+2]=v;cloudPixels[k+3]=255;}
  const cloudTex=new T.DataTexture(cloudPixels,cloudSize,cloudSize);cloudTex.wrapS=cloudTex.wrapT=T.RepeatWrapping;cloudTex.magFilter=T.LinearFilter;cloudTex.minFilter=T.LinearMipmapLinearFilter;cloudTex.generateMipmaps=true;cloudTex.colorSpace=T.NoColorSpace;cloudTex.needsUpdate=true;textures.add(cloudTex);
- const skyMat=new T.ShaderMaterial({side:T.BackSide,depthWrite:false,depthTest:false,toneMapped:false,uniforms:{horizon:{value:new T.Color('#d6dfd5')},zenith:{value:new T.Color('#93b6cf')},sunColor:{value:new T.Color('#fff0d7')},sunDir:{value:new T.Vector3(0,1,0)},glow:{value:.14},cloudMap:{value:cloudTex},cloudCover:{value:.45},cloudLight:{value:new T.Color('#f1eee4')},cloudShade:{value:new T.Color('#a7b6bd')},sunDisc:{value:1}},vertexShader:'varying vec3 vDir; void main(){vDir=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}',fragmentShader:`
+ const skyMat=new T.ShaderMaterial({side:T.BackSide,depthWrite:false,depthTest:false,toneMapped:false,uniforms:{horizon:{value:new T.Color('#d6dfd5')},zenith:{value:new T.Color('#93b6cf')},sunColor:{value:new T.Color('#fff0d7')},sunDir:{value:new T.Vector3(0,1,0)},glow:{value:.14},cloudMap:{value:cloudTex},cloudCover:{value:.45},cloudLight:{value:new T.Color('#f1eee4')},cloudShade:{value:new T.Color('#a7b6bd')},sunDisc:{value:1},cloudDrift:{value:new T.Vector2()}},vertexShader:'varying vec3 vDir; void main(){vDir=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}',fragmentShader:`
  varying vec3 vDir;
  uniform vec3 horizon,zenith,sunColor,sunDir,cloudLight,cloudShade;
- uniform float glow,cloudCover,sunDisc;uniform sampler2D cloudMap;
+ uniform float glow,cloudCover,sunDisc;uniform sampler2D cloudMap;uniform vec2 cloudDrift;
  void main(){
  vec3 dir=normalize(vDir);float h=max(0.,dir.y),t=pow(h,.53);
  vec3 c=mix(horizon,zenith,t);float sd=max(0.,dot(dir,normalize(sunDir)));
@@ -28,7 +28,7 @@ export function makeScenery(T,{scene,geo,materials,textures,model,elevation,nx,n
  c=mix(c,mix(sunColor,vec3(1.),.72),disc*.98);
  // Sample a seamless noise field on an apparent cloud plane, with horizon fade.
  if(cloudCover>.001&&dir.y>.025){
- vec2 q=dir.xz/(h+.28)*.39+vec2(.18,.47);
+ vec2 q=dir.xz/(h+.28)*.39+vec2(.18,.47)+cloudDrift;
  float n=texture2D(cloudMap,q).r;
  float detail=texture2D(cloudMap,q*2.03+vec2(.21,.39)).r;
  float field=n*.83+detail*.17;
@@ -61,5 +61,5 @@ export function makeScenery(T,{scene,geo,materials,textures,model,elevation,nx,n
  let ci=0,ti=0;const list=scenicTrees(w,d,config.preset,config.density);for(const o of list){const y=scenicHeight(o.x,o.y,w,d,elevation,config.preset),x=o.x-w/2,z=o.y-d/2,fade=config.haze*(o.row?.56:.26);dummy.rotation.set(0,0,0);dummy.position.set(x,y+o.h*.30,z);dummy.scale.set(o.h*.085,o.h*.60,o.h*.085);dummy.updateMatrix();trunks.setMatrixAt(ti,dummy.matrix);trunks.setColorAt(ti++,color.copy(trunkColor).lerp(horizon,fade));green.copy(treeA).lerp(treeB,o.tone).lerp(horizon,fade);for(let j=0;j<3;j++){const a=j*2.399+o.tone*6.28,offset=j===0?0:o.spread*.22;dummy.position.set(x+Math.cos(a)*offset,y+o.h*(j===0?.77:.66),z+Math.sin(a)*offset);dummy.rotation.set(0,a,0);dummy.scale.set(o.spread*(j===0?.85:.65),o.h*(j===0?.58:.43),o.spread*(j===0?.83:.67));dummy.updateMatrix();crown.setMatrixAt(ci,dummy.matrix);crown.setColorAt(ci++,color.copy(green).multiplyScalar(j===0?1:.91));}}
  crown.count=ci;trunks.count=ti;for(const m of [crown,trunks]){m.instanceMatrix.needsUpdate=true;if(m.instanceColor)m.instanceColor.needsUpdate=true;}treeCount=ti;
  }
- return {update,follow(camera){if(group.visible)sky.position.copy(camera.position);},get count(){return group.visible?treeCount:0;},get preset(){return config.preset;}};
+ return {update,setMotion(t,s){skyMat.uniforms.cloudDrift.value.set((t*.004*s)%1,(t*.0017*s)%1);},follow(camera){if(group.visible)sky.position.copy(camera.position);},get count(){return group.visible?treeCount:0;},get preset(){return config.preset;}};
 }
