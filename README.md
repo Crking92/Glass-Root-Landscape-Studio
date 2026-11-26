@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.11.5
+# Glass Root Landscape Studio v0.11.6
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation or paid assets are required. The core 2D editor and legacy Canvas view run locally; GIS services and the new Three.js engine have optional online dependencies.
 
@@ -21,6 +21,11 @@ Read [AGENTS.md](AGENTS.md) before any development work. It defines cross-chat o
 - Set snapping to off, 6 inches, 1 foot, or 5 feet. Use Select / move to drag, edit, duplicate, or delete objects.
 - Choose mulch, gravel, concrete, decomposed granite, grass, or bare soil for new surfaces or edit the material of a selected surface. Surface quantities are summed individually; overlaps are not deducted. Mulch volume = area (sq ft) × depth (in) / 324, before waste allowance.
 - Space + drag or middle mouse pans; wheel zooms. Use 3D Studio for the new mesh preview, or switch to 3D classic as a fallback.
+
+## Natural water and planar reflection (v0.11.6)
+- Pond shader uses terrain-derived depth for excavated ponds, shallow olive/teal to deeper green-blue color, varying opacity, world-space ripple normals, Fresnel sky reflection and sunlight glint. Legacy flat ponds use an illustrative depth of 0.65 ft for rendering only. Existing basin geometry and water elevations unchanged; not physical water chemistry or hydraulic modeling.
+- Detailed graphics render one clipped mirrored-camera reflection for the nearest pond below the camera, up to 768 px long edge. Other ponds and Standard/Simple use procedural sky reflection. Reflection pass hides all pond meshes, restores renderer state and sky position, and falls back on failure. Reflections are static ripples, not animated; expensive camera transitions use sky reflection. PNG export also renders the reflection with overlays hidden. No changes to saved geometry, quantities, shared models, or client renderer pin.
+- 407 pure reflection geometry, depth bounds, Fresnel and syntax checks passed. Actual WebGL shader compilation, render target color, clip behavior, reflection orientation and browser performance require user testing. Pages #97 succeeded; prior scenic backgrounds received positive user feedback.
 
 ## Scenic backgrounds and atmosphere (v0.11.5)
 - Three.js Background menu: Hill Country (default), Tree line, Open meadow and None, with adjustable tree density and distance haze. A camera-centered shader sky gradient follows the current lighting style and sun direction; a low-detail outer terrain ring meets the rectangular canvas edge and blends into stylized distant hills or meadow. Up to 360 deterministic trees with instanced low-detail canopies/trunks, no background cast shadows. None restores the original flat background.
