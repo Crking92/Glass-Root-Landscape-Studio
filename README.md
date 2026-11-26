@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.10.5
+# Glass Root Landscape Studio v0.10.6
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation or paid assets are required. The core 2D editor and legacy Canvas view run locally; GIS services and the new Three.js engine have optional online dependencies.
 
@@ -21,6 +21,11 @@ Read [AGENTS.md](AGENTS.md) before any development work. It defines cross-chat o
 - Set snapping to off, 6 inches, 1 foot, or 5 feet. Use Select / move to drag, edit, duplicate, or delete objects.
 - Choose mulch, gravel, concrete, decomposed granite, grass, or bare soil for new surfaces or edit the material of a selected surface. Surface quantities are summed individually; overlaps are not deducted. Mulch volume = area (sq ft) × depth (in) / 324, before waste allowance.
 - Space + drag or middle mouse pans; wheel zooms. Use 3D Studio for the new mesh preview, or switch to 3D classic as a fallback.
+
+## Terrain-following hardscape and soft material edges (v0.10.6)
+- On nonflat terrain, straight wooden fences and limestone walls now render in stepped upright sections following the sampled local grade. Target section length is 6 ft for fences and 4 ft for walls, capped at 48 sections per object; base pieces extend downward to the lowest sampled section elevation. Flat segments retain the original models. Total plan length, dimensions, position, saved JSON and quantity calculations are unchanged; geometry is still conceptual (not continuous raked rails, retaining-wall engineering or surveyed foundations). Detailed parts retain the existing budget with simpler section proxies when exceeded.
+- Natural-material surfaces (mulch, soil, grass, gravel and decomposed granite) use a separate procedural edge-opacity mask in Three.js to soften the outline over underlying ground. Concrete and pond edges remain crisp. Material tiles retain their independent world-scale UVs. Up to 96 masks, maximum 512 px per axis; extremely narrow/large shapes may retain crisp edges. Transparent overlapping surfaces use drawing order, not physical material blending. Existing footprint and area remain unchanged.
+- 61 pure geometry/layout and syntax assertions passed. Actual Three.js appearance, alpha-mask behavior, performance and steep-slope visual testing are pending. Existing 2D/classic views, 315 plant records and shared assets are unchanged. Pages run #78 succeeded.
 
 ## Mass planting preview and water polish (v0.10.5)
 - The mass planting panel now reports a live percentage total, warns about invalid/duplicate species or totals other than 100%, and offers an explicit equal split. Rain gardens are named correctly in the target list. Existing allocation, placement, and undo rules remain unchanged.

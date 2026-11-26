@@ -18,6 +18,17 @@ export function hardParts(o,detail=true){
  return out;
 }
 export function localPlacement(o,p){const a=-(o.angle||0)*Math.PI/180,c=Math.cos(a),s=Math.sin(a),x=p.x*o.w,z=p.z*o.h;return {x:o.x+c*x+s*z,y:o.y-s*x+c*z,z:p.y*o.height,scale:[p.w*o.w,p.h*o.height,p.d*o.h],angle:a};}
+export function steppedSections(o,elevation){
+ if(!['woodfence','wall'].includes(o.kind))return [o];
+ const n=Math.min(48,Math.max(1,Math.ceil(o.w/(o.kind==='wall'?4:6)))),a=(o.angle||0)*Math.PI/180,c=Math.cos(a),s=Math.sin(a);
+ const z=t=>elevation(o.x+c*t,o.y+s*t);
+ let lo=Infinity,hi=-Infinity;for(let i=0;i<=n*4;i++){const v=z(o.w*(i/(n*4)-.5));lo=Math.min(lo,v);hi=Math.max(hi,v);}
+ if(hi-lo<.04)return [o];
+ const sections=[];for(let i=0;i<n;i++){const w=o.w/n,t=(i+.5)*w-o.w/2,x=o.x+c*t,y=o.y+s*t,center=z(t);let bottom=center;
+ for(let j=0;j<=4;j++)bottom=Math.min(bottom,z(t+w*(j/4-.5)));
+ sections.push({...o,id:o.id+'-section-'+i,x,y,w,foundation:Math.max(0,center-bottom)});}
+ return sections;
+}
 export function makeHardscapeRenderer(T,{mat,geo,world,box,cylinder,scene,shadowOn}){
  const meshes=new Map(),geos=new Map([['box',box],['cylinder',cylinder]]),mats=new Map(),buckets=new Map();
  function geometry(shape){if(geos.has(shape))return geos.get(shape);let g;
@@ -26,7 +37,7 @@ export function makeHardscapeRenderer(T,{mat,geo,world,box,cylinder,scene,shadow
  else if(shape==='roof'){const A=[-.5,-.5,-.5],B=[.5,-.5,-.5],C=[.5,-.5,.5],D=[-.5,-.5,.5],E=[-.5,.5,0],F=[.5,.5,0];g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute([A,B,F,A,F,E,D,E,F,D,F,C,A,D,E,B,F,C,A,D,C,A,C,B].flat(),3));g.computeVertexNormals();}
  else g=new T.BoxGeometry(1,1,1);
  g=geo(g);geos.set(shape,g);return g;}
- let detailedParts=0;function add(o,detail){let parts=hardParts(o,detail&&detailedParts<30000);if(detail&&detailedParts+parts.length>30000)parts=hardParts(o,false);detailedParts+=parts.length;for(const p of parts){const key=p.shape+'|'+p.color;let b=buckets.get(key);if(!b){b={shape:p.shape,color:p.color,items:[]};buckets.set(key,b);}b.items.push({o,p:localPlacement(o,p)});}}
+ let detailedParts=0,steppedCount=0;function add(original,detail){const sections=steppedSections(original,(x,y)=>world(x,y).y);if(sections.length>1)steppedCount++;for(const o of sections){let parts=hardParts(o,detail&&detailedParts<30000);if(detail&&detailedParts+parts.length>30000)parts=hardParts(o,false);detailedParts+=parts.length;for(const p of parts){const key=p.shape+'|'+p.color;let b=buckets.get(key);if(!b){b={shape:p.shape,color:p.color,items:[]};buckets.set(key,b);}const placed=localPlacement(o,p);if(o.foundation>0&&p.y-p.h/2<.025){placed.z-=o.foundation/2;placed.scale[1]+=o.foundation;}b.items.push({o,p:placed});}}}
  function finish(){const dummy=new T.Object3D();let count=0;for(const [key,b] of buckets){let material=mats.get(b.color);if(!material){material=mat(b.color,{flatShading:true,side:T.DoubleSide});mats.set(b.color,material);}const mesh=new T.InstancedMesh(geometry(b.shape),material,b.items.length);for(let i=0;i<b.items.length;i++){const {o,p}=b.items[i],base=world(o.x,o.y);dummy.position.set(base.x+p.x-o.x,base.y+p.z,base.z+p.y-o.y);dummy.rotation.set(0,p.angle,0);dummy.scale.set(...p.scale);dummy.updateMatrix();mesh.setMatrixAt(i,dummy.matrix);}mesh.instanceMatrix.needsUpdate=true;mesh.computeBoundingSphere();mesh.castShadow=shadowOn;mesh.receiveShadow=true;scene.add(mesh);meshes.set(key,mesh);count+=b.items.length;}buckets.clear();return count;}
- return {add,finish};
+ return {add,finish,get steppedCount(){return steppedCount;}};
 }
