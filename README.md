@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.11.8
+# Glass Root Landscape Studio v0.11.9
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation or paid assets are required. The core 2D editor and legacy Canvas view run locally; GIS services and the new Three.js engine have optional online dependencies.
 
@@ -21,6 +21,11 @@ Read [AGENTS.md](AGENTS.md) before any development work. It defines cross-chat o
 - Set snapping to off, 6 inches, 1 foot, or 5 feet. Use Select / move to drag, edit, duplicate, or delete objects.
 - Choose mulch, gravel, concrete, decomposed granite, grass, or bare soil for new surfaces or edit the material of a selected surface. Surface quantities are summed individually; overlaps are not deducted. Mulch volume = area (sq ft) × depth (in) / 324, before waste allowance.
 - Space + drag or middle mouse pans; wheel zooms. Use 3D Studio for the new mesh preview, or switch to 3D classic as a fallback.
+
+## Procedural clouds and natural skies (v0.11.9)
+- Existing Background menu gains a Cloud cover slider (0–100%, default 45%). A single original seamless 256 px deterministic cloud-noise texture, sampled twice in the sky shader, creates soft irregular cloud shapes on an apparent elevated plane, fading near the horizon. Lighting presets tint cloud highlights/shadows, horizon and sky dome; Overcast increases coverage and hides the solar disc. A small stylized sun and aureole align with existing compass/elevation lighting controls. Background None restores the original flat background.
+- Distant scenery color blending now approaches its haze limit gradually. Existing scene geometry, lighting intensities and plant data unchanged. No real weather or sun-position simulation, volumetric clouds, cloud shadows or animation. Planar pond reflections include the rendered sky; other ponds retain simpler procedural reflection. Session-wide background setting, no client export pin change.
+- 320 periodic texture noise, variation, coverage bounds, deterministic behavior and syntax/ID checks passed. Actual GLSL compilation, cloud appearance, reflection and AO interaction still require browser testing. Pages #108 succeeded.
 
 ## Screen-space ambient shading (v0.11.8)
 - Optional Ambient occlusion checkbox in Lighting, default on. Detailed mode uses a depth-texture color pass and twelve bounded view-space neighborhood samples to darken nearby occluding geometry. Depth-derived normals and finite world radius reduce broad halos. Existing procedural contact shadows remain.

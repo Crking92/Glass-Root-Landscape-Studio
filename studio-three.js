@@ -79,7 +79,7 @@ let structureModule=null;try{structureModule=await import('./studio-structure-ma
 let aoModule=null;try{aoModule=await import('./studio-occlusion.js?v=1');}catch(e){console.warn('Ambient occlusion unavailable',e);}
 const terrainModule=await import('./studio-terrain.js?v=2');
 let waterModule=null;try{waterModule=await import('./studio-water.js?v=1');}catch(e){console.warn('Advanced water unavailable',e);}
-let sceneryModule=null;try{sceneryModule=await import('./studio-background.js?v=1');}catch(e){console.warn('Background unavailable',e);}
+let sceneryModule=null;try{sceneryModule=await import('./studio-background.js?v=2');}catch(e){console.warn('Background unavailable',e);}
 let detailModule=null;try{detailModule=await import('./studio-ground-detail.js?v=2');}catch(e){console.warn('Ground details unavailable',e);}
 let sharedRegistry=null;try{sharedRegistry=await import('./plant-models/registry.js');}catch(e){console.warn('Shared plant models unavailable; using existing meshes.',e);}
 let renderer,disposed=false,frame=0,observer=null,scene=null;const cleanup=new Set(),geometries=new Set(),materials=new Set(),textures=new Set();
@@ -98,7 +98,7 @@ applyLighting();
 function mat(color,extra={}){const m=new T.MeshStandardMaterial({color,roughness:.93,...extra});materials.add(m);return m;}
 function geo(g){geometries.add(g);return g;}
 function addMesh(g,m,pos,scale,angle=0){const mesh=new T.Mesh(g,m);if(pos)mesh.position.copy(pos);if(scale)mesh.scale.set(...scale);mesh.rotation.y=angle;mesh.castShadow=true;mesh.receiveShadow=true;scene.add(mesh);return mesh;}
-try{scenery=sceneryModule?.makeScenery(T,{scene,geo,materials,model,elevation:elev,nx:grid.nx,ny:grid.ny,camera});scenery?.update(settings.background,lightState);}catch(e){console.warn('Background setup unavailable',e);}
+try{scenery=sceneryModule?.makeScenery(T,{scene,geo,materials,textures,model,elevation:elev,nx:grid.nx,ny:grid.ny,camera});scenery?.update(settings.background,lightState);}catch(e){console.warn('Background setup unavailable',e);}
 const getGroundTexture=groundModule?.makeGroundTextures(T,{textures,renderer});function groundStyle(kind){try{return getGroundTexture?.(kind)||null;}catch(e){console.warn('Ground texture unavailable:',kind,e);return null;}}
 const terrainGeo=geo(new T.PlaneGeometry(model.width,model.depth,grid.nx,grid.ny));terrainGeo.rotateX(-Math.PI/2);const verts=terrainGeo.attributes.position;for(let i=0;i<verts.count;i++)verts.setY(i,elev(verts.getX(i)+model.width/2,verts.getZ(i)+model.depth/2));terrainGeo.computeVertexNormals();const grassStyle=groundStyle('grass'),lawnMap=grassStyle?.map.clone()||null;if(lawnMap){lawnMap.repeat.set(model.width/grassStyle.tile,model.depth/grassStyle.tile);lawnMap.needsUpdate=true;textures.add(lawnMap);}const lawnBump=grassStyle?.bump.clone()||null;if(lawnBump){lawnBump.repeat.copy(lawnMap.repeat);lawnBump.needsUpdate=true;textures.add(lawnBump);}const tones=[];for(let i=0;i<verts.count;i++){const t=detailModule?.groundTone(verts.getX(i)+model.width/2,verts.getZ(i)+model.depth/2)??1;tones.push(t,t,t);}terrainGeo.setAttribute('color',new T.Float32BufferAttribute(tones,3));const groundMat=mat(lawnMap?'#ffffff':'#8fa76c',{map:lawnMap,bumpMap:lawnBump,bumpScale:.055,vertexColors:true}),ground=addMesh(terrainGeo,groundMat);ground.castShadow=false;
 let aerialState='none',aerialVersion=0,aerialTexture=null,aerialImage=null,aerialSource=null,aerialKey=null;
