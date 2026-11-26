@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.10.7
+# Glass Root Landscape Studio v0.10.8
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation or paid assets are required. The core 2D editor and legacy Canvas view run locally; GIS services and the new Three.js engine have optional online dependencies.
 
@@ -21,6 +21,12 @@ Read [AGENTS.md](AGENTS.md) before any development work. It defines cross-chat o
 - Set snapping to off, 6 inches, 1 foot, or 5 feet. Use Select / move to drag, edit, duplicate, or delete objects.
 - Choose mulch, gravel, concrete, decomposed granite, grass, or bare soil for new surfaces or edit the material of a selected surface. Surface quantities are summed individually; overlaps are not deducted. Mulch volume = area (sq ft) × depth (in) / 324, before waste allowance.
 - Space + drag or middle mouse pans; wheel zooms. Use 3D Studio for the new mesh preview, or switch to 3D classic as a fallback.
+
+## Lighting studio (v0.10.8)
+- Compact expandable Lighting control inside the Three.js toolbar (including fullscreen). Five illustrative lighting styles: daylight, morning, midday, golden hour and overcast. Each sets a sky/background, hemisphere fill, sun color/intensity and default sun compass bearing and elevation. Adjust bearing (north 0°, east 90°), elevation 8–85°, exposure and cast shadows live. Reset restores daylight.
+- Directional shadow map now up to 2048 pixels, with a property-scaled camera and bias; shadow rendering remains demand-driven and limited to 250 plants. Overcast disables direct cast shadows. Cast-capable meshes retain that capability when shadows are toggled off/on. No new dependencies or full scene rebuild for lighting changes. Lighting changes do not alter project geometry, undo history or JSON; settings last for the current page session and persist across scene rebuilds. PNG exports use the current lighting.
+- Presets are artistic, not actual time/date/location sun positions, solar/shade analysis, atmospheric scattering, area-light shadows or physically measured exposure. Very large sites and steep/tall geometry may still have limited shadow resolution. Actual browser visuals/performance and toggling need user review.
+- 54 numeric and syntax checks passed; Pages run #80 succeeded. Contextual workspace received positive user browser feedback.
 
 ## Contextual workspace (v0.10.7)
 - Main left toolbar keeps Select / move, Place plant and Mass planting visible; expandable Beds & paths, Buildings & hardscape, Terrain & water, and Property & editing groups retain all other tools. Active tool opens its group and reveals only its drawing settings. Property dimensions, GIS, aerial, terrain site settings and navigation are separate expandable panels.
