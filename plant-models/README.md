@@ -2,6 +2,12 @@
 
 Owners: botanical-model chat owns this directory and species-mesh-lab/. Studio chat owns studio-three.js and main editor. Coordinate before replacing the working Studio muhly generator.
 
+## Realism review 05 — fragrant mistflower terminal bouquets (lab 0.6.1)
+
+- Owner reference photo emphasizes white clusters at outward branch ends, separated by leafy green canopy. Revised only mistflower bloom placement and cluster geometry; no image copied. Existing Wildflower Center AGHA4 and Texas Wildbuds citations retained.
+- Distal shoots are prioritized, with occasional upper secondary bouquets. A shared peduncle supports three or four short secondary sprays, each bearing tightly grouped heads; one central head completes the gently domed cap. High/medium/low have 17/13/10 modeled heads per bouquet. These counts and dimensions are artistic, not diagnostic measurements. Early buds and dry structures retained.
+- Mature seed 42 high-detail bloom sites 115 → 54; medium 48 → 30; low 26 → 18. Triangle counts high 312,734 → 252,428; medium 68,538 → 58,962; low 16,822 → 17,874. All 75 mistflower cases passed raw finite buffer and normalized bounds/color checks. Leafy meshes bit-identical across all 15 seed/LOD cases; other species source blobs unchanged. Seed repeatability/variation and lab script syntax passed. Live browser appearance, deployment, and performance pending. Previous mistflower mesh preserved in Git blob `59211b1ee52048cc8ef25705c25c783e0f67b925`. No editor or scene changes, no production promotion.
+
 ## Species 004 — fragrant mistflower / shrubby boneset (lab 0.6)
 
 - Added original `fragrant-mistflower.js` for existing palette ID `tz-ageratina-havanensis`, Ageratina havanensis. Prototype, not production approved. Both grass visual benchmarks and autumn sage module preserved byte-for-byte.
