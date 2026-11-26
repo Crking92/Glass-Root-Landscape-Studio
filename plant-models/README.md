@@ -2,6 +2,12 @@
 
 Owners: botanical-model chat owns this directory and species-mesh-lab/. Studio chat owns studio-three.js and main editor. Coordinate before replacing the working Studio muhly generator.
 
+## Realism review 04 — autumn sage (lab 0.5.3)
+
+- Owner gave positive visual feedback on little bluestem in lab 0.5.2. Both grass benchmarks are preserved: grass module blob `7296c65c731933eef9b60ddde199ed086fa63df7` unchanged. Positive lab review is not default production approval.
+- Autumn sage p6: fuller, uneven woody mound; more lower and interior leafy branches, varied stem heights and outward curvature, connected axillary shoots, opposite rounded leaves and nuanced green tones. More distinct three-lobed lower corolla lip, red color variation, slightly varied raceme orientation and flowering density. Selective detail exaggeration for landscape readability; no cultivar, exact phenology, or new county-nativity claim. Existing Wildflower Center SAGR4 and Gibson Williamson County citations retained without repeating completed research. Mild winter foliage behavior remains unchanged in principle; existing palette not edited.
+- Mature seed 42 triangle counts: 191,286 / 64,528 / 15,880 (high/medium/low); increased versus prior 181,662 / 59,766 / 13,568 despite simplifying leaf tessellation. All 75 sage configurations passed finite matching geometry checks, repeatability and variation checked; all 225 registry configurations passed normalized bounds and color checks; lab script syntax passed. No live browser rendering or performance verification. Prior sage geometry preserved in Git history (blob `d053074962e24fb524ab7e89d559eaef38a0143a`). Main editor, engine and palette untouched. Next: visual review, then fragrant mistflower.
+
 ## Realism review 03 — little bluestem (lab 0.5.2)
 
 - Owner gave positive visual feedback on dense muhly flowerheads in lab 0.5.1; preserve as the current visual benchmark, not production approval. All 75 muhly seed/stage/detail combinations are bit-identical to prior geometry.
