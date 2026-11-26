@@ -1,6 +1,6 @@
 // Shared botanical asset contract v1. No engine or DOM dependency.
-import {buildGrass} from './grasses.js';
-import {buildAutumnSage} from './autumn-sage.js';
+import {buildGrass} from './grasses.js?v=realism01';
+import {buildAutumnSage} from './autumn-sage.js?v=prototype01';
 
 export const appearanceStates=Object.freeze(['leafy','young','mature','fall','dry']);
 export const detailLevels=Object.freeze(['high','medium','low']);
