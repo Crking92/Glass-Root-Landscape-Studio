@@ -5,6 +5,7 @@ const presets={
  steel:{name:'Steel edging',width:.08,height:.25,piece:6,colors:['#414d4e','#566061'],continuous:true},
  brick:{name:'Brick edging',width:.33,height:.24,piece:.67,colors:['#a26a50','#b57d5f','#935c48','#bb8769']},
  limestone:{name:'Limestone edging',width:.65,height:.42,piece:.9,colors:['#c9c0a5','#bcb59d','#ddd5bc','#ada58f']},
+ sandstone:{name:'Sandstone edging',width:.65,height:.42,piece:1.1,colors:['#b99470','#c8a580','#ad8864','#d3b58e']},
  riverrock:{name:'River rock edging',width:.65,height:.34,piece:.65,colors:['#8e958e','#b0aaa0','#c8bb9f','#777f7d'],round:true},
  timber:{name:'Timber edging',width:.45,height:.32,piece:6,colors:['#806445','#a08461'],continuous:true}
 };
@@ -15,7 +16,7 @@ function length(pts){return pts.reduce((n,a,j)=>{const b=pts[(j+1)%pts.length];r
 function hash(str){let h=2166136261;for(const c of String(str))h=Math.imul(h^c.charCodeAt(0),16777619);return h>>>0;}
 function pieces(pts,e,id,limit=1800){if(!valid(e)||!e||pts.length<3||limit<1)return [];const p=presets[e.kind],total=length(pts),step=Math.max(e.piece,total/Math.max(1,limit-pts.length));const out=[];
  for(let j=0;j<pts.length;j++){const a=pts[j],b=pts[(j+1)%pts.length],dx=b[0]-a[0],dy=b[1]-a[1],len=Math.hypot(dx,dy);if(len<.001)continue;const n=Math.max(1,Math.ceil(len/step)),angle=Math.atan2(dy,dx);
-  for(let k=0;k<n;k++){if(out.length>=limit)return out;const f=(k+.5)/n,h=hash(id+'|'+j+'|'+k),variation=(h%101)/100;out.push({x:a[0]+dx*f,y:a[1]+dy*f,angle,l:len/n*(p.continuous?1.015:.95),w:e.width*(p.round?.85+variation*.3:1),h:e.height*(p.round?.78+variation*.34:1),color:p.colors[h%p.colors.length],round:!!p.round});}
+  for(let k=0;k<n;k++){if(out.length>=limit)return out;const f=(k+.5)/n,h=hash(id+'|'+j+'|'+k),variation=(h%101)/100;out.push({x:a[0]+dx*f,y:a[1]+dy*f,angle,l:len/n*(p.continuous?1.015:.95),w:e.width*(p.round?.85+variation*.3:1),h:e.height*(p.round?.78+variation*.34:1),color:p.colors[h%p.colors.length],round:!!p.round,shape:['limestone','sandstone'].includes(e.kind)?'stone':p.round?'rock':'block',variant:h%4});}
  }return out;
 }
 function draw(ctx,pts,e,id,project,scale){if(!e||!valid(e)||pts.length<3)return;const p=presets[e.kind],width=Math.max(1,e.width*scale);ctx.save();ctx.lineJoin='round';ctx.lineCap='round';ctx.beginPath();pts.forEach((a,j)=>{const b=project(a);j?ctx.lineTo(...b):ctx.moveTo(...b);});ctx.closePath();ctx.strokeStyle='#504a3d';ctx.lineWidth=width+1.2;ctx.stroke();ctx.strokeStyle=p.colors[0];ctx.lineWidth=width;ctx.stroke();

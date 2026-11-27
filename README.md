@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.13.7
+# Glass Root Landscape Studio v0.13.8
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation or paid assets are required. The core 2D editor and legacy Canvas view run locally; GIS services and the new Three.js engine have optional online dependencies.
 
@@ -12,6 +12,11 @@ Read [AGENTS.md](AGENTS.md) before any development work. It defines cross-chat o
 - [Open the independent WebGL plant library](https://crking92.github.io/Glass-Root-Landscape-Studio/species-mesh-lab/). Two original species-specific prototypes: Lindheimer's muhly and little bluestem, five seeded individuals, five illustrative appearances, three detail levels, orbit and zoom. No external dependencies or copied photos.
 - Wildflower Center primary profiles and read-only Hays Botany Poaceae Grass ID Lab records inform visible morphology; species-level artistic geometry is not an identification key. Source links are shown for each species. No variety, cultivar or county-level nativity claim added.
 - Mesh generator checks: 150 species × stage × detail × individual combinations (2 × 5 × 3 × 5), finite matching position/normal/color arrays and deterministic seed variation. Mature individual 01 plant triangles: muhly 119,800 / 37,140 / 9,000; little bluestem 123,828 / 36,184 / 9,052 (high/medium/low). Ground shading is illustrative; no real cast shadows. Browser visual/performance testing and integration of the latest lab models remain pending. The main editor now has an independent Three.js preview; saved project schema remains unchanged.
+
+## Natural stone details (v0.13.8)
+- Five new hardscape types: single limestone/sandstone blocks, straight limestone/sandstone borders, stacked sandstone wall. Existing limestone wall upgraded. Rough split-face or straighter sawn concept finish, editable dimensions/rotation, nominal piece length, wall course height and capstone toggle. Normalized beveled faceted variants, material colors, staggered courses, instanced rendering, terrain stepping. Original rounded boulders remain.
+- Attached sandstone edging added; attached limestone/sandstone now use faceted geometry instead of plain cubes. 2D and presentation plans show clipped-corner block divisions. No exact quarry textures, structural design or freeform standalone curves. Piece/course dimensions adjust to fit overall length; detail caps apply.
+- Saved optional stone settings validated and allowlisted. New browser scenario and 23 hardscape options; pending browser and visual review.
 
 ## Attached landscape edging (v0.13.7)
 - Select a bed, rectangular path, curved path or water outline in 2D and open Landscape edging. Steel, brick, limestone, river rock and timber presets; editable exposed height, width and piece length in feet; no edging removes it. The same centered outline follows geometry edits, movement and smoothing. Saved optional edging field, undo/redo, duplication and backward-compatible validation.

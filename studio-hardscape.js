@@ -2,6 +2,16 @@
 const shadeFrameColors={cedar:'#a77c4f',darkwood:'#68533e',white:'#e2e3d7',steel:'#4e5656'};
 const shadeCoverColors={sand:'#d5c4a0',charcoal:'#4e5656',terracotta:'#a56d50',green:'#617b65',silver:'#aeb8b5'};
 export function shadeStyle(o){const defaults={pergola:{roof:'slats',rise:.10},pavilion:{roof:'gable',rise:.27},gazebo:{roof:'hip',rise:.30},shadesail:{roof:'fabric',rise:.20}}[o.kind]||{roof:'flat',rise:.12};const a=o.shade||{},allowed={pergola:['slats','flat','gable','hip'],pavilion:['gable','hip','flat','slats'],gazebo:['hip','flat'],shadesail:['fabric']}[o.kind]||['flat'];const num=(x,d,lo,hi)=>Number.isFinite(x)?Math.max(lo,Math.min(hi,x)):d;return {roof:allowed.includes(a.roof)?a.roof:defaults.roof,frame:Object.hasOwn(shadeFrameColors,a.frame)?a.frame:'cedar',cover:Object.hasOwn(shadeCoverColors,a.cover)?a.cover:'sand',posts:[4,6,8].includes(a.posts)&&o.kind!=='shadesail'?a.posts:4,postSize:num(a.postSize,.5,.15,2),spacing:num(a.spacing,1.5,.5,6),rise:num(a.rise,defaults.rise,.04,.40),deck:a.deck===true,rails:o.kind==='gazebo'&&a.rails!==false};}
+export function naturalStoneGeometry(T,variant=0,finish='rough'){
+ const rough=finish==='rough',ring=[[-.5,-.36],[-.36,-.5],[.36,-.5],[.5,-.36],[.5,.36],[.36,.5],[-.36,.5],[-.5,.36]],verts=[],positions=[],colors=[],rnd=k=>{const n=Math.sin(k*127.1+(variant+1)*311.7)*43758.5453;return n-Math.floor(n);};
+ const levels=[[-.5,.82],[-.34,1],[.05,1],[.34,.98],[.5,.80]];
+ for(let j=0;j<levels.length;j++){const [y,scale]=levels[j];verts.push(ring.map(([x,z],k)=>{const a=rough?.045:.008,b=rough?.055:.008;return [x*scale+(rnd(j*23+k*3)-.5)*a,y+(j===0||j===4?0:(rnd(j*29+k)-.5)*b),z*scale+(rnd(j*37+k*3+1)-.5)*a];}));}
+ function tri(a,b,c,shade){positions.push(...a,...b,...c);for(let k=0;k<3;k++)colors.push(shade,shade,shade);}
+ for(let j=0;j<4;j++)for(let k=0;k<8;k++){const n=(k+1)%8,a=verts[j][k],b=verts[j][n],c=verts[j+1][n],d=verts[j+1][k],v=(rough?.82:.94)+rnd(j*9+k)*(rough?.25:.08);tri(a,b,d,v);tri(b,c,d,v*(rough?.96:1));}
+ for(let k=0;k<8;k++){const n=(k+1)%8;tri([0,.5,0],verts[4][n],verts[4][k],.97+rnd(k+100)*.06);tri([0,-.5,0],verts[0][k],verts[0][n],.76);}
+ const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(positions,3));g.setAttribute('color',new T.Float32BufferAttribute(colors,3));g.computeBoundingBox();const size=g.boundingBox.getSize(new T.Vector3()),center=g.boundingBox.getCenter(new T.Vector3());g.translate(-center.x,-center.y,-center.z);g.scale(1/size.x,1/size.y,1/size.z);g.computeVertexNormals();g.computeBoundingBox();g.computeBoundingSphere();return g;
+}
+export function stoneStyle(o){const a=o.stone||{},num=(v,d,lo,hi)=>Number.isFinite(v)?Math.max(lo,Math.min(hi,v)):d;return {finish:a.finish==='sawn'?'sawn':'rough',course:num(a.course,.5,.15,2),piece:num(a.piece,1.3,.25,8),cap:a.cap!==false};}
 export function hardParts(o,detail=true){
  const out=[],kind=o.kind,seed=[...String(o.id)].reduce((s,c)=>Math.imul(s,31)+c.charCodeAt(0)|0,7);let s=seed>>>0;const r=()=>((s=(Math.imul(s,1664525)+1013904223)>>>0)/4294967296);
  const part=(shape,color,x,y,z,w,h,d)=>out.push({shape,color,x,y,z,w,h,d});
@@ -20,6 +30,14 @@ export function hardParts(o,detail=true){
   else if(v.roof==='fabric')part('sailroof',cover,0,postH+rise*.5,0,1,rise,1);
   else part(oct?'octroof':v.roof==='gable'?'roof':'hiproof',cover,0,postH+rise*.5,0,1,rise,1);
   return out;
+ }
+ if(['limestoneblock','sandstoneblock','limestoneborder','sandstoneborder','wall','sandstonewall'].includes(kind)){
+ const a=stoneStyle(o),sand=kind.startsWith('sandstone'),palette=sand?['#b99470','#c8a580','#ad8864','#d3b58e','#aa8061']:['#c9c0a9','#d8cfb6','#b8b099','#cfc5ae','#b2a992'],shape=()=> 'stone-'+a.finish+'-'+Math.floor(r()*4),isBlock=kind.endsWith('block'),border=kind.endsWith('border'),cap=!isBlock&&!border&&a.cap;
+ if(isBlock||!detail){part(shape(),pick(palette),0,.5,0,1,1,1);return out;}
+ const capH=cap?Math.min(.16,.18/o.height):0,body=1-capH,rows=border?1:Math.min(16,Math.max(1,Math.ceil(o.height*body/a.course))),cols=Math.min(140,Math.max(1,Math.ceil(o.w/a.piece)));
+ for(let row=0;row<rows;row++){const cuts=[-.5];for(let j=1;j<=cols;j++){const x=(j-(row%2)*.5)/cols-.5;if(x>-.5&&x<.5)cuts.push(x);}cuts.push(.5);for(let j=0;j<cuts.length-1;j++){const l=cuts[j],rr=cuts[j+1],w=rr-l;part(shape(),pick(palette),(l+rr)/2,(row+.5)*body/rows,0,w*.99,body/rows*.985,1);}}
+ if(cap){const n=Math.min(100,Math.max(1,Math.ceil(o.w/(a.piece*1.35))));for(let k=0;k<n;k++)part(shape(),pick(palette),(k+.5)/n-.5,1-capH/2,0,.992/n,capH,1);}
+ return out;
  }
  if(kind==='boulder'||kind==='stepping'){part(rock(),pick(stone),0,.5,0,1,1,1);return out;}
  if(!detail&&kind!=='birdbath'){b(kind==='wall'?stone[0]:wood[0],0,.5,0,1,1,1);return out;}
@@ -41,8 +59,8 @@ export function hardParts(o,detail=true){
 }
 export function localPlacement(o,p){const a=-(o.angle||0)*Math.PI/180,c=Math.cos(a),s=Math.sin(a),x=p.x*o.w,z=p.z*o.h;return {x:o.x+c*x+s*z,y:o.y-s*x+c*z,z:p.y*o.height,scale:[p.w*o.w,p.h*o.height,p.d*o.h],angle:a-(p.turn||0)};}
 export function steppedSections(o,elevation){
- if(!['woodfence','wall'].includes(o.kind))return [o];
- const n=Math.min(48,Math.max(1,Math.ceil(o.w/(o.kind==='wall'?4:6)))),a=(o.angle||0)*Math.PI/180,c=Math.cos(a),s=Math.sin(a);
+ if(!['woodfence','wall','sandstonewall','limestoneborder','sandstoneborder'].includes(o.kind))return [o];
+ const n=Math.min(48,Math.max(1,Math.ceil(o.w/(o.kind==='woodfence'?6:4)))),a=(o.angle||0)*Math.PI/180,c=Math.cos(a),s=Math.sin(a);
  const z=t=>elevation(o.x+c*t,o.y+s*t);
  let lo=Infinity,hi=-Infinity;for(let i=0;i<=n*4;i++){const v=z(o.w*(i/(n*4)-.5));lo=Math.min(lo,v);hi=Math.max(hi,v);}
  if(hi-lo<.04)return [o];
@@ -54,7 +72,8 @@ export function steppedSections(o,elevation){
 export function makeHardscapeRenderer(T,{mat,geo,world,box,cylinder,scene,shadowOn,structureTexture,structureModule}){
  const meshes=new Map(),geos=new Map([['box',box],['cylinder',cylinder]]),mats=new Map(),buckets=new Map();
  function geometry(shape){if(geos.has(shape))return geos.get(shape);let g;
- if(shape.startsWith('woodbox')){g=structureModule.woodGeometry(T,shape.slice(-1));}
+ if(shape.startsWith('stone-')){const [,finish,variant]=shape.split('-');g=naturalStoneGeometry(T,Number(variant),finish);}
+ else if(shape.startsWith('woodbox')){g=structureModule.woodGeometry(T,shape.slice(-1));}
  else if(shape.startsWith('rock')){g=new T.IcosahedronGeometry(.5,2);const a=g.attributes.position,seed=Number(shape.slice(4))+1,lo=[Infinity,Infinity,Infinity],hi=[-Infinity,-Infinity,-Infinity];for(let i=0;i<a.count;i++){const x=a.getX(i),y=a.getY(i),z=a.getZ(i),n=.89+.13*Math.sin(x*12.7+y*8.5+z*15.3+seed*3.7)+.045*Math.cos(x*31+y*24-z*29+seed),v=[x*n+Math.sin(y*8+seed)*.045,Math.max(-.36,y*n)*.87,z*n+Math.cos(x*7+seed)*.04];for(let j=0;j<3;j++){lo[j]=Math.min(lo[j],v[j]);hi[j]=Math.max(hi[j],v[j]);}a.setXYZ(i,...v);}for(let i=0;i<a.count;i++)a.setXYZ(i,...[a.getX(i),a.getY(i),a.getZ(i)].map((v,j)=>(v-lo[j])/(hi[j]-lo[j])-.5));g.computeVertexNormals();}
  else if(shape==='bowl'||shape==='pedestal'){const points=shape==='bowl'?[[0,0],[.28,0],[.34,.23],[.43,.57],[.5,.84],[.5,1],[.43,1],[.39,.74],[.29,.5],[0,.5]]:[[0,0],[.5,0],[.5,.12],[.29,.19],[.23,.43],[.32,.69],[.45,.85],[.45,1],[0,1]];g=new T.LatheGeometry(points.map(([x,y])=>new T.Vector2(x,y-.5)),24);}
  else if(shape==='octroof'){g=new T.CylinderGeometry(0,.5/Math.cos(Math.PI/8),1,8,1,false,Math.PI/8);}
@@ -65,7 +84,7 @@ export function makeHardscapeRenderer(T,{mat,geo,world,box,cylinder,scene,shadow
  else if(shape==='roof'){const A=[-.5,-.5,-.5],B=[.5,-.5,-.5],C=[.5,-.5,.5],D=[-.5,-.5,.5],E=[-.5,.5,0],F=[.5,.5,0];g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute([A,B,F,A,F,E,D,E,F,D,F,C,A,D,E,B,F,C,A,D,C,A,C,B].flat(),3));g.computeVertexNormals();}
  else g=new T.BoxGeometry(1,1,1);
  g=geo(g);geos.set(shape,g);return g;}
- let detailedParts=0,steppedCount=0;function add(original,detail){const sections=steppedSections(original,(x,y)=>world(x,y).y);if(sections.length>1)steppedCount++;for(const o of sections){let parts=hardParts(o,detail&&detailedParts<30000);if(detail&&detailedParts+parts.length>30000)parts=hardParts(o,false);detailedParts+=parts.length;for(const p of parts){const placed=localPlacement(o,p),finish=structureModule?structureModule.hardFinish(o.kind,p):'plain',shape=finish==='wood'&&p.shape==='box'?'woodbox'+structureModule.grainAxis(placed.scale):p.shape,key=shape+'|'+p.color+'|'+finish;let b=buckets.get(key);if(!b){b={shape,color:p.color,finish,items:[]};buckets.set(key,b);}if(o.foundation>0&&p.y-p.h/2<.025){placed.z-=o.foundation/2;placed.scale[1]+=o.foundation;}b.items.push({o,p:placed});}}}
- function finish(){const dummy=new T.Object3D();let count=0;for(const [key,b] of buckets){const mk=b.color+'|'+b.finish;let material=mats.get(mk);if(!material){const texture=b.finish==='plain'?null:structureTexture?.(b.finish);material=mat(b.color,{...(texture||{}),flatShading:true,side:T.DoubleSide,roughness:.98});mats.set(mk,material);}const mesh=new T.InstancedMesh(geometry(b.shape),material,b.items.length);for(let i=0;i<b.items.length;i++){const {o,p}=b.items[i],base=world(o.x,o.y);dummy.position.set(base.x+p.x-o.x,base.y+p.z,base.z+p.y-o.y);dummy.rotation.set(0,p.angle,0);dummy.scale.set(...p.scale);dummy.updateMatrix();mesh.setMatrixAt(i,dummy.matrix);}mesh.instanceMatrix.needsUpdate=true;mesh.computeBoundingSphere();mesh.castShadow=shadowOn;mesh.receiveShadow=true;scene.add(mesh);meshes.set(key,mesh);count+=b.items.length;}buckets.clear();return count;}
+ let detailedParts=0,steppedCount=0;function add(original,detail){const sections=steppedSections(original,(x,y)=>world(x,y).y);if(sections.length>1)steppedCount++;for(const o of sections){let parts=hardParts(o,detail&&detailedParts<30000);if(detail&&detailedParts+parts.length>30000)parts=hardParts(o,false);detailedParts+=parts.length;for(const p of parts){const placed=localPlacement(o,p),finish=p.shape.startsWith('stone-')?'stone-faceted':structureModule?structureModule.hardFinish(o.kind,p):'plain',shape=finish==='wood'&&p.shape==='box'?'woodbox'+structureModule.grainAxis(placed.scale):p.shape,key=shape+'|'+p.color+'|'+finish;let b=buckets.get(key);if(!b){b={shape,color:p.color,finish,items:[]};buckets.set(key,b);}if(o.foundation>0&&p.y-p.h/2<.025){placed.z-=o.foundation/2;placed.scale[1]+=o.foundation;}b.items.push({o,p:placed});}}}
+ function finish(){const dummy=new T.Object3D();let count=0;for(const [key,b] of buckets){const mk=b.color+'|'+b.finish;let material=mats.get(mk);if(!material){const texture=['plain','stone-faceted'].includes(b.finish)?null:structureTexture?.(b.finish);material=mat(b.color,{...(texture||{}),vertexColors:b.finish==='stone-faceted',flatShading:true,side:T.DoubleSide,roughness:.98});mats.set(mk,material);}const mesh=new T.InstancedMesh(geometry(b.shape),material,b.items.length);for(let i=0;i<b.items.length;i++){const {o,p}=b.items[i],base=world(o.x,o.y);dummy.position.set(base.x+p.x-o.x,base.y+p.z,base.z+p.y-o.y);dummy.rotation.set(0,p.angle,0);dummy.scale.set(...p.scale);dummy.updateMatrix();mesh.setMatrixAt(i,dummy.matrix);}mesh.instanceMatrix.needsUpdate=true;mesh.computeBoundingSphere();mesh.castShadow=shadowOn;mesh.receiveShadow=true;scene.add(mesh);meshes.set(key,mesh);count+=b.items.length;}buckets.clear();return count;}
  return {add,finish,get steppedCount(){return steppedCount;}};
 }
