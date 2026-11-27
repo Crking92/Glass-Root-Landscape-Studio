@@ -2,6 +2,12 @@
 
 Owners: botanical-model chat owns this directory and species-mesh-lab/. Studio chat owns studio-three.js and main editor. Coordinate before replacing the working Studio muhly generator.
 
+## First palette expansion — 44 provisional concept plants (2026-11-27)
+
+- Owner authorized basic versions of the reviewed candidate plants. Main editor palette-only coordinated change: 26 priority nursery entries plus 18 additional Austin NPSOT taxa (Gregg's mistflower counted once). Existing 315 records byte-identical in the inline array; total 359. New IDs stable `tz-*`. Gregg's mistflower accepted name Conoclinium dissectum retains nursery synonym in aliases; Fallujia spelling corrected to Fallugia. Candidate sources: [Native Texas Nursery public catalog](https://nativetx.com/wholesale/catalog), [NPSOT Austin spring plant sale](https://www.npsot.org/chapters/austin/austin-plant-sale-list/), [Wildflower Center Central Texas collection](https://www.wildflower.org/collections/printable.php?collection=TX_central). Candidate listing is not county nativity evidence.
+- New rows use existing generic growth-form renderers, editable illustrative dimensions and bloom colors, explicit provisional/range review pending labels in plant search, mass selection and selected-plant inspector. No new ecological claims or bloom months; unknown ecology excluded from evidence-based positive filters, illustrative height and color excluded from their evidence filters. No named selections, unresolved mixes, nonnative screening queue or invasive-risk holds included. Full BONAP county screening, taxonomy and species-specific morphology/phenology still pending. No private prices.
+- Validated 44 new scientific-name searches, exclusion from nectar/bloom month/height filters, unique IDs and names, prior 315 records unchanged, inline script syntax. Browser placement/export and live deployment still unverified. Six approved detailed models unchanged; generic additions are not counted as detailed species models. Main scene renderer untouched. Next detailed model: frogfruit.
+
 ## Owner visual review and palette expansion checkpoint (2026-11-27)
 
 - Owner explicitly accepted all six current lab prototypes, including red yucca. Preserve current geometry for all six as visual benchmarks; this is not automatic production promotion. Existing 315 palette taxa are owner-approved under the established native-range rules; do not redo their prior nativity review or alter their IDs.
