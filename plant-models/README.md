@@ -2,6 +2,11 @@
 
 Owners: botanical-model chat owns this directory and species-mesh-lab/. Studio chat owns studio-three.js and main editor. Coordinate before replacing the working Studio muhly generator.
 
+## Realism review 06 — fuller mountain laurel (lab 0.7.1)
+
+- Owner requested denser foliage and fuller flowers. Compound leaves per twig increased 8/6/4 to 10/8/5 (high/medium/low), leaflets slightly larger, raceme length and flowers per raceme increased (13/10/7 to 18/14/9); more terminal racemes and occasional additional distal racemes. Existing trunk, branch, and pod construction retained. Source citations unchanged; counts and proportions are artistic.
+- Mature seed 42 triangle counts: 244,436 / 97,920 / 31,596 (previously 184,572 / 69,408 / 23,788). All 75 laurel raw mesh configurations passed finite/matching array checks and lab syntax passed. Higher cost still requires real performance review. No other species generators, main editor or palette edited. Previous laurel blob `2bd77a779a7f4a144242852e8815d2cbae40f36e` preserved in history; visual/browser/deployment verification pending.
+
 ## Species 005 — Texas mountain laurel (lab 0.7)
 
 - Added original `texas-mountain-laurel.js` under stable palette ID `p7`, Dermatophyllum secundiflorum. Existing four species generators preserved byte-for-byte. Owner gave positive visual feedback on mistflower lab 0.6.1; preserve its current geometry as visual benchmark, not default production approval.
