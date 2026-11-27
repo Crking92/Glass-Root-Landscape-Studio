@@ -216,7 +216,8 @@
       "row": 47,
       "sourceTaxon": "Lantana camara 'Dallas Red'",
       "status": "invasive_or_risk_hold",
-      "note": "Texas Invasives lists Lantana camara; cultivar not exempt by default."
+      "note": "Texas Invasives lists Lantana camara; cultivar not exempt by default.",
+      "evidence": "https://www.texasinvasives.org/plant_database/detail.php?symbol=LACA2"
     },
     {
       "row": 48,
@@ -234,13 +235,15 @@
       "row": 50,
       "sourceTaxon": "Lantana montevidensis",
       "status": "invasive_or_risk_hold",
-      "note": "Trailing lantana: invasive concern; hold pending regional screening."
+      "note": "Trailing lantana: invasive concern; hold pending regional screening.",
+      "evidence": "https://www.npsot.org/posts/invasive-plant/lantana-montevidensis/"
     },
     {
       "row": 51,
       "sourceTaxon": "Lantana montevidensis 'Alba'",
       "status": "invasive_or_risk_hold",
-      "note": "Trailing lantana cultivar: invasive concern; hold."
+      "note": "Trailing lantana cultivar: invasive concern; hold.",
+      "evidence": "https://www.npsot.org/posts/invasive-plant/lantana-montevidensis/"
     },
     {
       "row": 52,
@@ -386,7 +389,8 @@
       "row": 79,
       "sourceTaxon": "Ruellia simplex 'Katie'",
       "status": "invasive_or_risk_hold",
-      "note": "Texas Invasives lists Ruellia simplex; dwarf cultivar not exempt by default."
+      "note": "Texas Invasives lists Ruellia simplex; dwarf cultivar not exempt by default.",
+      "evidence": "https://www.texasinvasives.org/plant_database/detail.php?symbol=RUCA19"
     },
     {
       "row": 80,
@@ -575,7 +579,8 @@
       "row": 114,
       "sourceTaxon": "Sphagneticola trilobata",
       "status": "invasive_or_risk_hold",
-      "note": "Sphagneticola trilobata: invasive concern; hold."
+      "note": "Sphagneticola trilobata: invasive concern; hold.",
+      "evidence": "https://assessment.ifas.ufl.edu/assessments/sphagneticola-trilobata/"
     },
     {
       "row": 115,
@@ -745,7 +750,8 @@
       "row": 150,
       "sourceTaxon": "Vitex rotundifolia",
       "status": "invasive_or_risk_hold",
-      "note": "Beach vitex: invasive concern; hold."
+      "note": "Beach vitex: invasive concern; hold.",
+      "evidence": "https://www.invasivespeciesinfo.gov/terrestrial/plants/beach-vitex"
     },
     {
       "row": 151,
@@ -1319,7 +1325,54 @@
   ],
   "notes": [
     "Exact matching normalizes whitespace and case only. Repeated listings retain their row identity. Do not automatically promote unresolved names, varieties, cultivars, hybrids or risk holds.",
-    "Rows 288–292 and other unlabeled/multiline material not verified here; review separately. No pricing included.",
+    "Five additional common-name-only rows 288–292 recorded separately; no automatic match. No pricing included.",
     "For new candidates, verify BONAP county range, taxonomic identity, sources and invasive evidence before default palette inclusion. Nonnatives and named selections opt-in separately."
-  ]
+  ],
+  "additionalItems": [
+    {
+      "row": 288,
+      "sourceLabel": "Texas Lantana",
+      "possibleMatch": "Lantana urticoides",
+      "status": "common_name_identity_review"
+    },
+    {
+      "row": 289,
+      "sourceLabel": "Salvia, 'Indigo Spires'",
+      "possibleMatch": "Salvia longispicata x farinacea",
+      "status": "named_selection_or_hybrid_review"
+    },
+    {
+      "row": 290,
+      "sourceLabel": "Roughleaf Dogwood",
+      "possibleMatch": "Cornus drummondii",
+      "status": "common_name_identity_review"
+    },
+    {
+      "row": 291,
+      "sourceLabel": "*EASTERN* Redbud",
+      "possibleMatch": "Cercis canadensis",
+      "status": "infraspecific_identity_review"
+    },
+    {
+      "row": 292,
+      "sourceLabel": "Blue Agave (A. americana)",
+      "possibleMatch": "Agave americana",
+      "status": "common_name_identity_review"
+    }
+  ],
+  "sources": {
+    "regional": [
+      "https://www.npsot.org/chapters/austin/austin-plant-sale-list/",
+      "https://www.wildflower.org/collections/printable.php?collection=TX_central",
+      "https://www.austintexas.gov/watershed-protection/plant-guide",
+      "https://www.npsot.org/posts/map-item/rainbow-gardens-native-plant-demonstration-garden/"
+    ],
+    "invasive": [
+      "https://www.texasinvasives.org/plant_database/detail.php?symbol=LACA2",
+      "https://www.texasinvasives.org/plant_database/detail.php?symbol=RUCA19",
+      "https://www.npsot.org/posts/invasive-plant/lantana-montevidensis/",
+      "https://assessment.ifas.ufl.edu/assessments/sphagneticola-trilobata/",
+      "https://www.invasivespeciesinfo.gov/terrestrial/plants/beach-vitex"
+    ]
+  }
 }
