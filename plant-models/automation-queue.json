@@ -1,0 +1,2214 @@
+{
+  "schema": "glass-root-model-automation-v1",
+  "baseline": "8db074c1c188e7e9e1e61003abe9c22755a72ef2",
+  "approvedModels": [
+    "p1",
+    "p0",
+    "p6",
+    "tz-ageratina-havanensis",
+    "p7",
+    "tz-hesperaloe-parviflora",
+    "p4"
+  ],
+  "ownerApproval": "All seven current models approved visually, including frogfruit; production promotion separate.",
+  "excluded": "44 provisional additions until range and invasive screening; no exotic or invasive additions.",
+  "lanes": [
+    {
+      "lane": 1,
+      "species": [
+        {
+          "id": "tz-asclepias-asperula",
+          "scientific": "Asclepias asperula",
+          "common": "Antelope-horns",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=ASAS"
+        },
+        {
+          "id": "tz-asclepias-tuberosa",
+          "scientific": "Asclepias tuberosa",
+          "common": "Butterflyweed",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=ASTU"
+        },
+        {
+          "id": "tz-abutilon-fruticosum",
+          "scientific": "Abutilon fruticosum",
+          "common": "Indian Mallow",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=ABFR3"
+        },
+        {
+          "id": "tz-adiantum-pedatum",
+          "scientific": "Adiantum pedatum",
+          "common": "Maidenhair Fern",
+          "kind": "fern",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=ADPE"
+        },
+        {
+          "id": "tz-amsonia-ciliata",
+          "scientific": "Amsonia ciliata",
+          "common": "Blue Amsonia",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=AMCI"
+        },
+        {
+          "id": "tz-argemone-sanguinea",
+          "scientific": "Argemone sanguinea",
+          "common": "Red Pricklypoppy",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=ARSA4"
+        },
+        {
+          "id": "tz-bernardia-myricifolia",
+          "scientific": "Bernardia myricifolia",
+          "common": "Mouse Ears",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=BEMY"
+        },
+        {
+          "id": "tz-calyptocarpus-vialis",
+          "scientific": "Calyptocarpus vialis",
+          "common": "Horseherb",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=CAVI2"
+        },
+        {
+          "id": "tz-carya-illinoinensis",
+          "scientific": "Carya illinoinensis",
+          "common": "Pecan",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=CAIL2"
+        },
+        {
+          "id": "tz-chloracantha-spinosa",
+          "scientific": "Chloracantha spinosa",
+          "common": "Spiny Chloracantha",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=CHSP11"
+        },
+        {
+          "id": "tz-condalia-hookeri",
+          "scientific": "Condalia hookeri",
+          "common": "Brasil",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=COHO"
+        },
+        {
+          "id": "tz-dalea-aurea",
+          "scientific": "Dalea aurea",
+          "common": "Golden Dalea",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=DAAU"
+        },
+        {
+          "id": "tz-diospyros-virginiana",
+          "scientific": "Diospyros virginiana",
+          "common": "Common Persimmon",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=DIVI5"
+        },
+        {
+          "id": "tz-eragrostis-hirsuta",
+          "scientific": "Eragrostis hirsuta",
+          "common": "Big Top Love Grass",
+          "kind": "grass",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=ERHI"
+        },
+        {
+          "id": "tz-erythrina-herbacea",
+          "scientific": "Erythrina herbacea",
+          "common": "Coral Bean",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=ERHE4"
+        },
+        {
+          "id": "tz-funastrum-cynanchoides",
+          "scientific": "Funastrum cynanchoides",
+          "common": "Fringed Twinevine",
+          "kind": "vine",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=FUCY"
+        },
+        {
+          "id": "tz-gleditsia-triacanthos",
+          "scientific": "Gleditsia triacanthos",
+          "common": "Honey Locust",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=GLTR"
+        },
+        {
+          "id": "tz-hibiscus-laevis",
+          "scientific": "Hibiscus laevis",
+          "common": "Halberdleaf Rosemallow",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=HILA2"
+        },
+        {
+          "id": "tz-juniperus-ashei",
+          "scientific": "Juniperus ashei",
+          "common": "Ashe Juniper",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=JUAS"
+        },
+        {
+          "id": "tz-lindheimera-texana",
+          "scientific": "Lindheimera texana",
+          "common": "Texas Yellowstar",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=LITE3"
+        },
+        {
+          "id": "tz-mahonia-trifoliolata",
+          "scientific": "Mahonia trifoliolata",
+          "common": "Agarita",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=MATR3"
+        },
+        {
+          "id": "tz-melampodium-leucanthum",
+          "scientific": "Melampodium leucanthum",
+          "common": "Blackfoot Daisy",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=MELE2"
+        },
+        {
+          "id": "tz-morus-microphylla",
+          "scientific": "Morus microphylla",
+          "common": "Texas Mulberry",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=MOMI"
+        },
+        {
+          "id": "tz-nolina-lindheimeriana",
+          "scientific": "Nolina lindheimeriana",
+          "common": "Devil's Shoestring",
+          "kind": "succulent",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=NOLI"
+        },
+        {
+          "id": "tz-panicum-virgatum",
+          "scientific": "Panicum virgatum",
+          "common": "Switchgrass",
+          "kind": "grass",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=PAVI2"
+        },
+        {
+          "id": "tz-penstemon-triflorus",
+          "scientific": "Penstemon triflorus",
+          "common": "Hill Country Penstemon",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=PETR2"
+        },
+        {
+          "id": "tz-physostegia-virginiana",
+          "scientific": "Physostegia virginiana",
+          "common": "Fall Obedient Plant",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=PHVI8"
+        },
+        {
+          "id": "tz-prunus-caroliniana",
+          "scientific": "Prunus caroliniana",
+          "common": "Carolina Cherry-laurel",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=PRCA"
+        },
+        {
+          "id": "tz-quercus-marilandica",
+          "scientific": "Quercus marilandica",
+          "common": "Blackjack Oak",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=QUMA3"
+        },
+        {
+          "id": "tz-rhus-microphylla",
+          "scientific": "Rhus microphylla",
+          "common": "Littleleaf Sumac",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=RHMI3"
+        },
+        {
+          "id": "tz-sabal-minor",
+          "scientific": "Sabal minor",
+          "common": "Dwarf Palmetto",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=SAMI8"
+        },
+        {
+          "id": "tz-salvia-lyrata",
+          "scientific": "Salvia lyrata",
+          "common": "Lyreleaf Sage",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=SALY2"
+        },
+        {
+          "id": "tz-scutellaria-ovata",
+          "scientific": "Scutellaria ovata",
+          "common": "Heartleaf Skullcap",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=SCOV"
+        },
+        {
+          "id": "tz-silphium-albiflorum",
+          "scientific": "Silphium albiflorum",
+          "common": "White Rosinweed",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=SIAL"
+        },
+        {
+          "id": "tz-symphoricarpos-orbiculatus",
+          "scientific": "Symphoricarpos orbiculatus",
+          "common": "Coralberry",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=SYOR"
+        },
+        {
+          "id": "tz-thelesperma-simplicifolium",
+          "scientific": "Thelesperma simplicifolium",
+          "common": "Navajo Tea",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=THSI"
+        },
+        {
+          "id": "tz-tripsacum-dactyloides",
+          "scientific": "Tripsacum dactyloides",
+          "common": "Eastern Gamagrass",
+          "kind": "grass",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=TRDA3"
+        },
+        {
+          "id": "tz-vernonia-guadalupensis",
+          "scientific": "Vernonia ×guadalupensis",
+          "common": "Guadalupe Ironweed",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=VEGU"
+        },
+        {
+          "id": "tz-wedelia-acapulcensis-var-hispida",
+          "scientific": "Wedelia acapulcensis var. hispida",
+          "common": "Zexmenia",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=WEACH"
+        }
+      ]
+    },
+    {
+      "lane": 2,
+      "species": [
+        {
+          "id": "p8",
+          "scientific": "Quercus fusiformis",
+          "common": "Escarpment Live Oak",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=QUFU"
+        },
+        {
+          "id": "tz-asclepias-viridis",
+          "scientific": "Asclepias viridis",
+          "common": "Green Milkweed",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=ASVI2"
+        },
+        {
+          "id": "tz-acer-grandidentatum",
+          "scientific": "Acer grandidentatum",
+          "common": "Bigtooth Maple",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=ACGR3"
+        },
+        {
+          "id": "tz-aesculus-glabra",
+          "scientific": "Aesculus glabra",
+          "common": "Ohio Buckeye",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=AEGL"
+        },
+        {
+          "id": "tz-andropogon-gerardii",
+          "scientific": "Andropogon gerardii",
+          "common": "Big Bluestem",
+          "kind": "grass",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=ANGE"
+        },
+        {
+          "id": "tz-aristida-purpurea",
+          "scientific": "Aristida purpurea",
+          "common": "Purple Threeawn",
+          "kind": "grass",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=ARPU9"
+        },
+        {
+          "id": "tz-bothriochloa-laguroides",
+          "scientific": "Bothriochloa laguroides",
+          "common": "Silver Bluestem",
+          "kind": "grass",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=BOLA2"
+        },
+        {
+          "id": "tz-campsis-radicans",
+          "scientific": "Campsis radicans",
+          "common": "Trumpet Creeper",
+          "kind": "vine",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=CARA2"
+        },
+        {
+          "id": "tz-celtis-ehrenbergiana",
+          "scientific": "Celtis ehrenbergiana",
+          "common": "Desert (Spiny) Hackberry",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=CEEH"
+        },
+        {
+          "id": "tz-chrysactinia-mexicana",
+          "scientific": "Chrysactinia mexicana",
+          "common": "Damianita",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=CHME3"
+        },
+        {
+          "id": "tz-conoclinium-coelestinum",
+          "scientific": "Conoclinium coelestinum",
+          "common": "Blue Mistflower",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=COCO13"
+        },
+        {
+          "id": "p5",
+          "scientific": "Dalea frutescens",
+          "common": "Black Dalea",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=DAFR2"
+        },
+        {
+          "id": "tz-dracopis-amplexicaulis",
+          "scientific": "Dracopis amplexicaulis",
+          "common": "Clasping Coneflower",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=DRAM"
+        },
+        {
+          "id": "tz-eragrostis-spectabilis",
+          "scientific": "Eragrostis spectabilis",
+          "common": "Purple Lovegrass",
+          "kind": "grass",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=ERSP"
+        },
+        {
+          "id": "tz-eustoma-exaltatum",
+          "scientific": "Eustoma exaltatum",
+          "common": "Catchfly Prairie Gentian",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=EUEX5"
+        },
+        {
+          "id": "tz-gaillardia-aestivalis",
+          "scientific": "Gaillardia aestivalis",
+          "common": "Lanceleaf blanketflower",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=GAAE"
+        },
+        {
+          "id": "tz-grindelia-lanceolata",
+          "scientific": "Grindelia lanceolata",
+          "common": "Narrowleaf Gumweed",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=GRLA3"
+        },
+        {
+          "id": "tz-hibiscus-moscheutos",
+          "scientific": "Hibiscus moscheutos",
+          "common": "Crimson-eyed Rose-mallow",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=HIMO"
+        },
+        {
+          "id": "tz-juniperus-virginiana",
+          "scientific": "Juniperus virginiana",
+          "common": "Eastern Red Cedar",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=JUVI"
+        },
+        {
+          "id": "tz-lobelia-cardinalis",
+          "scientific": "Lobelia cardinalis",
+          "common": "Cardinal Flower",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=LOCA2"
+        },
+        {
+          "id": "tz-malus-ioensis-var-texana",
+          "scientific": "Malus ioensis var. texana",
+          "common": "Blanco Crabapple",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=MAIOT8"
+        },
+        {
+          "id": "tz-menodora-longiflora",
+          "scientific": "Menodora longiflora",
+          "common": "Showy Menodora",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=MELO2"
+        },
+        {
+          "id": "tz-morus-rubra",
+          "scientific": "Morus rubra",
+          "common": "Red Mulberry",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=MORU2"
+        },
+        {
+          "id": "tz-nolina-texana",
+          "scientific": "Nolina texana",
+          "common": "Texas Sacahuista",
+          "kind": "succulent",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=NOTE"
+        },
+        {
+          "id": "tz-parkinsonia-aculeata",
+          "scientific": "Parkinsonia aculeata",
+          "common": "Retama",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=PAAC3"
+        },
+        {
+          "id": "tz-perityle-lindheimeri",
+          "scientific": "Perityle lindheimeri",
+          "common": "Rocky Daisy",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=PELI3"
+        },
+        {
+          "id": "tz-platanus-occidentalis",
+          "scientific": "Platanus occidentalis",
+          "common": "American Sycamore",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=PLOC"
+        },
+        {
+          "id": "tz-prunus-mexicana",
+          "scientific": "Prunus mexicana",
+          "common": "Mexican Plum",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=PRME"
+        },
+        {
+          "id": "tz-quercus-muehlenbergii",
+          "scientific": "Quercus muehlenbergii",
+          "common": "Chinquapin Oak",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=QUMU"
+        },
+        {
+          "id": "tz-rhus-virens",
+          "scientific": "Rhus virens",
+          "common": "Evergreen Sumac",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=RHVI3"
+        },
+        {
+          "id": "tz-sagittaria-lancifolia",
+          "scientific": "Sagittaria lancifolia",
+          "common": "Lanceleaf Arrowhead",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=SALA"
+        },
+        {
+          "id": "tz-salvia-pentstemonoides",
+          "scientific": "Salvia pentstemonoides",
+          "common": "Big Red Sage",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=SAPE15"
+        },
+        {
+          "id": "tz-scutellaria-wrightii",
+          "scientific": "Scutellaria wrightii",
+          "common": "Wright's Skullcap",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=SCWR2"
+        },
+        {
+          "id": "tz-simsia-calva",
+          "scientific": "Simsia calva",
+          "common": "Awnless Bushsunflower",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=SICA7"
+        },
+        {
+          "id": "tz-symphyotrichum-ericoides",
+          "scientific": "Symphyotrichum ericoides",
+          "common": "White Heath Aster",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=SYER"
+        },
+        {
+          "id": "tz-tilia-americana",
+          "scientific": "Tilia americana",
+          "common": "American Basswood",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=TIAM"
+        },
+        {
+          "id": "tz-ulmus-americana",
+          "scientific": "Ulmus americana",
+          "common": "American Elm",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=ULAM"
+        },
+        {
+          "id": "tz-vernonia-baldwinii",
+          "scientific": "Vernonia baldwinii",
+          "common": "Western Ironweed",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=VEBA"
+        },
+        {
+          "id": "tz-yucca-constricta",
+          "scientific": "Yucca constricta",
+          "common": "Buckley Yucca",
+          "kind": "succulent",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=YUCO"
+        }
+      ]
+    },
+    {
+      "lane": 3,
+      "species": [
+        {
+          "id": "tz-opuntia-engelmannii",
+          "scientific": "Opuntia engelmannii",
+          "common": "Prickly Pear 'Englemann's'",
+          "kind": "succulent",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=OPEN3"
+        },
+        {
+          "id": "p2",
+          "scientific": "Bouteloua curtipendula",
+          "common": "Sideoats Grama",
+          "kind": "grass",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=BOCU"
+        },
+        {
+          "id": "tz-acer-negundo",
+          "scientific": "Acer negundo",
+          "common": "Box Elder",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=ACNE2"
+        },
+        {
+          "id": "tz-aesculus-pavia",
+          "scientific": "Aesculus pavia",
+          "common": "Red Buckeye",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=AEPA"
+        },
+        {
+          "id": "tz-andropogon-glomeratus",
+          "scientific": "Andropogon glomeratus",
+          "common": "Bushy Bluestem",
+          "kind": "grass",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=ANGL2"
+        },
+        {
+          "id": "tz-aristolochia-erecta",
+          "scientific": "Aristolochia erecta",
+          "common": "Swanflower",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=ARER"
+        },
+        {
+          "id": "tz-bouteloua-dactyloides",
+          "scientific": "Bouteloua dactyloides",
+          "common": "Buffalograss",
+          "kind": "grass",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=BODA2"
+        },
+        {
+          "id": "tz-capsicum-annuum",
+          "scientific": "Capsicum annuum",
+          "common": "Chile Tepin",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=CAAN4"
+        },
+        {
+          "id": "tz-cephalanthus-occidentalis",
+          "scientific": "Cephalanthus occidentalis",
+          "common": "Common Buttonbush",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=CEOC2"
+        },
+        {
+          "id": "tz-clematis-drummondii",
+          "scientific": "Clematis drummondii",
+          "common": "Old Man's Beard",
+          "kind": "vine",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=CLDR"
+        },
+        {
+          "id": "tz-coreopsis-basalis",
+          "scientific": "Coreopsis basalis",
+          "common": "Goldenmane Tickseed",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=COBA2"
+        },
+        {
+          "id": "tz-dalea-purpurea",
+          "scientific": "Dalea purpurea",
+          "common": "Purple Prairie Clover",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=DAPU5"
+        },
+        {
+          "id": "tz-dyschoriste-linearis",
+          "scientific": "Dyschoriste linearis",
+          "common": "Snake Herb",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=DYLI"
+        },
+        {
+          "id": "tz-eragrostis-trichodes",
+          "scientific": "Eragrostis trichodes",
+          "common": "Sand Love Grass",
+          "kind": "grass",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=ERTR3"
+        },
+        {
+          "id": "tz-eysenhardtia-texana",
+          "scientific": "Eysenhardtia texana",
+          "common": "Texas Kidneywood",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=EYTE"
+        },
+        {
+          "id": "tz-gaillardia-amblyodon",
+          "scientific": "Gaillardia amblyodon",
+          "common": "Maroon Blanket Flower",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=GAAM"
+        },
+        {
+          "id": "tz-grindelia-squarrosa",
+          "scientific": "Grindelia squarrosa",
+          "common": "Curlycup Gumweed",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=GRSQ"
+        },
+        {
+          "id": "tz-hydrocotyle-umbellata",
+          "scientific": "Hydrocotyle umbellata",
+          "common": "Manyflower Marsh-pennywort",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=HYUM"
+        },
+        {
+          "id": "tz-justicia-americana",
+          "scientific": "Justicia americana",
+          "common": "American Water-willow",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=JUAM"
+        },
+        {
+          "id": "tz-lonicera-albiflora",
+          "scientific": "Lonicera albiflora",
+          "common": "Western White Honeysuckle",
+          "kind": "vine",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=LOAL"
+        },
+        {
+          "id": "tz-manfreda-maculosa",
+          "scientific": "Manfreda maculosa",
+          "common": "False Aloe",
+          "kind": "succulent",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=MAMA7"
+        },
+        {
+          "id": "tz-merremia-dissecta",
+          "scientific": "Merremia dissecta",
+          "common": "Alamo Vine",
+          "kind": "vine",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=MEDI2"
+        },
+        {
+          "id": "tz-muhlenbergia-dubia",
+          "scientific": "Muhlenbergia dubia",
+          "common": "Pine Muhly",
+          "kind": "grass",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=MUDU"
+        },
+        {
+          "id": "tz-oenothera-jamesii",
+          "scientific": "Oenothera jamesii",
+          "common": "Trumpet Evening-primrose",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=OEJA"
+        },
+        {
+          "id": "tz-parthenocissus-quinquefolia",
+          "scientific": "Parthenocissus quinquefolia",
+          "common": "Virginia Creeper",
+          "kind": "vine",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=PAQU2"
+        },
+        {
+          "id": "tz-phacelia-congesta",
+          "scientific": "Phacelia congesta",
+          "common": "Caterpillars",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=PHCO2"
+        },
+        {
+          "id": "tz-plectocephalus-americanus",
+          "scientific": "Plectocephalus americanus",
+          "common": "American Basket-flower",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=PLAM3"
+        },
+        {
+          "id": "tz-prunus-serotina",
+          "scientific": "Prunus serotina",
+          "common": "Black Cherry",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=PRSE2"
+        },
+        {
+          "id": "tz-quercus-shumardii",
+          "scientific": "Quercus shumardii",
+          "common": "Shumard Oak",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=QUSH"
+        },
+        {
+          "id": "tz-rhynchospora-colorata",
+          "scientific": "Rhynchospora colorata",
+          "common": "Whitetop Sedge",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=RHCO7"
+        },
+        {
+          "id": "tz-sagittaria-platyphylla",
+          "scientific": "Sagittaria platyphylla",
+          "common": "Delta Arrowhead",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=SAPL"
+        },
+        {
+          "id": "tz-salvia-roemeriana",
+          "scientific": "Salvia roemeriana",
+          "common": "Cedar Sage",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=SARO3"
+        },
+        {
+          "id": "tz-senegalia-greggii",
+          "scientific": "Senegalia greggii",
+          "common": "Gregg Acacia",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=SEGR4"
+        },
+        {
+          "id": "tz-sisyrinchium-angustifolium",
+          "scientific": "Sisyrinchium angustifolium",
+          "common": "Narrowleaf Blue-eyed Grass",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=SIAN3"
+        },
+        {
+          "id": "tz-symphyotrichum-praealtum",
+          "scientific": "Symphyotrichum praealtum",
+          "common": "Willowleaf Aster",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=SYPR5"
+        },
+        {
+          "id": "tz-tinantia-anomala",
+          "scientific": "Tinantia anomala",
+          "common": "False Dayflower",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=TIAN"
+        },
+        {
+          "id": "tz-ulmus-crassifolia",
+          "scientific": "Ulmus crassifolia",
+          "common": "Cedar Elm",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=ULCR"
+        },
+        {
+          "id": "tz-vernonia-lindheimeri",
+          "scientific": "Vernonia lindheimeri",
+          "common": "Woolly Ironweed",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=VELI3"
+        },
+        {
+          "id": "tz-yucca-rupicola",
+          "scientific": "Yucca rupicola",
+          "common": "Twistleaf Yucca",
+          "kind": "succulent",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=YURU"
+        }
+      ]
+    },
+    {
+      "lane": 4,
+      "species": [
+        {
+          "id": "tz-salvia-farinacea",
+          "scientific": "Salvia farinacea",
+          "common": "Mealy Blue Sage",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=SAFA2"
+        },
+        {
+          "id": "tz-diospyros-texana",
+          "scientific": "Diospyros texana",
+          "common": "Texas Persimmon",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=DITE3"
+        },
+        {
+          "id": "tz-achillea-millefolium",
+          "scientific": "Achillea millefolium",
+          "common": "Common Yarrow",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=ACMI2"
+        },
+        {
+          "id": "tz-agave-americana",
+          "scientific": "Agave americana",
+          "common": "Blue Agave (Century Plant)",
+          "kind": "succulent",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=AGAM"
+        },
+        {
+          "id": "tz-andropogon-virginicus",
+          "scientific": "Andropogon virginicus",
+          "common": "Broomsedge Bluestem",
+          "kind": "grass",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=ANVI2"
+        },
+        {
+          "id": "tz-asclepias-incarnata",
+          "scientific": "Asclepias incarnata",
+          "common": "Swamp Milkweed",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=ASIN"
+        },
+        {
+          "id": "tz-bouteloua-gracilis",
+          "scientific": "Bouteloua gracilis",
+          "common": "Blue Grama",
+          "kind": "grass",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=BOGR2"
+        },
+        {
+          "id": "tz-carex-blanda",
+          "scientific": "Carex blanda",
+          "common": "Eastern Woodland Sedge",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=CABL"
+        },
+        {
+          "id": "tz-cercis-canadensis-var-mexicana",
+          "scientific": "Cercis canadensis var. mexicana",
+          "common": "Mexican Redbud",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=CECAM"
+        },
+        {
+          "id": "tz-clematis-pitcheri",
+          "scientific": "Clematis pitcheri",
+          "common": "Purple Leatherflower",
+          "kind": "vine",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=CLPI"
+        },
+        {
+          "id": "tz-coreopsis-lanceolata",
+          "scientific": "Coreopsis lanceolata",
+          "common": "Lanceleaf Coreopsis",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=COLA5"
+        },
+        {
+          "id": "tz-dasylirion-texanum",
+          "scientific": "Dasylirion texanum",
+          "common": "Texas Sotol",
+          "kind": "succulent",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=DATE3"
+        },
+        {
+          "id": "tz-echinacea-angustifolia",
+          "scientific": "Echinacea angustifolia",
+          "common": "Black Samson",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=ECAN2"
+        },
+        {
+          "id": "tz-erigeron-philadelphicus",
+          "scientific": "Erigeron philadelphicus",
+          "common": "Philadelphia Fleabane",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=ERPH"
+        },
+        {
+          "id": "tz-fleischmannia-incarnata",
+          "scientific": "Fleischmannia incarnata",
+          "common": "Pink Thoroughwort",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=FLIN2"
+        },
+        {
+          "id": "tz-gaillardia-pulchella",
+          "scientific": "Gaillardia pulchella",
+          "common": "Indian Blanket",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=GAPU"
+        },
+        {
+          "id": "tz-hedeoma-acinoides",
+          "scientific": "Hedeoma acinoides",
+          "common": "Pannyroyal (annual)",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=HEAC"
+        },
+        {
+          "id": "tz-ilex-decidua",
+          "scientific": "Ilex decidua",
+          "common": "Possumhaw",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=ILDE"
+        },
+        {
+          "id": "tz-leersia-oryzoides",
+          "scientific": "Leersia oryzoides",
+          "common": "Rice Cutgrass",
+          "kind": "grass",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=LEOR"
+        },
+        {
+          "id": "tz-lonicera-sempervirens",
+          "scientific": "Lonicera sempervirens",
+          "common": "Coral Honeysuckle",
+          "kind": "vine",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=LOSE"
+        },
+        {
+          "id": "tz-marshallia-caespitosa",
+          "scientific": "Marshallia caespitosa",
+          "common": "Barbara's-buttons",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=MACA7"
+        },
+        {
+          "id": "tz-mimosa-borealis",
+          "scientific": "Mimosa borealis",
+          "common": "Fragrant Mimosa",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=MIBO2"
+        },
+        {
+          "id": "tz-muhlenbergia-reverchonii",
+          "scientific": "Muhlenbergia reverchonii",
+          "common": "Seep Muhly",
+          "kind": "grass",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=MURE2"
+        },
+        {
+          "id": "tz-oenothera-lindheimeri",
+          "scientific": "Oenothera lindheimeri",
+          "common": "Pink Gaura",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=OELI2"
+        },
+        {
+          "id": "tz-passiflora-affinis",
+          "scientific": "Passiflora affinis",
+          "common": "Yellow Passionflower",
+          "kind": "vine",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=PAAF"
+        },
+        {
+          "id": "tz-philadelphus-texensis",
+          "scientific": "Philadelphus texensis",
+          "common": "Texas Mock Orange",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=PHTE3"
+        },
+        {
+          "id": "tz-pluchea-odorata",
+          "scientific": "Pluchea odorata",
+          "common": "Sweetscent",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=PLOD"
+        },
+        {
+          "id": "tz-prunus-serotina-var-eximia",
+          "scientific": "Prunus serotina var. eximia",
+          "common": "Escarpment Cherry",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=PRSEE"
+        },
+        {
+          "id": "tz-quercus-virginiana",
+          "scientific": "Quercus virginiana",
+          "common": "Coastal Live Oak",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=QUVI"
+        },
+        {
+          "id": "tz-rivina-humilis",
+          "scientific": "Rivina humilis",
+          "common": "Pigeonberry",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=RIHU2"
+        },
+        {
+          "id": "tz-salix-nigra",
+          "scientific": "Salix nigra",
+          "common": "Black Willow",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=SANI"
+        },
+        {
+          "id": "tz-salvia-texana",
+          "scientific": "Salvia texana",
+          "common": "Texas Sage",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=SATE3"
+        },
+        {
+          "id": "tz-senegalia-wrightii",
+          "scientific": "Senegalia wrightii",
+          "common": "Wright Acacia",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=SEWR4"
+        },
+        {
+          "id": "tz-solanum-triquetrum",
+          "scientific": "Solanum triquetrum",
+          "common": "Texas Nightshade",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=SOTR2"
+        },
+        {
+          "id": "tz-taxodium-distichum",
+          "scientific": "Taxodium distichum",
+          "common": "Bald Cypress",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=TADI2"
+        },
+        {
+          "id": "tz-tradescantia-gigantea",
+          "scientific": "Tradescantia gigantea",
+          "common": "Spiderwort",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=TRGI"
+        },
+        {
+          "id": "tz-ungnadia-speciosa",
+          "scientific": "Ungnadia speciosa",
+          "common": "Mexican Buckeye",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=UNSP"
+        },
+        {
+          "id": "tz-viburnum-rufidulum",
+          "scientific": "Viburnum rufidulum",
+          "common": "Rusty Blackhaw Viburnum",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=VIRU"
+        },
+        {
+          "id": "tz-yucca-treculeana",
+          "scientific": "Yucca treculeana",
+          "common": "Spanish Dagger",
+          "kind": "succulent",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=YUTR"
+        }
+      ]
+    },
+    {
+      "lane": 5,
+      "species": [
+        {
+          "id": "tz-lantana-urticoides",
+          "scientific": "Lantana urticoides",
+          "common": "Texas Lantana",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=LAUR2"
+        },
+        {
+          "id": "tz-ilex-vomitoria",
+          "scientific": "Ilex vomitoria",
+          "common": "Yaupon",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=ILVO"
+        },
+        {
+          "id": "tz-acleisanthes-obtusa",
+          "scientific": "Acleisanthes obtusa",
+          "common": "Berlandier's Trumpet",
+          "kind": "vine",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=ACOB2"
+        },
+        {
+          "id": "tz-aloysia-gratissima",
+          "scientific": "Aloysia gratissima",
+          "common": "Whitebrush",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=ALGR2"
+        },
+        {
+          "id": "p9",
+          "scientific": "Anisacanthus quadrifidus var. wrightii",
+          "common": "Flame Acanthus",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=ANQUW"
+        },
+        {
+          "id": "tz-asclepias-oenotheroides",
+          "scientific": "Asclepias oenotheroides",
+          "common": "Zizotes Milkweed",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=ASOE"
+        },
+        {
+          "id": "tz-bouteloua-rigidiseta",
+          "scientific": "Bouteloua rigidiseta",
+          "common": "Texas Grama",
+          "kind": "grass",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=BORI"
+        },
+        {
+          "id": "tz-carex-cherokeensis",
+          "scientific": "Carex cherokeensis",
+          "common": "Cherokee Sedge",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=CACH3"
+        },
+        {
+          "id": "tz-cercis-canadensis-var-texensis",
+          "scientific": "Cercis canadensis var. texensis",
+          "common": "Texas Redbud",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=CECAT"
+        },
+        {
+          "id": "tz-clematis-texensis",
+          "scientific": "Clematis texensis",
+          "common": "Scarlet Clematis",
+          "kind": "vine",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=CLTE2"
+        },
+        {
+          "id": "tz-cornus-drummondii",
+          "scientific": "Cornus drummondii",
+          "common": "Roughleaf Dogwood",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=CODR"
+        },
+        {
+          "id": "tz-datura-wrightii",
+          "scientific": "Datura wrightii",
+          "common": "Jimsonweed",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=DAWR2"
+        },
+        {
+          "id": "tz-ehretia-anacua",
+          "scientific": "Ehretia anacua",
+          "common": "Anacua",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=EHAN"
+        },
+        {
+          "id": "tz-eriochloa-sericea",
+          "scientific": "Eriochloa sericea",
+          "common": "Texas Cupgrass",
+          "kind": "grass",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=ERSE5"
+        },
+        {
+          "id": "tz-forestiera-pubescens",
+          "scientific": "Forestiera pubescens",
+          "common": "Elbowbush",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=FOPU2"
+        },
+        {
+          "id": "tz-gaillardia-suavis",
+          "scientific": "Gaillardia suavis",
+          "common": "Pincushion Daisy",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=GASU"
+        },
+        {
+          "id": "tz-hedeoma-reverchonii",
+          "scientific": "Hedeoma reverchonii",
+          "common": "Reverchon's False Pennyroyal",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=HERE3"
+        },
+        {
+          "id": "tz-ipomopsis-rubra",
+          "scientific": "Ipomopsis rubra",
+          "common": "Standing Cypress",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=IPRU2"
+        },
+        {
+          "id": "tz-leptochloa-dubia",
+          "scientific": "Leptochloa dubia",
+          "common": "Green Sprangletop",
+          "kind": "grass",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=LEDU"
+        },
+        {
+          "id": "tz-ludwigia-octovalvis",
+          "scientific": "Ludwigia octovalvis",
+          "common": "Mexican Primrose-willow",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=LUOC"
+        },
+        {
+          "id": "tz-marsilea-macropoda",
+          "scientific": "Marsilea macropoda",
+          "common": "Bigfoot Water-clover",
+          "kind": "fern",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=MAMA9"
+        },
+        {
+          "id": "tz-mimosa-texana",
+          "scientific": "Mimosa texana",
+          "common": "Texas Mimosa",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=MITE6"
+        },
+        {
+          "id": "tz-muhlenbergia-schreberi",
+          "scientific": "Muhlenbergia schreberi",
+          "common": "Nimblewill",
+          "kind": "grass",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=MUSC"
+        },
+        {
+          "id": "tz-oenothera-macrocarpa",
+          "scientific": "Oenothera macrocarpa",
+          "common": "Missouri Primrose",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=OEMA"
+        },
+        {
+          "id": "tz-passiflora-foetida",
+          "scientific": "Passiflora foetida",
+          "common": "Corona De Cristo",
+          "kind": "vine",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=PAFO2"
+        },
+        {
+          "id": "tz-phlox-drummondii",
+          "scientific": "Phlox drummondii",
+          "common": "Annual Phlox",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=PHDR"
+        },
+        {
+          "id": "tz-poa-arachnifera",
+          "scientific": "Poa arachnifera",
+          "common": "Texas Bluegrass",
+          "kind": "grass",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=POAR"
+        },
+        {
+          "id": "tz-ptelea-trifoliata",
+          "scientific": "Ptelea trifoliata",
+          "common": "Wafer Ash",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=PTTR"
+        },
+        {
+          "id": "tz-ranunculus-macranthus",
+          "scientific": "Ranunculus macranthus",
+          "common": "Large Buttercup",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=RAMA3"
+        },
+        {
+          "id": "tz-rudbeckia-hirta",
+          "scientific": "Rudbeckia hirta",
+          "common": "Black-eyed Susan",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=RUHI2"
+        },
+        {
+          "id": "tz-salvia-azurea",
+          "scientific": "Salvia azurea",
+          "common": "Pitcher Sage",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=SAAZ"
+        },
+        {
+          "id": "tz-sambucus-nigra",
+          "scientific": "Sambucus nigra",
+          "common": "Black Elderberry",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=SANI4"
+        },
+        {
+          "id": "tz-senna-lindheimeriana",
+          "scientific": "Senna lindheimeriana",
+          "common": "Lindheimer's Senna",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=SELI4"
+        },
+        {
+          "id": "tz-solidago-altissima",
+          "scientific": "Solidago altissima",
+          "common": "Tall Goldenrod",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=SOAL6"
+        },
+        {
+          "id": "tz-tecoma-stans",
+          "scientific": "Tecoma stans",
+          "common": "Yellow Bells",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=TEST"
+        },
+        {
+          "id": "tz-tradescantia-humilis",
+          "scientific": "Tradescantia humilis",
+          "common": "Texas Spiderwort",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=TRHU"
+        },
+        {
+          "id": "tz-vachellia-farnesiana",
+          "scientific": "Vachellia farnesiana",
+          "common": "Huisache",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=VAFA"
+        },
+        {
+          "id": "tz-viguiera-dentata",
+          "scientific": "Viguiera dentata",
+          "common": "Toothleaf goldeneye",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=VIDE3"
+        }
+      ]
+    },
+    {
+      "lane": 6,
+      "species": [
+        {
+          "id": "tz-malvaviscus-arboreus-var-drummondii",
+          "scientific": "Malvaviscus arboreus var. drummondii",
+          "common": "Turks Cap",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=MAARD"
+        },
+        {
+          "id": "tz-callicarpa-americana",
+          "scientific": "Callicarpa americana",
+          "common": "American Beautyberry",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=CAAM2"
+        },
+        {
+          "id": "tz-acmella-oppositifolia-var-repens",
+          "scientific": "Acmella oppositifolia var. repens",
+          "common": "Spotflower",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=ACOPR"
+        },
+        {
+          "id": "tz-amorpha-canescens",
+          "scientific": "Amorpha canescens",
+          "common": "Leadplant",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=AMCA6"
+        },
+        {
+          "id": "tz-aquilegia-canadensis",
+          "scientific": "Aquilegia canadensis",
+          "common": "Eastern Red Columbine",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=AQCA"
+        },
+        {
+          "id": "tz-asclepias-texana",
+          "scientific": "Asclepias texana",
+          "common": "Texas Milkweed",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=ASTE"
+        },
+        {
+          "id": "tz-brickellia-eupatorioides",
+          "scientific": "Brickellia eupatorioides",
+          "common": "False Boneset",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=BREU"
+        },
+        {
+          "id": "tz-carex-emoryi",
+          "scientific": "Carex emoryi",
+          "common": "Emory's Sedge",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=CAEM2"
+        },
+        {
+          "id": "tz-chaetopappa-ericoides",
+          "scientific": "Chaetopappa ericoides",
+          "common": "Rose Heath",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=CHER2"
+        },
+        {
+          "id": "tz-cocculus-carolinus",
+          "scientific": "Cocculus carolinus",
+          "common": "Carolina Snailseed",
+          "kind": "vine",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=COCA"
+        },
+        {
+          "id": "tz-cotinus-obovatus",
+          "scientific": "Cotinus obovatus",
+          "common": "American Smoke Tree",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=COOB2"
+        },
+        {
+          "id": "tz-delphinium-carolinianum",
+          "scientific": "Delphinium carolinianum",
+          "common": "Larkspur",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=DECA3"
+        },
+        {
+          "id": "tz-elymus-canadensis",
+          "scientific": "Elymus canadensis",
+          "common": "Canada Wildrye",
+          "kind": "grass",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=ELCA4"
+        },
+        {
+          "id": "tz-eriogonum-longifolium",
+          "scientific": "Eriogonum longifolium",
+          "common": "Longleaf Buckwheat",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=ERLO5"
+        },
+        {
+          "id": "tz-frangula-caroliniana",
+          "scientific": "Frangula caroliniana",
+          "common": "Carolina Buckthorn",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=FRCA13"
+        },
+        {
+          "id": "tz-garrya-ovata-ssp-lindheimeri",
+          "scientific": "Garrya ovata ssp. lindheimeri",
+          "common": "Mexican Silktassel",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=GAOVL"
+        },
+        {
+          "id": "tz-helenium-amarum",
+          "scientific": "Helenium amarum",
+          "common": "Southern Wild Hyacinth",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=HEAM"
+        },
+        {
+          "id": "tz-juglans-microcarpa",
+          "scientific": "Juglans microcarpa",
+          "common": "Littleleaf Walnut",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=JUMI"
+        },
+        {
+          "id": "tz-leucaena-retusa",
+          "scientific": "Leucaena retusa",
+          "common": "Goldenball Leadtree",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=LERE5"
+        },
+        {
+          "id": "tz-lupinus-texensis",
+          "scientific": "Lupinus texensis",
+          "common": "Texas Bluebonnet",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=LUTE"
+        },
+        {
+          "id": "tz-matelea-biflora",
+          "scientific": "Matelea biflora",
+          "common": "Star Milkvine",
+          "kind": "vine",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=MABI6"
+        },
+        {
+          "id": "tz-monarda-citriodora",
+          "scientific": "Monarda citriodora",
+          "common": "Lemon Beebalm",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=MOCI"
+        },
+        {
+          "id": "tz-muhlenbergia-utilis",
+          "scientific": "Muhlenbergia utilis",
+          "common": "Aparejo Grass",
+          "kind": "grass",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=MUUT"
+        },
+        {
+          "id": "tz-oenothera-speciosa",
+          "scientific": "Oenothera speciosa",
+          "common": "Pink Evening Primrose",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=OESP2"
+        },
+        {
+          "id": "tz-passiflora-tenuiloba",
+          "scientific": "Passiflora tenuiloba",
+          "common": "Slenderlobe Passionflower",
+          "kind": "vine",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=PATE9"
+        },
+        {
+          "id": "tz-phlox-pilosa",
+          "scientific": "Phlox pilosa",
+          "common": "Downy Phlox",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=PHPI"
+        },
+        {
+          "id": "tz-pontederia-cordata",
+          "scientific": "Pontederia cordata",
+          "common": "Pickerelweed",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=POCO14"
+        },
+        {
+          "id": "tz-quercus-buckleyi",
+          "scientific": "Quercus buckleyi",
+          "common": "Texas Red Oak",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=QUBU2"
+        },
+        {
+          "id": "tz-ratibida-columnifera",
+          "scientific": "Ratibida columnifera",
+          "common": "Mexican Hat",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=RACO3"
+        },
+        {
+          "id": "tz-ruellia-humilis",
+          "scientific": "Ruellia humilis",
+          "common": "Prairie Petunia",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=RUHU"
+        },
+        {
+          "id": "tz-salvia-ballotiflora",
+          "scientific": "Salvia ballotiflora",
+          "common": "Shrubby Blue Sage",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=SABA5"
+        },
+        {
+          "id": "tz-sambucus-nigra-ssp-canadensis",
+          "scientific": "Sambucus nigra ssp. canadensis",
+          "common": "Common Elderberry",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=SANIC4"
+        },
+        {
+          "id": "tz-senna-roemeriana",
+          "scientific": "Senna roemeriana",
+          "common": "Twoleaf Senna",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=SERO8"
+        },
+        {
+          "id": "tz-solidago-nemoralis",
+          "scientific": "Solidago nemoralis",
+          "common": "Gray Goldenrod",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=SONE"
+        },
+        {
+          "id": "tz-tetraneuris-scaposa",
+          "scientific": "Tetraneuris scaposa",
+          "common": "Four-nerve Daisy",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=TESC2"
+        },
+        {
+          "id": "tz-tradescantia-occidentalis",
+          "scientific": "Tradescantia occidentalis",
+          "common": "Prairie Spiderwort",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=TROC"
+        },
+        {
+          "id": "tz-verbena-xutha",
+          "scientific": "Verbena xutha",
+          "common": "Gulf Vervain",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=VEXU"
+        },
+        {
+          "id": "tz-viola-missouriensis",
+          "scientific": "Viola missouriensis",
+          "common": "Missouri Violet",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=VIMI3"
+        }
+      ]
+    },
+    {
+      "lane": 7,
+      "species": [
+        {
+          "id": "tz-pavonia-lasiopetala",
+          "scientific": "Pavonia lasiopetala",
+          "common": "Rock Rose",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=PALA13"
+        },
+        {
+          "id": "tz-chilopsis-linearis",
+          "scientific": "Chilopsis linearis",
+          "common": "Desert Willow",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=CHLI2"
+        },
+        {
+          "id": "tz-acourtia-runcinata",
+          "scientific": "Acourtia runcinata",
+          "common": "Featherleaf Desertpeony",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=ACRU3"
+        },
+        {
+          "id": "tz-amorpha-fruticosa",
+          "scientific": "Amorpha fruticosa",
+          "common": "Indigo Bush",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=AMFR"
+        },
+        {
+          "id": "tz-arbutus-xalapensis",
+          "scientific": "Arbutus xalapensis",
+          "common": "Texas Madrone",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=ARXA80"
+        },
+        {
+          "id": "tz-baptisia-bracteata",
+          "scientific": "Baptisia bracteata",
+          "common": "Wild Indigo",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=BABR2"
+        },
+        {
+          "id": "tz-callirhoe-involucrata",
+          "scientific": "Callirhoe involucrata",
+          "common": "Winecup",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=CAIN2"
+        },
+        {
+          "id": "tz-carex-perdentata",
+          "scientific": "Carex perdentata",
+          "common": "Sand Sedge",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=CAPE40"
+        },
+        {
+          "id": "tz-chamaecrista-fasciculata",
+          "scientific": "Chamaecrista fasciculata",
+          "common": "Partridge Pea",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=CHFA2"
+        },
+        {
+          "id": "tz-colubrina-texensis",
+          "scientific": "Colubrina texensis",
+          "common": "Texas Hogplum",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=COTE6"
+        },
+        {
+          "id": "tz-croton-texensis",
+          "scientific": "Croton texensis",
+          "common": "Texas Croton",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=CRTE4"
+        },
+        {
+          "id": "tz-desmanthus-illinoensis",
+          "scientific": "Desmanthus illinoensis",
+          "common": "Illinois Bundleflower",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=DEIL"
+        },
+        {
+          "id": "tz-engelmannia-peristenia",
+          "scientific": "Engelmannia peristenia",
+          "common": "Engelmann's Daisy",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=ENPE4"
+        },
+        {
+          "id": "tz-eryngium-leavenworthii",
+          "scientific": "Eryngium leavenworthii",
+          "common": "Leavenworth's Eryngo",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=ERLE11"
+        },
+        {
+          "id": "tz-fraxinus-albicans",
+          "scientific": "Fraxinus albicans",
+          "common": "Texas Ash",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=FRAL3"
+        },
+        {
+          "id": "tz-geum-canadense",
+          "scientific": "Geum canadense",
+          "common": "White Avens",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=GECA7"
+        },
+        {
+          "id": "tz-helenium-autumnale",
+          "scientific": "Helenium autumnale",
+          "common": "Common Sneezeweed",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=HEAU"
+        },
+        {
+          "id": "tz-juglans-nigra",
+          "scientific": "Juglans nigra",
+          "common": "Black Walnut",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=JUNI"
+        },
+        {
+          "id": "tz-liatris-punctata-var-mucronata",
+          "scientific": "Liatris punctata var. mucronata",
+          "common": "Gayfeather",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=LIPUM2"
+        },
+        {
+          "id": "tz-maclura-pomifera",
+          "scientific": "Maclura pomifera",
+          "common": "Osage Orange",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=MAPO"
+        },
+        {
+          "id": "tz-matelea-reticulata",
+          "scientific": "Matelea reticulata",
+          "common": "Pearl Milkweed Vine",
+          "kind": "vine",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=MARE4"
+        },
+        {
+          "id": "tz-monarda-fistulosa",
+          "scientific": "Monarda fistulosa",
+          "common": "Wild Bergamot",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=MOFI"
+        },
+        {
+          "id": "tz-nemophila-phacelioides",
+          "scientific": "Nemophila phacelioides",
+          "common": "Texas Baby Blue Eyes",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=NEPH"
+        },
+        {
+          "id": "tz-onosmodium-bejariense-var-bejariense",
+          "scientific": "Onosmodium bejariense var. bejariense",
+          "common": "Marbleseed",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=ONBEB"
+        },
+        {
+          "id": "tz-penstemon-baccharifolius",
+          "scientific": "Penstemon baccharifolius",
+          "common": "Rock Penstemon",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=PEBA"
+        },
+        {
+          "id": "tz-physostegia-angustifolia",
+          "scientific": "Physostegia angustifolia",
+          "common": "Spring Obedient / Flase Dragon Head",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=PHAN6"
+        },
+        {
+          "id": "tz-populus-deltoides",
+          "scientific": "Populus deltoides",
+          "common": "Eastern Cottonwood",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=PODE3"
+        },
+        {
+          "id": "tz-quercus-laceyi",
+          "scientific": "Quercus laceyi",
+          "common": "Lacey Oak",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=QULA"
+        },
+        {
+          "id": "tz-rhus-aromatica",
+          "scientific": "Rhus aromatica",
+          "common": "Fragrant Sumac",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=RHAR4"
+        },
+        {
+          "id": "tz-ruellia-nudiflora",
+          "scientific": "Ruellia nudiflora",
+          "common": "Violet Ruellia",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=RUNU"
+        },
+        {
+          "id": "p3",
+          "scientific": "Salvia coccinea",
+          "common": "Scarlet Sage",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=SACO5"
+        },
+        {
+          "id": "tz-sapindus-saponaria-var-drummondii",
+          "scientific": "Sapindus saponaria var. drummondii",
+          "common": "Wingleaf Soapberry",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=SASAD"
+        },
+        {
+          "id": "tz-setaria-scheelei",
+          "scientific": "Setaria scheelei",
+          "common": "Southwestern Bristlegrass",
+          "kind": "grass",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=SESC2"
+        },
+        {
+          "id": "tz-sorghastrum-nutans",
+          "scientific": "Sorghastrum nutans",
+          "common": "Indiangrass",
+          "kind": "grass",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=SONU2"
+        },
+        {
+          "id": "tz-teucrium-canadense",
+          "scientific": "Teucrium canadense",
+          "common": "American Germander",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=TECA3"
+        },
+        {
+          "id": "tz-tridens-albescens",
+          "scientific": "Tridens albescens",
+          "common": "White Tridens",
+          "kind": "grass",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=TRAL2"
+        },
+        {
+          "id": "tz-verbesina-encelioides",
+          "scientific": "Verbesina encelioides",
+          "common": "Cowpen Daisy",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=VEEN"
+        },
+        {
+          "id": "tz-vitis-mustangensis",
+          "scientific": "Vitis mustangensis",
+          "common": "Mustang Grape",
+          "kind": "vine",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=VIMU2"
+        }
+      ]
+    },
+    {
+      "lane": 8,
+      "species": [
+        {
+          "id": "tz-leucophyllum-frutescens",
+          "scientific": "Leucophyllum frutescens",
+          "common": "Cenizo",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=LEFR3"
+        },
+        {
+          "id": "tz-symphyotrichum-oblongifolium",
+          "scientific": "Symphyotrichum oblongifolium",
+          "common": "Aromatic Aster",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=SYOB"
+        },
+        {
+          "id": "tz-acourtia-wrightii",
+          "scientific": "Acourtia wrightii",
+          "common": "Brownfoot",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=ACWR5"
+        },
+        {
+          "id": "tz-amorpha-roemeriana",
+          "scientific": "Amorpha roemeriana",
+          "common": "Texas Indigo Bush",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=AMRO2"
+        },
+        {
+          "id": "tz-argemone-polyanthemos",
+          "scientific": "Argemone polyanthemos",
+          "common": "White Prickly Poppy",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=ARPO2"
+        },
+        {
+          "id": "tz-berlandiera-lyrata",
+          "scientific": "Berlandiera lyrata",
+          "common": "Chocolate Daisy",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=BELY"
+        },
+        {
+          "id": "tz-calylophus-berlandieri",
+          "scientific": "Calylophus berlandieri",
+          "common": "Berlandier's Sundrops",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=CABE6"
+        },
+        {
+          "id": "tz-carex-texensis",
+          "scientific": "Carex texensis",
+          "common": "Texas Sedge",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=CATE7"
+        },
+        {
+          "id": "tz-chasmanthium-latifolium",
+          "scientific": "Chasmanthium latifolium",
+          "common": "Inland Sea Oats",
+          "kind": "grass",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=CHLA5"
+        },
+        {
+          "id": "tz-commelina-erecta",
+          "scientific": "Commelina erecta",
+          "common": "Dayflower",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=COER"
+        },
+        {
+          "id": "tz-cynanchum-barbigerum",
+          "scientific": "Cynanchum barbigerum",
+          "common": "Cynanchum",
+          "kind": "vine",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=CYBA"
+        },
+        {
+          "id": "tz-dichondra-carolinensis",
+          "scientific": "Dichondra carolinensis",
+          "common": "Carolina Ponyfoot",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=DICA3"
+        },
+        {
+          "id": "tz-equisetum-hyemale",
+          "scientific": "Equisetum hyemale",
+          "common": "Scouring-rush Horsetail",
+          "kind": "fern",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=EQHY"
+        },
+        {
+          "id": "tz-eryngium-yuccifolium",
+          "scientific": "Eryngium yuccifolium",
+          "common": "Rattlesnake Master",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=ERYU"
+        },
+        {
+          "id": "tz-fraxinus-pennsylvanica",
+          "scientific": "Fraxinus pennsylvanica",
+          "common": "Green Ash Tree / Water Ash",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=FRPE"
+        },
+        {
+          "id": "tz-glandularia-bipinnatifida",
+          "scientific": "Glandularia bipinnatifida",
+          "common": "Prairie Verbena",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=GLBI2"
+        },
+        {
+          "id": "tz-helianthus-maximiliani",
+          "scientific": "Helianthus maximiliani",
+          "common": "Maximilian Sunflower",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=HEMA2"
+        },
+        {
+          "id": "tz-juncus-texanus",
+          "scientific": "Juncus texanus",
+          "common": "Texas Rush",
+          "kind": "grass",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=JUTE3"
+        },
+        {
+          "id": "tz-lindera-benzoin",
+          "scientific": "Lindera benzoin",
+          "common": "Northern Spicebush",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=LIBE3"
+        },
+        {
+          "id": "tz-mahonia-swaseyi",
+          "scientific": "Mahonia swaseyi",
+          "common": "Texas Barberry",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=MASW"
+        },
+        {
+          "id": "tz-maurandella-antirrhiniflora",
+          "scientific": "Maurandella antirrhiniflora",
+          "common": "Snapdragon Vine",
+          "kind": "vine",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=MAAN9"
+        },
+        {
+          "id": "tz-monarda-punctata",
+          "scientific": "Monarda punctata",
+          "common": "Spotted Beebalm",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=MOPU"
+        },
+        {
+          "id": "tz-neptunia-lutea",
+          "scientific": "Neptunia lutea",
+          "common": "Yellow Sensitive Briar",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=NELU2"
+        },
+        {
+          "id": "tz-packera-obovata",
+          "scientific": "Packera obovata",
+          "common": "Golden Groundsel",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=PAOB6"
+        },
+        {
+          "id": "tz-penstemon-cobaea",
+          "scientific": "Penstemon cobaea",
+          "common": "Prairie Penstemon",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=PECO4"
+        },
+        {
+          "id": "tz-physostegia-correllii",
+          "scientific": "Physostegia correllii",
+          "common": "Correll's False Dragonhead",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=PHCO17"
+        },
+        {
+          "id": "tz-prunus-angustifolia",
+          "scientific": "Prunus angustifolia",
+          "common": "Chickasaw Plum",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=PRAN3"
+        },
+        {
+          "id": "tz-quercus-macrocarpa",
+          "scientific": "Quercus macrocarpa",
+          "common": "Bur Oak",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=QUMA2"
+        },
+        {
+          "id": "tz-rhus-lanceolata",
+          "scientific": "Rhus lanceolata",
+          "common": "Prairie Flameleaf Sumac",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=RHLA3"
+        },
+        {
+          "id": "tz-sabal-mexicana",
+          "scientific": "Sabal mexicana",
+          "common": "Texas Palmetto",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=SAME8"
+        },
+        {
+          "id": "tz-salvia-engelmannii",
+          "scientific": "Salvia engelmannii",
+          "common": "Engelmann's Sage",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=SAEN2"
+        },
+        {
+          "id": "tz-saururus-cernuus",
+          "scientific": "Saururus cernuus",
+          "common": "Lizard's Tail",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=SACE"
+        },
+        {
+          "id": "tz-sideroxylon-lanuginosum",
+          "scientific": "Sideroxylon lanuginosum",
+          "common": "Gum Bumelia",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=SILA20"
+        },
+        {
+          "id": "tz-styphnolobium-affine",
+          "scientific": "Styphnolobium affine",
+          "common": "Eve's Necklace",
+          "kind": "tree",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=STAF4"
+        },
+        {
+          "id": "tz-teucrium-cubense",
+          "scientific": "Teucrium cubense",
+          "common": "Small Coastal Germander",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=TECU"
+        },
+        {
+          "id": "tz-tridens-flavus",
+          "scientific": "Tridens flavus",
+          "common": "Purpletop Tridens",
+          "kind": "grass",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=TRFL2"
+        },
+        {
+          "id": "tz-verbesina-virginica",
+          "scientific": "Verbesina virginica",
+          "common": "Frostweed",
+          "kind": "forb",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=VEVI3"
+        },
+        {
+          "id": "tz-wedelia-acapulcensis",
+          "scientific": "Wedelia acapulcensis",
+          "common": "Orange Zexmenia",
+          "kind": "shrub",
+          "primary": "https://www.wildflower.org/plants/result.php?id_plant=WEAC"
+        }
+      ]
+    }
+  ],
+  "workflow": "Each lane processes one next missing candidate per hourly run, writing only plant-models/drafts/<stable-id>.js. One integration task owns registry, lab, documentation and integration log; no production editor changes. Check pending review cap 24 before publishing; approved geometry never changed. No repeat work, no audit loops."
+}
