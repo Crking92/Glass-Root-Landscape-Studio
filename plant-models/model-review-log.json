@@ -14,9 +14,12 @@
     "tz-malvaviscus-arboreus-var-drummondii",
     "tz-pavonia-lasiopetala"
   ],
-  "publishedPending": [],
+  "publishedPending": [
+    "tz-salvia-farinacea",
+    "tz-lantana-urticoides"
+  ],
   "needsRevision": [],
-  "note": "Owner approved Turk's cap and rock rose with positive feedback, bringing the accepted species count to 12 plus the optional boxed cenizo form. Production promotion remains separate.",
+  "note": "Twelve prior species plus boxed cenizo accepted; mealy blue sage and Texas lantana now pending visual review. No production promotion.",
   "approvedForms": {
     "tz-leucophyllum-frutescens": [
       "natural",
