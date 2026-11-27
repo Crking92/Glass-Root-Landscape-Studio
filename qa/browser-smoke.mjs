@@ -181,6 +181,32 @@ await run('customizable-shade-structures',async(p,context)=>{
   const payload=JSON.parse(await q.locator('#payload').textContent());assert.deepEqual(payload.project.objects.map(o=>o.shade),m.objects.map(o=>o.shade));
   await screenshot(q,'shade-structures-client');return {status,clientStatus:await button(q,'status').textContent()};
 });
+await run('illustrated-plan-styles',async p=>{
+  await button(p,'demo').click();await count(p,15);const original=await project(p);
+  assert(await p.evaluate(()=>!!window.PlanGraphics));
+  const images=[];
+  for(const mode of ['technical','illustrated','presentation']){
+    await button(p,'planStyle').selectOption(mode);await p.mouse.move(1,1);
+    const path=await download(p,'#export','plan-'+mode+'.png'),bytes=await readFile(path);
+    assert.equal(bytes.subarray(0,8).toString('hex'),'89504e470d0a1a0a');
+    assert(bytes.readUInt32BE(16)>100&&bytes.readUInt32BE(20)>100);
+    assert.deepEqual(await project(p),original);
+    images.push(bytes);await screenshot(p,'plan-'+mode);
+  }
+  assert(!images[0].equals(images[1])&&!images[1].equals(images[2]));
+  await p.reload();await count(p,15);assert.equal(await button(p,'planStyle').inputValue(),'presentation');
+  await button(p,'tab-qty').click();const totals=await button(p,'counts').textContent();
+  await button(p,'planStyle').selectOption('technical');assert.equal(await button(p,'counts').textContent(),totals);
+  await button(p,'planStyle').selectOption('illustrated');
+  await p.locator('[data-tool="plant"]').click();await clickWorld(p,50,50);await count(p,16);
+  await p.locator('[data-tool="select"]').click();await clickWorld(p,50,50);
+  const obj=(await project(p)).objects.at(-1),box=await button(p,'cv').boundingBox(),scale=Math.min((box.width-60)/100,(box.height-60)/100);
+  await p.mouse.move(box.x+box.width/2,box.y+box.height/2);await p.mouse.down();await p.mouse.move(box.x+box.width/2+5*scale,box.y+box.height/2+3*scale,{steps:5});await p.mouse.up();
+  const moved=(await project(p)).objects.find(o=>o.id===obj.id);assert(Math.abs(moved.x-55)<=1&&Math.abs(moved.y-53)<=1);
+  await button(p,'undo').click();await button(p,'undo').click();await count(p,15);assert.deepEqual(await project(p),original);
+  const large=fixture('plan-large',5000,660,660);await load(p,large);await count(p,5000);await button(p,'planStyle').selectOption('presentation');await screenshot(p,'plan-large-presentation');
+  return {styles:3,originalPlants:15,largePlants:5000,pngBytes:images.map(b=>b.length)};
+});
 for(const [name,n,w,h] of [['one-acre',1000,220,198],['restoration',5000,660,660],...(process.env.QA_STRESS==='1'?[['stress',19990,1320,660]]:[])]){
   await run(name,async p=>{await load(p,fixture(name,n,w,h));const metrics=await enter3(p,n);await button(p,'studioMode').selectOption('walk');await waitText(p,'studioStatus',/Walkthrough/);metrics.walk=await ready3(p,n);await screenshot(p,name+'-walk');await button(p,'studioMode').selectOption('orbit');await waitText(p,'studioStatus',/Three\.js/);metrics.orbit=await ready3(p,n);await screenshot(p,name+'-orbit');return metrics;});
 }
