@@ -2,6 +2,20 @@
 
 Owners: botanical-model chat owns this directory and species-mesh-lab/. Studio chat owns studio-three.js and main editor. Coordinate before replacing the working Studio muhly generator.
 
+## Native-first palette policy — owner direction
+
+- Prioritize straight species native to Hays County and the owner's selected surrounding counties, then other Texas natives and carefully selected nearby-region natives. Confirm county distribution using BONAP/NAPA before assigning local-native labels. Do not equate Texas-native with Hays-native. Range expansion and exact county boundaries remain to be coordinated.
+- Selected nonnative ornamentals may eventually be added in a separate opt-in category after screening. Clearly identify origin, taxon/cultivar identity and evidence; never imply equal ecological value or a native designation. Unreviewed status is not a safety claim.
+- Screen proposed additions against [Texas Invasives](https://www.texasinvasives.org/plant_database/), [Texas Department of Agriculture regulated list](https://texasagriculture.gov/Regulatory-Programs/Plant-Quality/Noxious-and-Invasive-Plants), and relevant regional evidence. Absence from the regulated list does not establish noninvasiveness. Exclude known invasive taxa from normal planting recommendations; any future existing-site inventory/removal visualization must be explicitly labeled, separated from recommended palette and respect applicable restrictions. No exotic species added or current palette recategorized in this batch. Main Studio UI implementation requires coordination.
+- Private pricing and Professional Studio deferred at owner's request.
+
+## Species 006 — red yucca (lab 0.8)
+
+- Added original `red-yucca.js` under existing stable palette ID `tz-hesperaloe-parviflora`, Hesperaloe parviflora. Previous five species generators byte-identical.
+- Primary [Wildflower Center HEPA8](https://www.wildflower.org/plants/result.php?id_plant=HEPA8): basal evergreen linear leaves, arching pink flowering stalks, coral tubular flowers about 35 mm, plum winter foliage, capsules. Supplement [Oregon State University](https://landscapeplants.oregonstate.edu/plants/hesperaloe-parviflora): narrow leathery blue-green leaves with marginal fibers, 2.5–3 cm woody capsules. [FNA searchable species excerpt](https://www.efloras.org/florataxon.aspx?flora_id=1&taxon_id=242101656) supports marginal threads and narrow blades; full page returned 403. No county-level native designation assigned.
+- Clumping basal rosettes, channel-shaped thick arching blades, attached curled fibers, multiple tall branching pink stalks with coral tubular flowers and six stylized tepal tips, early buds, green/brown capsules, plum-tinted evergreen winter foliage. Five seeds, five illustrative stages, three LODs; selected fine dimensions and counts artistic. No yellow selection or cultivar modeled. Bounds-based lab framing used for red yucca; stage labels adapted.
+- Mature seed 42: 51,380 / 19,140 / 5,616 triangles. All 75 raw red yucca and 450 normalized registry cases passed finite/matching buffers, bounded colors and normalized dimensions; seed repeatability/variation and exact ID/name match passed; lab syntax passed. Browser appearance, deployment and performance pending. Main editor and palette untouched; no production promotion.
+
 ## Realism review 06 — fuller mountain laurel (lab 0.7.1)
 
 - Owner requested denser foliage and fuller flowers. Compound leaves per twig increased 8/6/4 to 10/8/5 (high/medium/low), leaflets slightly larger, raceme length and flowers per raceme increased (13/10/7 to 18/14/9); more terminal racemes and occasional additional distal racemes. Existing trunk, branch, and pod construction retained. Source citations unchanged; counts and proportions are artistic.
