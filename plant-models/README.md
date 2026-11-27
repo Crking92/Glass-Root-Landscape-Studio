@@ -2,6 +2,13 @@
 
 Owners: botanical-model chat owns this directory and species-mesh-lab/. Studio chat owns studio-three.js and main editor. Coordinate before replacing the working Studio muhly generator.
 
+## Species 005 — Texas mountain laurel (lab 0.7)
+
+- Added original `texas-mountain-laurel.js` under stable palette ID `p7`, Dermatophyllum secundiflorum. Existing four species generators preserved byte-for-byte. Owner gave positive visual feedback on mistflower lab 0.6.1; preserve its current geometry as visual benchmark, not default production approval.
+- Primary [Wildflower Center DESE5](https://www.wildflower.org/plants/result.php?id_plant=DESE5), checked 2026-11-27: evergreen, typically multitrunk small tree, dark leathery pinnate leaves with seven to nine rounded leaflets, drooping lavender racemes, persistent gray-to-brown pods. [Oregon State University](https://landscapeplants.oregonstate.edu/plants/dermatophyllum-secundiflorum) supports alternate pinnate leaves, entire rounded leaflets, pea flowers, constricted pods; [Texas Wildbuds](https://texaswildbuds.com/dermatophyllum-secundiflorum.html) supports drooping racemes. No new county-level nativity determination.
+- Original connected curved trunk/branch meshes, three to five trunks, alternate compound leaves with three or four paired leaflets plus terminal leaflet, modeled banner/wings/keel petals, drooping raceme axes and constricted pod surfaces. Evergreen foliage across all stages; young/mature = early/full flowering, fall/dry = pod-bearing, leafy = foliage only. Stage labels illustrate appearance rather than calendar prediction. Foliage colors, branching, numbers and fine parts are artistic approximations; seed interiors, microscopic pubescence and bark microtexture omitted.
+- Mature seed 42: 184,572 / 69,408 / 23,788 triangles (high/medium/low); all 75 raw laurel configurations and 375 normalized registry configurations passed numerical checks, seed repeatability/variation and exact ID/name lookup passed, lab syntax passed. Tree-specific bounds-based camera framing added to lab; earlier species framing unchanged. Actual browser appearance, camera behavior, deployment and performance pending; no mass proxy yet, no production approval. Main editor, studio-three.js and palette untouched.
+
 ## Realism review 05 — fragrant mistflower terminal bouquets (lab 0.6.1)
 
 - Owner reference photo emphasizes white clusters at outward branch ends, separated by leafy green canopy. Revised only mistflower bloom placement and cluster geometry; no image copied. Existing Wildflower Center AGHA4 and Texas Wildbuds citations retained.
