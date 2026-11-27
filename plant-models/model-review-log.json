@@ -1,0 +1,15 @@
+{
+  "schema": "glass-root-model-review-v1",
+  "ownerApproved": [
+    "p1",
+    "p0",
+    "p6",
+    "tz-ageratina-havanensis",
+    "p7",
+    "tz-hesperaloe-parviflora",
+    "p4"
+  ],
+  "publishedPending": [],
+  "needsRevision": [],
+  "note": "Owner approved seven existing models including frogfruit on 2026-11-27. Only explicit owner feedback may change review status. Publish up to 24 pending models; no production promotion."
+}
