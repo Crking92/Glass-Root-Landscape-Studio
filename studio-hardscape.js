@@ -1,9 +1,26 @@
 // Procedural hardscape kit. Local dimensions are normalized to the saved w, h, height.
+const shadeFrameColors={cedar:'#a77c4f',darkwood:'#68533e',white:'#e2e3d7',steel:'#4e5656'};
+const shadeCoverColors={sand:'#d5c4a0',charcoal:'#4e5656',terracotta:'#a56d50',green:'#617b65',silver:'#aeb8b5'};
+export function shadeStyle(o){const defaults={pergola:{roof:'slats',rise:.10},pavilion:{roof:'gable',rise:.27},gazebo:{roof:'hip',rise:.30},shadesail:{roof:'fabric',rise:.20}}[o.kind]||{roof:'flat',rise:.12};const a=o.shade||{},allowed={pergola:['slats','flat','gable','hip'],pavilion:['gable','hip','flat','slats'],gazebo:['hip','flat'],shadesail:['fabric']}[o.kind]||['flat'];const num=(x,d,lo,hi)=>Number.isFinite(x)?Math.max(lo,Math.min(hi,x)):d;return {roof:allowed.includes(a.roof)?a.roof:defaults.roof,frame:Object.hasOwn(shadeFrameColors,a.frame)?a.frame:'cedar',cover:Object.hasOwn(shadeCoverColors,a.cover)?a.cover:'sand',posts:[4,6,8].includes(a.posts)&&o.kind!=='shadesail'?a.posts:4,postSize:num(a.postSize,.5,.15,2),spacing:num(a.spacing,1.5,.5,6),rise:num(a.rise,defaults.rise,.04,.40),deck:a.deck===true,rails:o.kind==='gazebo'&&a.rails!==false};}
 export function hardParts(o,detail=true){
  const out=[],kind=o.kind,seed=[...String(o.id)].reduce((s,c)=>Math.imul(s,31)+c.charCodeAt(0)|0,7);let s=seed>>>0;const r=()=>((s=(Math.imul(s,1664525)+1013904223)>>>0)/4294967296);
  const part=(shape,color,x,y,z,w,h,d)=>out.push({shape,color,x,y,z,w,h,d});
  const b=(c,x,y,z,w,h,d)=>part('box',c,x,y,z,w,h,d);
  const rock=()=> 'rock'+Math.floor(r()*4),wood=['#a77c4f','#9e754c','#b18b5c','#896342','#bd976c'],stone=['#bdb29c','#d0c5ae','#b2a78f','#c7bea8','#a99e87'],pick=a=>a[Math.floor(r()*a.length)],dark='#68533e',metal='#505653';
+ if(['pergola','pavilion','gazebo','shadesail'].includes(kind)){
+  const v=shadeStyle(o),frame=shadeFrameColors[v.frame],cover=shadeCoverColors[v.cover],rise=v.rise,postH=1-rise,px=Math.min(.20,v.postSize/o.w),pz=Math.min(.20,v.postSize/o.h),deckH=v.deck?.06:0;
+  const oct=kind==='gazebo',ring=oct?Array.from({length:8},(_,i)=>[.46*Math.cos((i+.5)*Math.PI/4),.46*Math.sin((i+.5)*Math.PI/4)]):Array.from({length:v.posts/2},(_,i)=>[-.45+i*.90/(v.posts/2-1)]).flatMap(x=>[[x,-.44],[x,.44]]);
+  const beam=(x,z,X,Z,y,h,thick,color)=>{const dx=(X-x)*o.w,dz=(Z-z)*o.h,len=Math.hypot(dx,dz);if(len<1e-6)return;part('box',color,(x+X)/2,y,(z+Z)/2,len/o.w,h,Math.min(.3,thick/o.h));out.at(-1).turn=Math.atan2(dz,dx);};
+  if(v.deck)part(oct?'octdeck':'box',shadeFrameColors.cedar,0,.03,0,1,.06,1);
+  for(const [x,z] of ring){const top=v.roof==='fabric'?postH+rise*((x*z>0)?1:.35):postH;b(frame,x,(top+deckH)/2,z,px,Math.max(.01,top-deckH),pz);}
+  if(oct){for(let i=0;i<8;i++){const [x,z]=ring[i],[X,Z]=ring[(i+1)%8];beam(x,z,X,Z,postH-.025,.05,v.postSize*.8,frame);if(v.rails&&i!==1){for(const y of [.14,.31])beam(x,z,X,Z,y,.028,v.postSize*.45,frame);if(detail)for(let j=1;j<=4;j++){const t=j/5;b(frame,x+(X-x)*t,.225,z+(Z-z)*t,px*.40,.16,pz*.40);}}}}
+  else if(v.roof!=='fabric'){for(const z of [-.44,.44])b(frame,0,postH-.035,z,1,.07,pz*1.3);for(const x of [-.45,.45])b(frame,x,postH-.035,0,px*1.3,.07,1);}
+  if(v.roof==='slats'){const n=detail?Math.min(64,Math.max(3,Math.ceil(o.w/v.spacing))):5;for(let i=0;i<n;i++)b(frame,-.46+i*.92/(n-1),postH+rise*.5,0,Math.min(.65/n,.25/o.w),rise,1);if(detail)for(const z of [-.28,0,.28])b(frame,0,.99,z,1,.02,pz*.55);}
+  else if(v.roof==='flat')b(cover,0,postH+rise*.5,0,1,rise,1);
+  else if(v.roof==='fabric')part('sailroof',cover,0,postH+rise*.5,0,1,rise,1);
+  else part(oct?'octroof':v.roof==='gable'?'roof':'hiproof',cover,0,postH+rise*.5,0,1,rise,1);
+  return out;
+ }
  if(kind==='boulder'||kind==='stepping'){part(rock(),pick(stone),0,.5,0,1,1,1);return out;}
  if(!detail&&kind!=='birdbath'){b(kind==='wall'?stone[0]:wood[0],0,.5,0,1,1,1);return out;}
  if(kind==='bench'){for(const x of [-.36,.36]){for(const z of [-.31,.31])b(metal,x,.23,z,.055,.46,.09);b(metal,x,.44,0,.055,.075,.85);b(metal,x,.71,-.35,.045,.50,.09);}for(let i=0;i<5;i++)b(pick(wood),0,.49,-.34+i*.15,1,.065,.135);for(let i=0;i<4;i++)b(pick(wood),0,.65+i*.10,-.37,1,.085,.08);}
@@ -12,7 +29,7 @@ export function hardParts(o,detail=true){
  else if(kind==='birdbath'){part('cylinder',stone[0],0,.065,0,.65,.13,.65);part('pedestal',stone[1],0,.43,0,.38,.68,.38);part('bowl',stone[0],0,.86,0,1,.28,1);part('cylinder','#759ea3',0,.948,0,.78,.014,.78);}
  else if(kind==='woodfence'){const n=Math.min(144,Math.max(2,Math.ceil(o.w/.48))),posts=Math.min(50,Math.max(2,Math.ceil(o.w/7)+1)),pw=Math.min(.15,.28/o.w);for(let i=0;i<n;i++)b(pick(wood),(i+.5)/n-.5,.5,0,.97/n,1,.57);for(const y of [.24,.70])b(dark,0,y,-.32,1,.09,.30);for(let i=0;i<posts;i++)b(dark,-.5+pw/2+i*(1-pw)/(posts-1),.49,0,pw,.98,1);}
  else if(kind==='wall'){const rows=Math.min(10,Math.max(1,Math.ceil(o.height/.55))),cols=Math.min(100,Math.max(1,Math.ceil(o.w/1.45)));b('#8c8272',0,.49,0,1,.96,.92);for(let row=0;row<rows;row++){const cuts=[-.5];for(let j=1;j<=cols;j++){const x=(j-(row%2)*.5)/cols-.5;if(x>-.5&&x<.5)cuts.push(x);}cuts.push(.5);for(let j=0;j<cuts.length-1;j++){const a=cuts[j],c=cuts[j+1],w=c-a;b(pick(stone),(a+c)/2,(row+.5)*.93/rows,0,w*.98,.91/rows,1);}}b(stone[1],0,.965,0,1,.07,1);}
- else if(kind==='pergola'){const pw=Math.min(.15,.5/o.w),pd=Math.min(.15,.5/o.h);for(const x of [-.43,.43])for(const z of [-.43,.43])b(dark,x,.45,z,pw,.90,pd);for(const z of [-.43,.43])b(wood[0],0,.875,z,1,.10,pd*1.3);const n=Math.min(32,Math.max(4,Math.ceil(o.w/1.5)));for(let i=0;i<n;i++)b(pick(wood),-.46+i*.92/(n-1),.955,0,Math.min(.8/n,.27/o.w),.09,1);for(const z of [-.27,0,.27])b(wood[2],0,.99,z,1,.02,pd*.65);}
+
  else if(kind==='trellis'){for(const x of [-.46,.46])b(dark,x,.5,0,.08,1,1);for(let i=0;i<7;i++)b(pick(wood),-.36+i*.12,.56,0,.035,.80,.38);for(let i=0;i<7;i++)b(pick(wood),0,.22+i*.12,0,.94,.026,.50);b(wood[2],0,.96,0,1,.08,1);}
  else if(kind==='rainbarrel'){part('cylinder','#536c61',0,.48,0,.96,.90,.96);for(const y of [.13,.39,.69,.89])part('cylinder','#354940',0,y,0,1,.045,1);part('cylinder','#394e43',0,.96,0,1,.08,1);part('cylinder',metal,0,.13,.49,.10,.06,.16);b(metal,0,.18,.47,.13,.025,.09);}
  else if(kind==='compostbin'){const t=.065;for(const x of [-.46,.46])for(const z of [-.46,.46])b(dark,x,.5,z,.08,1,.08);for(let i=0;i<7;i++){const y=(i+.5)/7;for(const z of [-.46,.46])b(pick(wood),0,y,z,1,.107,t);for(const x of [-.46,.46])b(pick(wood),x,y,0,t,.107,.88);}b('#61513b',0,.72,0,.84,.08,.84);}
@@ -22,7 +39,7 @@ export function hardParts(o,detail=true){
  else b(wood[0],0,.5,0,1,1,1);
  return out;
 }
-export function localPlacement(o,p){const a=-(o.angle||0)*Math.PI/180,c=Math.cos(a),s=Math.sin(a),x=p.x*o.w,z=p.z*o.h;return {x:o.x+c*x+s*z,y:o.y-s*x+c*z,z:p.y*o.height,scale:[p.w*o.w,p.h*o.height,p.d*o.h],angle:a};}
+export function localPlacement(o,p){const a=-(o.angle||0)*Math.PI/180,c=Math.cos(a),s=Math.sin(a),x=p.x*o.w,z=p.z*o.h;return {x:o.x+c*x+s*z,y:o.y-s*x+c*z,z:p.y*o.height,scale:[p.w*o.w,p.h*o.height,p.d*o.h],angle:a-(p.turn||0)};}
 export function steppedSections(o,elevation){
  if(!['woodfence','wall'].includes(o.kind))return [o];
  const n=Math.min(48,Math.max(1,Math.ceil(o.w/(o.kind==='wall'?4:6)))),a=(o.angle||0)*Math.PI/180,c=Math.cos(a),s=Math.sin(a);
@@ -40,6 +57,10 @@ export function makeHardscapeRenderer(T,{mat,geo,world,box,cylinder,scene,shadow
  if(shape.startsWith('woodbox')){g=structureModule.woodGeometry(T,shape.slice(-1));}
  else if(shape.startsWith('rock')){g=new T.IcosahedronGeometry(.5,2);const a=g.attributes.position,seed=Number(shape.slice(4))+1,lo=[Infinity,Infinity,Infinity],hi=[-Infinity,-Infinity,-Infinity];for(let i=0;i<a.count;i++){const x=a.getX(i),y=a.getY(i),z=a.getZ(i),n=.89+.13*Math.sin(x*12.7+y*8.5+z*15.3+seed*3.7)+.045*Math.cos(x*31+y*24-z*29+seed),v=[x*n+Math.sin(y*8+seed)*.045,Math.max(-.36,y*n)*.87,z*n+Math.cos(x*7+seed)*.04];for(let j=0;j<3;j++){lo[j]=Math.min(lo[j],v[j]);hi[j]=Math.max(hi[j],v[j]);}a.setXYZ(i,...v);}for(let i=0;i<a.count;i++)a.setXYZ(i,...[a.getX(i),a.getY(i),a.getZ(i)].map((v,j)=>(v-lo[j])/(hi[j]-lo[j])-.5));g.computeVertexNormals();}
  else if(shape==='bowl'||shape==='pedestal'){const points=shape==='bowl'?[[0,0],[.28,0],[.34,.23],[.43,.57],[.5,.84],[.5,1],[.43,1],[.39,.74],[.29,.5],[0,.5]]:[[0,0],[.5,0],[.5,.12],[.29,.19],[.23,.43],[.32,.69],[.45,.85],[.45,1],[0,1]];g=new T.LatheGeometry(points.map(([x,y])=>new T.Vector2(x,y-.5)),24);}
+ else if(shape==='octroof'){g=new T.CylinderGeometry(0,.5/Math.cos(Math.PI/8),1,8,1,false,Math.PI/8);}
+ else if(shape==='octdeck'){g=new T.CylinderGeometry(.5/Math.cos(Math.PI/8),.5/Math.cos(Math.PI/8),1,8,1,false,Math.PI/8);}
+ else if(shape==='hiproof'){const A=[-.5,-.5,-.5],B=[.5,-.5,-.5],C=[.5,-.5,.5],D=[-.5,-.5,.5],E=[-.23,.5,0],F=[.23,.5,0];g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute([A,B,F,A,F,E,D,E,F,D,F,C,A,D,E,B,F,C,A,D,C,A,C,B].flat(),3));g.computeVertexNormals();}
+ else if(shape==='sailroof'){g=new T.PlaneGeometry(1,1,12,12);g.rotateX(-Math.PI/2);const a=g.attributes.position;for(let i=0;i<a.count;i++){const x=a.getX(i),z=a.getZ(i);a.setY(i,.15+1.2*x*z-.25*(1-4*x*x)*(1-4*z*z));}g.computeVertexNormals();}
  else if(shape==='nestfront'){const face=new T.Shape();face.moveTo(-.5,-.5);face.lineTo(.5,-.5);face.lineTo(.5,.5);face.lineTo(-.5,.5);face.closePath();const hole=new T.Path();hole.absarc(0,.13,.18,0,Math.PI*2,true);face.holes.push(hole);g=new T.ExtrudeGeometry(face,{depth:1,bevelEnabled:false,curveSegments:12});g.translate(0,0,-.5);}
  else if(shape==='roof'){const A=[-.5,-.5,-.5],B=[.5,-.5,-.5],C=[.5,-.5,.5],D=[-.5,-.5,.5],E=[-.5,.5,0],F=[.5,.5,0];g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute([A,B,F,A,F,E,D,E,F,D,F,C,A,D,E,B,F,C,A,D,C,A,C,B].flat(),3));g.computeVertexNormals();}
  else g=new T.BoxGeometry(1,1,1);
