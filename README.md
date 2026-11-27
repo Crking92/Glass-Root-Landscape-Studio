@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.13.8
+# Glass Root Landscape Studio v0.13.9
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation or paid assets are required. The core 2D editor and legacy Canvas view run locally; GIS services and the new Three.js engine have optional online dependencies.
 
@@ -12,6 +12,11 @@ Read [AGENTS.md](AGENTS.md) before any development work. It defines cross-chat o
 - [Open the independent WebGL plant library](https://crking92.github.io/Glass-Root-Landscape-Studio/species-mesh-lab/). Two original species-specific prototypes: Lindheimer's muhly and little bluestem, five seeded individuals, five illustrative appearances, three detail levels, orbit and zoom. No external dependencies or copied photos.
 - Wildflower Center primary profiles and read-only Hays Botany Poaceae Grass ID Lab records inform visible morphology; species-level artistic geometry is not an identification key. Source links are shown for each species. No variety, cultivar or county-level nativity claim added.
 - Mesh generator checks: 150 species × stage × detail × individual combinations (2 × 5 × 3 × 5), finite matching position/normal/color arrays and deterministic seed variation. Mature individual 01 plant triangles: muhly 119,800 / 37,140 / 9,000; little bluestem 123,828 / 36,184 / 9,052 (high/medium/low). Ground shading is illustrative; no real cast shadows. Browser visual/performance testing and integration of the latest lab models remain pending. The main editor now has an independent Three.js preview; saved project schema remains unchanged.
+
+## Stone and edging finish refinement (v0.13.9)
+- Original layered limestone/sandstone color and bump maps with separate restrained sawn finish, UVs on normalized chipped blocks, improved straight sawn bevels. Flat limestone and sandstone slab objects, sized/rotated with ordinary object controls.
+- Wall stacking pattern: even staggered or irregular dry-stack appearance (variable course heights, joints and depths, deterministic seed). Existing default remains even staggered. Attached limestone/sandstone share texture and geometry; new weathered steel, black powder-coated steel and aged brick presets, textured timber. No external images or assets. Concept visual treatment only, not physical material or structural specifications.
+- New tests exercise two slabs, four attached finishes and saved irregular stack selection. Client allowlist extended, renderer pin updated separately. Visual and browser verification pending.
 
 ## Natural stone details (v0.13.8)
 - Five new hardscape types: single limestone/sandstone blocks, straight limestone/sandstone borders, stacked sandstone wall. Existing limestone wall upgraded. Rough split-face or straighter sawn concept finish, editable dimensions/rotation, nominal piece length, wall course height and capstone toggle. Normalized beveled faceted variants, material colors, staggered courses, instanced rendering, terrain stepping. Original rounded boulders remain.
