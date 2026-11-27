@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.14.0
+# Glass Root Landscape Studio v0.14.1
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation or paid assets are required. The core 2D editor and legacy Canvas view run locally; GIS services and the new Three.js engine have optional online dependencies.
 
@@ -12,6 +12,10 @@ Read [AGENTS.md](AGENTS.md) before any development work. It defines cross-chat o
 - [Open the independent WebGL plant library](https://crking92.github.io/Glass-Root-Landscape-Studio/species-mesh-lab/). Two original species-specific prototypes: Lindheimer's muhly and little bluestem, five seeded individuals, five illustrative appearances, three detail levels, orbit and zoom. No external dependencies or copied photos.
 - Wildflower Center primary profiles and read-only Hays Botany Poaceae Grass ID Lab records inform visible morphology; species-level artistic geometry is not an identification key. Source links are shown for each species. No variety, cultivar or county-level nativity claim added.
 - Mesh generator checks: 150 species × stage × detail × individual combinations (2 × 5 × 3 × 5), finite matching position/normal/color arrays and deterministic seed variation. Mature individual 01 plant triangles: muhly 119,800 / 37,140 / 9,000; little bluestem 123,828 / 36,184 / 9,052 (high/medium/low). Ground shading is illustrative; no real cast shadows. Browser visual/performance testing and integration of the latest lab models remain pending. The main editor now has an independent Three.js preview; saved project schema remains unchanged.
+
+## Rustic log edging and fallen wood (v0.14.1)
+- Crooked natural log attached edging, standalone straight-alignment natural log border, and individual fallen habitat log. Three irregularity settings (mostly straight, crooked, wild with branch stubs); deterministic curved/tapered tubes, faceted bark ridges, colored cut-end rings, varied log silhouettes. Overall straight alignment remains editable; individual logs may extend beyond nominal width. Existing squared timber edging preserved.
+- Shared profile used in plan and 3D; original procedural geometry, no photos or external assets. Saved optional log settings, edging wildness, client allowlist, quantities and proposal rendering. Concept wood only; no decay/structural simulation. Attached curves use outline segments; long border log count capped. New browser scenario pending visual/browser verification.
 
 ## Irregular fieldstone and fitted flagstone (v0.14.0)
 - Four distinct hardscape tools: jagged individual rock, single-height fieldstone border, stacked fieldstone wall and fitted flagstone path/patio. Two-point linear tools use length/depth/height/rotation controls. Limestone or sandstone palette, nominal piece size, joint spacing and wall rock height. Fitted polygons generated deterministically via bounded jittered Voronoi cells with bevels and varied tones, not rectangular masonry. Paving follows grade per vertex; walls use approximate terrain stepping. One merged mesh per section, capped cell detail. Wall plan symbol represents overhead footprint, not exact face stones.
