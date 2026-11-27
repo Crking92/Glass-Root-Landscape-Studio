@@ -1,0 +1,1325 @@
+{
+  "schema": "glass-root-palette-expansion-review-v1",
+  "baseline": {
+    "count": 315,
+    "sourceBlob": "ab973ec0de739ecf981c76f9fca8ba6d6da8a7ad",
+    "policy": "Existing owner-approved native baseline; preserve all IDs and records."
+  },
+  "source": "Native Texas Nursery availability sheet dated 2026-11-30 (taxon labels only; no prices, stock or customer data). Public catalog: https://nativetx.com/wholesale/catalog",
+  "status": "staged candidates; not live palette; no local-native or safety designation assigned to new taxa",
+  "counts": {
+    "named_selection_or_hybrid_review": 37,
+    "origin_and_invasive_screen": 33,
+    "existing_exact": 101,
+    "priority_native_range_review": 26,
+    "infraspecific_identity_review": 5,
+    "invasive_or_risk_hold": 9,
+    "possible_existing_synonym_or_spelling": 4,
+    "unresolved_mix": 1
+  },
+  "records": [
+    {
+      "row": 12,
+      "sourceTaxon": "Agastache x 'Tutti Frutti'",
+      "status": "named_selection_or_hybrid_review"
+    },
+    {
+      "row": 13,
+      "sourceTaxon": "Artemisia x 'Powis Castle'",
+      "status": "named_selection_or_hybrid_review"
+    },
+    {
+      "row": 14,
+      "sourceTaxon": "Dietes bicolor",
+      "status": "origin_and_invasive_screen"
+    },
+    {
+      "row": 15,
+      "sourceTaxon": "Rudbeckia fulgida 'Goldsturm'",
+      "status": "named_selection_or_hybrid_review"
+    },
+    {
+      "row": 16,
+      "sourceTaxon": "Melampodium leucanthum",
+      "status": "existing_exact",
+      "paletteId": "tz-melampodium-leucanthum"
+    },
+    {
+      "row": 17,
+      "sourceTaxon": "Gaillardia x 'Arizona Sun'",
+      "status": "named_selection_or_hybrid_review"
+    },
+    {
+      "row": 18,
+      "sourceTaxon": "Linum lewisii",
+      "status": "priority_native_range_review"
+    },
+    {
+      "row": 19,
+      "sourceTaxon": "Sisyrinchium var. 'Moody Blues'",
+      "status": "named_selection_or_hybrid_review"
+    },
+    {
+      "row": 20,
+      "sourceTaxon": "Bulbine frutescens",
+      "status": "origin_and_invasive_screen"
+    },
+    {
+      "row": 21,
+      "sourceTaxon": "Calylophus berlandieri ssp. pinifolius",
+      "status": "infraspecific_identity_review",
+      "possibleMatch": "Calylophus berlandieri"
+    },
+    {
+      "row": 22,
+      "sourceTaxon": "Nepata x fassenii 'Walkers Low'",
+      "status": "named_selection_or_hybrid_review"
+    },
+    {
+      "row": 23,
+      "sourceTaxon": "Capsicum annuum var. glabriusculum",
+      "status": "infraspecific_identity_review",
+      "possibleMatch": "Capsicum annuum"
+    },
+    {
+      "row": 24,
+      "sourceTaxon": "Berlandiera lyrata",
+      "status": "existing_exact",
+      "paletteId": "tz-berlandiera-lyrata"
+    },
+    {
+      "row": 25,
+      "sourceTaxon": "Dracopis amplexicaulis",
+      "status": "existing_exact",
+      "paletteId": "tz-dracopis-amplexicaulis"
+    },
+    {
+      "row": 26,
+      "sourceTaxon": "Aquilegia chrysantha var. hinckleyana",
+      "status": "priority_native_range_review"
+    },
+    {
+      "row": 27,
+      "sourceTaxon": "Tagetes lemmonii",
+      "status": "origin_and_invasive_screen"
+    },
+    {
+      "row": 28,
+      "sourceTaxon": "Coreopsis lanceolata",
+      "status": "existing_exact",
+      "paletteId": "tz-coreopsis-lanceolata"
+    },
+    {
+      "row": 29,
+      "sourceTaxon": "Engelmannia peristenia",
+      "status": "existing_exact",
+      "paletteId": "tz-engelmannia-peristenia"
+    },
+    {
+      "row": 30,
+      "sourceTaxon": "Dalea frutescens",
+      "status": "existing_exact",
+      "paletteId": "p5"
+    },
+    {
+      "row": 31,
+      "sourceTaxon": "Dalea greggii",
+      "status": "priority_native_range_review"
+    },
+    {
+      "row": 32,
+      "sourceTaxon": "Chrysactinia mexicana",
+      "status": "existing_exact",
+      "paletteId": "tz-chrysactinia-mexicana"
+    },
+    {
+      "row": 33,
+      "sourceTaxon": "Datura wrightii",
+      "status": "existing_exact",
+      "paletteId": "tz-datura-wrightii"
+    },
+    {
+      "row": 34,
+      "sourceTaxon": "Sphaeralcea ambigua",
+      "status": "origin_and_invasive_screen"
+    },
+    {
+      "row": 35,
+      "sourceTaxon": "Symphyotrichum oblongifolium",
+      "status": "existing_exact",
+      "paletteId": "tz-symphyotrichum-oblongifolium"
+    },
+    {
+      "row": 36,
+      "sourceTaxon": "Marsilea macropoda",
+      "status": "existing_exact",
+      "paletteId": "tz-marsilea-macropoda"
+    },
+    {
+      "row": 37,
+      "sourceTaxon": "Thelypteris kunthii",
+      "status": "priority_native_range_review"
+    },
+    {
+      "row": 38,
+      "sourceTaxon": "Anisacanthus quadrifidus var. wrightii",
+      "status": "existing_exact",
+      "paletteId": "p9"
+    },
+    {
+      "row": 39,
+      "sourceTaxon": "Anisacanthus cv. 'Benny's Gold'",
+      "status": "named_selection_or_hybrid_review"
+    },
+    {
+      "row": 40,
+      "sourceTaxon": "Tetraneuris scaposa",
+      "status": "existing_exact",
+      "paletteId": "tz-tetraneuris-scaposa"
+    },
+    {
+      "row": 41,
+      "sourceTaxon": "Phyla nodiflora var. incisa",
+      "status": "infraspecific_identity_review",
+      "possibleMatch": "Phyla nodiflora"
+    },
+    {
+      "row": 42,
+      "sourceTaxon": "Allium tuberosum",
+      "status": "invasive_or_risk_hold",
+      "note": "Garlic chives: screen spread risk."
+    },
+    {
+      "row": 43,
+      "sourceTaxon": "Oenothera lindheimeri",
+      "status": "existing_exact",
+      "paletteId": "tz-oenothera-lindheimeri"
+    },
+    {
+      "row": 44,
+      "sourceTaxon": "Rudbeckia maxima",
+      "status": "priority_native_range_review"
+    },
+    {
+      "row": 45,
+      "sourceTaxon": "Solidago nemoralis",
+      "status": "existing_exact",
+      "paletteId": "tz-solidago-nemoralis"
+    },
+    {
+      "row": 46,
+      "sourceTaxon": "Calyptocarpus vialis",
+      "status": "existing_exact",
+      "paletteId": "tz-calyptocarpus-vialis"
+    },
+    {
+      "row": 47,
+      "sourceTaxon": "Lantana camara 'Dallas Red'",
+      "status": "invasive_or_risk_hold",
+      "note": "Texas Invasives lists Lantana camara; cultivar not exempt by default."
+    },
+    {
+      "row": 48,
+      "sourceTaxon": "Lantana x 'New Gold'",
+      "status": "invasive_or_risk_hold",
+      "note": "Lantana hybrid, parentage and invasive potential need assessment."
+    },
+    {
+      "row": 49,
+      "sourceTaxon": "Lantana urticoides",
+      "status": "existing_exact",
+      "paletteId": "tz-lantana-urticoides"
+    },
+    {
+      "row": 50,
+      "sourceTaxon": "Lantana montevidensis",
+      "status": "invasive_or_risk_hold",
+      "note": "Trailing lantana: invasive concern; hold pending regional screening."
+    },
+    {
+      "row": 51,
+      "sourceTaxon": "Lantana montevidensis 'Alba'",
+      "status": "invasive_or_risk_hold",
+      "note": "Trailing lantana cultivar: invasive concern; hold."
+    },
+    {
+      "row": 52,
+      "sourceTaxon": "Helianthus maximiliani",
+      "status": "existing_exact",
+      "paletteId": "tz-helianthus-maximiliani"
+    },
+    {
+      "row": 53,
+      "sourceTaxon": "Ratibida columnifera",
+      "status": "existing_exact",
+      "paletteId": "tz-ratibida-columnifera"
+    },
+    {
+      "row": 54,
+      "sourceTaxon": "Justicia spicigera",
+      "status": "origin_and_invasive_screen"
+    },
+    {
+      "row": 55,
+      "sourceTaxon": "Tagetes lucida",
+      "status": "origin_and_invasive_screen"
+    },
+    {
+      "row": 56,
+      "sourceTaxon": "Poliomentha longiflora",
+      "status": "origin_and_invasive_screen"
+    },
+    {
+      "row": 57,
+      "sourceTaxon": "Viola missouriensis",
+      "status": "existing_exact",
+      "paletteId": "tz-viola-missouriensis"
+    },
+    {
+      "row": 58,
+      "sourceTaxon": "Ageratina havanensis",
+      "status": "existing_exact",
+      "paletteId": "tz-ageratina-havanensis"
+    },
+    {
+      "row": 59,
+      "sourceTaxon": "Conoclinium greggii",
+      "status": "priority_native_range_review",
+      "acceptedNameCandidate": "Conoclinium dissectum",
+      "source": "https://www.wildflower.org/plants/result.php?id_plant=CODI21"
+    },
+    {
+      "row": 62,
+      "sourceTaxon": "Monarda citriodora",
+      "status": "existing_exact",
+      "paletteId": "tz-monarda-citriodora"
+    },
+    {
+      "row": 63,
+      "sourceTaxon": "Monarda fistulosa",
+      "status": "existing_exact",
+      "paletteId": "tz-monarda-fistulosa"
+    },
+    {
+      "row": 64,
+      "sourceTaxon": "Orbexilum pedunculatum",
+      "status": "priority_native_range_review"
+    },
+    {
+      "row": 65,
+      "sourceTaxon": "Nierembergia gracilis 'Starry Eyes'",
+      "status": "named_selection_or_hybrid_review"
+    },
+    {
+      "row": 66,
+      "sourceTaxon": "Physostegia correllii",
+      "status": "existing_exact",
+      "paletteId": "tz-physostegia-correllii"
+    },
+    {
+      "row": 67,
+      "sourceTaxon": "Physostegia virginiana",
+      "status": "existing_exact",
+      "paletteId": "tz-physostegia-virginiana"
+    },
+    {
+      "row": 68,
+      "sourceTaxon": "Penstemon tenuis",
+      "status": "priority_native_range_review"
+    },
+    {
+      "row": 69,
+      "sourceTaxon": "Penstemon baccharifolius",
+      "status": "existing_exact",
+      "paletteId": "tz-penstemon-baccharifolius"
+    },
+    {
+      "row": 70,
+      "sourceTaxon": "Rivina humilis",
+      "status": "existing_exact",
+      "paletteId": "tz-rivina-humilis"
+    },
+    {
+      "row": 71,
+      "sourceTaxon": "Dichondra argentea",
+      "status": "priority_native_range_review"
+    },
+    {
+      "row": 72,
+      "sourceTaxon": "Oenothera macrocarpa missouriensis",
+      "status": "infraspecific_identity_review",
+      "possibleMatch": "Oenothera macrocarpa"
+    },
+    {
+      "row": 73,
+      "sourceTaxon": "Oenothera speciosa",
+      "status": "existing_exact",
+      "paletteId": "tz-oenothera-speciosa"
+    },
+    {
+      "row": 74,
+      "sourceTaxon": "Echinacea purpurea",
+      "status": "priority_native_range_review"
+    },
+    {
+      "row": 75,
+      "sourceTaxon": "Pavonia lasiopetala",
+      "status": "existing_exact",
+      "paletteId": "tz-pavonia-lasiopetala"
+    },
+    {
+      "row": 76,
+      "sourceTaxon": "Pavonia lasiopetala 'Ellen's Legacy'",
+      "status": "named_selection_or_hybrid_review"
+    },
+    {
+      "row": 77,
+      "sourceTaxon": "Salvia rosmarinus 'Prostratus'",
+      "status": "named_selection_or_hybrid_review"
+    },
+    {
+      "row": 78,
+      "sourceTaxon": "Salvia rosmarinus",
+      "status": "origin_and_invasive_screen"
+    },
+    {
+      "row": 79,
+      "sourceTaxon": "Ruellia simplex 'Katie'",
+      "status": "invasive_or_risk_hold",
+      "note": "Texas Invasives lists Ruellia simplex; dwarf cultivar not exempt by default."
+    },
+    {
+      "row": 80,
+      "sourceTaxon": "Salvia yangii",
+      "status": "origin_and_invasive_screen"
+    },
+    {
+      "row": 81,
+      "sourceTaxon": "Salvia sinaloensis",
+      "status": "origin_and_invasive_screen"
+    },
+    {
+      "row": 82,
+      "sourceTaxon": "Salvia penstemoides",
+      "status": "possible_existing_synonym_or_spelling",
+      "possibleMatch": "Salvia pentstemonoides"
+    },
+    {
+      "row": 83,
+      "sourceTaxon": "Salvia roemeriana",
+      "status": "existing_exact",
+      "paletteId": "tz-salvia-roemeriana"
+    },
+    {
+      "row": 84,
+      "sourceTaxon": "Salvia madrensis",
+      "status": "origin_and_invasive_screen"
+    },
+    {
+      "row": 85,
+      "sourceTaxon": "Salvia darcyi",
+      "status": "origin_and_invasive_screen"
+    },
+    {
+      "row": 86,
+      "sourceTaxon": "Salvia chamaedryoides",
+      "status": "origin_and_invasive_screen"
+    },
+    {
+      "row": 87,
+      "sourceTaxon": "Salvia greggii 'Coral' (Fmr. 'Lipstick')",
+      "status": "named_selection_or_hybrid_review"
+    },
+    {
+      "row": 88,
+      "sourceTaxon": "Salvia greggii 'Pink'",
+      "status": "named_selection_or_hybrid_review"
+    },
+    {
+      "row": 89,
+      "sourceTaxon": "Salvia greggii 'Red'",
+      "status": "named_selection_or_hybrid_review"
+    },
+    {
+      "row": 90,
+      "sourceTaxon": "Salvia greggii 'White'",
+      "status": "named_selection_or_hybrid_review"
+    },
+    {
+      "row": 91,
+      "sourceTaxon": "Salvia microphylla 'Hot Lips'",
+      "status": "named_selection_or_hybrid_review"
+    },
+    {
+      "row": 92,
+      "sourceTaxon": "Salvia longispicata x farinacea",
+      "status": "named_selection_or_hybrid_review"
+    },
+    {
+      "row": 93,
+      "sourceTaxon": "Salvia lyrata",
+      "status": "existing_exact",
+      "paletteId": "tz-salvia-lyrata"
+    },
+    {
+      "row": 94,
+      "sourceTaxon": "Salvia farinacea 'Henry Duelberg'",
+      "status": "named_selection_or_hybrid_review"
+    },
+    {
+      "row": 95,
+      "sourceTaxon": "Salvia leucantha",
+      "status": "origin_and_invasive_screen"
+    },
+    {
+      "row": 96,
+      "sourceTaxon": "Salvia hybrid",
+      "status": "named_selection_or_hybrid_review"
+    },
+    {
+      "row": 97,
+      "sourceTaxon": "Salvia azurea",
+      "status": "existing_exact",
+      "paletteId": "tz-salvia-azurea"
+    },
+    {
+      "row": 98,
+      "sourceTaxon": "Salvia blepharophylla",
+      "status": "origin_and_invasive_screen"
+    },
+    {
+      "row": 99,
+      "sourceTaxon": "Salvia coccinea",
+      "status": "existing_exact",
+      "paletteId": "p3"
+    },
+    {
+      "row": 100,
+      "sourceTaxon": "Santolina chamaecyparissus",
+      "status": "origin_and_invasive_screen"
+    },
+    {
+      "row": 101,
+      "sourceTaxon": "Senna lindheimeriana",
+      "status": "existing_exact",
+      "paletteId": "tz-senna-lindheimeriana"
+    },
+    {
+      "row": 102,
+      "sourceTaxon": "Viguiera stenoloba",
+      "status": "priority_native_range_review"
+    },
+    {
+      "row": 103,
+      "sourceTaxon": "Scutellaria suffrutescens",
+      "status": "origin_and_invasive_screen"
+    },
+    {
+      "row": 104,
+      "sourceTaxon": "Scutellaria wrightii",
+      "status": "existing_exact",
+      "paletteId": "tz-scutellaria-wrightii"
+    },
+    {
+      "row": 105,
+      "sourceTaxon": "Dyschoriste linearis",
+      "status": "existing_exact",
+      "paletteId": "tz-dyschoriste-linearis"
+    },
+    {
+      "row": 106,
+      "sourceTaxon": "Tulbaghia violacea",
+      "status": "origin_and_invasive_screen"
+    },
+    {
+      "row": 107,
+      "sourceTaxon": "Ipomopsis rubra",
+      "status": "existing_exact",
+      "paletteId": "tz-ipomopsis-rubra"
+    },
+    {
+      "row": 108,
+      "sourceTaxon": "Stachys coccinea",
+      "status": "priority_native_range_review"
+    },
+    {
+      "row": 109,
+      "sourceTaxon": "Lupinus texensis",
+      "status": "existing_exact",
+      "paletteId": "tz-lupinus-texensis"
+    },
+    {
+      "row": 110,
+      "sourceTaxon": "Echeandia texensis",
+      "status": "priority_native_range_review"
+    },
+    {
+      "row": 111,
+      "sourceTaxon": "Malvaviscus arboreus var. drummondii",
+      "status": "existing_exact",
+      "paletteId": "tz-malvaviscus-arboreus-var-drummondii"
+    },
+    {
+      "row": 112,
+      "sourceTaxon": "Verbena aristigera",
+      "status": "invasive_or_risk_hold",
+      "note": "Verify name and introduced/invasive status."
+    },
+    {
+      "row": 113,
+      "sourceTaxon": "Glandularia bipinnatifida",
+      "status": "existing_exact",
+      "paletteId": "tz-glandularia-bipinnatifida"
+    },
+    {
+      "row": 114,
+      "sourceTaxon": "Sphagneticola trilobata",
+      "status": "invasive_or_risk_hold",
+      "note": "Sphagneticola trilobata: invasive concern; hold."
+    },
+    {
+      "row": 115,
+      "sourceTaxon": "Mix of 5+ native species in each pot",
+      "status": "unresolved_mix"
+    },
+    {
+      "row": 116,
+      "sourceTaxon": "Callirhoe involucrata",
+      "status": "existing_exact",
+      "paletteId": "tz-callirhoe-involucrata"
+    },
+    {
+      "row": 117,
+      "sourceTaxon": "Stemodia lanata",
+      "status": "priority_native_range_review"
+    },
+    {
+      "row": 118,
+      "sourceTaxon": "Achillea millefolium",
+      "status": "existing_exact",
+      "paletteId": "tz-achillea-millefolium"
+    },
+    {
+      "row": 119,
+      "sourceTaxon": "Wedelia acapulcensis var. hispida",
+      "status": "existing_exact",
+      "paletteId": "tz-wedelia-acapulcensis-var-hispida"
+    },
+    {
+      "row": 122,
+      "sourceTaxon": "Merremia dissecta",
+      "status": "existing_exact",
+      "paletteId": "tz-merremia-dissecta"
+    },
+    {
+      "row": 123,
+      "sourceTaxon": "Bignonia capreolata 'Tangerine Beauty'",
+      "status": "named_selection_or_hybrid_review"
+    },
+    {
+      "row": 124,
+      "sourceTaxon": "Lonicera sempervirens",
+      "status": "existing_exact",
+      "paletteId": "tz-lonicera-sempervirens"
+    },
+    {
+      "row": 125,
+      "sourceTaxon": "Lonicera sempervirens 'Sulphurea'",
+      "status": "named_selection_or_hybrid_review"
+    },
+    {
+      "row": 126,
+      "sourceTaxon": "Pseudogynoxys chenopodioides",
+      "status": "origin_and_invasive_screen"
+    },
+    {
+      "row": 127,
+      "sourceTaxon": "Clematis pitcheri",
+      "status": "existing_exact",
+      "paletteId": "tz-clematis-pitcheri"
+    },
+    {
+      "row": 128,
+      "sourceTaxon": "Wisteria frutescens",
+      "status": "priority_native_range_review"
+    },
+    {
+      "row": 129,
+      "sourceTaxon": "Parthenocissus quinquefolia",
+      "status": "existing_exact",
+      "paletteId": "tz-parthenocissus-quinquefolia"
+    },
+    {
+      "row": 132,
+      "sourceTaxon": "Bouteloua gracilis",
+      "status": "existing_exact",
+      "paletteId": "tz-bouteloua-gracilis"
+    },
+    {
+      "row": 133,
+      "sourceTaxon": "Bouteloua curtipendula",
+      "status": "existing_exact",
+      "paletteId": "p2"
+    },
+    {
+      "row": 134,
+      "sourceTaxon": "Chasmanthium latifolium",
+      "status": "existing_exact",
+      "paletteId": "tz-chasmanthium-latifolium"
+    },
+    {
+      "row": 135,
+      "sourceTaxon": "Schizachyrium scoparium",
+      "status": "existing_exact",
+      "paletteId": "p0"
+    },
+    {
+      "row": 136,
+      "sourceTaxon": "Muhlenbergia dumosa",
+      "status": "origin_and_invasive_screen"
+    },
+    {
+      "row": 137,
+      "sourceTaxon": "Muhlenbergia lindheimeri",
+      "status": "existing_exact",
+      "paletteId": "p1"
+    },
+    {
+      "row": 138,
+      "sourceTaxon": "Muhlenbergia rigens",
+      "status": "origin_and_invasive_screen"
+    },
+    {
+      "row": 139,
+      "sourceTaxon": "Muhlenbergia capillaris",
+      "status": "priority_native_range_review"
+    },
+    {
+      "row": 140,
+      "sourceTaxon": "Muhlenbergia dubia",
+      "status": "existing_exact",
+      "paletteId": "tz-muhlenbergia-dubia"
+    },
+    {
+      "row": 141,
+      "sourceTaxon": "Carex perdentata",
+      "status": "existing_exact",
+      "paletteId": "tz-carex-perdentata"
+    },
+    {
+      "row": 142,
+      "sourceTaxon": "Rhynchospora colorata",
+      "status": "existing_exact",
+      "paletteId": "tz-rhynchospora-colorata"
+    },
+    {
+      "row": 143,
+      "sourceTaxon": "Carex blanda",
+      "status": "existing_exact",
+      "paletteId": "tz-carex-blanda"
+    },
+    {
+      "row": 144,
+      "sourceTaxon": "Panicum virgatum",
+      "status": "existing_exact",
+      "paletteId": "tz-panicum-virgatum"
+    },
+    {
+      "row": 147,
+      "sourceTaxon": "Mahonia trifoliolata",
+      "status": "existing_exact",
+      "paletteId": "tz-mahonia-trifoliolata"
+    },
+    {
+      "row": 148,
+      "sourceTaxon": "Callicarpa americana",
+      "status": "existing_exact",
+      "paletteId": "tz-callicarpa-americana"
+    },
+    {
+      "row": 149,
+      "sourceTaxon": "Fallujia paradoxa",
+      "status": "priority_native_range_review"
+    },
+    {
+      "row": 150,
+      "sourceTaxon": "Vitex rotundifolia",
+      "status": "invasive_or_risk_hold",
+      "note": "Beach vitex: invasive concern; hold."
+    },
+    {
+      "row": 151,
+      "sourceTaxon": "Aloysia gratissima",
+      "status": "existing_exact",
+      "paletteId": "tz-aloysia-gratissima"
+    },
+    {
+      "row": 152,
+      "sourceTaxon": "Erythrostemon gillesii",
+      "status": "origin_and_invasive_screen"
+    },
+    {
+      "row": 153,
+      "sourceTaxon": "Cephalanthus occidentalis",
+      "status": "existing_exact",
+      "paletteId": "tz-cephalanthus-occidentalis"
+    },
+    {
+      "row": 154,
+      "sourceTaxon": "Frangula caroliniana",
+      "status": "existing_exact",
+      "paletteId": "tz-frangula-caroliniana"
+    },
+    {
+      "row": 155,
+      "sourceTaxon": "Senna corymbosa",
+      "status": "origin_and_invasive_screen"
+    },
+    {
+      "row": 156,
+      "sourceTaxon": "Erythrina X bidwilii",
+      "status": "named_selection_or_hybrid_review"
+    },
+    {
+      "row": 157,
+      "sourceTaxon": "Symphoricarpos orbiculatus",
+      "status": "existing_exact",
+      "paletteId": "tz-symphoricarpos-orbiculatus"
+    },
+    {
+      "row": 158,
+      "sourceTaxon": "Malpighia punicifolia",
+      "status": "origin_and_invasive_screen"
+    },
+    {
+      "row": 159,
+      "sourceTaxon": "Sabal minor",
+      "status": "existing_exact",
+      "paletteId": "tz-sabal-minor"
+    },
+    {
+      "row": 160,
+      "sourceTaxon": "Forestiera pubescens",
+      "status": "existing_exact",
+      "paletteId": "tz-forestiera-pubescens"
+    },
+    {
+      "row": 161,
+      "sourceTaxon": "Sambucus nigra ssp. canadensis",
+      "status": "existing_exact",
+      "paletteId": "tz-sambucus-nigra-ssp-canadensis"
+    },
+    {
+      "row": 162,
+      "sourceTaxon": "Tecoma stans 'Esperanza'",
+      "status": "named_selection_or_hybrid_review"
+    },
+    {
+      "row": 163,
+      "sourceTaxon": "Mimosa borealis",
+      "status": "existing_exact",
+      "paletteId": "tz-mimosa-borealis"
+    },
+    {
+      "row": 164,
+      "sourceTaxon": "Erythrostemon mexicanus",
+      "status": "origin_and_invasive_screen"
+    },
+    {
+      "row": 165,
+      "sourceTaxon": "Caesalpinia pulcherrima",
+      "status": "origin_and_invasive_screen"
+    },
+    {
+      "row": 166,
+      "sourceTaxon": "Aesculus pavia",
+      "status": "existing_exact",
+      "paletteId": "tz-aesculus-pavia"
+    },
+    {
+      "row": 167,
+      "sourceTaxon": "Rosa 'Martha Gonzales'",
+      "status": "named_selection_or_hybrid_review"
+    },
+    {
+      "row": 168,
+      "sourceTaxon": "L. frutescens 'Compactum'",
+      "status": "named_selection_or_hybrid_review"
+    },
+    {
+      "row": 169,
+      "sourceTaxon": "Leucophyllum frutescens",
+      "status": "existing_exact",
+      "paletteId": "tz-leucophyllum-frutescens"
+    },
+    {
+      "row": 170,
+      "sourceTaxon": "Teucrium fruticans",
+      "status": "origin_and_invasive_screen"
+    },
+    {
+      "row": 171,
+      "sourceTaxon": "Rhus aromatica",
+      "status": "existing_exact",
+      "paletteId": "tz-rhus-aromatica"
+    },
+    {
+      "row": 172,
+      "sourceTaxon": "Rhus virens",
+      "status": "existing_exact",
+      "paletteId": "tz-rhus-virens"
+    },
+    {
+      "row": 173,
+      "sourceTaxon": "Eysenhardtia texana",
+      "status": "existing_exact",
+      "paletteId": "tz-eysenhardtia-texana"
+    },
+    {
+      "row": 174,
+      "sourceTaxon": "Hibiscus coccineus",
+      "status": "priority_native_range_review"
+    },
+    {
+      "row": 175,
+      "sourceTaxon": "Buddleja marrubiifolia",
+      "status": "origin_and_invasive_screen"
+    },
+    {
+      "row": 176,
+      "sourceTaxon": "Ilex vomitoria, 'Nana'",
+      "status": "named_selection_or_hybrid_review"
+    },
+    {
+      "row": 177,
+      "sourceTaxon": "Tecoma stans var. angustata",
+      "status": "infraspecific_identity_review",
+      "possibleMatch": "Tecoma stans"
+    },
+    {
+      "row": 178,
+      "sourceTaxon": "Tecoma stans var. angustata cv. 'Sangria'",
+      "status": "named_selection_or_hybrid_review"
+    },
+    {
+      "row": 181,
+      "sourceTaxon": "Agave americana",
+      "status": "existing_exact",
+      "paletteId": "tz-agave-americana"
+    },
+    {
+      "row": 182,
+      "sourceTaxon": "Agave lechuguilla",
+      "status": "priority_native_range_review"
+    },
+    {
+      "row": 183,
+      "sourceTaxon": "Agave lophantha 'Splendida'",
+      "status": "named_selection_or_hybrid_review"
+    },
+    {
+      "row": 184,
+      "sourceTaxon": "Agave ovatifolia",
+      "status": "origin_and_invasive_screen"
+    },
+    {
+      "row": 185,
+      "sourceTaxon": "Hesperaloe parviflora",
+      "status": "existing_exact",
+      "paletteId": "tz-hesperaloe-parviflora"
+    },
+    {
+      "row": 186,
+      "sourceTaxon": "Hesperaloe sp./hyb.",
+      "status": "named_selection_or_hybrid_review"
+    },
+    {
+      "row": 187,
+      "sourceTaxon": "Nolina lindheimeriana",
+      "status": "existing_exact",
+      "paletteId": "tz-nolina-lindheimeriana"
+    },
+    {
+      "row": 188,
+      "sourceTaxon": "Opuntia ellisiana",
+      "status": "origin_and_invasive_screen"
+    },
+    {
+      "row": 189,
+      "sourceTaxon": "Opuntia gomei 'Old Mexico'",
+      "status": "named_selection_or_hybrid_review"
+    },
+    {
+      "row": 190,
+      "sourceTaxon": "Dasylirion texanum",
+      "status": "existing_exact",
+      "paletteId": "tz-dasylirion-texanum"
+    },
+    {
+      "row": 191,
+      "sourceTaxon": "Yucca rostrata",
+      "status": "priority_native_range_review"
+    },
+    {
+      "row": 192,
+      "sourceTaxon": "Yucca constricta",
+      "status": "existing_exact",
+      "paletteId": "tz-yucca-constricta"
+    },
+    {
+      "row": 193,
+      "sourceTaxon": "Yucca faxoniana",
+      "status": "priority_native_range_review"
+    },
+    {
+      "row": 194,
+      "sourceTaxon": "Yucca traeculeana",
+      "status": "possible_existing_synonym_or_spelling",
+      "possibleMatch": "Yucca treculeana"
+    },
+    {
+      "row": 195,
+      "sourceTaxon": "Yucca thompsoniana",
+      "status": "priority_native_range_review"
+    },
+    {
+      "row": 196,
+      "sourceTaxon": "Yucca rupicola x pallida",
+      "status": "named_selection_or_hybrid_review"
+    },
+    {
+      "row": 197,
+      "sourceTaxon": "Yucca rupicola",
+      "status": "existing_exact",
+      "paletteId": "tz-yucca-rupicola"
+    },
+    {
+      "row": 201,
+      "sourceTaxon": "Delosperma cooperi",
+      "status": "origin_and_invasive_screen"
+    },
+    {
+      "row": 202,
+      "sourceTaxon": "Petrosedum rupestre 'Angelina'",
+      "status": "named_selection_or_hybrid_review"
+    },
+    {
+      "row": 203,
+      "sourceTaxon": "Sedum tetractinum 'Coral Reef'",
+      "status": "named_selection_or_hybrid_review"
+    },
+    {
+      "row": 204,
+      "sourceTaxon": "Phedimus spurius 'John Creech'",
+      "status": "named_selection_or_hybrid_review"
+    },
+    {
+      "row": 205,
+      "sourceTaxon": "Phedimus spurius 'Red Carpet'",
+      "status": "named_selection_or_hybrid_review"
+    },
+    {
+      "row": 206,
+      "sourceTaxon": "Agave maculata",
+      "status": "possible_existing_synonym_or_spelling",
+      "possibleMatch": "Manfreda maculosa"
+    },
+    {
+      "row": 210,
+      "sourceTaxon": "Cotinus obovatus",
+      "status": "existing_exact",
+      "paletteId": "tz-cotinus-obovatus"
+    },
+    {
+      "row": 212,
+      "sourceTaxon": "Bauhinia lunarioides",
+      "status": "priority_native_range_review"
+    },
+    {
+      "row": 214,
+      "sourceTaxon": "Ehretia anacua",
+      "status": "existing_exact",
+      "paletteId": "tz-ehretia-anacua"
+    },
+    {
+      "row": 216,
+      "sourceTaxon": "Myrospermum sousanum",
+      "status": "origin_and_invasive_screen"
+    },
+    {
+      "row": 218,
+      "sourceTaxon": "Prunus caroliniana, 'Compacta'",
+      "status": "named_selection_or_hybrid_review"
+    },
+    {
+      "row": 220,
+      "sourceTaxon": "Chilopsis linearis 'Bubba'",
+      "status": "named_selection_or_hybrid_review"
+    },
+    {
+      "row": 222,
+      "sourceTaxon": "Styphnolobium affine",
+      "status": "existing_exact",
+      "paletteId": "tz-styphnolobium-affine"
+    },
+    {
+      "row": 224,
+      "sourceTaxon": "Leucaena retusa",
+      "status": "existing_exact",
+      "paletteId": "tz-leucaena-retusa"
+    },
+    {
+      "row": 226,
+      "sourceTaxon": "Vachellia farnesiana",
+      "status": "existing_exact",
+      "paletteId": "tz-vachellia-farnesiana"
+    },
+    {
+      "row": 228,
+      "sourceTaxon": "Ungnadia speciosa",
+      "status": "existing_exact",
+      "paletteId": "tz-ungnadia-speciosa"
+    },
+    {
+      "row": 230,
+      "sourceTaxon": "Prunus mexicana",
+      "status": "existing_exact",
+      "paletteId": "tz-prunus-mexicana"
+    },
+    {
+      "row": 232,
+      "sourceTaxon": "Ilex decidua",
+      "status": "existing_exact",
+      "paletteId": "tz-ilex-decidua"
+    },
+    {
+      "row": 234,
+      "sourceTaxon": "Cercis canadensis var. mexicana",
+      "status": "existing_exact",
+      "paletteId": "tz-cercis-canadensis-var-mexicana"
+    },
+    {
+      "row": 236,
+      "sourceTaxon": "Cercis canadensis var. texensis",
+      "status": "existing_exact",
+      "paletteId": "tz-cercis-canadensis-var-texensis"
+    },
+    {
+      "row": 238,
+      "sourceTaxon": "Cercis canadensis var. texensis",
+      "status": "existing_exact",
+      "paletteId": "tz-cercis-canadensis-var-texensis"
+    },
+    {
+      "row": 240,
+      "sourceTaxon": "Parkinsonia aculeata",
+      "status": "existing_exact",
+      "paletteId": "tz-parkinsonia-aculeata"
+    },
+    {
+      "row": 242,
+      "sourceTaxon": "Cornus drummondii",
+      "status": "existing_exact",
+      "paletteId": "tz-cornus-drummondii"
+    },
+    {
+      "row": 244,
+      "sourceTaxon": "Sapindus saponaria v. drummondii",
+      "status": "possible_existing_synonym_or_spelling",
+      "possibleMatch": "Sapindus saponaria var. drummondii"
+    },
+    {
+      "row": 246,
+      "sourceTaxon": "Morella cerifera",
+      "status": "priority_native_range_review"
+    },
+    {
+      "row": 248,
+      "sourceTaxon": "Rhus lanceolata",
+      "status": "existing_exact",
+      "paletteId": "tz-rhus-lanceolata"
+    },
+    {
+      "row": 250,
+      "sourceTaxon": "Dermatophyllum secundiflorum",
+      "status": "existing_exact",
+      "paletteId": "p7"
+    },
+    {
+      "row": 252,
+      "sourceTaxon": "Diospyros texana",
+      "status": "existing_exact",
+      "paletteId": "tz-diospyros-texana"
+    },
+    {
+      "row": 254,
+      "sourceTaxon": "Ilex vomitoria 'Pride of Houston'",
+      "status": "named_selection_or_hybrid_review"
+    },
+    {
+      "row": 258,
+      "sourceTaxon": "Acer grandidentatum",
+      "status": "existing_exact",
+      "paletteId": "tz-acer-grandidentatum"
+    },
+    {
+      "row": 260,
+      "sourceTaxon": "Ulmus crassifolia",
+      "status": "existing_exact",
+      "paletteId": "tz-ulmus-crassifolia"
+    },
+    {
+      "row": 262,
+      "sourceTaxon": "Juniperus virginiana",
+      "status": "existing_exact",
+      "paletteId": "tz-juniperus-virginiana"
+    },
+    {
+      "row": 264,
+      "sourceTaxon": "Platanus mexicana",
+      "status": "origin_and_invasive_screen"
+    },
+    {
+      "row": 266,
+      "sourceTaxon": "Taxodium mucronatum",
+      "status": "priority_native_range_review"
+    },
+    {
+      "row": 268,
+      "sourceTaxon": "Quercus macrocarpa",
+      "status": "existing_exact",
+      "paletteId": "tz-quercus-macrocarpa"
+    },
+    {
+      "row": 270,
+      "sourceTaxon": "Quercus muehlenbergii",
+      "status": "existing_exact",
+      "paletteId": "tz-quercus-muehlenbergii"
+    },
+    {
+      "row": 272,
+      "sourceTaxon": "Quercus laceyi",
+      "status": "existing_exact",
+      "paletteId": "tz-quercus-laceyi"
+    },
+    {
+      "row": 274,
+      "sourceTaxon": "Quercus virginiana",
+      "status": "existing_exact",
+      "paletteId": "tz-quercus-virginiana"
+    },
+    {
+      "row": 276,
+      "sourceTaxon": "Quercus polymorpha",
+      "status": "priority_native_range_review"
+    },
+    {
+      "row": 278,
+      "sourceTaxon": "Carya illinoinensis",
+      "status": "existing_exact",
+      "paletteId": "tz-carya-illinoinensis"
+    }
+  ],
+  "regional": [
+    {
+      "scientific": "Amblyolepis setigera",
+      "status": "candidate_range_and_identity_review",
+      "source": "https://www.npsot.org/chapters/austin/austin-plant-sale-list/"
+    },
+    {
+      "scientific": "Bacopa monnieri",
+      "status": "candidate_range_and_identity_review",
+      "source": "https://www.npsot.org/chapters/austin/austin-plant-sale-list/"
+    },
+    {
+      "scientific": "Bouchetia anomala",
+      "status": "candidate_range_and_identity_review",
+      "source": "https://www.npsot.org/chapters/austin/austin-plant-sale-list/"
+    },
+    {
+      "scientific": "Callirhoe pedata",
+      "status": "candidate_range_and_identity_review",
+      "source": "https://www.npsot.org/chapters/austin/austin-plant-sale-list/"
+    },
+    {
+      "scientific": "Conoclinium dissectum",
+      "status": "candidate_range_and_identity_review",
+      "source": "https://www.npsot.org/chapters/austin/austin-plant-sale-list/"
+    },
+    {
+      "scientific": "Croton fruticulosus",
+      "status": "candidate_range_and_identity_review",
+      "source": "https://www.npsot.org/chapters/austin/austin-plant-sale-list/"
+    },
+    {
+      "scientific": "Dalea multiflora",
+      "status": "candidate_range_and_identity_review",
+      "source": "https://www.npsot.org/chapters/austin/austin-plant-sale-list/"
+    },
+    {
+      "scientific": "Eupatorium serotinum",
+      "status": "candidate_range_and_identity_review",
+      "source": "https://www.npsot.org/chapters/austin/austin-plant-sale-list/"
+    },
+    {
+      "scientific": "Euphorbia cyathophora",
+      "status": "candidate_range_and_identity_review",
+      "source": "https://www.npsot.org/chapters/austin/austin-plant-sale-list/"
+    },
+    {
+      "scientific": "Heterotheca canescens",
+      "status": "candidate_range_and_identity_review",
+      "source": "https://www.npsot.org/chapters/austin/austin-plant-sale-list/"
+    },
+    {
+      "scientific": "Lithospermum incisum",
+      "status": "candidate_range_and_identity_review",
+      "source": "https://www.npsot.org/chapters/austin/austin-plant-sale-list/"
+    },
+    {
+      "scientific": "Lythrum californicum",
+      "status": "candidate_range_and_identity_review",
+      "source": "https://www.npsot.org/chapters/austin/austin-plant-sale-list/"
+    },
+    {
+      "scientific": "Menodora heterophylla",
+      "status": "candidate_range_and_identity_review",
+      "source": "https://www.npsot.org/chapters/austin/austin-plant-sale-list/"
+    },
+    {
+      "scientific": "Physostegia intermedia",
+      "status": "candidate_range_and_identity_review",
+      "source": "https://www.npsot.org/chapters/austin/austin-plant-sale-list/"
+    },
+    {
+      "scientific": "Pinaropappus roseus",
+      "status": "candidate_range_and_identity_review",
+      "source": "https://www.npsot.org/chapters/austin/austin-plant-sale-list/"
+    },
+    {
+      "scientific": "Symphyotrichum drummondii var. texanum",
+      "status": "candidate_range_and_identity_review",
+      "source": "https://www.npsot.org/chapters/austin/austin-plant-sale-list/"
+    },
+    {
+      "scientific": "Verbesina lindheimeri",
+      "status": "candidate_range_and_identity_review",
+      "source": "https://www.npsot.org/chapters/austin/austin-plant-sale-list/"
+    },
+    {
+      "scientific": "Yeatesia platystegia",
+      "status": "candidate_range_and_identity_review",
+      "source": "https://www.npsot.org/chapters/austin/austin-plant-sale-list/"
+    },
+    {
+      "scientific": "Zeltnera beyrichii",
+      "status": "candidate_range_and_identity_review",
+      "source": "https://www.npsot.org/chapters/austin/austin-plant-sale-list/"
+    }
+  ],
+  "notes": [
+    "Exact matching normalizes whitespace and case only. Repeated listings retain their row identity. Do not automatically promote unresolved names, varieties, cultivars, hybrids or risk holds.",
+    "Rows 288–292 and other unlabeled/multiline material not verified here; review separately. No pricing included.",
+    "For new candidates, verify BONAP county range, taxonomic identity, sources and invasive evidence before default palette inclusion. Nonnatives and named selections opt-in separately."
+  ]
+}
