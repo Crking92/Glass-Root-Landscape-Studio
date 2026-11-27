@@ -245,6 +245,19 @@ await run('grid-spacing-and-saved-drafting',async p=>{
  await openDetails(p,'planAnnotations');await p.getByRole('button',{name:'Remove Entrance',exact:true}).click();assert.equal((await project(p)).draftNotes.length,2);await button(p,'planAnnotations').evaluate(e=>e.open=false);await button(p,'undo').click();assert.equal((await project(p)).draftNotes.length,3);
  return {savedNotes:3,gridSpacing:2};
 });
+await run('presentation-sheets',async p=>{
+ await button(p,'demo').click();await count(p,15);
+ const m=await project(p);m.draftNotes=[{id:'dimension-qa',kind:'dimension',a:[20,20],b:[40,20]},{id:'note-qa',kind:'note',a:[40,40],text:'QA Rain garden'}];await load(p,m);
+ await button(p,'reportOpen').click();await button(p,'reportTitle').fill('QA native garden');await button(p,'reportBrand').fill('QA design studio');await button(p,'reportPlanStyle').selectOption('presentation');await button(p,'reportPaper').selectOption('tabloid');await button(p,'reportSheetGrid').check();
+ const image=p.locator('#reportSheet .sheet-plan-image');await image.waitFor();const first=await image.getAttribute('src');assert(first.startsWith('data:image/png;base64,'));assert.equal(await button(p,'reportSheet').getAttribute('data-paper'),'tabloid');assert.match(await button(p,'reportSheet').innerText(),/Total plants: 15/);
+ await button(p,'reportSheetNotes').uncheck();assert.notEqual(await image.getAttribute('src'),first);await button(p,'reportSheetNotes').check();assert.equal(await image.getAttribute('src'),first);
+ await button(p,'reportPlanStyle').selectOption('technical');assert.notEqual(await image.getAttribute('src'),first);await button(p,'reportPlanStyle').selectOption('presentation');
+ await button(p,'reportSave').click();const saved=await project(p);assert.deepEqual(saved.objects,m.objects);assert.deepEqual(saved.draftNotes,m.draftNotes);assert.equal(saved.report.planStyle,'presentation');assert.equal(saved.report.paper,'tabloid');
+ const pngInfo=await png(p,'#reportPlanPNG','professional-plan.png');assert.equal(pngInfo.width,2700);
+ await screenshot(p,'presentation-sheet');await p.evaluate(()=>document.body.classList.add('print-report'));const pdf=await p.pdf({preferCSSPageSize:true,printBackground:true,path:resolve(dir,'presentation-sheet.pdf')});assert(pdf.subarray(0,5).toString()==='%PDF-');assert(pdf.length>1000);await p.evaluate(()=>document.body.classList.remove('print-report'));
+ await button(p,'reportClose').click();await p.reload();await count(p,15);await button(p,'reportOpen').click();assert.equal(await button(p,'reportPaper').inputValue(),'tabloid');assert.equal(await button(p,'reportPlanStyle').inputValue(),'presentation');assert.equal(await button(p,'reportTitle').inputValue(),'QA native garden');
+ return {png:pngInfo,pdfBytes:pdf.length,plants:15};
+});
 for(const [name,n,w,h] of [['one-acre',1000,220,198],['restoration',5000,660,660],...(process.env.QA_STRESS==='1'?[['stress',19990,1320,660]]:[])]){
   await run(name,async p=>{await load(p,fixture(name,n,w,h));const metrics=await enter3(p,n);await button(p,'studioMode').selectOption('walk');await waitText(p,'studioStatus',/Walkthrough/);metrics.walk=await ready3(p,n);await screenshot(p,name+'-walk');await button(p,'studioMode').selectOption('orbit');await waitText(p,'studioStatus',/Three\.js/);metrics.orbit=await ready3(p,n);await screenshot(p,name+'-orbit');return metrics;});
 }

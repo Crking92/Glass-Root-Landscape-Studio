@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.13.2
+# Glass Root Landscape Studio v0.13.3
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation or paid assets are required. The core 2D editor and legacy Canvas view run locally; GIS services and the new Three.js engine have optional online dependencies.
 
@@ -12,6 +12,11 @@ Read [AGENTS.md](AGENTS.md) before any development work. It defines cross-chat o
 - [Open the independent WebGL plant library](https://crking92.github.io/Glass-Root-Landscape-Studio/species-mesh-lab/). Two original species-specific prototypes: Lindheimer's muhly and little bluestem, five seeded individuals, five illustrative appearances, three detail levels, orbit and zoom. No external dependencies or copied photos.
 - Wildflower Center primary profiles and read-only Hays Botany Poaceae Grass ID Lab records inform visible morphology; species-level artistic geometry is not an identification key. Source links are shown for each species. No variety, cultivar or county-level nativity claim added.
 - Mesh generator checks: 150 species × stage × detail × individual combinations (2 × 5 × 3 × 5), finite matching position/normal/color arrays and deterministic seed variation. Mature individual 01 plant triangles: muhly 119,800 / 37,140 / 9,000; little bluestem 123,828 / 36,184 / 9,052 (high/medium/low). Ground shading is illustrative; no real cast shadows. Browser visual/performance testing and integration of the latest lab models remain pending. The main editor now has an independent Three.js preview; saved project schema remains unchanged.
+
+## Professional presentation sheets (v0.13.3)
+- Presentation / proposal uses a separate full-property 2D plan renderer, independent of editor pan, zoom and selection. Technical, Illustrated and Presentation artwork, optional grid, saved notes/dimensions/callouts, species numbers matched to the full planting schedule, season, north arrow and adaptive scale. Original Canvas artwork reused, no 3D changes. Bounded label placement and clipping; dense plans may omit labels, complete quantities remain in schedule.
+- Plan PNG 2700 pixels wide, printable proposal with prepared-by branding, title, site/client details, plant schedule, materials/estimate, ecology and notes. Letter portrait, letter landscape or 11×17 landscape print size via browser print / Save PDF. New optional settings persist with report details and remain compatible with old version-1 projects. Grid may coarsen at wide scales. Print layouts are concept documents, not engineered or surveyed plans. Report fallback SVG retained if renderer or aerial unavailable; raster PNG disabled until ready.
+- New twelfth browser scenario verifies actual PNG, print PDF, annotations toggles, saved report settings, unchanged geometry/notes and full plant schedule. Tests/visual review pending. Browser print output may vary with browser settings; no automatic PDF delivery or physical-print verification.
 
 ## Quick grid and saved drafting (v0.13.2)
 - Toolbar Grid on/off and 1, 2, 5, 10, 20 ft spacing; original sidebar checkbox synchronized. Grid preference stored separately from project, snap independent. At distant zoom, spacing doubles until lines are legible; caption reports actual displayed cell size and indicates zoomed-out coarsening. Scale bar retained.

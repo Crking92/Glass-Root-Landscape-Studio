@@ -1,0 +1,42 @@
+/* Full-property printable plan. Independent of editor camera and selection. */
+(function(){
+'use strict';
+const TAU=Math.PI*2;
+function path(c,pts){if(!pts.length)return;c.beginPath();pts.forEach((p,i)=>i?c.lineTo(...p):c.moveTo(...p));c.closePath();}
+function poly(c,pts,fill,stroke='#596957',w=1){path(c,pts);if(fill){c.fillStyle=fill;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=w;c.stroke();}}
+function line(c,pts,color='#344c39',w=1){c.beginPath();pts.forEach((p,i)=>i?c.lineTo(...p):c.moveTo(...p));c.strokeStyle=color;c.lineWidth=w;c.stroke();}
+function ellipse(c,x,y,rx,ry,color,stroke){c.beginPath();c.ellipse(x,y,Math.max(.2,rx),Math.max(.2,ry),0,0,TAU);if(color){c.fillStyle=color;c.fill();}if(stroke){c.strokeStyle=stroke;c.lineWidth=.85;c.stroke();}}
+function render(m,r,data,h,aerial){
+ const W=900,scale=Math.min(814/m.width,590/m.depth),w=m.width*scale,depth=m.depth*scale,ox=(W-w)/2,oy=49,H=Math.ceil(depth+127),factor=3,canvas=document.createElement('canvas');
+ canvas.width=W*factor;canvas.height=H*factor;const c=canvas.getContext('2d');c.scale(factor,factor);c.fillStyle='#fff';c.fillRect(0,0,W,H);
+ const p=(x,y)=>[ox+x*scale,oy+y*scale],box=(x,y,a,b)=>[[x,y],[x+a,y],[x+a,y+b],[x,y+b]].map(v=>p(...v)),lot=box(0,0,m.width,m.depth),mode=r.planStyle||'presentation',art=mode!=='technical'&&window.PlanGraphics,origin=p(0,0),plantCount=data.schedule.reduce((n,e)=>n+e.qty,0);
+ const shape=o=>o.type==='house'?box(o.x,o.y,o.w,o.h):[[-o.w/2,-o.h/2],[o.w/2,-o.h/2],[o.w/2,o.h/2],[-o.w/2,o.h/2]].map(([x,y])=>{const a=(o.angle||0)*Math.PI/180;return p(o.x+x*Math.cos(a)-y*Math.sin(a),o.y+x*Math.sin(a)+y*Math.cos(a));});
+ c.save();path(c,lot);c.clip();
+ if(art)art.surface(c,lot,'ground',mode,scale,origin);else poly(c,lot,'#eef1e6');
+ if(aerial){const a=m.aerial;c.save();c.globalAlpha=.6;c.drawImage(aerial,...p(a.x,a.y),a.w*scale,a.h*scale);c.restore();}
+ const surfaces=m.objects.filter(o=>o.type==='bed'||o.type==='path');
+ for(const o of surfaces){const pts=o.type==='bed'?h.bedPoints(o).map(v=>p(...v)):box(o.x,o.y,o.w,o.h),kind=h.isWater(o)?o.feature:h.materialOf(o);if(art)art.surface(c,pts,kind,mode,scale,origin);else poly(c,pts,h.surfaceColor(o));}
+ if(r.sheetGrid){let step=5;while(step*scale<5)step*=2;for(let i=1;i*step<m.width;i++)line(c,[p(i*step,0),p(i*step,m.depth)],i%2?'#536b4c30':'#536b4c60',.65);for(let i=1;i*step<m.depth;i++)line(c,[p(0,i*step),p(m.width,i*step)],i%2?'#536b4c30':'#536b4c60',.65);c.gridStep=step;}
+ for(const o of m.objects.filter(o=>o.type==='terrain')){const [x,y]=p(o.x,o.y);for(const k of [1,.66,.33]){c.setLineDash([4,3]);ellipse(c,x,y,o.w*scale*k/2,o.h*scale*k/2,null,o.kind==='berm'?'#997649':'#547e95');c.setLineDash([]);}}
+ const items=m.objects.filter(o=>['plant','house','hard'].includes(o.type));
+ if(art&&items.length<=8000)for(const o of items){const off=Math.min(24,Math.max(1,o.height*scale*.16));if(o.type==='plant'){const [x,y]=p(o.x,o.y);art.plantShadow(c,x,y,o.w*scale/2,off,mode);}else art.shadow(c,shape(o),off,mode);}
+ for(const o of items){if(o.type==='plant'){const s=h.plantById(o.species),[x,y]=p(o.x,o.y),rad=o.w*scale/2;if(art)art.plant(c,{x,y,r:rad,style:h.plantStyle(s),kind:s.kind,appearance:h.plantAppearance(s,r.sheetMonth??-1),id:o.id,angle:(o.angle||0)*Math.PI/180,mode,count:plantCount});else ellipse(c,x,y,rad,rad,s.color,'#3b5841');}
+ else if(o.type==='house'){const pts=shape(o),a={...h.architectureDefaults,...o.architecture},roof={metal:'#939d98',charcoal:'#606861',brown:'#8b765e'}[a.roofFinish]||'#92988a';poly(c,pts,art?roof:'#d0cec1','#58675b',1.1);const mid=(a,b,t=.5)=>[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t];if(a.roof==='gable'||a.roof==='hip'){const along=a.ridge==='x'||a.ridge==='auto'&&o.w>=o.h,l=along?mid(pts[0],pts[3]):mid(pts[0],pts[1]),rr=along?mid(pts[1],pts[2]):mid(pts[3],pts[2]),u=a.roof==='hip'?mid(l,rr,.23):l,v=a.roof==='hip'?mid(l,rr,.77):rr;poly(c,along?[pts[0],pts[1],v,u]:[pts[0],pts[3],v,u],'#ffffff20',null);line(c,[u,v]);if(a.roof==='hip'){line(c,[pts[0],u,along?pts[3]:pts[1]]);line(c,[along?pts[1]:pts[3],v,pts[2]]);}}}
+ else {const pts=shape(o),type=h.hardType(o),a=o.shade||{};if(o.kind==='gazebo'){const ang=(o.angle||0)*Math.PI/180,ring=Array.from({length:8},(_,i)=>{const t=(i+.5)*TAU/8,x=Math.cos(t)*o.w/2/Math.cos(Math.PI/8),y=Math.sin(t)*o.h/2/Math.cos(Math.PI/8);return p(o.x+x*Math.cos(ang)-y*Math.sin(ang),o.y+x*Math.sin(ang)+y*Math.cos(ang));});poly(c,ring,{sand:'#d5c4a0',charcoal:'#4e5656',terracotta:'#a56d50',green:'#617b65',silver:'#aeb8b5'}[a.cover]||type.color);if(a.roof!=='flat')for(const pt of ring)line(c,[pt,p(o.x,o.y)],'#6c6d5a',.7);}else if(o.kind==='pergola'&&(a.roof===undefined||a.roof==='slats')||o.kind==='pavilion'&&a.roof==='slats'){poly(c,pts,'#a77c4f22','#68533e');const n=Math.min(64,Math.max(3,Math.ceil(o.w/(a.spacing||1.5))));for(let i=0;i<n;i++){const t=(i+.5)/n,at=(v,w)=>[v[0]+(w[0]-v[0])*t,v[1]+(w[1]-v[1])*t];line(c,[at(pts[0],pts[1]),at(pts[3],pts[2])],{steel:'#4e5656',white:'#e2e3d7',darkwood:'#68533e'}[a.frame]||'#a77c4f',Math.max(1,Math.min(4,o.w*scale/n*.6)));}}else poly(c,pts,type.color,'#625646');}}
+ if(m.boundary)poly(c,m.boundary.map(v=>p(...v)),null,'#354b38',2);
+ const occupied=[],speciesNumbers=new Map(data.schedule.map(e=>[e.id,e.number])),seen=new Set();let labels=0;
+ function tag(text,x,y,limit=true){c.font='11px Arial,sans-serif';const tw=c.measureText(text).width+8,b={x:x-tw/2,y:y-8,w:tw,h:16};if(limit&&(b.x<ox||b.y<oy||b.x+b.w>ox+w||b.y+16>oy+depth||occupied.some(v=>b.x<v.x+v.w+2&&b.x+b.w+2>v.x&&b.y<v.y+v.h+2&&b.y+16+2>v.y)))return false;c.fillStyle='#faf7eaf2';c.fillRect(b.x,b.y,b.w,b.h);c.strokeStyle='#66745f';c.lineWidth=.7;c.strokeRect(b.x,b.y,b.w,b.h);c.fillStyle='#263b2b';c.textAlign='center';c.textBaseline='middle';c.fillText(text,x,y);occupied.push(b);return true;}
+ if(r.sheetNotes!==false)for(const n of m.draftNotes||[]){const a=p(...n.a),b=n.b?p(...n.b):a;if(n.kind==='dimension'){const dx=b[0]-a[0],dy=b[1]-a[1],len=Math.hypot(dx,dy)||1,nx=-dy/len*5,ny=dx/len*5;line(c,[a,b],'#344c39',1.5);for(const pt of [a,b])line(c,[[pt[0]-nx,pt[1]-ny],[pt[0]+nx,pt[1]+ny]],'#344c39',1.5);tag(String(Number(Math.hypot(n.b[0]-n.a[0],n.b[1]-n.a[1]).toFixed(2)))+' ft',(a[0]+b[0])/2,(a[1]+b[1])/2,false);}else{if(n.kind==='callout'){line(c,[a,b],'#344c39',1.4);ellipse(c,a[0],a[1],2.4,2.4,'#344c39');}tag(n.text,...b,false);}}
+ if(r.numbers)for(const o of items){if(o.type!=='plant'||labels>=220||plantCount>200&&seen.has(o.species))continue;const [x,y]=p(o.x,o.y),num=String(speciesNumbers.get(o.species)),rad=o.w*scale/2;for(const yy of [y,y-rad-9,y+rad+9])if(tag(num,x,yy)){labels++;seen.add(o.species);break;}}
+ c.restore();poly(c,lot,null,'#596957',1.2);
+ // North arrow and adaptive scale bar outside clipped plan, always full view.
+ c.fillStyle='#354c39';c.font='bold 12px Arial,sans-serif';c.textBaseline='middle';c.textAlign='left';c.fillText('LANDSCAPE PLAN',ox,25);
+ c.textAlign='center';c.fillText('N',W-23,14);poly(c,[[W-23,22],[W-29,43],[W-23,39],[W-17,43]],'#354c39',null);
+ const bar=[.5,1,2,5,10,20,25,50,100,200,500,1000].filter(v=>v*scale<=155).at(-1)||.5,by=oy+depth+22;
+ line(c,[[ox,by],[ox+bar*scale,by]],'#354c39',2);for(const x of [ox,ox+bar*scale/2,ox+bar*scale])line(c,[[x,by-4],[x,by+4]],'#354c39',1);
+ c.font='11px Arial,sans-serif';c.fillStyle='#354c39';c.textAlign='left';c.fillText('0',ox,by+12);c.textAlign='center';c.fillText(bar+' ft',ox+bar*scale,by+12);
+ c.textAlign='right';c.fillText(m.width.toFixed(2).replace(/\.?0+$/,'')+' × '+m.depth.toFixed(2).replace(/\.?0+$/,'')+' ft canvas',W-16,by+12);
+ c.textAlign='left';c.font='10px Arial,sans-serif';const grid=r.sheetGrid?' · Grid '+c.gridStep+' × '+c.gridStep+' ft':'';c.fillText('Concept only — not a survey or construction drawing'+grid,16,H-12);return {canvas,labels,plantCount};
+}
+window.StudioSheet={render};
+})();
