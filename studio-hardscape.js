@@ -16,7 +16,7 @@ export function hardParts(o,detail=true){
   if(oct){for(let i=0;i<8;i++){const [x,z]=ring[i],[X,Z]=ring[(i+1)%8];beam(x,z,X,Z,postH-.025,.05,v.postSize*.8,frame);if(v.rails&&i!==1){for(const y of [.14,.31])beam(x,z,X,Z,y,.028,v.postSize*.45,frame);if(detail)for(let j=1;j<=4;j++){const t=j/5;b(frame,x+(X-x)*t,.225,z+(Z-z)*t,px*.40,.16,pz*.40);}}}}
   else if(v.roof!=='fabric'){for(const z of [-.44,.44])b(frame,0,postH-.035,z,1,.07,pz*1.3);for(const x of [-.45,.45])b(frame,x,postH-.035,0,px*1.3,.07,1);}
   if(v.roof==='slats'){const n=detail?Math.min(64,Math.max(3,Math.ceil(o.w/v.spacing))):5;for(let i=0;i<n;i++)b(frame,-.46+i*.92/(n-1),postH+rise*.5,0,Math.min(.65/n,.25/o.w),rise,1);if(detail)for(const z of [-.28,0,.28])b(frame,0,.99,z,1,.02,pz*.55);}
-  else if(v.roof==='flat')b(cover,0,postH+rise*.5,0,1,rise,1);
+  else if(v.roof==='flat')part(oct?'octdeck':'box',cover,0,postH+rise*.5,0,1,rise,1);
   else if(v.roof==='fabric')part('sailroof',cover,0,postH+rise*.5,0,1,rise,1);
   else part(oct?'octroof':v.roof==='gable'?'roof':'hiproof',cover,0,postH+rise*.5,0,1,rise,1);
   return out;
