@@ -20,11 +20,11 @@ export function buildSpecies(seed=42,stage="mature",detail="high"){
  for(let k=0;k<M;k++)for(let j=0;j<N;j++){const a=j*TAU/N,b=(j+1)*TAU/N;quad(shape(k/M,a),shape(k/M,b),shape((k+1)/M,b),shape((k+1)/M,a),tone(col,.93+.09*Math.sin(a)));}
  // Staggered areole rows on both flattened faces, plus sparse edge areoles.
  const rows=hi?5:md?4:3,cols=hi?5:md?4:3;for(let k=0;k<rows;k++)for(let j=0;j<cols;j++)for(const sign of [-1,1]){reset(id*1000+k*50+j*2+(sign>0?1:0),53);const t=.17+.68*k/(rows-1),x=-.76+1.52*(j+.20*(k%2))/(cols-1),a=sign*Math.acos(Math.max(-.90,Math.min(.90,x))),p=shape(t,a),normal=mul(w,sign),root=add(p,mul(normal,.0015));tube(p,root,.0025,.002,[.59,.49,.32],4);const spikes=hi?2+Math.floor(rand()*3):md?2:1;for(let z=0;z<spikes;z++){const angle=r(0,TAU),axis=unit(add(mul(normal,r(.6,1.2)),add(mul(side,Math.cos(angle)),mul(d,Math.sin(angle))))),end=add(root,mul(axis,r(.010,.031)));tube(root,end,hi?.00075:.001,.00005,[.78,.72,.47],3);}}
- const terminal=level===max,children=terminal?0:level===0?2:hi?(rand()<.72?2:1):1+(md&&rand()<.45?1:0);
- if(children){for(let j=0;j<children;j++){reset(id*13+j,101);const edge=j%2?1:-1,a=children===1?r(.16,.55):edge*r(.35,.77),node=add(base,add(mul(d,length*(.86+r(-.045,.065))),mul(side,width*a*.60))),angle=phi+(children===1?r(-1,1):edge*r(.55,1.5));pad(node,angle,r(.20,.75),level+1,max);}}
+ reset(id,91);const terminal=level===max,children=terminal?0:level===0?(rand()<.52?2:1):level===1?(rand()<.30?2:1):(rand()<.18?2:1);
+ if(children){for(let j=0;j<children;j++){reset(id*13+j,101);const edge=j%2?1:-1,a=children===1?r(.16,.55):edge*r(.35,.77),node=add(base,add(mul(d,length*(.86+r(-.045,.065))),mul(side,width*a*.60))),angle=phi+(children===1?r(-1,1):edge*r(.80,1.65));pad(node,angle,r(.25,.85),level+1,max);}}
  else if(bloom||fruit){reset(id,107);const count=rand()<.60?2:1;for(let j=0;j<count;j++){const p=add(base,add(mul(d,length*.91),mul(side,width*(j===0?-.30:.31))));if(fruit)tuna(p,id*3+j);else flower(p,id*3+j);}}
  }
- reset(0,17);const roots=hi?7:md?5:4;for(let i=0;i<roots;i++){reset(i,29);const phi=i*TAU/roots+r(-.35,.35);pad(rad(phi,r(.025,.18),0),phi,r(.28,.78),0,hi?3:md?3:2);}
+ reset(0,17);const roots=hi?5:md?4:3;for(let i=0;i<roots;i++){reset(i,29);const phi=i*TAU/roots+r(-.35,.35);pad(rad(phi,r(.10,.29),0),phi,r(.32,.85),0,hi?3:md?3:2);}
  return {positions:new Float32Array(v),normals:new Float32Array(n),colors:new Float32Array(c)};
 }
 export const metadata={
@@ -33,16 +33,17 @@ export const metadata={
   "common": "Texas prickly pear",
   "primary": "https://www.wildflower.org/plants/result.php?id_plant=OPENL",
   "morphology": "https://efloras.org/florataxon.aspx?flora_id=1&taxon_id=242415194",
-  "notes": "Spreading branched succulent with flattened rounded to obovate green pads, staggered areoles and yellowish spines; yellow many-tepaled flowers along distal pad edges and dark red-purple fleshy tunas. Central Texas var. lindheimeri informs visual reference; existing species-level ID retained, no variety assignment. Glochids suggested by areole color, not individually modeled. Seasonal states illustrative.",
+  "notes": "More open spreading clump with fewer basal and branching pads, reduced overlap; flattened green pads, staggered areoles, yellowish spines, yellow flowers and red-purple tunas. Central Texas variety informs appearance without changing species ID; glochids and seasons stylized.",
   "triangleCounts": {
-    "high": 158484,
-    "medium": 48118,
-    "low": 8376
+    "high": 58860,
+    "medium": 23894,
+    "low": 5166
   },
   "tests": 75,
   "stageLabels": {
     "fall": "Fall / red tunas",
     "dry": "Winter / green pads"
   },
-  "framing": "bounds"
+  "framing": "bounds",
+  "revision": "owner review 01"
 };
