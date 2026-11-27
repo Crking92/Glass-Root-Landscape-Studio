@@ -69,7 +69,7 @@ async function run(name,fn){
 try{
 await run('editor-roundtrip',async p=>{
   await button(p,'demo').click();await count(p,15);
-  await p.locator('[data-tool="plant"]').click();await clickWorld(p,50,50);await count(p,16);
+  await p.locator('[data-tool="plant"]').click();await button(p,'catalogCurrent').click();await clickWorld(p,50,50);await count(p,16);
   await p.locator('[data-tool="select"]').click();await clickWorld(p,50,50);
   const field=p.locator('#selection .field').filter({hasText:'Rotation (degrees)'}).locator('input');
   await field.fill('45');await field.press('Tab');
@@ -136,7 +136,7 @@ await run('garden-features-and-workspace',async(p,context)=>{
   await button(p,'filterWater').selectOption('Low');const exact=await p.locator('[data-plant-id]').count();
   await button(p,'filterWater').selectOption('group:low');const broad=await p.locator('[data-plant-id]').count();assert(broad>exact&&exact>0);
   await button(p,'filterWater').selectOption('group:unknown');assert(await p.locator('[data-plant-id]').count()>0);
-  await button(p,'clearFilters').click();assert.equal(await p.locator('[data-plant-id]').count(),315);
+  await button(p,'clearFilters').click();assert.equal(await p.locator('[data-plant-id]').count(),359);
   await button(p,'tab-hard').click();assert.equal(await p.locator('#hardscapeType option').count(),18);
   for(const [i,k] of kinds.entries()){
     await button(p,'tab-hard').click();await button(p,'hardscapeType').selectOption(k);await button(p,'placeHardscape').click();await clickWorld(p,25+i*12,50);
@@ -205,7 +205,7 @@ await run('illustrated-plan-styles',async p=>{
   await button(p,'tab-qty').click();const totals=await button(p,'counts').textContent();
   await button(p,'planStyle').selectOption('technical');assert.equal(await button(p,'counts').textContent(),totals);
   await button(p,'planStyle').selectOption('illustrated');
-  await p.locator('[data-tool="plant"]').click();await clickWorld(p,50,50);await count(p,16);
+  await p.locator('[data-tool="plant"]').click();await button(p,'catalogCurrent').click();await clickWorld(p,50,50);await count(p,16);
   await p.locator('[data-tool="select"]').click();await clickWorld(p,50,50);
   const obj=(await project(p)).objects.at(-1),box=await button(p,'cv').boundingBox(),scale=Math.min((box.width-60)/100,(box.height-60)/100);
   await p.mouse.move(box.x+box.width/2,box.y+box.height/2);await p.mouse.down();await p.mouse.move(box.x+box.width/2+5*scale,box.y+box.height/2+3*scale,{steps:5});await p.mouse.up();
@@ -275,6 +275,16 @@ await run('studio-direct-object-selection',async p=>{
  await p.mouse.click(...await screen(52,55,1.5));await button(p,'studioMode').selectOption('move');await p.mouse.click(...await screen(62,65,0));assert.deepEqual((await project(p)).objects.find(o=>o.id==='small'),{...m.objects[1],x:62,y:65});
  await button(p,'studioMode').selectOption('select');await p.mouse.click(...await screen(75,75,1.5));assert.equal(await button(p,'studioPlantPick').inputValue(),'bench');await button(p,'studioMode').selectOption('move');await p.mouse.click(...await screen(85,85,0));await ready3(p,3);assert.equal((await project(p)).objects.find(o=>o.id==='bench').x,85);assert.equal((await project(p)).objects.find(o=>o.id==='bench').y,85);
  await screenshot(p,'studio-direct-selection');return {directSelections:5,moved:2};
+});
+await run('plant-catalog-and-live-drag',async p=>{
+ await p.locator('[data-tool="plant"]').click();await button(p,'plantCatalog').waitFor({state:'visible'});assert.equal(await p.locator('[data-catalog-id]').count(),315);
+ await button(p,'catalogProvisional').check();assert.equal(await p.locator('[data-catalog-id]').count(),359);await button(p,'catalogProvisional').uncheck();
+ await button(p,'catalogSort').selectOption('scientific');const names=await p.locator('.catalog-tile strong').allTextContents();assert.deepEqual(names,[...names].sort((a,b)=>a.localeCompare(b,'en',{sensitivity:'base'})));
+ await button(p,'catalogSearch').fill('Muhlenbergia lindheimeri');const tile=p.locator('[data-catalog-id="p1"]');await tile.waitFor();await until(p,()=>{const c=document.querySelector('[data-catalog-thumb="p1"]');return c&&c.getContext('2d').getImageData(64,64,1,1).data[3]>0;});await tile.click();assert(!(await button(p,'plantCatalog').isVisible()));await clickWorld(p,50,50);await count(p,1);
+ await enter3(p,1);await button(p,'studioMode').selectOption('place');await button(p,'plantCatalog').waitFor({state:'visible'});await button(p,'catalogCurrent').click();await button(p,'studioMode').selectOption('select');
+ await openDetails(p,'studioViewsPanel');await button(p,'studioViewName').fill('QA drag camera');await button(p,'studioViewSave').click();const camera=(await project(p)).views.at(-1).camera;await button(p,'studioViewsPanel').evaluate(e=>e.open=false);
+ const canvas=p.locator('#studioHost canvas');const b=await canvas.boundingBox(),{az,el,dist,target}=camera,screen=(x,y,z)=>{const pos=[target[0]+dist*Math.cos(el)*Math.sin(az),target[1]+dist*Math.sin(el),target[2]+dist*Math.cos(el)*Math.cos(az)],v=[x-50-pos[0],z-pos[1],y-50-pos[2]],right=[Math.cos(az),0,-Math.sin(az)],up=[-Math.sin(el)*Math.sin(az),Math.cos(el),-Math.sin(el)*Math.cos(az)],forward=[-Math.cos(el)*Math.sin(az),-Math.sin(el),-Math.cos(el)*Math.cos(az)],dot=(a,b)=>a.reduce((s,x,i)=>s+x*b[i],0),f=b.height/(2*Math.tan(43*Math.PI/360)),d=dot(v,forward);return [b.x+b.width/2+dot(v,right)*f/d,b.y+b.height/2-dot(v,up)*f/d];};
+ const o=(await project(p)).objects[0],start=screen(50,50,o.height*.5),end=screen(65,60,o.height*.5);await p.mouse.move(...start);await p.mouse.down();await p.mouse.move(...end,{steps:6});assert.equal((await project(p)).objects[0].x,50);await screenshot(p,'live-plant-drag');await p.mouse.up();await until(p,()=>JSON.parse(localStorage.getItem('glassroot-studio-v1')).objects[0].x!==50);assert(await canvas.isVisible());await screenshot(p,'plant-catalog-drag-committed');return {approved:315,includingProvisional:359};
 });
 for(const [name,n,w,h] of [['one-acre',1000,220,198],['restoration',5000,660,660],...(process.env.QA_STRESS==='1'?[['stress',19990,1320,660]]:[])]){
   await run(name,async p=>{await load(p,fixture(name,n,w,h));const metrics=await enter3(p,n);await button(p,'studioMode').selectOption('walk');await waitText(p,'studioStatus',/Walkthrough/);metrics.walk=await ready3(p,n);await screenshot(p,name+'-walk');await button(p,'studioMode').selectOption('orbit');await waitText(p,'studioStatus',/Three\.js/);metrics.orbit=await ready3(p,n);await screenshot(p,name+'-orbit');return metrics;});

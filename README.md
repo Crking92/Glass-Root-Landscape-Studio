@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.13.4
+# Glass Root Landscape Studio v0.13.5
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation or paid assets are required. The core 2D editor and legacy Canvas view run locally; GIS services and the new Three.js engine have optional online dependencies.
 
@@ -12,6 +12,11 @@ Read [AGENTS.md](AGENTS.md) before any development work. It defines cross-chat o
 - [Open the independent WebGL plant library](https://crking92.github.io/Glass-Root-Landscape-Studio/species-mesh-lab/). Two original species-specific prototypes: Lindheimer's muhly and little bluestem, five seeded individuals, five illustrative appearances, three detail levels, orbit and zoom. No external dependencies or copied photos.
 - Wildflower Center primary profiles and read-only Hays Botany Poaceae Grass ID Lab records inform visible morphology; species-level artistic geometry is not an identification key. Source links are shown for each species. No variety, cultivar or county-level nativity claim added.
 - Mesh generator checks: 150 species × stage × detail × individual combinations (2 × 5 × 3 × 5), finite matching position/normal/color arrays and deterministic seed variation. Mature individual 01 plant triangles: muhly 119,800 / 37,140 / 9,000; little bluestem 123,828 / 36,184 / 9,052 (high/medium/low). Ground shading is illustrative; no real cast shadows. Browser visual/performance testing and integration of the latest lab models remain pending. The main editor now has an independent Three.js preview; saved project schema remains unchanged.
+
+## Expanded plant catalog and drag feedback (v0.13.5)
+- Place plant opens a large modal tile catalog in 2D and 3D; searchable names, growth form, common/scientific alphabetical order, lazy original overhead thumbnails. 315 approved entries shown by default; 44 additional range-review-pending entries opt-in, clearly labeled. Existing sidebar filters retained. Thumbnails are conceptual artwork, not photographs or verified species portraits. Selecting a tile closes the catalog and enters placement mode; current plant shortcut.
+- Plant drag updates the visible instance transform during pointer movement without committing until release; buildings/hardscape use a translucent destination volume. Static scene rebuild retains a captured frame until first new render, rather than clearing the viewport immediately. This does not eliminate synchronous geometry generation or guarantee smooth frame rates; static objects are still rebuilt, not live-meshed during drag.
+- Browser coverage added for catalog counts/sorting, thumbnails, placement, 3D mode and drag commit; previous direct selection scenario passed. Fixed stale palette count assertion (359, not 315, after provisional entries added). New tests pending.
 
 ## Direct 3D object selection (v0.13.4)
 - Replace padded plant box ranking with oriented broad-phase candidates and bounded per-instance ray intersection of current rendered plant geometry. Near-center/base tolerance remains for tiny targets. Structure boxes are approximate (not individual mesh parts); buildings and hardscape now directly selectable/movable with existing inspector, dropdown and undo. Selection outline follows object footprint. Nonplant movement rebuilds static scene while retaining camera. No changes to saved schema, botanical assets, or presentation renderer.
