@@ -21,7 +21,7 @@ function build(seed=42,stage="mature",detail="high",sage=true){
  function head(p,a,id){reset(id,61);const h=r(.035,.072),q=add(p,rad(a,.023,h));tube(p,q,.0013,.0008,twig,4);const rings=hi?3:md?2:2;for(let k=0;k<rings;k++){const count=k===0?1:k*(hi?7:md?6:4),radius=k/(rings-1)*.015;for(let j=0;j<count;j++){const phi=j*T/count+k*.55,site=add(q,rad(phi,radius,.004*(1-k/(rings-1)))),col=k===0?[.98,.81,.19]:k===rings-1?mix([.98,.41,.06],[.81,.12,.12],r(.18,.85)):[.99,.60,.09];if(fall&&id%4===0){const d=add(site,[0,.005,0]);tube(site,d,.0028,.0034,[.19,.16,.23],5);tube(d,add(d,[0,.003,0]),.0034,.0005,[.22,.18,.27],5);}else lantanaFloret(site,phi,id*100+k*30+j,col,early&&k===0);}}}
  reset(0,17);const scale=r(.88,1.12),stems=sage?(hi?28:md?18:12):(hi?12:md?9:6);
  for(let i=0;i<stems;i++){reset(i,43);const phi=i*2.399+r(-.24,.24),base=rad(phi,r(.015,.10),0),H=r(sage?.28:.62,sage?.57:1.12)*scale,R=r(sage?.10:.24,sage?.29:.55)*scale,at=t=>add(base,rad(phi+.12*Math.sin(t*3),R*t**1.4,H*t));let prev=at(0);for(let j=1;j<=6;j++){const p=at(j/6);tube(prev,p,(sage?.003:.012)*(1-.80*(j-1)/6),(sage?.003:.012)*(1-.80*j/6),sage?twig:j<3?bark:twig,sage?4:6);prev=p;}
- if(sage){const nodes=hi?7:md?6:5;for(let j=0;j<nodes;j++){const t=.08+.79*j/(nodes-1),p=at(t);reset(i*100+j,53);if(!winter||rand()<.18)for(let k=0;k<2;k++){const a=phi+j*Math.PI/2+k*Math.PI,q=add(p,rad(a,.009,.002));tube(p,q,.0008,.0005,twig,3);blade(q,a,i*1000+j*2+k);}if(j===nodes-2&&!leafy&&i%3===0)sageSpike(add(p,rad(phi+.6,.05,.04)),phi+.6,i*3+1000,r(.08,.14));}if(!leafy)sageSpike(at(1),phi,i,r(.12,.23));}
+ if(sage){const nodes=hi?7:md?6:5;for(let j=0;j<nodes;j++){const t=.08+.79*j/(nodes-1),p=at(t);reset(i*100+j,53);if(!winter||rand()<.18)for(let k=0;k<2;k++){const a=phi+j*Math.PI/2+k*Math.PI,q=add(p,rad(a,.009,.002));tube(p,q,.0008,.0005,twig,3);blade(q,a,i*1000+j*2+k);}if(j===nodes-2&&!leafy&&i%3===0){const b=add(p,rad(phi+.6,.05,.04));tube(p,b,.0015,.001,twig,4);sageSpike(b,phi+.6,i*3+1000,r(.08,.14));}}if(!leafy)sageSpike(at(1),phi,i,r(.12,.23));}
  else{const branches=hi?6:md?4:3,twigs=hi?4:md?3:2,nodes=hi?6:md?5:4;for(let j=0;j<branches;j++){reset(i*30+j,53);const t=.16+.80*j/(branches-1),p=at(t),a=phi+(j%2?1:-1)*r(.6,1.9),end=add(p,rad(a,r(.13,.33)*(1-.40*t),r(.06,.24)));tube(p,end,.004,.0017,twig,4);for(let k=0;k<twigs;k++){reset(i*1000+j*50+k,63);const q=mix(p,end,.30+.70*k/(twigs-1)),a2=a+(k%2?1:-1)*r(.6,1.6),L=r(.08,.19),U=r(.04,.13),point=f=>add(q,rad(a2,L*f,U*f));tube(q,point(1),.002,.0006,twig,4);for(let l=0;l<nodes;l++){const id=i*10000+j*1000+k*100+l,node=point(.18+.82*l/(nodes-1));reset(id,83);const a3=a2+l*Math.PI/2+r(-.18,.18);if(!winter||rand()<.04)for(let z=0;z<2;z++){const a4=a3+z*Math.PI,b=add(node,rad(a4,.009,.004));tube(node,b,.0008,.0004,twig,3);blade(b,a4,id*2+z);}reset(id,97);if(!winter&&!leafy&&l>=nodes-2&&rand()<(early?.38:fall?.65:.86))head(node,a3,id);}}}}
  }
  return {positions:new Float32Array(v),normals:new Float32Array(n),colors:new Float32Array(c)};
@@ -36,9 +36,9 @@ export const metadata={
   "notes": "Upright to spreading perennial mound with opposite gray-green lanceolate leaves concentrated below terminal spikes; closely spaced whorls of blue bilabiate flowers and pale mealy calyces. Dry seed stalks and reduced foliage illustrative; minute hairs and nutlets simplified. Straight species.",
   "sage": true,
   "triangleCounts": {
-    "high": 105836,
-    "medium": 39960,
-    "low": 14992
+    "high": 105916,
+    "medium": 40008,
+    "low": 15024
   },
   "tests": 75,
   "stageLabels": {
