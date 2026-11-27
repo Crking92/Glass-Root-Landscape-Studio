@@ -2,6 +2,12 @@
 
 Owners: botanical-model chat owns this directory and species-mesh-lab/. Studio chat owns studio-three.js and main editor. Coordinate before replacing the working Studio muhly generator.
 
+## Owner visual review and palette expansion checkpoint (2026-11-27)
+
+- Owner explicitly accepted all six current lab prototypes, including red yucca. Preserve current geometry for all six as visual benchmarks; this is not automatic production promotion. Existing 315 palette taxa are owner-approved under the established native-range rules; do not redo their prior nativity review or alter their IDs.
+- [Palette expansion review](palette-expansion-review.json) records 216 botanical-label nursery rows (101 exact existing matches, 115 other rows), plus five supplemental common-name-only rows. It contains no prices, stock counts or customer data. Of the unmatched rows, 26 are priority native-range candidates, 33 require origin/invasive screening, 37 are named selections/hybrids, nine risk holds, five infraspecific reviews, four potential spelling/synonym matches and one unresolved mix. Counts refer to rows, not distinct species. Additional 19 names from NPSOT Austin plant sale are absent by exact name, including Gregg's mistflower under its accepted name candidate already present in nursery review. No automatic synonym merges or unverified native labels.
+- Confirmed invasive evidence sources recorded for Lantana camara, Ruellia simplex, Lantana montevidensis, Sphagneticola trilobata (Florida evidence) and Vitex rotundifolia (coastal evidence); other risk holds remain unresolved, not confirmed invasive. All held outside planting palette. No private pricing data published. No main editor/palette changes in this batch; candidate records staged for coordinated additions and BONAP range screening. Next individual mesh: frogfruit.
+
 ## Native-first palette policy — owner direction
 
 - Prioritize straight species native to Hays County and the owner's selected surrounding counties, then other Texas natives and carefully selected nearby-region natives. Confirm county distribution using BONAP/NAPA before assigning local-native labels. Do not equate Texas-native with Hays-native. Range expansion and exact county boundaries remain to be coordinated.
