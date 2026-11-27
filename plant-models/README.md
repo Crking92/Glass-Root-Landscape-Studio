@@ -2,6 +2,11 @@
 
 Owners: botanical-model chat owns this directory and species-mesh-lab/. Studio chat owns studio-three.js and main editor. Coordinate before replacing the working Studio muhly generator.
 
+## Cenizo optional managed form — lab 0.10.2
+
+- Owner requested a recently pruned, boxed evergreen shrub after positive feedback on the revised three spotlight models. Added optional `form: 'pruned-box'` for the same cenizo species ID; all five natural seeded forms remain default and unchanged. No duplicate taxon or cultivar. Clipped sides and flat top with subtly rounded edges and tapered lower crown, individually modeled silver foliage and occasional retained flowers (recent pruning is an illustrative managed condition, not a pruning recommendation or flowering prediction).
+- New managed form: 200,914 / 80,962 / 28,186 triangles for mature seed 42 high/medium/low. All 75 raw and 75 normalized managed-form configurations passed; repeatability, seed variation, default natural equivalence, unsupported form rejection and lab syntax passed. Lab-only growth-form selector; main editor does not yet persist or select this form, nor were previous project records altered. Browser visual review and deployment pending.
+
 ## Owner review 01 — flame acanthus, cenizo and prickly pear (lab 0.10.1)
 
 - Flame acanthus: owner requested mature 5–6 ft height and denser flowers. Five high-detail mature seeds measure 5.98, 5.69, 5.06, 5.79 and 5.67 ft in raw mesh; increased floral site probability and extended flowering down distal shoots. Main palette default height 4 → 5.5 ft, with explicit owner design-height override and original botanical source range 3–5 ft retained. Existing project object dimensions unchanged.
