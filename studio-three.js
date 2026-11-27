@@ -85,6 +85,12 @@ function exportDimensions(w,h,longEdge,maxW,maxH,maxPixels=8388608){
  return {width:Math.max(1,Math.floor(w*ratio)),height:Math.max(1,Math.floor(h*ratio))};
 }
 function easeView(t){t=Math.max(0,Math.min(1,t));return t*t*(3-2*t);}
+// Catalog uses the existing production geometry generators, not a second plant library.
+export function catalogPlantGeometry(s,style,ap,month,registry=null){
+ const shared=registry?.findPlantModel(s.id),a=shared?.scientific===s.latin?shared:null,q='high',seed=hash((a?.id||s.latin==='Muhlenbergia lindheimeri'&&s.id||style)+'|'+(hash(s.id)%2));
+ if(a){try{return {raw:registry.buildPlantModel(a.id,{seed,stage:modelStage(month,ap),detail:q,units:'normalized',colorSpace:'linear'}),source:'Shared species prototype (opt-in)'};}catch(err){console.warn('Catalog prototype fallback:',s.id,err);}}
+ return {raw:meshData(s,style,seed,q,ap,month),source:s.latin==='Muhlenbergia lindheimeri'?'Dedicated species geometry':'Production growth-form geometry'};
+}
 export async function openStudio({host,status,model,plants,settings,helpers,editing={},cameraState=null}){
 const optionalModule=(path,label)=>import(path).catch(e=>{console.warn(label,e);return null;});
 const [T,terrainModule,buildingModule,groundModule,hardscapeModule,structureModule,aoModule,motionModule,performanceModule,waterModule,sceneryModule,detailModule,sharedRegistry]=await Promise.all([

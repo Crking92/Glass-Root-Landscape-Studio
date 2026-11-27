@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.13.5
+# Glass Root Landscape Studio v0.13.6
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation or paid assets are required. The core 2D editor and legacy Canvas view run locally; GIS services and the new Three.js engine have optional online dependencies.
 
@@ -12,6 +12,11 @@ Read [AGENTS.md](AGENTS.md) before any development work. It defines cross-chat o
 - [Open the independent WebGL plant library](https://crking92.github.io/Glass-Root-Landscape-Studio/species-mesh-lab/). Two original species-specific prototypes: Lindheimer's muhly and little bluestem, five seeded individuals, five illustrative appearances, three detail levels, orbit and zoom. No external dependencies or copied photos.
 - Wildflower Center primary profiles and read-only Hays Botany Poaceae Grass ID Lab records inform visible morphology; species-level artistic geometry is not an identification key. Source links are shown for each species. No variety, cultivar or county-level nativity claim added.
 - Mesh generator checks: 150 species × stage × detail × individual combinations (2 × 5 × 3 × 5), finite matching position/normal/color arrays and deterministic seed variation. Mature individual 01 plant triangles: muhly 119,800 / 37,140 / 9,000; little bluestem 123,828 / 36,184 / 9,052 (high/medium/low). Ground shading is illustrative; no real cast shadows. Browser visual/performance testing and integration of the latest lab models remain pending. The main editor now has an independent Three.js preview; saved project schema remains unchanged.
+
+## Rotatable plant catalog previews (v0.13.6)
+- Each plant tile has a separate 3D preview button. One on-demand Three.js r180 viewport, orbit by drag or rotate buttons, zoom and reset, current season and concept size, model source label and Place this plant action. Original tile-click-to-place workflow preserved. No model data or saved-project changes.
+- Uses the same production mesh generators as Studio, representative high-detail geometry and source dimensions, not new species assets. Existing shared prototype setting respected in 3D; default remains production geometry. Most plants remain growth-form templates; illustrative, not an identification reference. Preview reuses one canvas, replaces/disposes previous geometry, and disposes renderer when closed. WebGL/CDN required for 3D; tile placement still works if preview fails.
+- Extended browser catalog test for actual preview canvas, model switching, controls, unchanged saved project and disposal. Pending real browser/visual QA.
 
 ## Expanded plant catalog and drag feedback (v0.13.5)
 - Place plant opens a large modal tile catalog in 2D and 3D; searchable names, growth form, common/scientific alphabetical order, lazy original overhead thumbnails. 315 approved entries shown by default; 44 additional range-review-pending entries opt-in, clearly labeled. Existing sidebar filters retained. Thumbnails are conceptual artwork, not photographs or verified species portraits. Selecting a tile closes the catalog and enters placement mode; current plant shortcut.
