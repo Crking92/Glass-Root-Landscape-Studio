@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.14.7
+# Glass Root Landscape Studio v0.14.8
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation or paid assets are required. The core 2D editor and legacy Canvas view run locally; GIS services and the new Three.js engine have optional online dependencies.
 
@@ -12,6 +12,11 @@ Read [AGENTS.md](AGENTS.md) before any development work. It defines cross-chat o
 - [Open the independent WebGL plant library](https://crking92.github.io/Glass-Root-Landscape-Studio/species-mesh-lab/). Two original species-specific prototypes: Lindheimer's muhly and little bluestem, five seeded individuals, five illustrative appearances, three detail levels, orbit and zoom. No external dependencies or copied photos.
 - Wildflower Center primary profiles and read-only Hays Botany Poaceae Grass ID Lab records inform visible morphology; species-level artistic geometry is not an identification key. Source links are shown for each species. No variety, cultivar or county-level nativity claim added.
 - Mesh generator checks: 150 species × stage × detail × individual combinations (2 × 5 × 3 × 5), finite matching position/normal/color arrays and deterministic seed variation. Mature individual 01 plant triangles: muhly 119,800 / 37,140 / 9,000; little bluestem 123,828 / 36,184 / 9,052 (high/medium/low). Ground shading is illustrative; no real cast shadows. Browser visual/performance testing and integration of the latest lab models remain pending. The main editor now has an independent Three.js preview; saved project schema remains unchanged.
+
+## Ecological habitat features (v0.14.8)
+- Four new individually placed objects: wildlife brush pile, standing deadwood snag, hollow decaying fallen log, rooted stump. Dedicated Ecological habitat category also contains the existing crooked fallen log. Natural log border remains under Rustic wood. 41 hardscape objects, 14 attached edging materials.
+- Seeded tapering, fractured ends, bark/wood tone variation, branch and root counts, genuine open hollow trunk geometry and snag side cavity. Three visual decay presets; no decay-rate, occupancy, species-specific or habitat-value model. Nominal dimensions adjustable, roots/branches can extend slightly; object uses center grade rather than simulated ground contact along every limb. Snag safety note in inspector.
+- Shared procedural layout for plan, thumbnail, sheet and Three.js; saved optional validated habitat settings included in client export; quantities count assemblies. Bounded detail for large projects. Browser scenario added, visual verification pending.
 
 ## Rustic natural fencing (v0.14.7)
 - Four new linear objects: crooked split rail, irregular cedar post row, cedar post and plain wire ranch fence, woven branch/wattle fence. Existing formal fence unchanged. User draws endpoints and edits width, height, length, rotation, approximate spacing, natural irregularity, and rails/strands/courses as applicable. Seeded tapered branch geometry, offset posts, curved rails and terrain-relative elevation. No physical fence strength or livestock containment guarantee.
