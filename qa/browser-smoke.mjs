@@ -258,6 +258,24 @@ await run('presentation-sheets',async p=>{
  await button(p,'reportClose').click();await p.reload();await count(p,15);await button(p,'reportOpen').click();assert.equal(await button(p,'reportPaper').inputValue(),'tabloid');assert.equal(await button(p,'reportPlanStyle').inputValue(),'presentation');assert.equal(await button(p,'reportTitle').inputValue(),'QA native garden');
  return {png:pngInfo,pdfBytes:pdf.length,plants:15};
 });
+await run('studio-direct-object-selection',async p=>{
+ const m={version:1,width:100,depth:100,objects:[
+ {id:'large',type:'plant',species:'p7',x:20,y:20,w:16,h:16,height:18,angle:0},
+ {id:'small',type:'plant',species:'p0',x:52,y:55,w:3,h:3,height:3,angle:0},
+ {id:'forb',type:'plant',species:'p2',x:72,y:26,w:2,h:2,height:2,angle:0},
+ {id:'bench',type:'hard',kind:'bench',x:75,y:75,w:6,h:3,height:3,angle:25},
+ {id:'house',type:'house',x:16,y:68,w:12,h:10,height:10}
+ ]};await load(p,m);await enter3(p,3);
+ await openDetails(p,'studioViewsPanel');await button(p,'studioViewName').fill('QA camera');await button(p,'studioViewSave').click();const camera=(await project(p)).views.at(-1).camera;
+ await button(p,'studioViewsPanel').evaluate(e=>e.open=false);
+ async function screen(x,y,z){const b=await p.locator('#studioHost canvas').boundingBox(),{az,el,dist,target}=camera;
+ const pos=[target[0]+dist*Math.cos(el)*Math.sin(az),target[1]+dist*Math.sin(el),target[2]+dist*Math.cos(el)*Math.cos(az)],v=[x-50-pos[0],z-pos[1],y-50-pos[2]],right=[Math.cos(az),0,-Math.sin(az)],up=[-Math.sin(el)*Math.sin(az),Math.cos(el),-Math.sin(el)*Math.cos(az)],forward=[-Math.cos(el)*Math.sin(az),-Math.sin(el),-Math.cos(el)*Math.cos(az)],dot=(a,b)=>a.reduce((s,x,i)=>s+x*b[i],0),f=b.height/(2*Math.tan(43*Math.PI/360)),d=dot(v,forward);return [b.x+b.width/2+dot(v,right)*f/d,b.y+b.height/2-dot(v,up)*f/d];}
+ await button(p,'studioMode').selectOption('select');
+ for(const [id,x,y,z] of [['small',52,55,1.5],['forb',72,26,1],['large',20,20,9],['bench',75,75,1.5],['house',22,73,5]]){await p.mouse.click(...await screen(x,y,z));assert.equal(await button(p,'studioPlantPick').inputValue(),id,'Click must select '+id);}
+ await p.mouse.click(...await screen(52,55,1.5));await button(p,'studioMode').selectOption('move');await p.mouse.click(...await screen(62,65,0));assert.deepEqual((await project(p)).objects.find(o=>o.id==='small'),{...m.objects[1],x:62,y:65});
+ await button(p,'studioMode').selectOption('select');await p.mouse.click(...await screen(75,75,1.5));assert.equal(await button(p,'studioPlantPick').inputValue(),'bench');await button(p,'studioMode').selectOption('move');await p.mouse.click(...await screen(85,85,0));await ready3(p,3);assert.equal((await project(p)).objects.find(o=>o.id==='bench').x,85);assert.equal((await project(p)).objects.find(o=>o.id==='bench').y,85);
+ await screenshot(p,'studio-direct-selection');return {directSelections:5,moved:2};
+});
 for(const [name,n,w,h] of [['one-acre',1000,220,198],['restoration',5000,660,660],...(process.env.QA_STRESS==='1'?[['stress',19990,1320,660]]:[])]){
   await run(name,async p=>{await load(p,fixture(name,n,w,h));const metrics=await enter3(p,n);await button(p,'studioMode').selectOption('walk');await waitText(p,'studioStatus',/Walkthrough/);metrics.walk=await ready3(p,n);await screenshot(p,name+'-walk');await button(p,'studioMode').selectOption('orbit');await waitText(p,'studioStatus',/Three\.js/);metrics.orbit=await ready3(p,n);await screenshot(p,name+'-orbit');return metrics;});
 }
