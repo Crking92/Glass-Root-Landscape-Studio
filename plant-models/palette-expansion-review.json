@@ -1374,5 +1374,234 @@
       "https://assessment.ifas.ufl.edu/assessments/sphagneticola-trilobata/",
       "https://www.invasivespeciesinfo.gov/terrestrial/plants/beach-vitex"
     ]
+  },
+  "implementation": {
+    "status": "44 provisional concept records in main editor; not local-native verified",
+    "totalPalette": 359,
+    "existingPreserved": 315,
+    "added": [
+      {
+        "id": "tz-linum-lewisii",
+        "scientific": "Linum lewisii",
+        "sourceTaxon": "Linum lewisii"
+      },
+      {
+        "id": "tz-aquilegia-chrysantha-var-hinckleyana",
+        "scientific": "Aquilegia chrysantha var. hinckleyana",
+        "sourceTaxon": "Aquilegia chrysantha var. hinckleyana"
+      },
+      {
+        "id": "tz-dalea-greggii",
+        "scientific": "Dalea greggii",
+        "sourceTaxon": "Dalea greggii"
+      },
+      {
+        "id": "tz-thelypteris-kunthii",
+        "scientific": "Thelypteris kunthii",
+        "sourceTaxon": "Thelypteris kunthii"
+      },
+      {
+        "id": "tz-rudbeckia-maxima",
+        "scientific": "Rudbeckia maxima",
+        "sourceTaxon": "Rudbeckia maxima"
+      },
+      {
+        "id": "tz-conoclinium-dissectum",
+        "scientific": "Conoclinium dissectum",
+        "sourceTaxon": "Conoclinium greggii"
+      },
+      {
+        "id": "tz-orbexilum-pedunculatum",
+        "scientific": "Orbexilum pedunculatum",
+        "sourceTaxon": "Orbexilum pedunculatum"
+      },
+      {
+        "id": "tz-penstemon-tenuis",
+        "scientific": "Penstemon tenuis",
+        "sourceTaxon": "Penstemon tenuis"
+      },
+      {
+        "id": "tz-dichondra-argentea",
+        "scientific": "Dichondra argentea",
+        "sourceTaxon": "Dichondra argentea"
+      },
+      {
+        "id": "tz-echinacea-purpurea",
+        "scientific": "Echinacea purpurea",
+        "sourceTaxon": "Echinacea purpurea"
+      },
+      {
+        "id": "tz-viguiera-stenoloba",
+        "scientific": "Viguiera stenoloba",
+        "sourceTaxon": "Viguiera stenoloba"
+      },
+      {
+        "id": "tz-stachys-coccinea",
+        "scientific": "Stachys coccinea",
+        "sourceTaxon": "Stachys coccinea"
+      },
+      {
+        "id": "tz-echeandia-texensis",
+        "scientific": "Echeandia texensis",
+        "sourceTaxon": "Echeandia texensis"
+      },
+      {
+        "id": "tz-stemodia-lanata",
+        "scientific": "Stemodia lanata",
+        "sourceTaxon": "Stemodia lanata"
+      },
+      {
+        "id": "tz-wisteria-frutescens",
+        "scientific": "Wisteria frutescens",
+        "sourceTaxon": "Wisteria frutescens"
+      },
+      {
+        "id": "tz-muhlenbergia-capillaris",
+        "scientific": "Muhlenbergia capillaris",
+        "sourceTaxon": "Muhlenbergia capillaris"
+      },
+      {
+        "id": "tz-fallugia-paradoxa",
+        "scientific": "Fallugia paradoxa",
+        "sourceTaxon": "Fallujia paradoxa"
+      },
+      {
+        "id": "tz-hibiscus-coccineus",
+        "scientific": "Hibiscus coccineus",
+        "sourceTaxon": "Hibiscus coccineus"
+      },
+      {
+        "id": "tz-agave-lechuguilla",
+        "scientific": "Agave lechuguilla",
+        "sourceTaxon": "Agave lechuguilla"
+      },
+      {
+        "id": "tz-yucca-rostrata",
+        "scientific": "Yucca rostrata",
+        "sourceTaxon": "Yucca rostrata"
+      },
+      {
+        "id": "tz-yucca-faxoniana",
+        "scientific": "Yucca faxoniana",
+        "sourceTaxon": "Yucca faxoniana"
+      },
+      {
+        "id": "tz-yucca-thompsoniana",
+        "scientific": "Yucca thompsoniana",
+        "sourceTaxon": "Yucca thompsoniana"
+      },
+      {
+        "id": "tz-bauhinia-lunarioides",
+        "scientific": "Bauhinia lunarioides",
+        "sourceTaxon": "Bauhinia lunarioides"
+      },
+      {
+        "id": "tz-morella-cerifera",
+        "scientific": "Morella cerifera",
+        "sourceTaxon": "Morella cerifera"
+      },
+      {
+        "id": "tz-taxodium-mucronatum",
+        "scientific": "Taxodium mucronatum",
+        "sourceTaxon": "Taxodium mucronatum"
+      },
+      {
+        "id": "tz-quercus-polymorpha",
+        "scientific": "Quercus polymorpha",
+        "sourceTaxon": "Quercus polymorpha"
+      },
+      {
+        "id": "tz-amblyolepis-setigera",
+        "scientific": "Amblyolepis setigera",
+        "sourceTaxon": "Amblyolepis setigera"
+      },
+      {
+        "id": "tz-bacopa-monnieri",
+        "scientific": "Bacopa monnieri",
+        "sourceTaxon": "Bacopa monnieri"
+      },
+      {
+        "id": "tz-bouchetia-anomala",
+        "scientific": "Bouchetia anomala",
+        "sourceTaxon": "Bouchetia anomala"
+      },
+      {
+        "id": "tz-callirhoe-pedata",
+        "scientific": "Callirhoe pedata",
+        "sourceTaxon": "Callirhoe pedata"
+      },
+      {
+        "id": "tz-croton-fruticulosus",
+        "scientific": "Croton fruticulosus",
+        "sourceTaxon": "Croton fruticulosus"
+      },
+      {
+        "id": "tz-dalea-multiflora",
+        "scientific": "Dalea multiflora",
+        "sourceTaxon": "Dalea multiflora"
+      },
+      {
+        "id": "tz-eupatorium-serotinum",
+        "scientific": "Eupatorium serotinum",
+        "sourceTaxon": "Eupatorium serotinum"
+      },
+      {
+        "id": "tz-euphorbia-cyathophora",
+        "scientific": "Euphorbia cyathophora",
+        "sourceTaxon": "Euphorbia cyathophora"
+      },
+      {
+        "id": "tz-heterotheca-canescens",
+        "scientific": "Heterotheca canescens",
+        "sourceTaxon": "Heterotheca canescens"
+      },
+      {
+        "id": "tz-lithospermum-incisum",
+        "scientific": "Lithospermum incisum",
+        "sourceTaxon": "Lithospermum incisum"
+      },
+      {
+        "id": "tz-lythrum-californicum",
+        "scientific": "Lythrum californicum",
+        "sourceTaxon": "Lythrum californicum"
+      },
+      {
+        "id": "tz-menodora-heterophylla",
+        "scientific": "Menodora heterophylla",
+        "sourceTaxon": "Menodora heterophylla"
+      },
+      {
+        "id": "tz-physostegia-intermedia",
+        "scientific": "Physostegia intermedia",
+        "sourceTaxon": "Physostegia intermedia"
+      },
+      {
+        "id": "tz-pinaropappus-roseus",
+        "scientific": "Pinaropappus roseus",
+        "sourceTaxon": "Pinaropappus roseus"
+      },
+      {
+        "id": "tz-symphyotrichum-drummondii-var-texanum",
+        "scientific": "Symphyotrichum drummondii var. texanum",
+        "sourceTaxon": "Symphyotrichum drummondii var. texanum"
+      },
+      {
+        "id": "tz-verbesina-lindheimeri",
+        "scientific": "Verbesina lindheimeri",
+        "sourceTaxon": "Verbesina lindheimeri"
+      },
+      {
+        "id": "tz-yeatesia-platystegia",
+        "scientific": "Yeatesia platystegia",
+        "sourceTaxon": "Yeatesia platystegia"
+      },
+      {
+        "id": "tz-zeltnera-beyrichii",
+        "scientific": "Zeltnera beyrichii",
+        "sourceTaxon": "Zeltnera beyrichii"
+      }
+    ],
+    "pending": "county range, taxonomy, full regional invasive screening, ecological evidence, species-specific models; all other queues held",
+    "editorCommit": "bd630e139530a231911727661c44f940a006b5e0"
   }
 }
