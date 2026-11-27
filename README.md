@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.13.6
+# Glass Root Landscape Studio v0.13.7
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation or paid assets are required. The core 2D editor and legacy Canvas view run locally; GIS services and the new Three.js engine have optional online dependencies.
 
@@ -12,6 +12,11 @@ Read [AGENTS.md](AGENTS.md) before any development work. It defines cross-chat o
 - [Open the independent WebGL plant library](https://crking92.github.io/Glass-Root-Landscape-Studio/species-mesh-lab/). Two original species-specific prototypes: Lindheimer's muhly and little bluestem, five seeded individuals, five illustrative appearances, three detail levels, orbit and zoom. No external dependencies or copied photos.
 - Wildflower Center primary profiles and read-only Hays Botany Poaceae Grass ID Lab records inform visible morphology; species-level artistic geometry is not an identification key. Source links are shown for each species. No variety, cultivar or county-level nativity claim added.
 - Mesh generator checks: 150 species × stage × detail × individual combinations (2 × 5 × 3 × 5), finite matching position/normal/color arrays and deterministic seed variation. Mature individual 01 plant triangles: muhly 119,800 / 37,140 / 9,000; little bluestem 123,828 / 36,184 / 9,052 (high/medium/low). Ground shading is illustrative; no real cast shadows. Browser visual/performance testing and integration of the latest lab models remain pending. The main editor now has an independent Three.js preview; saved project schema remains unchanged.
+
+## Attached landscape edging (v0.13.7)
+- Select a bed, rectangular path, curved path or water outline in 2D and open Landscape edging. Steel, brick, limestone, river rock and timber presets; editable exposed height, width and piece length in feet; no edging removes it. The same centered outline follows geometry edits, movement and smoothing. Saved optional edging field, undo/redo, duplication and backward-compatible validation.
+- Shared original geometry in 2D and full-property presentation PNG; instanced 3D border segments with approximate terrain-following placement and material colors. Quantities and proposal estimate lines use outline length, not physical piece counts, with overlaps/waste excluded. Detail capped per outline and scene; extremely complex outlines may be simplified or truncated in 3D. No inside/outside offset, freeform standalone edging, exact masonry joints or engineering claims yet.
+- Client export allowlist includes edging; pinned renderer updated separately. Browser scenario checks saved settings, linear feet, PNG, 3D status, reload, remove and undo. New tests and visual verification pending.
 
 ## Rotatable plant catalog previews (v0.13.6)
 - Each plant tile has a separate 3D preview button. One on-demand Three.js r180 viewport, orbit by drag or rotate buttons, zoom and reset, current season and concept size, model source label and Place this plant action. Original tile-click-to-place workflow preserved. No model data or saved-project changes.
