@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.12.9
+# Glass Root Landscape Studio v0.13.0
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation or paid assets are required. The core 2D editor and legacy Canvas view run locally; GIS services and the new Three.js engine have optional online dependencies.
 
@@ -12,6 +12,11 @@ Read [AGENTS.md](AGENTS.md) before any development work. It defines cross-chat o
 - [Open the independent WebGL plant library](https://crking92.github.io/Glass-Root-Landscape-Studio/species-mesh-lab/). Two original species-specific prototypes: Lindheimer's muhly and little bluestem, five seeded individuals, five illustrative appearances, three detail levels, orbit and zoom. No external dependencies or copied photos.
 - Wildflower Center primary profiles and read-only Hays Botany Poaceae Grass ID Lab records inform visible morphology; species-level artistic geometry is not an identification key. Source links are shown for each species. No variety, cultivar or county-level nativity claim added.
 - Mesh generator checks: 150 species × stage × detail × individual combinations (2 × 5 × 3 × 5), finite matching position/normal/color arrays and deterministic seed variation. Mature individual 01 plant triangles: muhly 119,800 / 37,140 / 9,000; little bluestem 123,828 / 36,184 / 9,052 (high/medium/low). Ground shading is illustrative; no real cast shadows. Browser visual/performance testing and integration of the latest lab models remain pending. The main editor now has an independent Three.js preview; saved project schema remains unchanged.
+
+## Refined plan artwork (v0.13.0)
+- Illustrated and Presentation modes now distinguish airy woody crowns, dense broadleaf clusters and conifer foliage; grass templates vary blade widths, arching and seed accents by existing visual category. Original procedural illustrations only, not individual species diagnostics or new botanical facts.
+- Surface marks now wrap deterministically across tile edges, with subtle highlights on gravel and creek stones, mulch grain, curved water ripples and interior edge shading in Presentation. Cached radial-gradient plant shadows replace solid ellipses; structures use layered directional shadows. Presentation grid is less prominent when enabled. Technical rendering, hit testing, model data and 3D assets unchanged.
+- Bounded existing sprite cache and two reusable shadow tiles; offscreen plant shadow culling. No extra image dependencies. Browser scenario adds deterministic canvas redraw and seasonal pixel-change checks, alongside previous PNG, project integrity, dragging, undo and 5,000-plant coverage. New visual QA pending; no claim of verified species graphics or sunlight analysis.
 
 ## 2D illustrated plan foundation (v0.12.9)
 - 2D style selector: Technical (original plan drawing), Illustrated (default), Presentation (richer marks and shadows). Visual preference is stored separately in browser local storage, not in the version-1 project. All modes retain the same coordinates, hit testing, plant inventory, surfaces, quantity calculations and edit history. Existing 2D PNG export captures the chosen style; existing report SVG stays technical. Classic 3D and Three.js renderer unchanged.

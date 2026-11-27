@@ -194,6 +194,13 @@ await run('illustrated-plan-styles',async p=>{
     images.push(bytes);await screenshot(p,'plan-'+mode);
   }
   assert(!images[0].equals(images[1])&&!images[1].equals(images[2]));
+  // Changing only display mode cannot alter quantities, project history or persisted geometry.
+  const presentation=await button(p,'cv').evaluate(c=>c.toDataURL());
+  await button(p,'planStyle').selectOption('technical');await button(p,'planStyle').selectOption('presentation');
+  assert.equal(await button(p,'cv').evaluate(c=>c.toDataURL()),presentation,'Plan graphics must redraw deterministically');
+  await button(p,'seasonMonth').selectOption('0');const winter=await button(p,'cv').evaluate(c=>c.toDataURL());
+  assert.notEqual(winter,presentation,'Seasonal plan appearance should change pixels');
+  await button(p,'seasonMonth').selectOption('-1');assert.deepEqual(await project(p),original);
   await p.reload();await count(p,15);assert.equal(await button(p,'planStyle').inputValue(),'presentation');
   await button(p,'tab-qty').click();const totals=await button(p,'counts').textContent();
   await button(p,'planStyle').selectOption('technical');assert.equal(await button(p,'counts').textContent(),totals);
