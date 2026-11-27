@@ -2,6 +2,14 @@
 
 Owners: botanical-model chat owns this directory and species-mesh-lab/. Studio chat owns studio-three.js and main editor. Coordinate before replacing the working Studio muhly generator.
 
+## Species 008–010 — flame acanthus, Texas sage and Texas prickly pear (lab 0.10)
+
+- Owner-requested spotlight batch, published from the existing lane draft paths to avoid duplicate work. Stable IDs `p9`, `tz-leucophyllum-frutescens`, `tz-opuntia-engelmannii`. Seven approved earlier models untouched. Future lane workers/publisher must skip registered IDs regardless of quote style or draft existence. Review ledger marks all three pending; no production promotion.
+- Flame acanthus: [Wildflower Center ANQUW](https://www.wildflower.org/plants/result.php?id_plant=ANQUW). Loose woody pale-barked deciduous shrub, opposite lanceolate light green leaves, distal red-orange tubular flowers and stylized extended stamens, winter bare branching. Bark exfoliation and capsules simplified. Mature seed 42 triangles 73,458 / 25,448 / 6,836.
+- Texas sage/cenizo: [Wildflower Center LEFR3](https://www.wildflower.org/plants/result.php?id_plant=LEFR3), [NC State Extension](https://plants.ces.ncsu.edu/plants/leucophyllum-frutescens/). Dense irregular silver-gray crown, crowded alternate rounded leaves, solitary axillary flared five-lobed pink-lavender flowers, retained winter foliage. Stellate hairs represented by color rather than literal hairs; flowering flush illustrative. Mature seed 42 triangles 241,296 / 64,476 / 18,584.
+- Texas prickly pear: [Wildflower Center OPENL](https://www.wildflower.org/plants/result.php?id_plant=OPENL), [Flora of North America species account](https://efloras.org/florataxon.aspx?flora_id=1&taxon_id=242415194). Central Texas var. lindheimeri informs appearance; broader existing species ID retained. Branched flattened pads, areoles, yellowish spines, distal yellow many-tepaled flowers, red-purple tunas, green winter pads. Glochids stylized by color only. Mature seed 42 triangles 158,484 / 48,118 / 8,376.
+- 225 raw and 225 normalized new-model configurations passed finite/matching arrays, color/bounds tests; deterministic ID/name equality and seed variation passed. Full 750-case combined attempt timed out; do not claim pass. Data-driven lab dropdown and extra source notes/stage labels/framing for new models; lab script syntax passed. Live deployment, actual appearance and performance not independently verified. No main editor, palette or previous generator changes.
+
 ## Species 007 — Texas frogfruit (lab 0.9)
 
 - Added original `frogfruit.js` using existing stable palette ID `p4`, Phyla nodiflora. Six previously approved species geometry files untouched.
