@@ -1,6 +1,6 @@
 export function clientProject(model,includeAerial=false,credit=''){
  const pick=(o,keys)=>Object.fromEntries(keys.filter(k=>Object.hasOwn(o,k)).map(k=>[k,o[k]]));
- const objects=model.objects.map(o=>{const v=pick(o,['id','type','species','kind','x','y','w','h','height','angle','points','material','smooth','walkway','feature','basinDepth']);if(o.type==='house'&&o.architecture)v.architecture=pick(o.architecture,['roof','pitch','ridge','finish','roofFinish','front','windows','garage','porch']);return v;});
+ const objects=model.objects.map(o=>{const v=pick(o,['id','type','species','kind','x','y','w','h','height','angle','points','material','smooth','walkway','feature','basinDepth']);if(o.type==='house'&&o.architecture)v.architecture=pick(o.architecture,['roof','pitch','ridge','finish','roofFinish','front','windows','garage','porch']);if(o.type==='hard'&&o.shade&&['pergola','pavilion','gazebo','shadesail'].includes(o.kind))v.shade=pick(o.shade,['roof','frame','cover','posts','postSize','spacing','rise','deck','rails']);return v;});
  const p={version:1,width:model.width,depth:model.depth,objects};
  if(model.boundary)p.boundary=model.boundary;
  if(model.grade)p.grade=pick(model.grade,['x','y']);
