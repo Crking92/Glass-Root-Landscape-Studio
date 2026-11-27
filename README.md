@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.13.9
+# Glass Root Landscape Studio v0.14.0
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation or paid assets are required. The core 2D editor and legacy Canvas view run locally; GIS services and the new Three.js engine have optional online dependencies.
 
@@ -12,6 +12,10 @@ Read [AGENTS.md](AGENTS.md) before any development work. It defines cross-chat o
 - [Open the independent WebGL plant library](https://crking92.github.io/Glass-Root-Landscape-Studio/species-mesh-lab/). Two original species-specific prototypes: Lindheimer's muhly and little bluestem, five seeded individuals, five illustrative appearances, three detail levels, orbit and zoom. No external dependencies or copied photos.
 - Wildflower Center primary profiles and read-only Hays Botany Poaceae Grass ID Lab records inform visible morphology; species-level artistic geometry is not an identification key. Source links are shown for each species. No variety, cultivar or county-level nativity claim added.
 - Mesh generator checks: 150 species × stage × detail × individual combinations (2 × 5 × 3 × 5), finite matching position/normal/color arrays and deterministic seed variation. Mature individual 01 plant triangles: muhly 119,800 / 37,140 / 9,000; little bluestem 123,828 / 36,184 / 9,052 (high/medium/low). Ground shading is illustrative; no real cast shadows. Browser visual/performance testing and integration of the latest lab models remain pending. The main editor now has an independent Three.js preview; saved project schema remains unchanged.
+
+## Irregular fieldstone and fitted flagstone (v0.14.0)
+- Four distinct hardscape tools: jagged individual rock, single-height fieldstone border, stacked fieldstone wall and fitted flagstone path/patio. Two-point linear tools use length/depth/height/rotation controls. Limestone or sandstone palette, nominal piece size, joint spacing and wall rock height. Fitted polygons generated deterministically via bounded jittered Voronoi cells with bevels and varied tones, not rectangular masonry. Paving follows grade per vertex; walls use approximate terrain stepping. One merged mesh per section, capped cell detail. Wall plan symbol represents overhead footprint, not exact face stones.
+- Jagged limestone/sandstone attached edging also follows existing bed/path outlines; remains single-course. Paving is rectangular/straight and editable, not automatic fitting inside arbitrary curved polygons. Joint spacing is nominal; stone geometry illustrative, not masonry engineering. Paving quantity uses area; other linear stones use length. Preserves prior rectangular stone objects and settings. Client renderer pin updated separately; new browser and visual checks pending.
 
 ## Stone and edging finish refinement (v0.13.9)
 - Original layered limestone/sandstone color and bump maps with separate restrained sawn finish, UVs on normalized chipped blocks, improved straight sawn bevels. Flat limestone and sandstone slab objects, sized/rotated with ordinary object controls.
