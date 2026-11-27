@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.13.1
+# Glass Root Landscape Studio v0.13.2
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation or paid assets are required. The core 2D editor and legacy Canvas view run locally; GIS services and the new Three.js engine have optional online dependencies.
 
@@ -12,6 +12,11 @@ Read [AGENTS.md](AGENTS.md) before any development work. It defines cross-chat o
 - [Open the independent WebGL plant library](https://crking92.github.io/Glass-Root-Landscape-Studio/species-mesh-lab/). Two original species-specific prototypes: Lindheimer's muhly and little bluestem, five seeded individuals, five illustrative appearances, three detail levels, orbit and zoom. No external dependencies or copied photos.
 - Wildflower Center primary profiles and read-only Hays Botany Poaceae Grass ID Lab records inform visible morphology; species-level artistic geometry is not an identification key. Source links are shown for each species. No variety, cultivar or county-level nativity claim added.
 - Mesh generator checks: 150 species × stage × detail × individual combinations (2 × 5 × 3 × 5), finite matching position/normal/color arrays and deterministic seed variation. Mature individual 01 plant triangles: muhly 119,800 / 37,140 / 9,000; little bluestem 123,828 / 36,184 / 9,052 (high/medium/low). Ground shading is illustrative; no real cast shadows. Browser visual/performance testing and integration of the latest lab models remain pending. The main editor now has an independent Three.js preview; saved project schema remains unchanged.
+
+## Quick grid and saved drafting (v0.13.2)
+- Toolbar Grid on/off and 1, 2, 5, 10, 20 ft spacing; original sidebar checkbox synchronized. Grid preference stored separately from project, snap independent. At distant zoom, spacing doubles until lines are legible; caption reports actual displayed cell size and indicates zoomed-out coarsening. Scale bar retained.
+- Plan annotations adds permanent two-point dimensions, text notes and leader callouts, up to 200. Stored in optional version-1 draftNotes array, separate from geometry, validated on import, included in JSON and visible 2D PNG exports, undoable, removable via list and hideable. Coordinates remain fixed when objects move; no association, drag editing, collision avoidance or report SVG/client HTML inclusion yet. Existing projects without draftNotes remain compatible.
+- New eleventh browser scenario covers grid controls, preference, annotation persistence, visibility, quantities/geometry integrity and removal/undo. New tests pending; v0.13.1 browser QA #26 passed. No plant or renderer asset edits.
 
 ## Grid key and optional plan annotations (v0.13.1)
 - Existing 5-ft grid unchanged: full cell 5 × 5 ft = 25 sq ft, darker lines every 10 ft. Visible toolbar indicator and 2D canvas/PNG caption; grid-off indicator, snap increment independent. Existing 10-ft scale bar retained. Partial edge cells may be smaller.

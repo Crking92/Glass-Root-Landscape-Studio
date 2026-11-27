@@ -228,6 +228,23 @@ await run('plan-grid-and-annotations',async p=>{
  await openDetails(p,'planAnnotations');await button(p,'planLabels').selectOption('scientific');await button(p,'planLabels').selectOption('common');await button(p,'planLabels').selectOption('none');await button(p,'planLegend').uncheck();await button(p,'planDimensions').uncheck();assert.deepEqual(await project(p),original);
  return {plants:15,species:rows.length,gridFeet:5};
 });
+await run('grid-spacing-and-saved-drafting',async p=>{
+ await button(p,'demo').click();await count(p,15);const original=await project(p);
+ await button(p,'gridToggle').click();assert.equal(await button(p,'gridToggle').getAttribute('aria-pressed'),'false');assert.equal(await button(p,'gridSize').innerText(),'Grid: off');
+ await button(p,'gridToggle').click();await button(p,'gridSpacing').selectOption('10');assert.match(await button(p,'gridSize').innerText(),/10 × 10 ft · 100 sq ft/);
+ await button(p,'gridSpacing').selectOption('2');assert.match(await button(p,'gridSize').innerText(),/2 × 2 ft · 4 sq ft/);
+ assert.deepEqual(await project(p),original);await p.reload();await count(p,15);assert.equal(await button(p,'gridSpacing').inputValue(),'2');
+ await openDetails(p,'planAnnotations');await button(p,'addDimension').click();await clickWorld(p,20,25);await clickWorld(p,40,25);
+ assert.equal((await project(p)).draftNotes[0].kind,'dimension');assert.equal(Math.hypot(...(await project(p)).draftNotes[0].b.map((v,i)=>v-[20,25][i])),20);
+ await openDetails(p,'planAnnotations');await button(p,'draftText').fill('Rain garden');await button(p,'addNote').click();await clickWorld(p,30,40);
+ await openDetails(p,'planAnnotations');await button(p,'draftText').fill('Entrance');await button(p,'addCallout').click();await clickWorld(p,55,60);await clickWorld(p,65,70);
+ const m=await project(p);assert.equal(m.draftNotes.length,3);assert.deepEqual(m.objects,original.objects);
+ await openDetails(p,'planAnnotations');const on=await button(p,'cv').evaluate(c=>c.toDataURL());await button(p,'showDraftNotes').uncheck();assert.notEqual(await button(p,'cv').evaluate(c=>c.toDataURL()),on);await button(p,'showDraftNotes').check();await button(p,'planAnnotations').evaluate(e=>e.open=false);
+ await png(p,'#export','saved-drafting.png');const saved=JSON.parse(await readFile(await download(p,'#save','saved-drafting.json'),'utf8'));assert.deepEqual(saved,m);
+ await p.reload();await count(p,15);assert.deepEqual(await project(p),m);
+ await openDetails(p,'planAnnotations');await p.getByRole('button',{name:'Remove Entrance',exact:true}).click();assert.equal((await project(p)).draftNotes.length,2);await button(p,'planAnnotations').evaluate(e=>e.open=false);await button(p,'undo').click();assert.equal((await project(p)).draftNotes.length,3);
+ return {savedNotes:3,gridSpacing:2};
+});
 for(const [name,n,w,h] of [['one-acre',1000,220,198],['restoration',5000,660,660],...(process.env.QA_STRESS==='1'?[['stress',19990,1320,660]]:[])]){
   await run(name,async p=>{await load(p,fixture(name,n,w,h));const metrics=await enter3(p,n);await button(p,'studioMode').selectOption('walk');await waitText(p,'studioStatus',/Walkthrough/);metrics.walk=await ready3(p,n);await screenshot(p,name+'-walk');await button(p,'studioMode').selectOption('orbit');await waitText(p,'studioStatus',/Three\.js/);metrics.orbit=await ready3(p,n);await screenshot(p,name+'-orbit');return metrics;});
 }
