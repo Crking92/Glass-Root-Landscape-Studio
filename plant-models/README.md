@@ -2,6 +2,13 @@
 
 Owners: botanical-model chat owns this directory and species-mesh-lab/. Studio chat owns studio-three.js and main editor. Coordinate before replacing the working Studio muhly generator.
 
+## Species 011–012 — Turk's cap and rock rose (lab 0.11)
+
+- Owner liked boxed cenizo after positive feedback on revised flame acanthus, natural cenizo and prickly pear; record these as accepted in review ledger, including managed form separately. Ten prior species and one managed form retained, no production promotion.
+- Turk's cap, stable ID `tz-malvaviscus-arboreus-var-drummondii`: [Wildflower Center MAARD](https://www.wildflower.org/plants/result.php?id_plant=MAARD), [Gibson Williamson County account](https://w3.biosci.utexas.edu/prc/K12/pages/Malvaviscus%20arboreus%20drummondii.html). Multi-stem branching, broad alternate lobed toothed leaves, long petioles, solitary twisted overlapping crimson petals with extended staminal column, red segmented fleshy fruit. Microscopic hairs omitted; winter thinning illustrative. Mature seed 42 high/medium/low 111,139 / 42,820 / 10,231 triangles.
+- Rock rose, stable ID `tz-pavonia-lasiopetala`: [Wildflower Center PALA13](https://www.wildflower.org/plants/result.php?id_plant=PALA13), [Gibson Williamson County account](https://w3.biosci.utexas.edu/prc/K12/pages/Pavonia%20lasiopetala.html). Lower spreading many-stemmed shrub, alternate smaller ovate toothed leaves, open five pink fan petals with pale throat and yellow anthers, brown segmented fruit. Winter retention illustrative, hairs simplified. Mature seed 42 high/medium/low 139,160 / 36,624 / 8,836 triangles.
+- 150 raw and 150 normalized configurations passed numerical validation, seed repeatability and variation checks passed; lab script syntax passed. Draft paths retained for automation deduplication, prior models unmodified. Two new prototypes pending visual review; live deployment and performance not independently verified. Main editor unchanged.
+
 ## Cenizo optional managed form — lab 0.10.2
 
 - Owner requested a recently pruned, boxed evergreen shrub after positive feedback on the revised three spotlight models. Added optional `form: 'pruned-box'` for the same cenizo species ID; all five natural seeded forms remain default and unchanged. No duplicate taxon or cultivar. Clipped sides and flat top with subtly rounded edges and tapered lower crown, individually modeled silver foliage and occasional retained flowers (recent pruning is an illustrative managed condition, not a pruning recommendation or flowering prediction).
