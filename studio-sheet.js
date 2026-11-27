@@ -16,6 +16,7 @@ function render(m,r,data,h,aerial){
  if(aerial){const a=m.aerial;c.save();c.globalAlpha=.6;c.drawImage(aerial,...p(a.x,a.y),a.w*scale,a.h*scale);c.restore();}
  const surfaces=m.objects.filter(o=>o.type==='bed'||o.type==='path');
  for(const o of surfaces){const pts=o.type==='bed'?h.bedPoints(o).map(v=>p(...v)):box(o.x,o.y,o.w,o.h),kind=h.isWater(o)?o.feature:h.materialOf(o);if(art)art.surface(c,pts,kind,mode,scale,origin);else poly(c,pts,h.surfaceColor(o));}
+ if(window.StudioPaving)for(const o of surfaces)if(o.paving)window.StudioPaving.draw(c,o,window.StudioPaving.outline(o,h.bedPoints),a=>p(...a));
  if(window.StudioEdging)for(const o of surfaces)if(o.edging)window.StudioEdging.draw(c,window.StudioEdging.outline(o,h.bedPoints),o.edging,o.id,a=>p(...a),scale);
  if(r.sheetGrid){let step=5;while(step*scale<5)step*=2;for(let i=1;i*step<m.width;i++)line(c,[p(i*step,0),p(i*step,m.depth)],i%2?'#536b4c30':'#536b4c60',.65);for(let i=1;i*step<m.depth;i++)line(c,[p(0,i*step),p(m.width,i*step)],i%2?'#536b4c30':'#536b4c60',.65);c.gridStep=step;}
  for(const o of m.objects.filter(o=>o.type==='terrain')){const [x,y]=p(o.x,o.y);for(const k of [1,.66,.33]){c.setLineDash([4,3]);ellipse(c,x,y,o.w*scale*k/2,o.h*scale*k/2,null,o.kind==='berm'?'#997649':'#547e95');c.setLineDash([]);}}
