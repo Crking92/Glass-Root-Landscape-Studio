@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.13.0
+# Glass Root Landscape Studio v0.13.1
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation or paid assets are required. The core 2D editor and legacy Canvas view run locally; GIS services and the new Three.js engine have optional online dependencies.
 
@@ -12,6 +12,11 @@ Read [AGENTS.md](AGENTS.md) before any development work. It defines cross-chat o
 - [Open the independent WebGL plant library](https://crking92.github.io/Glass-Root-Landscape-Studio/species-mesh-lab/). Two original species-specific prototypes: Lindheimer's muhly and little bluestem, five seeded individuals, five illustrative appearances, three detail levels, orbit and zoom. No external dependencies or copied photos.
 - Wildflower Center primary profiles and read-only Hays Botany Poaceae Grass ID Lab records inform visible morphology; species-level artistic geometry is not an identification key. Source links are shown for each species. No variety, cultivar or county-level nativity claim added.
 - Mesh generator checks: 150 species × stage × detail × individual combinations (2 × 5 × 3 × 5), finite matching position/normal/color arrays and deterministic seed variation. Mature individual 01 plant triangles: muhly 119,800 / 37,140 / 9,000; little bluestem 123,828 / 36,184 / 9,052 (high/medium/low). Ground shading is illustrative; no real cast shadows. Browser visual/performance testing and integration of the latest lab models remain pending. The main editor now has an independent Three.js preview; saved project schema remains unchanged.
+
+## Grid key and optional plan annotations (v0.13.1)
+- Existing 5-ft grid unchanged: full cell 5 × 5 ft = 25 sq ft, darker lines every 10 ft. Visible toolbar indicator and 2D canvas/PNG caption; grid-off indicator, snap increment independent. Existing 10-ft scale bar retained. Partial edge cells may be smaller.
+- New Plan annotations dropdown: numbered species, common names or scientific names; optional compact on-canvas species key and canvas dimensions/selected bed area. Full numbered key with scientific names and quantities in Totals. Species numbers reflect current alphabetical list, not persistent IDs. Bounded collision-aware label placement (up to 180, one visible instance per species above 200 plants); compact key truncates after available rows and directs to full key. No geometry changes; optional annotations are session-only and appear in 2D PNG, not the existing proposal SVG or client 3D viewer. Selected bed area is an editor overlay, not included when PNG export clears selection.
+- New tenth browser scenario checks actual grid toggle, annotation pixel changes, complete species key counts, PNG and unchanged project data. New tests pending at commit. No species records, plant assets, or Three.js changes.
 
 ## Refined plan artwork (v0.13.0)
 - Illustrated and Presentation modes now distinguish airy woody crowns, dense broadleaf clusters and conifer foliage; grass templates vary blade widths, arching and seed accents by existing visual category. Original procedural illustrations only, not individual species diagnostics or new botanical facts.

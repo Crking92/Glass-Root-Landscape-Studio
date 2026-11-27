@@ -214,6 +214,20 @@ await run('illustrated-plan-styles',async p=>{
   const large=fixture('plan-large',5000,660,660);await load(p,large);await count(p,5000);await button(p,'planStyle').selectOption('presentation');await screenshot(p,'plan-large-presentation');
   return {styles:3,originalPlants:15,largePlants:5000,pngBytes:images.map(b=>b.length)};
 });
+await run('plan-grid-and-annotations',async p=>{
+ await button(p,'demo').click();await count(p,15);const original=await project(p);
+ assert.match(await button(p,'gridSize').innerText(),/5 × 5 ft · 25 sq ft/);
+ await openDetails(p,'siteProperty');await button(p,'grid').uncheck();assert.equal(await button(p,'gridSize').innerText(),'Grid: off');await button(p,'grid').check();
+ const before=await button(p,'cv').evaluate(c=>c.toDataURL());
+ await openDetails(p,'planAnnotations');await button(p,'planLabels').selectOption('number');await button(p,'planLegend').check();await button(p,'planDimensions').check();
+ assert.match(await button(p,'annotationStatus').textContent(),/\d+ of 15 visible plants labeled/);
+ const after=await button(p,'cv').evaluate(c=>c.toDataURL());assert.notEqual(after,before);assert.deepEqual(await project(p),original);
+ await button(p,'openPlantKey').click();const rows=await p.locator('#planKeyRows .plan-key-row').allTextContents();assert.equal(rows.length,new Set(original.objects.filter(o=>o.type==='plant').map(o=>o.species)).size);
+ assert.equal(rows.reduce((n,row)=>n+Number(row.match(/× (\d+)/)[1]),0),15);
+ await screenshot(p,'plan-numbered-key');await png(p,'#export','plan-annotated.png');assert.deepEqual(await project(p),original);
+ await openDetails(p,'planAnnotations');await button(p,'planLabels').selectOption('scientific');await button(p,'planLabels').selectOption('common');await button(p,'planLabels').selectOption('none');await button(p,'planLegend').uncheck();await button(p,'planDimensions').uncheck();assert.deepEqual(await project(p),original);
+ return {plants:15,species:rows.length,gridFeet:5};
+});
 for(const [name,n,w,h] of [['one-acre',1000,220,198],['restoration',5000,660,660],...(process.env.QA_STRESS==='1'?[['stress',19990,1320,660]]:[])]){
   await run(name,async p=>{await load(p,fixture(name,n,w,h));const metrics=await enter3(p,n);await button(p,'studioMode').selectOption('walk');await waitText(p,'studioStatus',/Walkthrough/);metrics.walk=await ready3(p,n);await screenshot(p,name+'-walk');await button(p,'studioMode').selectOption('orbit');await waitText(p,'studioStatus',/Three\.js/);metrics.orbit=await ready3(p,n);await screenshot(p,name+'-orbit');return metrics;});
 }
