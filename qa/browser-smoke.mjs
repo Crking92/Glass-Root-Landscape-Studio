@@ -81,6 +81,7 @@ await run('editor-roundtrip',async p=>{
   await p.locator('#selection').getByRole('button',{name:'Delete',exact:true}).click();await count(p,16);
   await button(p,'undo').click();await count(p,17);await button(p,'redo').click();await count(p,16);
   const saved=JSON.parse(await readFile(await download(p,'#save','roundtrip.json'),'utf8'));assert.equal(saved.objects.length,(await project(p)).objects.length);
+  assert.match(await button(p,'fileStatus').innerText(),/Download requested: glass-root-project\.json/);
   await p.reload();await count(p,16);await load(p,saved);assert.deepEqual(await project(p),saved);
   await p.locator('.legacy-menu summary').click();await button(p,'view3').click();assert(await button(p,'view3').evaluate(e=>e.classList.contains('active')));
   await button(p,'view2').click();await screenshot(p,'editor-roundtrip');return {plants:16};
@@ -94,7 +95,10 @@ await run('rain-garden-mass-planting',async p=>{
   await button(p,'massApply').click();const n=(await project(p)).objects.filter(o=>o.type==='plant').length;assert(n>0);await screenshot(p,'rain-garden-mass-planting');await button(p,'undo').click();await count(p,0);return {placed:n};
 });
 await run('residential-client',async(p,context)=>{
-  const m=fixture('residential',60,100,100);await load(p,m);const metrics=await enter3(p,60);
+  const m=fixture('residential',60,100,100);
+  const markers=['QA_PRIVATE_CLIENT_7X','QA_PRIVATE_SITE_7X','QA_PRIVATE_NOTES_7X'];
+  m.report={ecology:true,title:'Synthetic proposal',client:markers[0],site:markers[1],notes:markers[2],brand:'Glass Root Garden',numbers:true,aerial:false,costs:true,mulch:3,labor:null,prices:{}};
+  await load(p,m);assert.equal((await project(p)).report.client,markers[0]);const metrics=await enter3(p,60);
   await openDetails(p,'studioLightPanel');await button(p,'studioLightStyle').selectOption('evening');await button(p,'studioColorLook').selectOption('cinematic');
   await openDetails(p,'studioBackgroundPanel');await button(p,'studioBackgroundPreset').selectOption('hill');await button(p,'studioAnimate').check();await waitText(p,'studioStatus',/breeze animation|motion paused/);await button(p,'studioAnimate').uncheck();
   await ready3(p,60);await screenshot(p,'residential-orbit');
@@ -104,12 +108,27 @@ await run('residential-client',async(p,context)=>{
   await openDetails(p,'studioExportPanel');metrics.editorPNG=await png(p,'#studioPNG','residential-editor-export.png');
   await openDetails(p,'studioViewsPanel');await openDetails(p,'clientDownloadOptions');
   await button(p,'clientPresentationTitle').fill('Synthetic QA landscape');const path=await download(p,'#clientDownload','residential-client.html');
+  const html=await readFile(path,'utf8');for(const marker of markers)assert(!html.includes(marker),'Private report field leaked: '+marker);
+  metrics.privateMarkersExcluded=markers.length;
   const q=await context.newPage();await q.goto(pathToFileURL(path).href,{waitUntil:'domcontentloaded'});await ready3(q,60,'status','host');
   assert.equal(await button(q,'heading').innerText(),'Synthetic QA landscape');assert.equal(await q.locator('#tools,#selection,#save').count(),0);
   await button(q,'next').click();await waitText(q,'counter',/2 \/ 2/);await waitText(q,'status',/Walkthrough/);
   await button(q,'mode').click();await waitText(q,'status',/Three\.js/);
   await button(q,'performance').selectOption('fast');await button(q,'motion').check();await waitText(q,'status',/breeze animation|motion paused/);await button(q,'motion').uncheck();
-  metrics.clientPNG=await png(q,'#png','residential-client-export.png');await screenshot(q,'residential-client-view');return metrics;
+  metrics.clientPNG=await png(q,'#png','residential-client-export.png');
+  await button(q,'size').selectOption('1920');metrics.clientPNG1920=await png(q,'#png','residential-client-1920.png');assert.equal(Math.max(metrics.clientPNG1920.width,metrics.clientPNG1920.height),1920);await screenshot(q,'residential-client-view');return metrics;
+});
+await run('project-reframe',async p=>{
+  const large=fixture('large-refit',8,660,660),small=fixture('small-refit',9,100,100),fractional=fixture('fractional-refit',10,Math.sqrt(43560),Math.sqrt(43560));
+  async function camera(label){await openDetails(p,'studioViewsPanel');await button(p,'studioViewName').fill(label);await button(p,'studioViewSave').click();return (await project(p)).views.at(-1).camera;}
+  await load(p,large);await enter3(p,8);const a=await camera('Large');
+  await load(p,small);await ready3(p,9);const b=await camera('Small');
+  assert(Math.abs(a.dist-660*1.85)<.001);assert(Math.abs(b.dist-185)<.001);assert.deepEqual(b.target,[0,0,0]);
+  await screenshot(p,'project-reframe-small');
+  await load(p,fractional);await ready3(p,10);const c=await camera('Fractional');
+  assert.equal(await button(p,'area').textContent(),'208.71 × 208.71 ft');assert.equal((await project(p)).width,fractional.width);assert(Math.abs(c.dist-fractional.width*1.85)<.001);
+  await button(p,'studioClose').click();await load(p,large);await enter3(p,8);const d=await camera('Reopen large');assert(Math.abs(d.dist-a.dist)<.001);
+  return {largeDistance:a.dist,smallDistance:b.dist,fractionalDistance:c.dist,reopenDistance:d.dist};
 });
 for(const [name,n,w,h] of [['one-acre',1000,220,198],['restoration',5000,660,660],...(process.env.QA_STRESS==='1'?[['stress',19990,1320,660]]:[])]){
   await run(name,async p=>{await load(p,fixture(name,n,w,h));const metrics=await enter3(p,n);await button(p,'studioMode').selectOption('walk');await waitText(p,'studioStatus',/Walkthrough/);metrics.walk=await ready3(p,n);await screenshot(p,name+'-walk');await button(p,'studioMode').selectOption('orbit');await waitText(p,'studioStatus',/Three\.js/);metrics.orbit=await ready3(p,n);await screenshot(p,name+'-orbit');return metrics;});
