@@ -1,5 +1,5 @@
 import './studio-fieldstone.js?v=3';
-import './studio-paving.js?v=1';
+import './studio-paving.js?v=2';
 import './studio-rustic.js?v=1';
 // Procedural hardscape kit. Local dimensions are normalized to the saved w, h, height.
 const shadeFrameColors={cedar:'#a77c4f',darkwood:'#68533e',white:'#e2e3d7',steel:'#4e5656'};
@@ -16,7 +16,7 @@ export function naturalStoneGeometry(T,variant=0,finish='rough'){
 }
 // Build faceted polygon prisms. Each cell has a bevel and its own rock tone.
 function fieldPrisms(T,cells,place,thickness,vertical=false){const pos=[],colors=[],uv=[];for(const [index,cell] of cells.entries()){const poly=cell.poly;if(poly.length<3)continue;const center=poly.reduce((s,p)=>[s[0]+p[0]/poly.length,s[1]+p[1]/poly.length],[0,0]),color=new T.Color(cell.color),n=poly.length;
- const thick=cell.thickness??thickness,off=cell.offset??0,rough=cell.relief===true,levels=rough?[[-.5,.82],[-.38,.96],[-.12,1],[.26,.96],[.5,.83]]:[[-.5,.88],[-.33,1],[.33,1],[.5,.88]],jitter=(j,k)=>rough?Math.sin((k+1)*13.17+(j+1)*7.3+(index+1)*2.7)*.065:0;
+ const thick=cell.thickness??thickness,off=cell.offset??0,rough=cell.relief===true,levels=cell.paving?[[-.5,.96],[-.36,1],[.28,1],[.5,.985]]:rough?[[-.5,.82],[-.38,.96],[-.12,1],[.26,.96],[.5,.83]]:[[-.5,.88],[-.33,1],[.33,1],[.5,.88]],jitter=(j,k)=>rough?Math.sin((k+1)*13.17+(j+1)*7.3+(index+1)*2.7)*(cell.paving?.006:.065):0;
  const rings=levels.map(([z,k],j)=>poly.map(([x,y],i)=>{const s=k+jitter(j,i);return place(center[0]+(x-center[0])*s,center[1]+(y-center[1])*s,(z+jitter(j+5,i))*thick+off);}));
  function tri(a,b,c,k){for(const v of vertical?[a,b,c]:[a,c,b]){pos.push(...v);colors.push(color.r*k,color.g*k,color.b*k);uv.push(v[0]*.7,(vertical?v[1]:v[2])*.7);}}
  for(let j=0;j<rings.length-1;j++)for(let k=0;k<n;k++){const l=(k+1)%n,shade=.87+.12*((k*7+index*3+j)%11)/10;tri(rings[j][k],rings[j+1][k],rings[j][l],shade);tri(rings[j][l],rings[j+1][k],rings[j+1][l],shade);}

@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.14.4
+# Glass Root Landscape Studio v0.14.5
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation or paid assets are required. The core 2D editor and legacy Canvas view run locally; GIS services and the new Three.js engine have optional online dependencies.
 
@@ -12,6 +12,10 @@ Read [AGENTS.md](AGENTS.md) before any development work. It defines cross-chat o
 - [Open the independent WebGL plant library](https://crking92.github.io/Glass-Root-Landscape-Studio/species-mesh-lab/). Two original species-specific prototypes: Lindheimer's muhly and little bluestem, five seeded individuals, five illustrative appearances, three detail levels, orbit and zoom. No external dependencies or copied photos.
 - Wildflower Center primary profiles and read-only Hays Botany Poaceae Grass ID Lab records inform visible morphology; species-level artistic geometry is not an identification key. Source links are shown for each species. No variety, cultivar or county-level nativity claim added.
 - Mesh generator checks: 150 species × stage × detail × individual combinations (2 × 5 × 3 × 5), finite matching position/normal/color arrays and deterministic seed variation. Mature individual 01 plant triangles: muhly 119,800 / 37,140 / 9,000; little bluestem 123,828 / 36,184 / 9,052 (high/medium/low). Ground shading is illustrative; no real cast shadows. Browser visual/performance testing and integration of the latest lab models remain pending. The main editor now has an independent Three.js preview; saved project schema remains unchanged.
+
+## Closer fitted stonework (v0.14.5)
+- User requested less exposed infill between natural stones. Fitted, mixed and loose styles now use a measured inset rather than a second proportional shrink; default joints .025, .055 and .10 ft respectively. Saved spacing remains editable and unchanged; Tight joints button sets .06 ft (about ¾ inch). Mixed sizes derive from varied Voronoi cells without creating isolated islands. Reduced paving-only 3D bevel/relief inset; other hardscape rock shapes unchanged.
+- Concave boundary intersections that cannot be rendered as one convex cell use bounded triangular clipping fallback. Small edge fragments may still be omitted; visual and conceptual spacing, not installation precision. Existing stepping style remains distinct. New coverage checks and browser scenario; full browser/visual QA pending.
 
 ## Natural stone paving and visual hardscape catalog (v0.14.4)
 - Existing rectangular paths, curved paths and non-water polygon outlines have optional fitted, loose, stepping and mixed natural paving; limestone/sandstone, nominal piece size, spacing, irregularity. Underlying surface is visible infill. Deterministic bounded geometry shares plan, presentation and Three.js; curved steps infer paired centerline from ordinary path polygon, with grid fallback. Convex clipped cells only; complex edge fragments may be omitted, and very large areas are coarsened. Concept visual geometry, not construction layout.
