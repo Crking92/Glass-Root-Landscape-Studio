@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.14.1
+# Glass Root Landscape Studio v0.14.2
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation or paid assets are required. The core 2D editor and legacy Canvas view run locally; GIS services and the new Three.js engine have optional online dependencies.
 
@@ -12,6 +12,11 @@ Read [AGENTS.md](AGENTS.md) before any development work. It defines cross-chat o
 - [Open the independent WebGL plant library](https://crking92.github.io/Glass-Root-Landscape-Studio/species-mesh-lab/). Two original species-specific prototypes: Lindheimer's muhly and little bluestem, five seeded individuals, five illustrative appearances, three detail levels, orbit and zoom. No external dependencies or copied photos.
 - Wildflower Center primary profiles and read-only Hays Botany Poaceae Grass ID Lab records inform visible morphology; species-level artistic geometry is not an identification key. Source links are shown for each species. No variety, cultivar or county-level nativity claim added.
 - Mesh generator checks: 150 species × stage × detail × individual combinations (2 × 5 × 3 × 5), finite matching position/normal/color arrays and deterministic seed variation. Mature individual 01 plant triangles: muhly 119,800 / 37,140 / 9,000; little bluestem 123,828 / 36,184 / 9,052 (high/medium/low). Ground shading is illustrative; no real cast shadows. Browser visual/performance testing and integration of the latest lab models remain pending. The main editor now has an independent Three.js preview; saved project schema remains unchanged.
+
+## Loose natural slab stonework (v0.14.2)
+- User photo-inspired flat, chipped fieldstone with variable length, width, thickness, angle, setback and layered surfaces; jagged single-course borders and standalone stacked walls no longer use a fitted vertical face grid. Formal limestone/sandstone and rectangular flagstone paving remain available. Shared plan and 3D slab layout, deterministic geometry; individual rocks may extend beyond nominal footprint.
+- New attached loose stacked limestone/sandstone presets (two courses, adjustable total exposed height, width and nominal piece length). Single-course jagged edging defaults to lower flatter stones. Closed outlines sampled by cumulative distance so dense curved outlines do not create one tiny stone per vertex. Existing saved settings remain valid; 14 attached materials, 31 hardscape types.
+- Client renderer version pin updated separately. New browser scenario covers deterministic curves, size variation, capped counts, stacked courses, settings, export and reload; pending CI and visual QA. Illustrative dry stack only, no structural or rock interlock simulation. Original procedural art, not copied photographs.
 
 ## Rustic log edging and fallen wood (v0.14.1)
 - Crooked natural log attached edging, standalone straight-alignment natural log border, and individual fallen habitat log. Three irregularity settings (mostly straight, crooked, wild with branch stubs); deterministic curved/tapered tubes, faceted bark ridges, colored cut-end rings, varied log silhouettes. Overall straight alignment remains editable; individual logs may extend beyond nominal width. Existing squared timber edging preserved.
