@@ -130,6 +130,36 @@ await run('project-reframe',async p=>{
   await button(p,'studioClose').click();await load(p,large);await enter3(p,8);const d=await camera('Reopen large');assert(Math.abs(d.dist-a.dist)<.001);
   return {largeDistance:a.dist,smallDistance:b.dist,fractionalDistance:c.dist,reopenDistance:d.dist};
 });
+await run('garden-features-and-workspace',async(p,context)=>{
+  const kinds=['trellis','rainbarrel','compostbin','nestbox','gardensign'];
+  await button(p,'tab-plants').click();await openDetails(p,'advancedPlants');
+  await button(p,'filterWater').selectOption('Low');const exact=await p.locator('[data-plant-id]').count();
+  await button(p,'filterWater').selectOption('group:low');const broad=await p.locator('[data-plant-id]').count();assert(broad>exact&&exact>0);
+  await button(p,'filterWater').selectOption('group:unknown');assert(await p.locator('[data-plant-id]').count()>0);
+  await button(p,'clearFilters').click();assert.equal(await p.locator('[data-plant-id]').count(),315);
+  await button(p,'tab-hard').click();assert.equal(await p.locator('#hardscapeType option').count(),15);
+  for(const [i,k] of kinds.entries()){
+    await button(p,'tab-hard').click();await button(p,'hardscapeType').selectOption(k);await button(p,'placeHardscape').click();await clickWorld(p,25+i*12,50);
+    const saved=await project(p);assert.equal(saved.objects.at(-1).kind,k);
+  }
+  await p.locator('[data-tool="select"]').click();await clickWorld(p,73,50);
+  const angle=p.locator('#selection .field').filter({hasText:'Rotation (degrees)'}).locator('input');
+  await angle.fill('35');await angle.press('Tab');assert.equal((await project(p)).objects.at(-1).angle,35);
+  const m=await project(p);const saved=JSON.parse(await readFile(await download(p,'#save','garden-features.json'),'utf8'));assert.deepEqual(saved,m);
+  await load(p,saved);await button(p,'tab-qty').click();assert.match(await button(p,'hardCounts').textContent(),/Interpretive garden sign: 1 ea/);
+  await p.setViewportSize({width:850,height:900});const before=(await button(p,'cv').boundingBox()).width;
+  await button(p,'toggleTools').click();await button(p,'toggleWorkspace').click();
+  await until(p,before=>document.getElementById('cv').getBoundingClientRect().width>before+100,before);
+  assert.equal(await button(p,'toggleTools').getAttribute('aria-expanded'),'false');assert.equal(await button(p,'toggleWorkspace').getAttribute('aria-expanded'),'false');
+  await screenshot(p,'garden-workspace-expanded');
+  await button(p,'toggleTools').click();await button(p,'toggleWorkspace').click();await p.setViewportSize({width:1440,height:1000});
+  await enter3(p,0);await waitText(p,'studioStatus',/5 hardscape \/ [0-9]+ parts/);
+  const status=await button(p,'studioStatus').textContent();assert(Number(status.match(/5 hardscape \/ ([0-9]+) parts/)[1])>25);
+  await screenshot(p,'garden-features-3d');await openDetails(p,'studioViewsPanel');await openDetails(p,'clientDownloadOptions');const file=await download(p,'#clientDownload','garden-features-client.html');
+  const q=await context.newPage();await q.goto(pathToFileURL(file).href,{waitUntil:'domcontentloaded'});await ready3(q,0,'status','host');await waitText(q,'status',/5 hardscape \/ [0-9]+ parts/);
+  const clientStatus=await button(q,'status').textContent();assert(Number(clientStatus.match(/5 hardscape \/ ([0-9]+) parts/)[1])>25);
+  await screenshot(q,'garden-features-client');return {exact,broad,status,clientStatus};
+});
 for(const [name,n,w,h] of [['one-acre',1000,220,198],['restoration',5000,660,660],...(process.env.QA_STRESS==='1'?[['stress',19990,1320,660]]:[])]){
   await run(name,async p=>{await load(p,fixture(name,n,w,h));const metrics=await enter3(p,n);await button(p,'studioMode').selectOption('walk');await waitText(p,'studioStatus',/Walkthrough/);metrics.walk=await ready3(p,n);await screenshot(p,name+'-walk');await button(p,'studioMode').selectOption('orbit');await waitText(p,'studioStatus',/Three\.js/);metrics.orbit=await ready3(p,n);await screenshot(p,name+'-orbit');return metrics;});
 }
