@@ -9,7 +9,11 @@
     "tz-hesperaloe-parviflora",
     "p4"
   ],
-  "publishedPending": [],
+  "publishedPending": [
+    "p9",
+    "tz-leucophyllum-frutescens",
+    "tz-opuntia-engelmannii"
+  ],
   "needsRevision": [],
   "note": "Owner approved seven existing models including frogfruit on 2026-11-27. Only explicit owner feedback may change review status. Publish up to 24 pending models; no production promotion."
 }
