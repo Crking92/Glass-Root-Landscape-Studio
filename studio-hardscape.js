@@ -1,4 +1,4 @@
-import './studio-fieldstone.js?v=2';
+import './studio-fieldstone.js?v=3';
 import './studio-rustic.js?v=1';
 // Procedural hardscape kit. Local dimensions are normalized to the saved w, h, height.
 const shadeFrameColors={cedar:'#a77c4f',darkwood:'#68533e',white:'#e2e3d7',steel:'#4e5656'};
