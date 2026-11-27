@@ -2,6 +2,12 @@
 
 Owners: botanical-model chat owns this directory and species-mesh-lab/. Studio chat owns studio-three.js and main editor. Coordinate before replacing the working Studio muhly generator.
 
+## Species 013–014 — mealy blue sage and Texas lantana (lab 0.12)
+
+- Mealy blue sage, stable ID `tz-salvia-farinacea`, [Wildflower Center SAFA2](https://www.wildflower.org/plants/result.php?id_plant=SAFA2) and [reference gallery](https://www.wildflower.org/gallery/species.php?id_plant=SAFA2). Upright to spreading herbaceous mound, opposite gray-green lanceolate leaves concentrated below upper flower spikes, blue bilabiate flowers arranged in close whorls with pale mealy calyces. Lateral spike shoots connected; winter dry spikes and partial foliage stylized. Mature seed 42 high/medium/low triangles 105,916 / 40,008 / 15,024. Studio default 2.5 ft tall × 2.5 ft spread unchanged.
+- Texas lantana, stable ID `tz-lantana-urticoides`, [Wildflower Center LAUR2](https://www.wildflower.org/plants/result.php?id_plant=LAUR2), [Gibson Williamson County morphology](https://w3.biosci.utexas.edu/prc/K12/pages/Lantana%20urticoides.html). Spreading woody shrub with opposite broad coarse-toothed leaves, long axillary peduncles, compact rounded yellow-centered orange-red heads of four-lobed tubular florets, dark fruit in illustrative fall stage. Microscopic hairs and occasional prickles omitted. Native species, not L. camara or named hybrid. Mature seed 42 high/medium/low triangles 323,760 / 61,080 / 12,920; high geometry reduced from initial 519,192. Studio default 4.5 ft tall × 4 ft spread unchanged.
+- Final 150 raw and 150 normalized combinations passed; deterministic seed and exact scientific-name lookup tests passed. Lab module syntax checked, true-scale controls and previous model imports preserved. Twelve approved species and boxed cenizo untouched; two new models pending visual review. Live deployment/browser and landscape-scale performance unverified. No production or palette edits; hourly workers should skip registered IDs.
+
 ## True-scale reference preview — lab 0.11.1
 
 - Owner requested a six-foot human reference. Added optional True scale (feet) view with a stylized standing 6 ft figure and measured ground grid; Close-up remains default. Reads current Studio palette dimensions from the same-origin index.html JSON without executing its script. Does not duplicate plant data, change any generator, edit production scene code, or alter saved projects.
