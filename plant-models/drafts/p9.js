@@ -15,15 +15,17 @@ function shrub(seed=42,stage="mature",detail="high",cenizo=false){
  const mouth=add(p,mul(axis,len));const lobes=cenizo?5:4;for(let j=0;j<lobes;j++){const a=j*TAU/lobes,dir=add(mul(u,Math.cos(a)),mul(w,Math.sin(a))),side=add(mul(u,-Math.sin(a)),mul(w,Math.cos(a))),reach=(cenizo?.012:.0065)*sz,half=(cenizo?.0055:.0021)*sz,base=add(mouth,mul(dir,width[3]*.75*sz)),mid=add(mouth,add(mul(dir,reach*.85),mul(axis,(cenizo?.003:.007)*sz))),tip=add(mouth,add(mul(dir,reach),mul(axis,(cenizo?.004:.011)*sz)));tri(base,add(mid,mul(side,half)),tip,tone(color,1.08));tri(base,tip,sub(mid,mul(side,half)),color);}
  if(!cenizo){for(let k of [-1,1]){const end=add(mouth,add(mul(axis,.012),mul(u,k*.0012)));tube(mouth,end,.00035,.00027,[.94,.55,.18],3);}}
  }
- reset(0,17);const scale=r(.91,1.12),trunks=cenizo?(hi?13:md?10:7):(hi?9:md?7:5),branches=cenizo?(hi?6:md?5:4):(hi?5:md?4:3),twigs=cenizo?(hi?5:md?4:3):(hi?3:md?3:2),leaves=cenizo?(hi?12:md?8:6):(hi?7:md?5:4);
- for(let i=0;i<trunks;i++){reset(i,43);const phi=i*2.399+r(-.27,.27),base=rad(phi,r(.02,.13),0),H=r(cenizo?.65:.65,cenizo?1.14:1.10)*scale,R=r(cenizo?.24:.29,cenizo?.54:.61)*scale,thick=r(.010,.021),at=t=>add(base,rad(phi+.14*Math.sin(t*3),R*t**1.3,H*t));let last=at(0);for(let k=1;k<=6;k++){const p=at(k/6);tube(last,p,thick*(1-.79*(k-1)/6),thick*(1-.79*k/6),bark,hi?7:5);last=p;}
+ reset(0,17);const scale=r(.91,1.12),trunks=cenizo?(hi?13:md?10:7):(hi?9:md?7:5),branches=cenizo?(hi?6:md?5:4):(hi?5:md?4:3),twigs=cenizo?(hi?5:md?4:3):(hi?3:md?3:2),leaves=cenizo?(hi?12:md?8:6):(hi?8:md?6:4);
+ for(let i=0;i<trunks;i++){reset(i,43);const phi=i*2.399+r(-.27,.27),base=rad(phi,r(.02,.13),0),H=r(cenizo?.65:.95,cenizo?1.14:1.42)*scale,R=r(cenizo?.24:.29,cenizo?.54:.61)*scale,thick=r(.010,.021),at=t=>add(base,rad(phi+.14*Math.sin(t*3),R*t**1.3,H*t));let last=at(0);for(let k=1;k<=6;k++){const p=at(k/6);tube(last,p,thick*(1-.79*(k-1)/6),thick*(1-.79*k/6),bark,hi?7:5);last=p;}
  for(let j=0;j<branches;j++){reset(i*20+j,53);const t=.30+j*.68/(branches-1),p=at(t),a=phi+(j%2?1:-1)*r(.55,1.9),reach=r(.16,cenizo?.35:.40)*(1-.45*t)*scale,up=r(.13,.35)*(1-.38*t)*scale,mid=add(p,rad(a,reach*.48,up*.4)),end=add(p,rad(a,reach,up));tube(p,mid,.007,.004,bark,5);tube(mid,end,.004,.0018,twig,4);
  for(let k=0;k<twigs;k++){reset(i*1000+j*50+k,61);const f=.30+.70*k/(twigs-1),q=f<.5?mix(p,mid,f*2):mix(mid,end,(f-.5)*2),a2=a+(k%2?1:-1)*r(.5,1.65),reach2=r(.07,cenizo?.16:.19),up2=r(.06,.17),point=f=>add(q,rad(a2,reach2*f,up2*f)),tip=point(1);tube(q,tip,.0027,.0008,twig,4);
  for(let l=0;l<leaves;l++){const id=i*10000+j*1000+k*100+l;reset(id,83);const f=.10+.90*l/(leaves-1),node=point(f),az=a2+l*2.399+r(-.25,.25),keep=cenizo||!dry||rand()<.035;if(keep){for(let z=0;z<(cenizo?1:2);z++){const angle=az+z*Math.PI,b=add(node,rad(angle,.004,.003));tube(node,b,.0007,.0004,twig,3);blade(b,angle,id*2+z);}}
- reset(id,97);const chance=cenizo?(early?.10:fall?.38:.42):(early?.10:fall?.37:.45);if(!leafy&&!dry&&l>=Math.floor(leaves*(cenizo?.25:.48))&&rand()<chance){const angle=az+r(-.4,.4),b=add(node,rad(angle,.009,.008));tube(node,b,.0009,.0007,twig,3);flower(b,angle,id,early&&rand()<.65);}else if(!cenizo&&dry&&l===leaves-1&&rand()<.20){tube(node,add(node,rad(az,.013,.015)),.0016,.003,[.44,.32,.23],4);}
+ reset(id,97);const chance=cenizo?(early?.10:fall?.38:.42):(early?.22:fall?.64:.78);if(!leafy&&!dry&&l>=Math.floor(leaves*(cenizo?.25:.32))&&rand()<chance){const angle=az+r(-.4,.4),b=add(node,rad(angle,.009,.008));tube(node,b,.0009,.0007,twig,3);flower(b,angle,id,early&&rand()<.65);}else if(!cenizo&&dry&&l===leaves-1&&rand()<.20){tube(node,add(node,rad(az,.013,.015)),.0016,.003,[.44,.32,.23],4);}
  }
  }}
  }
+ // Owner-selected mature concept height: 5–6 ft, with deterministic variation.
+ reset(0,251);const target=r(1.524,1.8288);let height=0;for(let i=1;i<v.length;i+=3)height=Math.max(height,v[i]);const sy=target/(height||1);for(let i=0;i<v.length;i+=3){v[i+1]*=sy;const x=n[i],y=n[i+1]/sy,z=n[i+2],len=Math.hypot(x,y,z)||1;n[i]=x/len;n[i+1]=y/len;n[i+2]=z/len;}
  return {positions:new Float32Array(v),normals:new Float32Array(n),colors:new Float32Array(c)};
 }
 export function buildSpecies(seed=42,stage='mature',detail='high'){return shrub(seed,stage,detail,false);}
@@ -33,17 +35,18 @@ export const metadata={
   "common": "Flame acanthus",
   "primary": "https://www.wildflower.org/plants/result.php?id_plant=ANQUW",
   "morphology": "https://www.wildflower.org/plants/result.php?id_plant=ANQUW",
-  "notes": "Spreading deciduous shrub; pale bark, opposite light-green lanceolate leaves, red-orange narrow tubular flowers on distal leafy shoots with four stylized lobes and protruding stamens. Winter bare branching and stylized capsules; exfoliation represented by color only.",
+  "notes": "Taller, more floriferous spreading deciduous shrub; owner-selected 5–6 ft mature concept height, opposite lanceolate leaves and abundant red-orange tubular flowers on distal leafy shoots. Winter bare branching; capsules and exfoliation stylized.",
   "cenizo": false,
   "triangleCounts": {
-    "high": 73458,
-    "medium": 25448,
-    "low": 6836
+    "high": 115136,
+    "medium": 44456,
+    "low": 8696
   },
   "tests": 75,
   "stageLabels": {
     "fall": "Fall flowering",
     "dry": "Winter / bare branches"
   },
-  "framing": "bounds"
+  "framing": "bounds",
+  "revision": "owner review 01"
 };
