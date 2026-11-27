@@ -1,4 +1,4 @@
-# Glass Root Landscape Studio v0.14.6
+# Glass Root Landscape Studio v0.14.7
 
 Free, independent, stylized landscape concept editor. [Open the web app](https://crking92.github.io/Glass-Root-Landscape-Studio/). No installation or paid assets are required. The core 2D editor and legacy Canvas view run locally; GIS services and the new Three.js engine have optional online dependencies.
 
@@ -12,6 +12,10 @@ Read [AGENTS.md](AGENTS.md) before any development work. It defines cross-chat o
 - [Open the independent WebGL plant library](https://crking92.github.io/Glass-Root-Landscape-Studio/species-mesh-lab/). Two original species-specific prototypes: Lindheimer's muhly and little bluestem, five seeded individuals, five illustrative appearances, three detail levels, orbit and zoom. No external dependencies or copied photos.
 - Wildflower Center primary profiles and read-only Hays Botany Poaceae Grass ID Lab records inform visible morphology; species-level artistic geometry is not an identification key. Source links are shown for each species. No variety, cultivar or county-level nativity claim added.
 - Mesh generator checks: 150 species × stage × detail × individual combinations (2 × 5 × 3 × 5), finite matching position/normal/color arrays and deterministic seed variation. Mature individual 01 plant triangles: muhly 119,800 / 37,140 / 9,000; little bluestem 123,828 / 36,184 / 9,052 (high/medium/low). Ground shading is illustrative; no real cast shadows. Browser visual/performance testing and integration of the latest lab models remain pending. The main editor now has an independent Three.js preview; saved project schema remains unchanged.
+
+## Rustic natural fencing (v0.14.7)
+- Four new linear objects: crooked split rail, irregular cedar post row, cedar post and plain wire ranch fence, woven branch/wattle fence. Existing formal fence unchanged. User draws endpoints and edits width, height, length, rotation, approximate spacing, natural irregularity, and rails/strands/courses as applicable. Seeded tapered branch geometry, offset posts, curved rails and terrain-relative elevation. No physical fence strength or livestock containment guarantee.
+- Shared fence parts for plan, thumbnails, Three.js and printable sheet. Optional validated fence settings preserved in saved project and client export; linear feet in existing quantities. 37 hardscape objects; 14 attached edging materials unchanged. Geometry bounded per segment and globally; extreme projects may use reduced detail or omit parts at the cap. Browser scenario added; visual QA pending.
 
 ## Visual surface, edging and paving samples (v0.14.6)
 - Reusable searchable modal for 6 surface finishes, 14 edging choices (plus no edging) and 4 paving styles (plus no paving). Available in the selected-shape inspector and new surface drawing settings. Original canvas samples reuse plan surface patterns, edging piece generation and paving layouts; approximate isometric border preview distinguishes single and stacked courses. Existing dropdowns and keyboard operation retained; no new external assets or WebGL contexts.
