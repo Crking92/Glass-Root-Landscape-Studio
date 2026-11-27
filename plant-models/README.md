@@ -2,6 +2,12 @@
 
 Owners: botanical-model chat owns this directory and species-mesh-lab/. Studio chat owns studio-three.js and main editor. Coordinate before replacing the working Studio muhly generator.
 
+## True-scale reference preview — lab 0.11.1
+
+- Owner requested a six-foot human reference. Added optional True scale (feet) view with a stylized standing 6 ft figure and measured ground grid; Close-up remains default. Reads current Studio palette dimensions from the same-origin index.html JSON without executing its script. Does not duplicate plant data, change any generator, edit production scene code, or alter saved projects.
+- Scales normalized plant mesh to current default height/spread in feet (converted to meters), re-normalizes normals, and places figure alongside plant. Grid starts at 1 ft spacing and increases for exceptionally large scenes; actual interval is displayed. Camera fits each scene so zoom is not locked between species; relative size within each view is physically consistent. Seasonal and managed forms retain design dimensions, not growth-age simulation. Existing estimate flags and height overrides shown. If the palette cannot load, true scale is disabled and close-up remains available.
+- Tested all 359 palette dimension records, 10 synthetic reference cases, and 26 real low-detail scene cases (12 species plus boxed cenizo, each with/without person). Heights, finite matching buffers, and exact 1.8288 m person height passed; inline lab script syntax passed. Actual browser rendering and deployment still need review. No new species in this feature batch; 12 approved species retained.
+
 ## Species 011–012 — Turk's cap and rock rose (lab 0.11)
 
 - Owner liked boxed cenizo after positive feedback on revised flame acanthus, natural cenizo and prickly pear; record these as accepted in review ledger, including managed form separately. Ten prior species and one managed form retained, no production promotion.
