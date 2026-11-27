@@ -48,3 +48,29 @@ export const metadata={
   "framing": "bounds",
   "revision": "owner review 01"
 };
+
+// Optional horticultural form; does not alter any natural individual.
+export function buildPruned(seed=42,stage="mature",detail="high"){
+ const hi=detail==="high",md=detail==="medium",v=[],n=[],c=[],TAU=2*Math.PI;
+ let state=seed>>>0;const rand=()=>((state=(Math.imul(state,1664525)+1013904223)>>>0)/4294967296),r=(a,b)=>a+(b-a)*rand(),reset=(i,s)=>{state=(Math.imul(seed+s,2654435761)^Math.imul(i+1,1597334677))>>>0;rand()};
+ const add=(a,b)=>a.map((x,i)=>x+b[i]),sub=(a,b)=>a.map((x,i)=>x-b[i]),mul=(a,s)=>a.map(x=>x*s),cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]],unit=a=>mul(a,1/(Math.hypot(...a)||1)),mix=(a,b,t)=>a.map((x,i)=>x*(1-t)+b[i]*t),tone=(a,t)=>a.map(x=>Math.max(0,Math.min(1,x*t)));
+ function tri(a,b,d,col){const q=cross(sub(b,a),sub(d,a)),l=Math.hypot(...q);if(l<1e-12)return;const norm=mul(q,1/l);for(const p of [a,b,d]){v.push(...p);n.push(...norm);c.push(...col)}}
+ function quad(a,b,d,e,col){tri(a,b,d,col);tri(a,d,e,col)}
+ function frame(d){const u=unit(cross(d,Math.abs(d[1])>.92?[1,0,0]:[0,1,0]));return [u,cross(d,u)]}
+ function tube(a,b,ra,rb,col,sides=4){const d=unit(sub(b,a)),[u,w]=frame(d),ring=(p,r,i)=>add(p,add(mul(u,r*Math.cos(i*TAU/sides)),mul(w,r*Math.sin(i*TAU/sides))));for(let i=0;i<sides;i++)quad(ring(a,ra,i),ring(a,ra,i+1),ring(b,rb,i+1),ring(b,rb,i),tone(col,.89+.14*Math.cos(i*TAU/sides)))}
+ reset(0,19);const half=r(.56,.68),height=r(.88,1.08),zhalf=half*r(.88,1.05),base=.10,round=.085,bark=[.45,.41,.35],twig=[.49,.51,.40],leaf=[.65,.70,.62],steps=hi?5:md?4:3;
+ // A clipped silhouette with subtly eased edges; individual leaves remain modeled, not a solid hull.
+ function limit(p){const y=Math.max(.035,Math.min(height,p[1])),t=Math.min(1,Math.max(0,(y-base)/.24)),w=half*(.83+.17*t),z=zhalf*(.83+.17*t),x0=Math.max(-w,Math.min(w,p[0])),z0=Math.max(-z,Math.min(z,p[2]));const dx=Math.max(0,Math.abs(x0)-(w-round)),dz=Math.max(0,Math.abs(z0)-(z-round)),dy=Math.max(0,y-(height-round)),d=Math.hypot(dx,dz,dy);if(d<=round)return [x0,y,z0];return [Math.sign(x0)*(Math.abs(x0)-dx+dx*round/d),y-dy+dy*round/d,Math.sign(z0)*(Math.abs(z0)-dz+dz*round/d)]}
+ function blade(p,d,id){reset(id,31);const len=r(.019,.032)*(hi?1:md?1.13:1.35),wid=len*r(.29,.39),[u,w]=frame(d),col=tone(mix(leaf,[.79,.81,.74],r(0,.45)),r(.85,1.12));let prev;for(let j=0;j<=steps;j++){const t=j/steps,h=wid*Math.pow(Math.sin(Math.PI*t),.56)*(.64+.7*t),mid=add(p,add(mul(d,len*t),mul(w,len*.08*Math.sin(Math.PI*t)))),row=[limit(add(mid,mul(u,-h))),limit(add(mid,mul(w,h*.17))),limit(add(mid,mul(u,h)))];if(prev){quad(prev[0],prev[1],row[1],row[0],tone(col,1.04));quad(prev[1],prev[2],row[2],row[1],tone(col,.93))}prev=row}}
+ function flower(p,d,id){reset(id,73);const [u,w]=frame(d),len=r(.016,.023),s=hi?1:md?1.12:1.24,col=mix([.69,.35,.71],[.86,.52,.81],r(0,.7)),mouth=add(p,mul(d,len));tube(p,mouth,.002,.006*s,col,6);for(let j=0;j<5;j++){const a=j*TAU/5,dir=add(mul(u,Math.cos(a)),mul(w,Math.sin(a))),side=add(mul(u,-Math.sin(a)),mul(w,Math.cos(a))),m=add(mouth,mul(dir,.009*s)),tip=add(mouth,add(mul(dir,.012*s),mul(d,.003)));tri(mouth,add(m,mul(side,.006*s)),tip,col);tri(mouth,tip,sub(m,mul(side,.006*s)),tone(col,1.06));}}
+ const trunks=hi?11:md?8:6;for(let i=0;i<trunks;i++){reset(i,43);const a=i*2.399,p=[Math.cos(a)*r(.02,.12),0,Math.sin(a)*r(.02,.12)],m=[Math.cos(a)*half*.26,height*.35,Math.sin(a)*zhalf*.26],q=[Math.cos(a)*half*.58,height*r(.60,.84),Math.sin(a)*zhalf*.58];tube(p,m,.014,.009,bark,6);tube(m,q,.009,.004,bark,5);}
+ // Connected outward sprays distributed on the top and four sides; slight irregularity from seeded jitter.
+ const grid=hi?15:md?12:9,rows=hi?12:md?9:7;let id=0;
+ for(let face=0;face<5;face++){const isTop=face===4,normal=isTop?[0,1,0]:face===0?[1,0,0]:face===1?[-1,0,0]:face===2?[0,0,1]:[0,0,-1],ny=isTop?grid:rows;
+ for(let j=0;j<ny;j++)for(let k=0;k<grid;k++){const sid=id++;reset(sid,59);const a=(k+.5+r(-.35,.35))/grid*2-1,b=(j+.5+r(-.35,.35))/ny;let surface=isTop?[a*half,height,(b*2-1)*zhalf]:face<2?[normal[0]*half,base+b*(height-base),a*zhalf]:[a*half,base+b*(height-base),normal[2]*zhalf];surface=limit(surface);const end=limit(add(surface,mul(normal,-r(.014,.040)))),root=[end[0]*.40,Math.max(.06,end[1]*.58),end[2]*.40],mid=mix(root,end,.65);tube(root,mid,.0026,.0018,twig,3);tube(mid,end,.0018,.0007,twig,3);
+ const count=hi?9:md?7:5;for(let l=0;l<count;l++){reset(sid*20+l,81);const [u,w]=frame(normal),angle=l*2.399+r(-.35,.35),t=.65+.35*l/(count-1),p=limit(add(mix(mid,end,t),add(mul(u,r(-.020,.020)),mul(w,r(-.020,.020))))),dir=unit(add(mul(normal,r(.12,.65)),add(mul(u,Math.cos(angle)),mul(w,Math.sin(angle)))));tube(mix(mid,end,t),p,.00055,.0003,twig,3);blade(p,dir,sid*20+l);}
+ // Freshly clipped foliage is dominant; only occasional retained blooms on mature/fall views.
+ reset(sid,97);const chance=stage==="mature"?.10:stage==="fall"?.075:stage==="young"?.025:0;if(rand()<chance)flower(add(end,mul(normal,-.009)),normal,sid);
+ }}
+ return {positions:new Float32Array(v),normals:new Float32Array(n),colors:new Float32Array(c)};
+}
