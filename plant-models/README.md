@@ -2,6 +2,13 @@
 
 Owners: botanical-model chat owns this directory and species-mesh-lab/. Studio chat owns studio-three.js and main editor. Coordinate before replacing the working Studio muhly generator.
 
+## Owner review 01 — flame acanthus, cenizo and prickly pear (lab 0.10.1)
+
+- Flame acanthus: owner requested mature 5–6 ft height and denser flowers. Five high-detail mature seeds measure 5.98, 5.69, 5.06, 5.79 and 5.67 ft in raw mesh; increased floral site probability and extended flowering down distal shoots. Main palette default height 4 → 5.5 ft, with explicit owner design-height override and original botanical source range 3–5 ft retained. Existing project object dimensions unchanged.
+- Cenizo: five seed-driven crown proportions/asymmetries; more low lateral branches, varied upright/spreading shoots and fuller axillary bloom coverage; broadens petal silhouettes. High-detail geometry is heavier; performance review pending.
+- Prickly pear: five rather than seven basal pads at high detail, fewer daughter pads and more space between basal branches. Spines, flowers and fruit retained.
+- Mature seed 42 high/medium/low triangles: flame 115,136 / 44,456 / 8,696; cenizo 385,772 / 103,836 / 29,296; pear 58,860 / 23,894 / 5,166. 225 raw and 225 normalized revised configurations passed; seed repeatability/variation and syntax checks passed. All three remain pending owner review. Earlier seven generators untouched. Browser visual review, deployment and performance not independently verified.
+
 ## Species 008–010 — flame acanthus, Texas sage and Texas prickly pear (lab 0.10)
 
 - Owner-requested spotlight batch, published from the existing lane draft paths to avoid duplicate work. Stable IDs `p9`, `tz-leucophyllum-frutescens`, `tz-opuntia-engelmannii`. Seven approved earlier models untouched. Future lane workers/publisher must skip registered IDs regardless of quote style or draft existence. Review ledger marks all three pending; no production promotion.
