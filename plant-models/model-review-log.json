@@ -7,13 +7,21 @@
     "tz-ageratina-havanensis",
     "p7",
     "tz-hesperaloe-parviflora",
-    "p4"
-  ],
-  "publishedPending": [
+    "p4",
     "p9",
     "tz-leucophyllum-frutescens",
     "tz-opuntia-engelmannii"
   ],
+  "publishedPending": [
+    "tz-malvaviscus-arboreus-var-drummondii",
+    "tz-pavonia-lasiopetala"
+  ],
   "needsRevision": [],
-  "note": "Owner approved seven existing models including frogfruit on 2026-11-27. Only explicit owner feedback may change review status. Publish up to 24 pending models; no production promotion."
+  "note": "Owner accepted revised flame acanthus, cenizo and prickly pear, then liked boxed cenizo and requested more common plants. Ten species and optional boxed cenizo form visually accepted. New Turk's cap and rock rose pending review. No production promotion.",
+  "approvedForms": {
+    "tz-leucophyllum-frutescens": [
+      "natural",
+      "pruned-box"
+    ]
+  }
 }
